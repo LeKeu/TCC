@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class JogadorController : MonoBehaviour
 {
+    public bool OlhandoEsq { get { return olhandoEsq; } set { olhandoEsq = value; } }
     [SerializeField] private float velocidade = 1f;
 
     private JogadorControls jogadorControls;
@@ -13,6 +14,8 @@ public class JogadorController : MonoBehaviour
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+
+    private bool olhandoEsq = false;
 
     private void Awake()
     {
@@ -56,8 +59,8 @@ public class JogadorController : MonoBehaviour
         Vector3 mousePosicao = Input.mousePosition;
         Vector3 jogadorScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
-        if(mousePosicao.x < jogadorScreenPoint.x) { spriteRenderer.flipX = true; }
-        else { spriteRenderer.flipX = false; }
+        if(mousePosicao.x < jogadorScreenPoint.x) { spriteRenderer.flipX = true; OlhandoEsq = true; }
+        else { spriteRenderer.flipX = false; OlhandoEsq = false; }
 
     }
 
