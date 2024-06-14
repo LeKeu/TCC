@@ -7,6 +7,7 @@ public class Espada : MonoBehaviour
 {
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimPontoSpawn;
+    [SerializeField] private Transform armaCollider;
 
     private JogadorController JogadorController;
     private Animator animator;
@@ -34,19 +35,22 @@ public class Espada : MonoBehaviour
     private void Atacar()
     {
         animator.SetTrigger("Ataque");
+        armaCollider.gameObject.SetActive(true);
 
         slahsAnim = Instantiate(slashAnimPrefab, slashAnimPontoSpawn.position, Quaternion.identity);
         slahsAnim.transform.parent = this.transform.parent;
     }
 
-    public void SwingCimaFlipAnim()
+    public void FinalAnimAtacarEvent() { armaCollider.gameObject.SetActive(false); }
+
+    public void SwingCimaFlipAnimEvent()
     {
         slahsAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
 
         if (JogadorController.OlhandoEsq)
             slahsAnim.GetComponent<SpriteRenderer>().flipX = true;
     }
-    public void SwingBaixoFlipAnim()
+    public void SwingBaixoFlipAnimEvent()
     {
         slahsAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 
@@ -67,8 +71,12 @@ public class Espada : MonoBehaviour
 
         float angulo = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
-        if(mousePos.x < jogadorScreenPoint.x) armaAtiva.transform.rotation = Quaternion.Euler(0, -180, angulo);
-        else armaAtiva.transform.rotation = Quaternion.Euler(0, 0, angulo);
+        if (mousePos.x < jogadorScreenPoint.x)
+        { armaAtiva.transform.rotation = Quaternion.Euler(0, -180, angulo);
+            armaCollider.transform.rotation = Quaternion.Euler(0, -180, 0); }
+        else 
+        { armaAtiva.transform.rotation = Quaternion.Euler(0, 0, angulo); 
+            armaCollider.transform.rotation = Quaternion.Euler(0, 0, 0); }
 
     }
 }

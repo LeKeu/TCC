@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7268119517108076853}
   - component: {fileID: 5368900568198702324}
   - component: {fileID: 672405224228172491}
+  - component: {fileID: 7110311675798844610}
   m_Layer: 0
   m_Name: SlimeVermelha
   m_TagString: Untagged
@@ -197,3 +198,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7110311675798844610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147913955493784799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8d5717f32240a4fb6a646558e30271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
