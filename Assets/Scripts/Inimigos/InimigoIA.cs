@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InimigoIA : MonoBehaviour
 {
+    [SerializeField] private float rcdf = 2f; //roamchangedirfloat
     private enum Estado
     {
         Andando
@@ -29,7 +30,7 @@ public class InimigoIA : MonoBehaviour
         {
             Vector2 andandoPos = GetAndandoPos();
             InimigoPathFinding.IrPara(andandoPos);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(rcdf);
         }
     }
 

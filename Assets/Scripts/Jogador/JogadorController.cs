@@ -6,8 +6,10 @@ using UnityEngine.InputSystem;
 public class JogadorController : MonoBehaviour
 {
     public static JogadorController Instance;
-    public bool OlhandoEsq { get { return olhandoEsq; } set { olhandoEsq = value; } }
+    public bool OlhandoEsq { get { return olhandoEsq; } }
     [SerializeField] private float velocidade = 1f;
+    [SerializeField] private float velDash = 3f;
+    [SerializeField] private TrailRenderer trailRenderer;
 
     private JogadorControls jogadorControls;
     private Vector2 movimento;
@@ -15,8 +17,10 @@ public class JogadorController : MonoBehaviour
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private float velInicial;
 
     private bool olhandoEsq = false;
+    private bool estaDashing = false;
 
     private void Awake()
     {
@@ -25,6 +29,13 @@ public class JogadorController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        jogadorControls.Combat.Dash.performed += _ => Dash();
+
+        velInicial = velocidade;
     }
 
     private void OnEnable()
@@ -61,9 +72,30 @@ public class JogadorController : MonoBehaviour
         Vector3 mousePosicao = Input.mousePosition;
         Vector3 jogadorScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
-        if(mousePosicao.x < jogadorScreenPoint.x) { spriteRenderer.flipX = true; OlhandoEsq = true; }
-        else { spriteRenderer.flipX = false; OlhandoEsq = false; }
+        if(mousePosicao.x < jogadorScreenPoint.x) { spriteRenderer.flipX = true; olhandoEsq = true; }
+        else { spriteRenderer.flipX = false; olhandoEsq = false; }
+    }
 
+    private void Dash()
+    {
+        if (!estaDashing)
+        {
+            estaDashing = true;
+            velocidade *= velDash;
+            trailRenderer.emitting = true;
+            StartCoroutine(AcabarDash());
+        }
+    }
+
+    private IEnumerator AcabarDash()
+    {
+        float dashTime = .2f;
+        float dashCD = .25f;
+        yield return new WaitForSeconds(dashTime);
+        velocidade = velInicial;
+        trailRenderer.emitting = false;
+        yield return new WaitForSeconds(dashCD);
+        estaDashing = false;
     }
 
 }

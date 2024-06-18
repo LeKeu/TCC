@@ -9,20 +9,22 @@ public class Flash : MonoBehaviour
 
     private Material matPadrao;
     private SpriteRenderer spriteRenderer;
-    private InimigoVida inimigoVida;
+    //private InimigoVida inimigoVida;
 
     void Awake()
     {
-        inimigoVida = GetComponent<InimigoVida>();
+        //inimigoVida = GetComponent<InimigoVida>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         matPadrao = spriteRenderer.material;
     }
+
+    public float PegarTempoDeRestore() {  return tempoDeRestorar; }
 
     public IEnumerator FlashRoutine()
     {
         spriteRenderer.material = flashBrancoMaterial;
         yield return new WaitForSeconds(tempoDeRestorar);
         spriteRenderer.material = matPadrao;
-        inimigoVida.ChecarMorte();
+        //inimigoVida.ChecarMorte();
     }
 }
