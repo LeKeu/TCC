@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 5368900568198702324}
   - component: {fileID: 672405224228172491}
   - component: {fileID: 7110311675798844610}
+  - component: {fileID: 8704186883700975941}
+  - component: {fileID: 5444048247061969010}
   m_Layer: 0
   m_Name: SlimeVermelha
   m_TagString: Untagged
@@ -210,3 +212,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8d5717f32240a4fb6a646558e30271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vidaInicial: 3
+--- !u!114 &8704186883700975941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147913955493784799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd45133e8bf5f784385044f191e7ea70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempoEmpurrao: 0.1
+--- !u!114 &5444048247061969010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147913955493784799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99f2ce890653004fb9c719c5895f62c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashBrancoMaterial: {fileID: 2100000, guid: 0b24fa01b14efa74ab1c74916e0328d8, type: 2}
+  tempoDeRestorar: 0.2

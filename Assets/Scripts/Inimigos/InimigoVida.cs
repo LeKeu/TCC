@@ -7,6 +7,14 @@ public class InimigoVida : MonoBehaviour
     [SerializeField] private int vidaInicial = 3;
 
     private int vidaAtual;
+    private Empurrao empurrao;
+    private Flash flash;
+
+    private void Awake()
+    {
+        flash = GetComponent<Flash>();
+        empurrao = GetComponent<Empurrao>();
+    }
 
     private void Start()
     {
@@ -16,11 +24,11 @@ public class InimigoVida : MonoBehaviour
     public void ReceberDano(int dano)
     {
         vidaAtual -= dano;
-        Debug.Log(vidaAtual);
-        ChecarMorte();
+        empurrao.SerEmpurrado(JogadorController.Instance.transform, 15f);
+        StartCoroutine(flash.FlashRoutine());
     }
 
-    private void ChecarMorte()
+    public void ChecarMorte()
     {
         if(vidaAtual <= 0) { Destroy(gameObject); }
     }

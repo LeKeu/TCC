@@ -8,14 +8,17 @@ public class InimigoPathFinding : MonoBehaviour
 
     Rigidbody2D rb;
     private Vector2 movDirecao;
+    private Empurrao empurrao;
 
     private void Awake()
     {
+        empurrao = GetComponent<Empurrao>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
+        if (empurrao.serEmpurrado) { return; }
         rb.MovePosition(rb.position + movDirecao * (movVel * Time.deltaTime));
     }
 

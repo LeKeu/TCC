@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class JogadorController : MonoBehaviour
 {
+    public static JogadorController Instance;
     public bool OlhandoEsq { get { return olhandoEsq; } set { olhandoEsq = value; } }
     [SerializeField] private float velocidade = 1f;
 
@@ -19,6 +20,7 @@ public class JogadorController : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         jogadorControls = new JogadorControls();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
