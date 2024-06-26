@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7007579284707883050}
   - component: {fileID: 7995246281926144534}
   m_Layer: 0
-  m_Name: arbusto0
+  m_Name: caixa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16b66664fd536ef41bd2cfb814af18d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3df2368a8a9edc64cbb7954be52736d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,8 +118,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.13}
-  m_Size: {x: 0.73, y: 0.54}
+  m_Offset: {x: -0.003368632, y: -0.12999998}
+  m_Size: {x: 0.5413597, y: 0.5400033}
   m_Direction: 1
 --- !u!114 &7995246281926144534
 MonoBehaviour:

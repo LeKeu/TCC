@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class JogadorController : MonoBehaviour
+public class JogadorController : Singleton<JogadorController>
 {
-    public static JogadorController Instance;
     public bool OlhandoEsq { get { return olhandoEsq; } }
     [SerializeField] private float velocidade = 1f;
     [SerializeField] private float velDash = 3f;
@@ -22,9 +21,10 @@ public class JogadorController : MonoBehaviour
     private bool olhandoEsq = false;
     private bool estaDashing = false;
 
-    private void Awake()
+    protected override void Awake()
     {
-        Instance = this;
+        base.Awake();
+
         jogadorControls = new JogadorControls();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
