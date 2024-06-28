@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Pegar : MonoBehaviour
 {
+    private enum PegarTipo
+    {
+        Moeda,
+        Vida
+    }
+
+    [SerializeField] private PegarTipo tipo;
     [SerializeField] private float pegarDist = 5f;
     [SerializeField] private float rateAcelerecao = .2f;
     [SerializeField] private float movVel = 3f;
@@ -50,6 +57,7 @@ public class Pegar : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<JogadorController>())
         {
+            //DetectarTipo();
             Destroy(gameObject);
         }
     }
@@ -73,6 +81,17 @@ public class Pegar : MonoBehaviour
 
             transform.position = Vector2.Lerp(posStart, pontoFinal, linearT) + new Vector2(0f, altura);
             yield return null;
+        }
+    }
+
+    private void DetectarTipo()
+    {
+        switch (tipo)
+        {
+            case PegarTipo.Moeda:
+                Debug.Log("moeda"); break;
+            case PegarTipo.Vida:
+                Debug.Log("vida"); break;
         }
     }
 }

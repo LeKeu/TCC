@@ -5,6 +5,7 @@ using UnityEngine;
 public class InimigoPathFinding : MonoBehaviour
 {
     [SerializeField] private float movVel = 2f;
+    [SerializeField] private float pegarDist = 5f;
 
     Rigidbody2D rb;
     private Vector2 movDirecao;
@@ -24,6 +25,11 @@ public class InimigoPathFinding : MonoBehaviour
 
     public void IrPara(Vector2 posAlvo)
     {
-        movDirecao = posAlvo;
+        Vector3 jogadorPos = JogadorController.Instance.transform.position;
+
+        if (Vector3.Distance(transform.position, jogadorPos) < pegarDist)
+            movDirecao = (jogadorPos - transform.position).normalized;
+        else
+            movDirecao = posAlvo;
     }
 }
