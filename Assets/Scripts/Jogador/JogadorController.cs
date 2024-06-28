@@ -22,6 +22,9 @@ public class JogadorController : Singleton<JogadorController>
     private bool olhandoEsq = false;
     private bool estaDashing = false;
 
+    public bool estaEscondido = false;
+    public bool estaSendoPerseguido = false;
+
     protected override void Awake()
     {
         base.Awake();

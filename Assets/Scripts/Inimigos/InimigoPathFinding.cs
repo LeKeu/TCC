@@ -27,9 +27,15 @@ public class InimigoPathFinding : MonoBehaviour
     {
         Vector3 jogadorPos = JogadorController.Instance.transform.position;
 
-        if (Vector3.Distance(transform.position, jogadorPos) < pegarDist)
+        if (Vector3.Distance(transform.position, jogadorPos) < pegarDist && !JogadorController.Instance.estaEscondido)
+        {
             movDirecao = (jogadorPos - transform.position).normalized;
+            JogadorController.Instance.estaSendoPerseguido = true;
+        }
         else
+        {
             movDirecao = posAlvo;
+            JogadorController.Instance.estaSendoPerseguido = false;
+        }
     }
 }

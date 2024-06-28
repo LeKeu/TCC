@@ -23,6 +23,7 @@ public class Transparencia : MonoBehaviour
             if (spriteRenderer)
             {
                 StartCoroutine(SumirSprite(spriteRenderer, sumirTempo, spriteRenderer.color.a, qntdTransparencia));
+                if (!JogadorController.Instance.estaSendoPerseguido) JogadorController.Instance.estaEscondido = true;
             }
         }
     }
@@ -34,6 +35,7 @@ public class Transparencia : MonoBehaviour
             if (spriteRenderer)
             {
                 StartCoroutine(AparecerSprite(spriteRenderer, sumirTempo, spriteRenderer.color.a, 1));
+                JogadorController.Instance.estaEscondido = false;
             }
         }
     }
