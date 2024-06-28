@@ -11,6 +11,7 @@ public class Destrutiveis : MonoBehaviour
         if (collision.gameObject.GetComponent<OrigemDano>())
         {
             //Instantiate(vfxDestruir, transform.position, Quaternion.identity);
+            GetComponent<PegarExtras>().DroparItens();
             Destroy(gameObject);
         }
     }

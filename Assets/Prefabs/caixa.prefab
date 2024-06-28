@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5446236632950521338}
   - component: {fileID: 7007579284707883050}
   - component: {fileID: 7995246281926144534}
+  - component: {fileID: 3061687138848580650}
   m_Layer: 0
   m_Name: caixa
   m_TagString: Untagged
@@ -133,3 +134,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f527aa493dcd78e4c9d5fe7f91a407e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3061687138848580650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448910486227954133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660c9d7e848ae0d4d9116ec0bf688991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moedaPrefab: {fileID: 1508147830853160379, guid: 2faeacf34168d7c4a926c6f78e69c972, type: 3}

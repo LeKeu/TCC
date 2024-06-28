@@ -16,6 +16,7 @@ public class JogadorController : Singleton<JogadorController>
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private Empurrao empurrao;
     private float velInicial;
 
     private bool olhandoEsq = false;
@@ -29,6 +30,7 @@ public class JogadorController : Singleton<JogadorController>
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        empurrao = GetComponent<Empurrao>();
     }
 
     private void Start()
@@ -64,6 +66,7 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Movimentar()
     {
+        if (empurrao.serEmpurrado) { return; }
         rb.MovePosition(rb.position + movimento * (velocidade * Time.fixedDeltaTime));
     }
 
