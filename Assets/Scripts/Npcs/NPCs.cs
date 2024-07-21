@@ -12,7 +12,6 @@ public abstract class NPCs : MonoBehaviour, IInteractble
     {
         if (Keyboard.current.eKey.wasPressedThisFrame && DaParaInteragir())
         {
-            Debug.Log("npcccc");
             Interagir();
         }
 
@@ -26,7 +25,7 @@ public abstract class NPCs : MonoBehaviour, IInteractble
 
     bool DaParaInteragir()
     {
-        Debug.Log(Vector2.Distance(JogadorController.Instance.transform.position, transform.position));
+        //Debug.Log(Vector2.Distance(JogadorController.Instance.transform.position, transform.position));
         if (Vector2.Distance(JogadorController.Instance.transform.position, transform.position) < DISTANCIA)
             return true;
         else return false;

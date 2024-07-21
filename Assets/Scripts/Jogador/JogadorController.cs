@@ -24,11 +24,13 @@ public class JogadorController : Singleton<JogadorController>
 
     public bool estaEscondido = false;
     public bool estaSendoPerseguido = false;
+    public bool podeMover;
 
     protected override void Awake()
     {
         base.Awake();
 
+        podeMover = true;
         jogadorControls = new JogadorControls();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -61,10 +63,13 @@ public class JogadorController : Singleton<JogadorController>
 
     private void JogadorInput()
     {
-        movimento = jogadorControls.Movement.Move.ReadValue<Vector2>();
+        if (podeMover)
+        {
+            movimento = jogadorControls.Movement.Move.ReadValue<Vector2>();
 
-        animator.SetFloat("moveX", movimento.x);
-        animator.SetFloat("moveY", movimento.y);
+            animator.SetFloat("moveX", movimento.x);
+            animator.SetFloat("moveY", movimento.y);
+        }
     }
 
     private void Movimentar()
@@ -84,7 +89,7 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Dash()
     {
-        if (!estaDashing)
+        if (!estaDashing && podeMover)
         {
             estaDashing = true;
             velocidade *= velDash;
