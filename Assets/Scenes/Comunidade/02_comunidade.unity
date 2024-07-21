@@ -17893,7 +17893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5847113453429185493, guid: 8695647c9fa4c7941b4ccdf36fffd15d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.59
+      value: 16.26
       objectReference: {fileID: 0}
     - target: {fileID: 5847113453429185493, guid: 8695647c9fa4c7941b4ccdf36fffd15d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17937,11 +17937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8342816624108612659, guid: 8695647c9fa4c7941b4ccdf36fffd15d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: -1.47
       objectReference: {fileID: 0}
     - target: {fileID: 9143407207251538859, guid: 8695647c9fa4c7941b4ccdf36fffd15d, type: 3}
       propertyPath: proxCena
-      value: Cena1
+      value: 01_comunidade
       objectReference: {fileID: 0}
     - target: {fileID: 9143407207251538859, guid: 8695647c9fa4c7941b4ccdf36fffd15d, type: 3}
       propertyPath: cenaTransicaoNome
