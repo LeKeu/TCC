@@ -12,5 +12,5 @@ public class DialogoTexto : ScriptableObject
     [TextArea(5, 10)]
     public string[] paragrafos;
 
-    public Sprite perfil;
+    public Sprite perfilNPC;
 }

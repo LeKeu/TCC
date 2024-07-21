@@ -1576,11 +1576,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e0521a80050514f9e8feb19db88a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perfil: {fileID: 21300000, guid: 9e6c6050c99db424fb341602ea4f1ebc, type: 3}
   velocidade: 4
   velDash: 3
   trailRenderer: {fileID: 1671461586}
   estaEscondido: 0
   estaSendoPerseguido: 0
+  podeMover: 0
 --- !u!50 &695872229
 Rigidbody2D:
   serializedVersion: 4
@@ -16462,7 +16464,8 @@ MonoBehaviour:
   NPCNomeTexto: {fileID: 677232266}
   NPCDialogoTexto: {fileID: 409694339}
   NPCPerfil: {fileID: 2099292157}
-  conversaAcabou: 0
+  JOGADORPerfil: {fileID: 393716685}
+  digitarVel: 10
 --- !u!1 &1371575377
 GameObject:
   m_ObjectHideFlags: 0
@@ -16849,7 +16852,7 @@ Transform:
   m_GameObject: {fileID: 1450279232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.517, y: -1.956, z: 0}
+  m_LocalPosition: {x: 1.52, y: 4.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

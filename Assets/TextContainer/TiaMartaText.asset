@@ -17,4 +17,10 @@ MonoBehaviour:
   - 'Vou quebrar a cuca na porrada
 
     mano sou muito forte'
-  perfil: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}
+  - "Oi longhiiijhdsvgcjhsdvbj\nturn away \nif you could get me a drink of watyer
+    cause my lips are chapped \n"
+  - "A amizade consegue ser t\xE3o complexa.\r\nDeixa uns desanimados, outros bem
+    felizes.\r\n\xC9 a alimenta\xE7\xE3o dos fracos"
+  - "Faz-nos cometer erros\r\nOs fracos deixam se ir abaixo\r\nOs fortes erguem sempre
+    a cabe\xE7a"
+  perfilNPC: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}

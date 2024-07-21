@@ -9,11 +9,19 @@ public class DialogoController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI NPCNomeTexto;
     [SerializeField] private TextMeshProUGUI NPCDialogoTexto;
     [SerializeField] private Image NPCPerfil;
+    [SerializeField] private Image JOGADORPerfil;
+    [SerializeField] private float digitarVel = 10f;
 
     private Queue<string> paragrafos = new Queue<string>();
 
-    public bool conversaAcabou;
+    bool conversaAcabou;
+    bool estaDigitando;
     string p;
+
+    private Coroutine digitandoDialogoCoroutine;
+
+    const string HTML_ALPHA = "<color=#00000000>";
+    const float MAX_DIGITAR_TEMPO = 0.1f;
 
     public void DisplayProximoParagrafo(DialogoTexto dialogoTexto)
     {
@@ -24,21 +32,60 @@ public class DialogoController : MonoBehaviour
                 JogadorController.Instance.podeMover = false;
                 IniciarConversa(dialogoTexto);
             }
-            else
+            else if(conversaAcabou && !estaDigitando)
             {
                 AcabarConversa();
                 return;
             }
         }
 
-        p = paragrafos.Dequeue();
-        NPCDialogoTexto.text = p;
+        if (!estaDigitando)
+        {
+            p = paragrafos.Dequeue();
+            digitandoDialogoCoroutine = StartCoroutine(DigitarDialogoTexto(p));
+        }
+        else
+        {
+            AcabarParagrafoCedo();
+        }
+        
+        //NPCDialogoTexto.text = p;
 
         if(paragrafos.Count == 0)
         {
             conversaAcabou = true;
             JogadorController.Instance.podeMover = true;
         }
+    }
+
+    private IEnumerator DigitarDialogoTexto(string p)
+    {
+        estaDigitando = true;
+        NPCDialogoTexto.text = "";
+
+        string textoOriginal = p;
+        string textoDisplayed = "";
+        int alphaIndex = 0;
+
+        foreach(char c in p.ToCharArray())
+        {
+            alphaIndex++;
+            NPCDialogoTexto.text = textoOriginal;
+
+            textoDisplayed = NPCDialogoTexto.text.Insert(alphaIndex, HTML_ALPHA);
+            NPCDialogoTexto.text = textoDisplayed;
+
+            yield return new WaitForSeconds(MAX_DIGITAR_TEMPO/digitarVel);
+        }
+
+        estaDigitando = false;
+    }
+
+    private void AcabarParagrafoCedo()
+    {
+        StopCoroutine(digitandoDialogoCoroutine);
+        NPCDialogoTexto.text = p;
+        estaDigitando = false;
     }
 
     private void IniciarConversa(DialogoTexto dialogoTexto)
@@ -49,7 +96,9 @@ public class DialogoController : MonoBehaviour
         }
 
         NPCNomeTexto.text = dialogoTexto.nome;
-        NPCPerfil.sprite = dialogoTexto.perfil;
+        NPCPerfil.sprite = dialogoTexto.perfilNPC;
+        JOGADORPerfil.sprite = JogadorController.Instance.perfil;
+
         for(int i = 0; i < dialogoTexto.paragrafos.Length; i++)
         {
             Debug.Log(dialogoTexto.paragrafos[i]);

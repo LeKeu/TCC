@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class JogadorController : Singleton<JogadorController>
 {
+    [SerializeField] public Sprite perfil;
     public bool OlhandoEsq { get { return olhandoEsq; } }
     [SerializeField] private float velocidade = 1f;
     [SerializeField] private float velDash = 3f;
