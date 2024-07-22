@@ -38,5 +38,12 @@ public class InventarioAtivo : MonoBehaviour
         }
 
         this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
+
+        MudarArmaAtiva();
+    }
+
+    void MudarArmaAtiva()
+    {
+        Debug.Log(transform.GetChild(indexSlotAtivo).GetComponent<EspacoInventario>().PegarArmaInfo().armaPrefab.name);
     }
 }
