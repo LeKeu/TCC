@@ -556,6 +556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 167532149}
   - component: {fileID: 167532150}
+  - component: {fileID: 167532151}
   m_Layer: 5
   m_Name: InventarioAtivo
   m_TagString: Untagged
@@ -611,6 +612,18 @@ MonoBehaviour:
   m_Spacing: {x: 30, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &167532151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167532148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009ad14f6d2dc6141b3d3c37645a5b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &205303537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31088,6 +31101,7 @@ Transform:
   m_Children:
   - {fileID: 1854200111}
   - {fileID: 1249446339}
+  - {fileID: 1991784572}
   m_Father: {fileID: 695872227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1674151389
@@ -31102,6 +31116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40eb348aba9943949b34bdd32f64a952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armaAtivaAtual: {fileID: 1854200114}
 --- !u!4 &1692010426 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1790017961845165295, guid: 95f1109670ea8e8448ac249ea058415a, type: 3}
@@ -31502,6 +31517,7 @@ MonoBehaviour:
   slashAnimPrefab: {fileID: 5865998713230486732, guid: de4decdaccfb89e46aa67371aff9fbae, type: 3}
   slashAnimPontoSpawn: {fileID: 1249446339}
   armaCollider: {fileID: 517390139}
+  espadaAtaqueCD: 0.5
 --- !u!1001 &1863806118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31694,6 +31710,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8695647c9fa4c7941b4ccdf36fffd15d, type: 3}
+--- !u!1 &1991784571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1991784572}
+  - component: {fileID: 1991784573}
+  m_Layer: 0
+  m_Name: Arco
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1991784572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991784571}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1674151388}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1991784573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991784571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1906e8c2ac4359343971cbae7071af36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2054312873
 PrefabInstance:
   m_ObjectHideFlags: 0
