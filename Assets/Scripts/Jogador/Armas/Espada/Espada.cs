@@ -7,13 +7,14 @@ public class Espada : MonoBehaviour, IArma
 {
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimPontoSpawn;
-    [SerializeField] private Transform armaCollider;
-    [SerializeField] private float espadaAtaqueCD = .5f; 
+    //[SerializeField] private Transform armaCollider;
+    [SerializeField] private float espadaAtaqueCD = .5f;
 
-    private JogadorController JogadorController;
+    Transform armaCollider;
     private Animator animator;
+    //private JogadorController JogadorController;
     //private JogadorControls jogadorControls;
-    private ArmaAtiva armaAtiva;
+    //private ArmaAtiva armaAtiva;
     //private bool ataqueButBaixo, estaAtacando = false;
 
     private GameObject slahsAnim;
@@ -21,18 +22,26 @@ public class Espada : MonoBehaviour, IArma
 
     private void Awake()
     {
-        JogadorController = GetComponentInParent<JogadorController>();
-        armaAtiva = GetComponentInParent<ArmaAtiva>();
+        //JogadorController = GetComponentInParent<JogadorController>();
+        //armaAtiva = GetComponentInParent<ArmaAtiva>();
         animator = GetComponent<Animator>();
         //jogadorControls = new JogadorControls();
     }
 
     //private void OnEnable() { jogadorControls.Enable(); }
-     
-    //void Start()
-    //{
-    //    jogadorControls.Combat.Attack.started += _ => Atacar();
-    //}
+
+    void Start()
+    {
+        //jogadorControls.Combat.Attack.started += _ => Atacar();
+        armaCollider = JogadorController.Instance.PegarArmaCollider();
+        slashAnimPontoSpawn = GameObject.Find("splashSpawnPoint").transform;
+    }
+
+    void Update()
+    {
+        MouseSeguirOffSet();
+        //Atacar();
+    }
 
     public void Atacar()
     {
@@ -56,36 +65,32 @@ public class Espada : MonoBehaviour, IArma
     {
         slahsAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
 
-        if (JogadorController.OlhandoEsq)
+        if (JogadorController.Instance.OlhandoEsq)
             slahsAnim.GetComponent<SpriteRenderer>().flipX = true;
     }
     public void SwingBaixoFlipAnimEvent()
     {
         slahsAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        if (JogadorController.OlhandoEsq)
+        if (JogadorController.Instance.OlhandoEsq)
             slahsAnim.GetComponent<SpriteRenderer>().flipX = true;
     }
 
 
-    void Update()
-    {
-        MouseSeguirOffSet();
-        //Atacar();
-    }
 
     private void MouseSeguirOffSet()
     {
         Vector3 mousePos = Input.mousePosition;
-        Vector3 jogadorScreenPoint = Camera.main.WorldToScreenPoint(JogadorController.transform.position);
+        Vector3 jogadorScreenPoint = Camera.main.WorldToScreenPoint(JogadorController.Instance.transform.position);
 
         float angulo = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
         if (mousePos.x < jogadorScreenPoint.x)
-        { armaAtiva.transform.rotation = Quaternion.Euler(0, -180, angulo);
+        { ArmaAtiva.Instance.transform.rotation = Quaternion.Euler(0, -180, angulo);
             armaCollider.transform.rotation = Quaternion.Euler(0, -180, 0); }
         else 
-        { armaAtiva.transform.rotation = Quaternion.Euler(0, 0, angulo); 
+        {
+            ArmaAtiva.Instance.transform.rotation = Quaternion.Euler(0, 0, angulo); 
             armaCollider.transform.rotation = Quaternion.Euler(0, 0, 0); }
 
     }

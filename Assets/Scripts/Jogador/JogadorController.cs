@@ -1,15 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class JogadorController : Singleton<JogadorController>
 {
     [SerializeField] public Sprite perfil;
     public bool OlhandoEsq { get { return olhandoEsq; } }
+
     [SerializeField] private float velocidade = 1f;
     [SerializeField] private float velDash = 3f;
     [SerializeField] private TrailRenderer trailRenderer;
+
+    [SerializeField] private Transform armaCollider;
 
     private JogadorControls jogadorControls;
     private Vector2 movimento;
@@ -54,6 +55,11 @@ public class JogadorController : Singleton<JogadorController>
     private void Update()
     {
         JogadorInput();
+    }
+
+    public Transform PegarArmaCollider()
+    {
+        return armaCollider;
     }
 
     private void FixedUpdate()

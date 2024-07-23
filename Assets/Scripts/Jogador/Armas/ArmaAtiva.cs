@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ArmaAtiva : Singleton<ArmaAtiva>
 {
-    [SerializeField] private MonoBehaviour armaAtivaAtual;
+    public MonoBehaviour ArmaAtivaAtual { get; private set; }
+
     private JogadorControls jogadorControls;
     bool atacarButBaixo, estaAtacando = false;
 
@@ -31,6 +32,16 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
         Atacar();
     }
 
+    public void NovaArma(MonoBehaviour novaArma)
+    {
+        ArmaAtivaAtual = novaArma;
+    }
+
+    public void ArmaNull()
+    {
+        ArmaAtivaAtual = null;
+    }
+
     public void ToggleEstaAtacando(bool valor)
     {
         estaAtacando = valor;
@@ -50,7 +61,7 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
         if(atacarButBaixo && !estaAtacando)
         {
             estaAtacando = true;
-            (armaAtivaAtual as IArma).Atacar();
+            (ArmaAtivaAtual as IArma).Atacar();
         }
     }
 }

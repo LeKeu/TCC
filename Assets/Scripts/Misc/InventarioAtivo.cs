@@ -16,6 +16,8 @@ public class InventarioAtivo : MonoBehaviour
     private void Start()
     {
         jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
+
+        AtivarEspacoHighlight(0);
     }
 
     private void OnEnable()
@@ -45,5 +47,22 @@ public class InventarioAtivo : MonoBehaviour
     void MudarArmaAtiva()
     {
         Debug.Log(transform.GetChild(indexSlotAtivo).GetComponent<EspacoInventario>().PegarArmaInfo().armaPrefab.name);
+
+        if (ArmaAtiva.Instance.ArmaAtivaAtual != null)
+        {
+            
+            Destroy(ArmaAtiva.Instance.ArmaAtivaAtual.gameObject);
+        }
+
+        if (!transform.GetChild(indexSlotAtivo).GetComponentInChildren<EspacoInventario>())
+        {
+            ArmaAtiva.Instance.ArmaNull();
+        }
+
+        GameObject armaParaInstanciar = transform.GetChild(indexSlotAtivo).GetComponentInChildren<EspacoInventario>().PegarArmaInfo().armaPrefab;
+        GameObject novaArma = Instantiate(armaParaInstanciar, ArmaAtiva.Instance.transform.position, Quaternion.identity);
+    
+        novaArma.transform.parent = ArmaAtiva.Instance.transform;
+        ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
     }
 }
