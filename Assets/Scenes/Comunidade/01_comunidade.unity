@@ -2049,6 +2049,7 @@ MonoBehaviour:
   velocidade: 4
   velDash: 3
   trailRenderer: {fileID: 1671461586}
+  armaCollider: {fileID: 517390139}
   estaEscondido: 0
   estaSendoPerseguido: 0
   podeMover: 0
@@ -2958,6 +2959,7 @@ GameObject:
   - component: {fileID: 1028456834}
   - component: {fileID: 1028456833}
   - component: {fileID: 1028456832}
+  - component: {fileID: 1028456837}
   m_Layer: 0
   m_Name: Foreground
   m_TagString: Untagged
@@ -20835,6 +20837,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1028456837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028456830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae182ef9496e0748a41c299bfc2bfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1054556753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6867030664126212331, guid: ceafe00ba3b74cb4aa360b576f331a6e, type: 3}
@@ -31149,6 +31163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1674151388}
   - component: {fileID: 1674151389}
+  - component: {fileID: 1674151390}
   m_Layer: 0
   m_Name: ArmaAtiva
   m_TagString: Untagged
@@ -31184,7 +31199,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40eb348aba9943949b34bdd32f64a952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armaAtivaAtual: {fileID: 0}
+--- !u!114 &1674151390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674151387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45cfb07c4609974448a2ea8bc38602e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1692010426 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1790017961845165295, guid: 95f1109670ea8e8448ac249ea058415a, type: 3}

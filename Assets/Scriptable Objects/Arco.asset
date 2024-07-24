@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armaPrefab: {fileID: 8024297388817942011, guid: fcce36cef64403a418d95121115bfd4d, type: 3}
   armaCooldown: 1
+  armaRange: 12
+  armaDano: 2

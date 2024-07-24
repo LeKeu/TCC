@@ -7,4 +7,6 @@ public class Armas : ScriptableObject
 {
     public GameObject armaPrefab;
     public float armaCooldown;
+    public float armaRange;
+    public int armaDano;
 }

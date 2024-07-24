@@ -50,19 +50,21 @@ public class InventarioAtivo : MonoBehaviour
 
         if (ArmaAtiva.Instance.ArmaAtivaAtual != null)
         {
-            
             Destroy(ArmaAtiva.Instance.ArmaAtivaAtual.gameObject);
         }
 
         if (!transform.GetChild(indexSlotAtivo).GetComponentInChildren<EspacoInventario>())
         {
             ArmaAtiva.Instance.ArmaNull();
+            return;
         }
 
         GameObject armaParaInstanciar = transform.GetChild(indexSlotAtivo).GetComponentInChildren<EspacoInventario>().PegarArmaInfo().armaPrefab;
         GameObject novaArma = Instantiate(armaParaInstanciar, ArmaAtiva.Instance.transform.position, Quaternion.identity);
-    
+
+        ArmaAtiva.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
         novaArma.transform.parent = ArmaAtiva.Instance.transform;
+
         ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
     }
 }

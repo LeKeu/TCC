@@ -9,6 +9,7 @@ public class Espada : MonoBehaviour, IArma
     [SerializeField] private Transform slashAnimPontoSpawn;
     //[SerializeField] private Transform armaCollider;
     [SerializeField] private float espadaAtaqueCD = .5f;
+    [SerializeField] private Armas armasInfo;
 
     Transform armaCollider;
     private Animator animator;
@@ -43,6 +44,11 @@ public class Espada : MonoBehaviour, IArma
         //Atacar();
     }
 
+    public Armas PegarArmaInfo()
+    {
+        return armasInfo;
+    }
+
     public void Atacar()
     {
         animator.SetTrigger("Ataque");
@@ -50,14 +56,14 @@ public class Espada : MonoBehaviour, IArma
 
         slahsAnim = Instantiate(slashAnimPrefab, slashAnimPontoSpawn.position, Quaternion.identity);
         slahsAnim.transform.parent = this.transform.parent;
-        StartCoroutine(AtacarCDRoutina());
+        //StartCoroutine(AtacarCDRoutina());
     }
 
-    IEnumerator AtacarCDRoutina()
-    {
-        yield return new WaitForSeconds(espadaAtaqueCD);
-        ArmaAtiva.Instance.ToggleEstaAtacando(false);
-    }
+    //IEnumerator AtacarCDRoutina()
+    //{
+    //    yield return new WaitForSeconds(espadaAtaqueCD);
+    //    ArmaAtiva.Instance.ToggleEstaAtacando(false);
+    //}
 
     public void FinalAnimAtacarEvent() { armaCollider.gameObject.SetActive(false); }
 
@@ -94,4 +100,5 @@ public class Espada : MonoBehaviour, IArma
             armaCollider.transform.rotation = Quaternion.Euler(0, 0, 0); }
 
     }
+
 }

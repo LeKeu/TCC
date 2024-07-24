@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7437731567954816776}
   - component: {fileID: 1199718856626366525}
   - component: {fileID: 2351666754978745672}
+  - component: {fileID: -2325839155139990530}
   m_Layer: 0
   m_Name: arvore0
   m_TagString: Untagged
@@ -171,3 +172,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qntdTransparencia: 0.795
   sumirTempo: 0.4
+--- !u!114 &-2325839155139990530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156155952393709987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae182ef9496e0748a41c299bfc2bfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

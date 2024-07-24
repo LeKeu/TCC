@@ -25,6 +25,7 @@ public class InimigoVida : MonoBehaviour
     public void ReceberDano(int dano)
     {
         vidaAtual -= dano;
+        Debug.Log($"RECEBER DANO {dano}");
         empurrao.SerEmpurrado(JogadorController.Instance.transform, empurraoThrust);
         StartCoroutine(flash.FlashRoutine());
         StartCoroutine(ChecarMorteRotina());

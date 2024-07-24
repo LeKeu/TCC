@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IArma
 {
     public void Atacar();
+    public Armas PegarArmaInfo();
 }

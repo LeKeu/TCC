@@ -56,17 +56,17 @@ public class JogadorController : Singleton<JogadorController>
     {
         JogadorInput();
     }
+    private void FixedUpdate()
+    {
+        AjustarJogadorEncarandoLado();
+        Movimentar();
+    }
 
     public Transform PegarArmaCollider()
     {
         return armaCollider;
     }
 
-    private void FixedUpdate()
-    {
-        AjustarJogadorEncarandoLado();
-        Movimentar();
-    }
 
     private void JogadorInput()
     {
@@ -81,7 +81,7 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Movimentar()
     {
-        if (empurrao.serEmpurrado) { return; }
+        //if (empurrao.serEmpurrado) { return; }
         rb.MovePosition(rb.position + movimento * (velocidade * Time.fixedDeltaTime));
     }
 

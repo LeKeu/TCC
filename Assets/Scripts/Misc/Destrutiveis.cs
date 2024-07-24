@@ -8,7 +8,7 @@ public class Destrutiveis : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<OrigemDano>())
+        if (collision.gameObject.GetComponent<OrigemDano>() || collision.gameObject.GetComponent<Projetil>())
         {
             //Instantiate(vfxDestruir, transform.position, Quaternion.identity);
             GetComponent<PegarExtras>().DroparItens();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class ArmaAtiva : Singleton<ArmaAtiva>
@@ -7,6 +8,8 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
     public MonoBehaviour ArmaAtivaAtual { get; private set; }
 
     private JogadorControls jogadorControls;
+    float tempoEntreAtaques;
+
     bool atacarButBaixo, estaAtacando = false;
 
     protected override void Awake()
@@ -25,6 +28,8 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
     {
         jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
         jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();
+
+        AtaqueCoolDown();
     }
 
     private void Update()
@@ -35,6 +40,9 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
     public void NovaArma(MonoBehaviour novaArma)
     {
         ArmaAtivaAtual = novaArma;
+
+        AtaqueCoolDown();
+        tempoEntreAtaques = (ArmaAtivaAtual as IArma).PegarArmaInfo().armaCooldown;
     }
 
     public void ArmaNull()
@@ -42,9 +50,22 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
         ArmaAtivaAtual = null;
     }
 
-    public void ToggleEstaAtacando(bool valor)
+    //public void ToggleEstaAtacando(bool valor)
+    //{
+    //    estaAtacando = valor;
+    //}
+
+    void AtaqueCoolDown()
     {
-        estaAtacando = valor;
+        estaAtacando = true;
+        StopAllCoroutines();
+        StartCoroutine(TempoEntreAtaquesRoutine());
+    }
+
+    IEnumerator TempoEntreAtaquesRoutine()
+    {
+        yield return new WaitForSeconds(tempoEntreAtaques);
+        estaAtacando = false;
     }
 
     void ComecarAtaque()
@@ -60,7 +81,8 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
     {
         if(atacarButBaixo && !estaAtacando)
         {
-            estaAtacando = true;
+            //estaAtacando = true;
+            AtaqueCoolDown();
             (ArmaAtivaAtual as IArma).Atacar();
         }
     }

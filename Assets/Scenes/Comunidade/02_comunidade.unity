@@ -1580,6 +1580,7 @@ MonoBehaviour:
   velocidade: 4
   velDash: 3
   trailRenderer: {fileID: 1671461586}
+  armaCollider: {fileID: 0}
   estaEscondido: 0
   estaSendoPerseguido: 0
   podeMover: 0
@@ -17324,6 +17325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1674151388}
   - component: {fileID: 1674151389}
+  - component: {fileID: 1674151390}
   m_Layer: 0
   m_Name: ArmaAtiva
   m_TagString: Untagged
@@ -17358,6 +17360,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40eb348aba9943949b34bdd32f64a952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1674151390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674151387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45cfb07c4609974448a2ea8bc38602e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1692010426 stripped
@@ -17759,7 +17773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slashAnimPrefab: {fileID: 5865998713230486732, guid: de4decdaccfb89e46aa67371aff9fbae, type: 3}
   slashAnimPontoSpawn: {fileID: 1249446339}
-  armaCollider: {fileID: 517390139}
+  espadaAtaqueCD: 0.5
 --- !u!1001 &1863806118
 PrefabInstance:
   m_ObjectHideFlags: 0
