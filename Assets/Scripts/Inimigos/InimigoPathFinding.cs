@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InimigoPathFinding : MonoBehaviour
 {
-    [SerializeField] private float movVel = 2f;
+    [SerializeField] public float movVel = 2f;
     [SerializeField] private float pegarDist = 5f;
 
     Rigidbody2D rb;
@@ -32,7 +32,7 @@ public class InimigoPathFinding : MonoBehaviour
     {
         Vector3 jogadorPos = JogadorController.Instance.transform.position;
 
-        if (Vector3.Distance(transform.position, jogadorPos) < pegarDist && !JogadorController.Instance.estaEscondido)
+        if (Vector3.Distance(transform.position, jogadorPos) < pegarDist && !JogadorController.Instance.estaEscondido && InimigoVida.estaCorrompido)
         {
             movDirecao = (jogadorPos - transform.position).normalized;
             JogadorController.Instance.estaSendoPerseguido = true;

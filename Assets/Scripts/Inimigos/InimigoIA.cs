@@ -38,4 +38,12 @@ public class InimigoIA : MonoBehaviour
     {
         return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
+
+    public void VirarPurificado()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+        gameObject.GetComponent<InimigoVida>().estaCorrompido = false;
+        gameObject.GetComponent<InimigoPathFinding>().movVel = 1f;
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+    }
 }

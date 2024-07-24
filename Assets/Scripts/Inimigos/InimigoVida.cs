@@ -13,6 +13,7 @@ public class InimigoVida : MonoBehaviour
     private int vidaAtual;
     private Empurrao empurrao;
     private Flash flash;
+    InimigoIA inimigoIA;
 
     public bool estaAtordoado;
     public bool EstaNaRange;
@@ -20,11 +21,16 @@ public class InimigoVida : MonoBehaviour
 
     Rigidbody2D rb;
 
+    public bool estaCorrompido;
+
     private void Awake()
     {
+        estaCorrompido = true;
+
         rb = GetComponent<Rigidbody2D>();
         flash = GetComponent<Flash>();
         empurrao = GetComponent<Empurrao>();
+        inimigoIA = GetComponent<InimigoIA>();
     }
 
     private void Start()
@@ -59,7 +65,8 @@ public class InimigoVida : MonoBehaviour
             if (Keyboard.current.qKey.wasPressedThisFrame && EstaNaRange)
             {
                 Debug.Log("purificadoww!");
-                Destroy(gameObject);
+                inimigoIA.VirarPurificado();
+                //Destroy(gameObject);
                 return;
             }
         }else if (tempoAtual > TempoAtordoamento)
