@@ -8,19 +8,21 @@ public class InimigoVida : MonoBehaviour
 {
     [SerializeField] private int vidaInicial = 3;
     [SerializeField] private float empurraoThrust = 15f;
-    float TempoAtordoamento = 20f;
+    float TempoAtordoamento = 4f;
 
     private int vidaAtual;
     private Empurrao empurrao;
     private Flash flash;
 
     public bool estaAtordoado;
-    public bool estaTempoAtordoamento;
     public bool EstaNaRange;
     float tempoAtual = 0f;
 
+    Rigidbody2D rb;
+
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         flash = GetComponent<Flash>();
         empurrao = GetComponent<Empurrao>();
     }
@@ -34,7 +36,7 @@ public class InimigoVida : MonoBehaviour
     {
         if (estaAtordoado) 
         { 
-            SerPurificado(tempoAtual);
+            SerPurificado();
             tempoAtual += Time.deltaTime;
         }
     }
@@ -48,10 +50,9 @@ public class InimigoVida : MonoBehaviour
         StartCoroutine(ChecarMorteRotina());
     }
 
-    public void SerPurificado(float tempoAtual)
+    public void SerPurificado()
     {
-        //tempoAtual = 0f;
-        //estaAtordoado = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
         if (tempoAtual <= TempoAtordoamento)
         {
@@ -61,27 +62,21 @@ public class InimigoVida : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
-            //Debug.Log(tempoAtual);
-            //SerPurificado(tempoAtual);
-        }
-        else
+        }else if (tempoAtual > TempoAtordoamento)
         {
-            //Debug.Log("voltou a vida!");
-            estaAtordoado = false;
+            Debug.Log("voltou a vida!");
+            EstaNaRange = false; estaAtordoado = false;
+            rb.constraints = RigidbodyConstraints2D.None; rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            vidaAtual = vidaInicial;
+            tempoAtual = 0f;
+
             return;
         }
-        
     }
 
     private IEnumerator ChecarMorteRotina()
     {
         yield return new WaitForSeconds(flash.PegarTempoDeRestore());
-        ChecarMorte();
-    }
-
-    public void ChecarMorte()
-    {
-        //if(vidaAtual <= 0) { Destroy(gameObject); }
         if (vidaAtual <= 0) { estaAtordoado = true; }
     }
 }
