@@ -8,19 +8,24 @@ public class InimigoPathFinding : MonoBehaviour
     [SerializeField] private float pegarDist = 5f;
 
     Rigidbody2D rb;
+    InimigoVida InimigoVida;
     private Vector2 movDirecao;
     private Empurrao empurrao;
 
     private void Awake()
     {
+        InimigoVida = GetComponent<InimigoVida>();
         empurrao = GetComponent<Empurrao>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        if (empurrao.serEmpurrado) { return; }
-        rb.MovePosition(rb.position + movDirecao * (movVel * Time.deltaTime));
+        if (!InimigoVida.estaAtordoado) // se não tiver atordoado, pode ser mexer
+        {
+            if (empurrao.serEmpurrado) { return; }
+            rb.MovePosition(rb.position + movDirecao * (movVel * Time.deltaTime));
+        }
     }
 
     public void IrPara(Vector2 posAlvo)

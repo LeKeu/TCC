@@ -18,7 +18,7 @@ public class Arco : MonoBehaviour, IArma
     }
     public void Atacar()
     {
-        Debug.Log("arco");
+        //Debug.Log("arco");
         //ArmaAtiva.Instance.ToggleEstaAtacando(false);
         animator.SetTrigger(FIRE_HASH);
         GameObject novaFlecha = Instantiate(flechaPrefab, flechaSpawnPonto.position, ArmaAtiva.Instance.transform.rotation);

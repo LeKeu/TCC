@@ -38,10 +38,4 @@ public class InimigoIA : MonoBehaviour
     {
         return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

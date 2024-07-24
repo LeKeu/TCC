@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e92f32adaccd14c9fae6b131cf584c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rcdf: 2
 --- !u!114 &5368900568198702324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movVel: 1
+  pegarDist: 5
 --- !u!95 &672405224228172491
 Animator:
   serializedVersion: 5
@@ -213,6 +215,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaInicial: 3
+  empurraoThrust: 15
+  TempoAtordoamento: 4
+  estaAtordoado: 0
+  estaTempoAtordoamento: 0
+  EstaNaRange: 0
 --- !u!114 &8704186883700975941
 MonoBehaviour:
   m_ObjectHideFlags: 0

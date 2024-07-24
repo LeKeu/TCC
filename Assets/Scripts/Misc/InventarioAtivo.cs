@@ -46,7 +46,7 @@ public class InventarioAtivo : MonoBehaviour
 
     void MudarArmaAtiva()
     {
-        Debug.Log(transform.GetChild(indexSlotAtivo).GetComponent<EspacoInventario>().PegarArmaInfo().armaPrefab.name);
+        //Debug.Log(transform.GetChild(indexSlotAtivo).GetComponent<EspacoInventario>().PegarArmaInfo().armaPrefab.name);
 
         if (ArmaAtiva.Instance.ArmaAtivaAtual != null)
         {
