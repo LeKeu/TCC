@@ -41,7 +41,7 @@ public class InimigoIA : MonoBehaviour
 
     public void VirarPurificado()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         gameObject.GetComponent<InimigoVida>().estaCorrompido = false;
         gameObject.GetComponent<InimigoPathFinding>().movVel = .2f;
         gameObject.GetComponent<CircleCollider2D>().enabled = false;

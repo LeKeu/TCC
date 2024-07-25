@@ -27,8 +27,9 @@ public class JogadorVida : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         InimigoIA inimigo = collision.gameObject.GetComponent<InimigoIA>();
+        InimigoVida inimigoVida = collision.gameObject.GetComponent<InimigoVida>();
 
-        if (inimigo && podeLevarDano)
+        if (inimigo && podeLevarDano && !inimigoVida.estaAtordoado)
         {
             LevarDano(1);
             empurrao.SerEmpurrado(collision.gameObject.transform, empurraoValor);
