@@ -11,7 +11,7 @@ public class Purificar : MonoBehaviour
         {
             InimigoVida inimigoVida = collision.GetComponent<InimigoVida>();
             if (inimigoVida.estaAtordoado)
-            { Debug.Log("RANGE!"); inimigoVida.EstaNaRange = true; }
+            { inimigoVida.EstaNaRange = true; }
         }   
     }
 

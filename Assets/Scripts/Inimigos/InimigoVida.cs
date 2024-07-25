@@ -71,7 +71,6 @@ public class InimigoVida : MonoBehaviour
             }
         }else if (tempoAtual > TempoAtordoamento)
         {
-            Debug.Log("voltou a vida!");
             EstaNaRange = false; estaAtordoado = false;
             rb.constraints = RigidbodyConstraints2D.None; rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             vidaAtual = vidaInicial;

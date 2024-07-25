@@ -54,7 +54,7 @@ public class DialogoController : MonoBehaviour
         if(paragrafos.Count == 0)
         {
             conversaAcabou = true;
-            JogadorController.Instance.podeMover = true;
+            //JogadorController.Instance.podeMover = true;
         }
     }
 
@@ -109,6 +109,9 @@ public class DialogoController : MonoBehaviour
 
     private void AcabarConversa()
     {
+        Debug.Log("oi");
+        JogadorController.Instance.podeMover = true;
+
         conversaAcabou = false;
         if (gameObject.activeSelf)
             gameObject.SetActive(false);

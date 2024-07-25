@@ -43,7 +43,7 @@ public class InimigoIA : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
         gameObject.GetComponent<InimigoVida>().estaCorrompido = false;
-        gameObject.GetComponent<InimigoPathFinding>().movVel = 1f;
+        gameObject.GetComponent<InimigoPathFinding>().movVel = .2f;
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
 }
