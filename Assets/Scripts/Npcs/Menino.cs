@@ -34,7 +34,7 @@ public class Menino : MonoBehaviour
     {
         Vector3 jogadorPos = JogadorController.Instance.transform.position;
         
-        Debug.Log(Vector3.Distance(transform.position, jogadorPos));
+        //Debug.Log(Vector3.Distance(transform.position, jogadorPos));
         if(Vector3.Distance(transform.position, jogadorPos) <= distMaxJogador)
         {
             estaLonge = false;
