@@ -191,7 +191,7 @@ Transform:
   m_Children:
   - {fileID: 6747157280636925605}
   m_Father: {fileID: 2447957824882165657}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -81.042}
 --- !u!1 &2153916405855603938
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,9 +411,9 @@ MonoBehaviour:
     - {x: 0, y: 0, z: -0.10575149, w: 0.99439263}
     - {x: -0, y: -0, z: 0.0469736, w: 0.9988961}
     m_StoredLocalRotations:
-    - {x: 0, y: 0, z: 0, w: 0}
-    - {x: 0, y: 0, z: 0, w: 0}
-    - {x: 0, y: 0, z: 0, w: 0}
+    - {x: 0, y: 0, z: 0.65489656, w: -0.7557186}
+    - {x: 0, y: 0, z: -0.080363475, w: 0.9967657}
+    - {x: 0, y: 0, z: 0.007725589, w: 0.9999702}
   m_Flip: 0
 --- !u!1 &6474917549457853328
 GameObject:
@@ -570,8 +570,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7120731372492399248}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5272563, y: 7.6948476, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.32425344, y: -0.16300583, z: -0.1065417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Solvers:
-  - {fileID: 4223397556979496251}
+  - {fileID: 0}
   - {fileID: 1233907266659690256}
   m_Weight: 1
   m_SolverEditorData:
