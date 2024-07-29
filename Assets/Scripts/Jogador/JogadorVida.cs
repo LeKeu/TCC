@@ -12,11 +12,13 @@ public class JogadorVida : MonoBehaviour
     private bool podeLevarDano = true;
     private Empurrao empurrao;
     private Flash flash;
+    TremerCamera tremerCamera;
 
     private void Awake()
     {
         flash = GetComponent<Flash>();
         empurrao = GetComponent<Empurrao>();
+        tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
     }
 
     void Start()
@@ -41,7 +43,8 @@ public class JogadorVida : MonoBehaviour
     {
         if (!podeLevarDano) { return; }
 
-        //TremerTela.Instance.FuncTremerTela();
+        tremerCamera.TremerCameraFunc();
+
         podeLevarDano = false;
         vidaAtual -= dano;
         StartCoroutine(RecoveryDanoRoutine());
