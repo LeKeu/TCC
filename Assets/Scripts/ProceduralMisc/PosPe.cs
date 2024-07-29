@@ -82,12 +82,8 @@ public class PosPe : MonoBehaviour
         // consider the overshoot factor
         Vector3 posDiff = ((Vector3)ray.point - target.position) * (1 + overShootFactor);
 
-        Debug.Log("start "+startPos.y);
         // find end target position
         endPos = target.position + posDiff;
-        Debug.Log("end "+endPos.y);
-        Debug.Log($"target {target.name}"+target.position.y);
-        Debug.Log("+++++++++++++++++");
 
         // midPos is the mid point between startPos and endPos, but lifted up a bit depending on stepSize
         float stepSize = Vector3.Distance(startPos, endPos);
