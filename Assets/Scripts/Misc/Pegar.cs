@@ -36,13 +36,10 @@ public class Pegar : MonoBehaviour
     {
         Vector3 jogadorPos = JogadorController.Instance.transform.position;
 
-        if(Vector3.Distance(transform.position, jogadorPos) < pegarDist)
-        {
+        if(Vector3.Distance(transform.position, jogadorPos) < pegarDist) {
             movDir = (jogadorPos - transform.position).normalized;
             movVel += rateAcelerecao;
-        }
-        else
-        {
+        } else {
             movDir = Vector3.zero;
             movVel = 0;
         }
@@ -57,7 +54,7 @@ public class Pegar : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<JogadorController>())
         {
-            //DetectarTipo();
+            DetectarTipo();
             Destroy(gameObject);
         }
     }
@@ -91,6 +88,7 @@ public class Pegar : MonoBehaviour
             case PegarTipo.Moeda:
                 Debug.Log("moeda"); break;
             case PegarTipo.Vida:
+                JogadorVida.Instance.CurarPlayer();
                 Debug.Log("vida"); break;
         }
     }

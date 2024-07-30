@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class JogadorVida : MonoBehaviour
+public class JogadorVida : Singleton<JogadorVida>
 {
     [SerializeField] private int vidaMax = 3;
     [SerializeField] private float empurraoValor = 10f;
     [SerializeField] private float tempoRecoveryDano = 1f;
 
+    private Slider vidaSlider;
     private int vidaAtual;
     private bool podeLevarDano = true;
     private Empurrao empurrao;
     private Flash flash;
     TremerCamera tremerCamera;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         flash = GetComponent<Flash>();
         empurrao = GetComponent<Empurrao>();
         tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
@@ -24,6 +28,7 @@ public class JogadorVida : MonoBehaviour
     void Start()
     {
         vidaAtual = vidaMax;
+        AtualizarVidaSlider();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -39,6 +44,15 @@ public class JogadorVida : MonoBehaviour
         }
     }
 
+    public void CurarPlayer()
+    {
+        if(vidaAtual < vidaMax)
+        {
+            vidaAtual += 1;
+            AtualizarVidaSlider();
+        }
+    }
+
     private void LevarDano(int dano)
     {
         if (!podeLevarDano) { return; }
@@ -48,6 +62,27 @@ public class JogadorVida : MonoBehaviour
         podeLevarDano = false;
         vidaAtual -= dano;
         StartCoroutine(RecoveryDanoRoutine());
+        AtualizarVidaSlider();
+        ChecarSePlayerMorreu();
+        //checar se o player morreu
+    }
+
+    void AtualizarVidaSlider()
+    {
+        if(vidaSlider == null)
+            vidaSlider = GameObject.Find("VidaSlider").GetComponent<Slider>();
+
+        vidaSlider.maxValue = vidaMax;
+        vidaSlider.value = vidaAtual;
+    }
+
+    void ChecarSePlayerMorreu()
+    {
+        if(vidaAtual <= 0)
+        {
+            vidaAtual = 0;
+            Debug.Log("morreueuue");
+        }
     }
 
     private IEnumerator RecoveryDanoRoutine()

@@ -66,6 +66,7 @@ public class InimigoVida : MonoBehaviour
             {
                 Debug.Log("purificadoww!");
                 inimigoIA.VirarPurificado();
+                gameObject.GetComponent<PegarExtras>().DroparItens();
                 //Destroy(gameObject);
                 return;
             }
