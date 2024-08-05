@@ -64,7 +64,6 @@ public class InimigoVida : MonoBehaviour
         {
             if (Keyboard.current.qKey.wasPressedThisFrame && EstaNaRange)
             {
-                Debug.Log("purificadoww!");
                 inimigoIA.VirarPurificado();
                 gameObject.GetComponent<PegarExtras>().DroparItens();
                 //Destroy(gameObject);
