@@ -170,6 +170,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rcdf: 2
   tipoInimigo: {fileID: 58786623527519239}
+  pararQndAtaca: 0
+  ataqueCooldown: 2
+  estado: 0
 --- !u!114 &988027995031799642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movVel: 1
   pegarDist: 5
+  movDirecao: {x: 0, y: 0}
 --- !u!114 &5542124977967784352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e61228873707d40ac31fa80bd979c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projetilPrefab: {fileID: 0}
+  projetilPrefab: {fileID: 2230437733496348883, guid: 51ce8d02ac36c47429210c2f1899fa48, type: 3}
 --- !u!1 &7066629545518995835
 GameObject:
   m_ObjectHideFlags: 0

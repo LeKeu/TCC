@@ -55,40 +55,27 @@ public class InimigoIA : MonoBehaviour
     {
         tempoAndando += Time.deltaTime;
         Vector3 jogadorPos = JogadorController.Instance.transform.position;
-        //Debug.Log("andando");
         inimigoPathFinding.MoverPara(andandoPos);
 
         if (Vector3.Distance(transform.position, jogadorPos) < inimigoPathFinding.pegarDist && !JogadorController.Instance.estaEscondido && inimigoVida.estaCorrompido)
         {
-            //inimigoPathFinding.movDirecao = (jogadorPos - transform.position).normalized;
             JogadorController.Instance.estaSendoPerseguido = true;
-            estado = InimigoIA.Estado.Atacando;
-            Debug.Log("vou atyacar");
+            estado = Estado.Atacando;
         }
-        //else
-        //{
-        //    estado = InimigoIA.Estado.Andando;
-        //    inimigoPathFinding.movDirecao = posAlvo;
-        //    JogadorController.Instance.estaSendoPerseguido = false;
-        //}
 
         if (tempoAndando > rcdf)
         {
-            //Debug.Log("jhsgjdhag");
             andandoPos = GetAndandoPos();
         }
     }
 
     void Atacando()
     {
-        Debug.Log("ATACANDO");
         Vector3 jogadorPos = JogadorController.Instance.transform.position;
-        if (Vector3.Distance(transform.position, jogadorPos) > inimigoPathFinding.pegarDist && inimigoVida.estaCorrompido)
+        if (Vector3.Distance(transform.position, jogadorPos) > inimigoPathFinding.pegarDist /*&& inimigoVida.estaCorrompido*/)
         {
-            //Debug.Log("mudando andando");
-            estado = InimigoIA.Estado.Andando;
-            //inimigoPathFinding.movDirecao = posAlvo;
             JogadorController.Instance.estaSendoPerseguido = false;
+            estado = Estado.Andando;
         }
 
         if(inimigoPathFinding.pegarDist != 0 && inimigoVida.estaCorrompido && podeAtacarAux)
@@ -96,8 +83,8 @@ public class InimigoIA : MonoBehaviour
             podeAtacarAux = false;
             (tipoInimigo as IInimigo).Atacar();
 
-            if (pararQndAtaca) inimigoPathFinding.PararMover();
-            else inimigoPathFinding.MoverPara(andandoPos);
+            if (pararQndAtaca) inimigoPathFinding.PararMover(); // inimigos que param de se mover ao ver o player, ex: atirador
+            else inimigoPathFinding.MoverPara((jogadorPos - transform.position).normalized); // inimigos que se movem em direção ao player
 
             StartCoroutine(AtaqueCooldownRoutine());
         }
@@ -109,28 +96,17 @@ public class InimigoIA : MonoBehaviour
         podeAtacarAux = true;
     }
 
-    //private IEnumerator AndandoOutLine()
-    //{
-    //    while(estado == Estado.Andando)
-    //    {
-    //        andandoPos = GetAndandoPos();
-    //        Andando();//
-    //        yield return new WaitForSeconds(rcdf);
-    //    }
-    //}
-
     private Vector2 GetAndandoPos()
     {
         tempoAndando = 0f;
-        Debug.Log("andando MUDEI");
         return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
 
     public void VirarPurificado()
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        gameObject.GetComponent<InimigoVida>().estaCorrompido = false;
-        gameObject.GetComponent<InimigoPathFinding>().movVel = .2f;
+        inimigoVida.estaCorrompido = false;
+        inimigoPathFinding.movVel = .2f;
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
 }

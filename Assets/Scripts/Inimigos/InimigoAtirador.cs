@@ -8,6 +8,7 @@ public class InimigoAtirador : MonoBehaviour, IInimigo
 
     //private Animator myAnimator;
     private SpriteRenderer spriteRenderer;
+    InimigoVida inimigoVida;
 
     //readonly int ATTACK_HASH = Animator.StringToHash("Attack");
 
@@ -15,12 +16,15 @@ public class InimigoAtirador : MonoBehaviour, IInimigo
     {
         //myAnimator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        inimigoVida = GetComponent<InimigoVida>();
     }
 
 
     public void Atacar()
     {
         //myAnimator.SetTrigger(ATTACK_HASH);
+        if(!inimigoVida.estaAtordoado)
+            CriarProjetil();
 
         if (transform.position.x - JogadorController.Instance.transform.position.x < 0)
         {
@@ -32,7 +36,7 @@ public class InimigoAtirador : MonoBehaviour, IInimigo
         }
     }
     
-    public void SpawnProjectileAnimEvent()
+    public void CriarProjetil()
     {
         Instantiate(projetilPrefab, transform.position, Quaternion.identity);
     }

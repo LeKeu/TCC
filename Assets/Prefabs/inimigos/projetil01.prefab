@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 90649897385873050}
   - component: {fileID: 4072917729827404138}
   - component: {fileID: 324048677133956613}
+  - component: {fileID: -2561784915255296960}
   m_Layer: 0
   m_Name: projetil01
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &324048677133956613
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -148,3 +149,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.09375
+--- !u!114 &-2561784915255296960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2230437733496348883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c845cddaeba5df842823d2d5f0a4fef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velProj: 2
