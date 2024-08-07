@@ -44,6 +44,19 @@ public class JogadorVida : Singleton<JogadorVida>
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        InimigoProjetil inimigoProjetil = collision.gameObject.GetComponent<InimigoProjetil>();
+
+        if(inimigoProjetil && podeLevarDano)
+        {
+            Destroy(collision.gameObject);
+            LevarDano(1);
+            empurrao.SerEmpurrado(collision.gameObject.transform, empurraoValor);
+            StartCoroutine(flash.FlashRoutine());
+        }
+    }
+
     public void CurarPlayer()
     {
         if(vidaAtual < vidaMax)
