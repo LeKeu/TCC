@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1061914897771960741}
   - component: {fileID: 346406811932911018}
   - component: {fileID: 1635313091125954133}
+  - component: {fileID: 672405224228172491}
   - component: {fileID: 7268119517108076853}
   - component: {fileID: 5368900568198702324}
-  - component: {fileID: 672405224228172491}
   - component: {fileID: 7110311675798844610}
   - component: {fileID: 8704186883700975941}
   - component: {fileID: 5444048247061969010}
@@ -155,33 +155,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &7268119517108076853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4147913955493784799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48e92f32adaccd14c9fae6b131cf584c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rcdf: 2
---- !u!114 &5368900568198702324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4147913955493784799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b79adc1bfc468fd409b503f0e167cb37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movVel: 1
-  pegarDist: 5
 --- !u!95 &672405224228172491
 Animator:
   serializedVersion: 5
@@ -203,6 +176,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7268119517108076853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147913955493784799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e92f32adaccd14c9fae6b131cf584c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rcdf: 2
+  tipoInimigo: {fileID: 0}
+  pararQndAtaca: 0
+  ataqueCooldown: 2
+  estado: 0
+--- !u!114 &5368900568198702324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147913955493784799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b79adc1bfc468fd409b503f0e167cb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movVel: 1
+  pegarDist: 5
+  movDirecao: {x: 0, y: 0}
 --- !u!114 &7110311675798844610
 MonoBehaviour:
   m_ObjectHideFlags: 0

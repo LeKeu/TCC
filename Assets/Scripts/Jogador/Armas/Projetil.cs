@@ -6,6 +6,7 @@ using UnityEngine;
 public class Projetil : MonoBehaviour
 {
     [SerializeField] float movVel = 20f;
+    [SerializeField] bool seguePlayer = false;
     //[SerializeField] private GameObject particulaAcertarObjPrefab;
 
     Armas armasInfo;
@@ -49,6 +50,10 @@ public class Projetil : MonoBehaviour
 
     private void MoverProjetil()
     {
-        transform.Translate(Vector3.right * Time.deltaTime * movVel);
+        if(seguePlayer)
+            transform.Translate(Vector3.right * Time.deltaTime * movVel);
+        else
+            transform.Translate(Vector3.right * Time.deltaTime * movVel); //TROCAR ISSO AQUI
+
     }
 }
