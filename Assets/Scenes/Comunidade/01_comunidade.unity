@@ -2220,6 +2220,7 @@ GameObject:
   - component: {fileID: 695872236}
   - component: {fileID: 695872235}
   - component: {fileID: 695872234}
+  - component: {fileID: 695872237}
   m_Layer: 0
   m_Name: Jogador
   m_TagString: Player
@@ -2442,6 +2443,7 @@ MonoBehaviour:
   vidaMax: 3
   empurraoValor: 10
   tempoRecoveryDano: 1
+  podeLevarDano: 1
 --- !u!114 &695872236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2456,6 +2458,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashBrancoMaterial: {fileID: 2100000, guid: 0b24fa01b14efa74ab1c74916e0328d8, type: 2}
   tempoDeRestorar: 0.2
+--- !u!114 &695872237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695872226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0328959b5d49a164686020aed8a2990d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  escudo: 0
+  atqArea: 0
+  cura: 0
+  tiroFantasma: 0
+  invocar: 0
+  EscudoObj: {fileID: 6215471605853929624, guid: ca1a597df10229f479781289d605f100, type: 3}
+  escudoTempo: 5
 --- !u!4 &697212523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4629124735017647854, guid: f25ebc50f0465ae4d91209f0b1e01d80, type: 3}
