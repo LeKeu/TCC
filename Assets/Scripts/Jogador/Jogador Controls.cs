@@ -116,6 +116,15 @@ public partial class @JogadorControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escudo"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec777a32-f82d-429b-b98b-f52ec3b4b6a5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -138,6 +147,17 @@ public partial class @JogadorControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1530bee-951b-4a38-ac88-bffde126cce6"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escudo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -225,6 +245,7 @@ public partial class @JogadorControls: IInputActionCollection2, IDisposable
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
         m_Combat_Dash = m_Combat.FindAction("Dash", throwIfNotFound: true);
+        m_Combat_Escudo = m_Combat.FindAction("Escudo", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_Keyboard = m_Inventory.FindAction("Keyboard", throwIfNotFound: true);
@@ -337,12 +358,14 @@ public partial class @JogadorControls: IInputActionCollection2, IDisposable
     private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
     private readonly InputAction m_Combat_Attack;
     private readonly InputAction m_Combat_Dash;
+    private readonly InputAction m_Combat_Escudo;
     public struct CombatActions
     {
         private @JogadorControls m_Wrapper;
         public CombatActions(@JogadorControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Attack => m_Wrapper.m_Combat_Attack;
         public InputAction @Dash => m_Wrapper.m_Combat_Dash;
+        public InputAction @Escudo => m_Wrapper.m_Combat_Escudo;
         public InputActionMap Get() { return m_Wrapper.m_Combat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -358,6 +381,9 @@ public partial class @JogadorControls: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Escudo.started += instance.OnEscudo;
+            @Escudo.performed += instance.OnEscudo;
+            @Escudo.canceled += instance.OnEscudo;
         }
 
         private void UnregisterCallbacks(ICombatActions instance)
@@ -368,6 +394,9 @@ public partial class @JogadorControls: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Escudo.started -= instance.OnEscudo;
+            @Escudo.performed -= instance.OnEscudo;
+            @Escudo.canceled -= instance.OnEscudo;
         }
 
         public void RemoveCallbacks(ICombatActions instance)
@@ -439,6 +468,7 @@ public partial class @JogadorControls: IInputActionCollection2, IDisposable
     {
         void OnAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnEscudo(InputAction.CallbackContext context);
     }
     public interface IInventoryActions
     {
