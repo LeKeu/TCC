@@ -57,7 +57,7 @@ public class JogadorVida : Singleton<JogadorVida>
         }
     }
 
-    public void CurarPlayer()
+    public void CurarPlayer(int valor)
     {
         if(vidaAtual < vidaMax)
         {

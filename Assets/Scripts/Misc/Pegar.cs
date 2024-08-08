@@ -88,7 +88,7 @@ public class Pegar : MonoBehaviour
             case PegarTipo.Moeda:
                 Debug.Log("moeda"); break;
             case PegarTipo.Vida:
-                JogadorVida.Instance.CurarPlayer();
+                JogadorVida.Instance.CurarPlayer(1);
                 Debug.Log("vida"); break;
         }
     }

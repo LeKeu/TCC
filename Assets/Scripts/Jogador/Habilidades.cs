@@ -20,6 +20,20 @@ public class Habilidades : MonoBehaviour
     bool escudoAtivo;
     #endregion
 
+    #region ATAQUE EM ÁREA
+    [SerializeField] GameObject artAreaPrefab;
+    [SerializeField] float atqAreaTempo = 2f;
+    [SerializeField] int danoAtq;
+    [SerializeField] int AtqAreaCoolDown;
+    [SerializeField] CircleCollider2D circleCollider;
+    #endregion
+
+    #region CURA
+    [SerializeField] int qndtCura = 3;
+    [SerializeField] float curaCoolDown = 5f;
+    bool estaCurando;
+    #endregion
+
     JogadorVida jogadorVida;
     JogadorControls jogadorControls;
 
@@ -38,9 +52,11 @@ public class Habilidades : MonoBehaviour
 
     private void Update()
     {
-        
         if (Keyboard.current.rKey.wasPressedThisFrame)
             Escudo();
+        if (Keyboard.current.fKey.wasPressedThisFrame)
+            Curar();
+
     }
 
     public void Escudo()
@@ -68,5 +84,19 @@ public class Habilidades : MonoBehaviour
 
         escudoAtivo = false;
         Debug.Log("Escudo Liberado");
+    }
+
+    public void Curar()
+    {
+        if (cura && !estaCurando)
+            StartCoroutine(CuraRoutine());
+    }
+
+    IEnumerator CuraRoutine()
+    {
+        JogadorVida.Instance.CurarPlayer(qndtCura);
+        estaCurando = true;
+        yield return new WaitForSeconds(curaCoolDown);
+        estaCurando = false;
     }
 }
