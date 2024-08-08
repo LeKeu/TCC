@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 
 public class Habilidades : MonoBehaviour
 {
-    public bool escudo;
+    public bool escudo; // ok
     public bool atqArea;
-    public bool cura;
+    public bool cura; // ok
     public bool tiroFantasma;
     public bool invocar;
     public bool superVelocidade;
@@ -34,6 +34,12 @@ public class Habilidades : MonoBehaviour
     bool estaCurando;
     #endregion
 
+    #region VELOCIDADE
+    [SerializeField] float duracaoSlow = 5f;
+    [SerializeField] float velocidadeCooldown = 5f;
+    bool estaVelocidade;
+    #endregion
+
     JogadorVida jogadorVida;
     JogadorControls jogadorControls;
 
@@ -56,6 +62,8 @@ public class Habilidades : MonoBehaviour
             Escudo();
         if (Keyboard.current.fKey.wasPressedThisFrame)
             Curar();
+        if (Keyboard.current.cKey.wasPressedThisFrame)
+            Velocidade();
 
     }
 
@@ -98,5 +106,28 @@ public class Habilidades : MonoBehaviour
         estaCurando = true;
         yield return new WaitForSeconds(curaCoolDown);
         estaCurando = false;
+    }
+
+    public void Velocidade()
+    {
+        if (superVelocidade && !estaVelocidade)
+            StartCoroutine(VelocidadeRoutine());
+    }
+
+    IEnumerator VelocidadeRoutine()
+    {
+        Debug.Log("ficou lçento");
+        estaVelocidade = true;
+        Time.timeScale /= 2;
+        JogadorController.Instance.velocidade *= 2; 
+        yield return new WaitForSeconds(duracaoSlow);
+        Debug.Log("parou lçento");
+
+        Time.timeScale *= 2;
+        JogadorController.Instance.velocidade /= 2;
+        yield return new WaitForSeconds(velocidadeCooldown);
+        estaVelocidade = false;
+        Debug.Log("pode dnv");
+
     }
 }
