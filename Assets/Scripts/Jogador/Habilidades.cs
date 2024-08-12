@@ -20,6 +20,7 @@ public class Habilidades : MonoBehaviour
     Cura curaScript;
     SuperVelocidade superVelocidadeScript;
     AtaqueArea ataqueAreaScript;
+    Invocacao invocacao;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class Habilidades : MonoBehaviour
         curaScript = GetComponent<Cura>();
         superVelocidadeScript = GetComponent<SuperVelocidade>();
         ataqueAreaScript = GetComponent<AtaqueArea>();
+        invocacao = GetComponent<Invocacao>();
     }
 
     private void Start()
@@ -40,14 +42,17 @@ public class Habilidades : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.rKey.wasPressedThisFrame)
+        if (Keyboard.current.rKey.wasPressedThisFrame && escudo)
             escudoScript.CriarEscudo();
-        if (Keyboard.current.fKey.wasPressedThisFrame)
+        if (Keyboard.current.fKey.wasPressedThisFrame && cura)
             curaScript.Curar();
-        if (Keyboard.current.cKey.wasPressedThisFrame)
+        if (Keyboard.current.cKey.wasPressedThisFrame && superVelocidade)
             superVelocidadeScript.Velocidade();
         if (Keyboard.current.rKey.wasPressedThisFrame && atqArea)
             ataqueAreaScript.CriarAtaqueArea();
+        if (Keyboard.current.rKey.wasPressedThisFrame && invocar)
+            invocacao.Invocar();
+
 
     }
 }

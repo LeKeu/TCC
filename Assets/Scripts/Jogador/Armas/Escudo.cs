@@ -9,18 +9,16 @@ public class Escudo : MonoBehaviour
     [SerializeField] float escudoCoolDown = 5f;
     bool escudoAtivo;
 
-    Habilidades habilidades;
     JogadorVida jogadorVida;
 
     private void Start()
     {
-        habilidades = GetComponent<Habilidades>();
         jogadorVida = GetComponent<JogadorVida>();
     }
 
     public void CriarEscudo()
     {
-        if (habilidades.escudo && !escudoAtivo)
+        if (!escudoAtivo)
         {
             StartCoroutine(EscudoRoutine());
         }

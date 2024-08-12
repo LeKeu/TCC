@@ -8,17 +8,9 @@ public class SuperVelocidade : MonoBehaviour
     [SerializeField] float velocidadeCooldown = 5f;
     bool estaVelocidade;
 
-    Habilidades habilidades;
-
-    private void Start()
-    {
-        habilidades = GetComponent<Habilidades>();
-        
-    }
-
     public void Velocidade()
     {
-        if (habilidades.superVelocidade && !estaVelocidade)
+        if (!estaVelocidade)
             StartCoroutine(VelocidadeRoutine());
     }
 

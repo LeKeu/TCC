@@ -8,16 +8,9 @@ public class Cura : MonoBehaviour
     [SerializeField] float curaCoolDown = 5f;
     bool estaCurando;
 
-    Habilidades habilidades;
-
-    private void Start()
-    {
-        habilidades = GetComponent<Habilidades>();
-    }
-
     public void Curar()
     {
-        if (habilidades.cura && !estaCurando)
+        if (!estaCurando)
             StartCoroutine(CuraRoutine());
     }
 
