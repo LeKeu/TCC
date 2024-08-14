@@ -2482,8 +2482,8 @@ MonoBehaviour:
   atqArea: 0
   cura: 0
   tiroFantasma: 0
-  invocar: 1
-  superVelocidade: 0
+  invocar: 0
+  superVelocidade: 1
 --- !u!114 &695872238
 MonoBehaviour:
   m_ObjectHideFlags: 0

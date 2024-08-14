@@ -109,7 +109,6 @@ public class DialogoController : MonoBehaviour
 
     private void AcabarConversa()
     {
-        Debug.Log("oi");
         JogadorController.Instance.podeMover = true;
 
         conversaAcabou = false;
