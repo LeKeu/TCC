@@ -1365,7 +1365,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.17, y: -4.19, z: -10}
+  m_LocalPosition: {x: 8.81, y: -1.66, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2244,7 +2244,7 @@ Transform:
   m_GameObject: {fileID: 695872226}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.17, y: -4.19, z: 0}
+  m_LocalPosition: {x: 8.81, y: -1.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30281,6 +30281,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 1659794566}
     m_Modifications:
     - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
+      propertyPath: perfil
+      value: 
+      objectReference: {fileID: 21300000, guid: 7ec394bbb9e492848b670ffca2604310, type: 3}
+    - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
+      propertyPath: dt.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
+      propertyPath: dt.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d1fb5832bcd5924fa4c0b5912b9c018, type: 2}
+    - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
       propertyPath: dialogoController
       value: 
       objectReference: {fileID: 1346034443}
@@ -32523,7 +32535,7 @@ Transform:
   m_GameObject: {fileID: 1849874757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.237032, y: -4.0668654, z: -9.990754}
+  m_LocalPosition: {x: 8.742969, y: -1.5368655, z: -9.990754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33243,7 +33255,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8700472890957883294, guid: 7a2cf57e84ef2f943b9c3c3ff1780e74, type: 3}
+      propertyPath: perfil
+      value: 
+      objectReference: {fileID: 21300000, guid: bfda510a0f0c17d469b95c2de9d97fa5, type: 3}
+    - target: {fileID: 8700472890957883294, guid: 7a2cf57e84ef2f943b9c3c3ff1780e74, type: 3}
       propertyPath: dialogoTexto
+      value: 
+      objectReference: {fileID: 11400000, guid: 39040f0385acc844f8dfb359dcd9d54d, type: 2}
+    - target: {fileID: 8700472890957883294, guid: 7a2cf57e84ef2f943b9c3c3ff1780e74, type: 3}
+      propertyPath: dt.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700472890957883294, guid: 7a2cf57e84ef2f943b9c3c3ff1780e74, type: 3}
+      propertyPath: dt.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 39040f0385acc844f8dfb359dcd9d54d, type: 2}
     - target: {fileID: 8700472890957883294, guid: 7a2cf57e84ef2f943b9c3c3ff1780e74, type: 3}
@@ -33308,7 +33332,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6529808379241427295, guid: b5605d8d7a5d50540af76b0ed9e952ba, type: 3}
+      propertyPath: perfil
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}
+    - target: {fileID: 6529808379241427295, guid: b5605d8d7a5d50540af76b0ed9e952ba, type: 3}
       propertyPath: dialogoTexto
+      value: 
+      objectReference: {fileID: 11400000, guid: 61624eef687ed7d41a1c7a809b2aafe9, type: 2}
+    - target: {fileID: 6529808379241427295, guid: b5605d8d7a5d50540af76b0ed9e952ba, type: 3}
+      propertyPath: dt.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529808379241427295, guid: b5605d8d7a5d50540af76b0ed9e952ba, type: 3}
+      propertyPath: dt.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 61624eef687ed7d41a1c7a809b2aafe9, type: 2}
     - target: {fileID: 6529808379241427295, guid: b5605d8d7a5d50540af76b0ed9e952ba, type: 3}
@@ -33373,6 +33409,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7853027457160039733, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
+      propertyPath: perfil
+      value: 
+      objectReference: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}
+    - target: {fileID: 7853027457160039733, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
+      propertyPath: dt.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7853027457160039733, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
+      propertyPath: dt.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6533292d4cb1b4843838f0efa7876c74, type: 2}
+    - target: {fileID: 7853027457160039733, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
       propertyPath: dialogoController
       value: 
       objectReference: {fileID: 1346034443}
@@ -33390,7 +33438,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 1659794566}
     m_Modifications:
     - target: {fileID: 462960968864971784, guid: d33f67faa858fcc498af67ef28ee9c34, type: 3}
+      propertyPath: perfil
+      value: 
+      objectReference: {fileID: 21300000, guid: a22f1ac1a7b020f4687724b688addcaa, type: 3}
+    - target: {fileID: 462960968864971784, guid: d33f67faa858fcc498af67ef28ee9c34, type: 3}
       propertyPath: dialogoTexto
+      value: 
+      objectReference: {fileID: 11400000, guid: 14bcc02b467355f48a01e98c1615245b, type: 2}
+    - target: {fileID: 462960968864971784, guid: d33f67faa858fcc498af67ef28ee9c34, type: 3}
+      propertyPath: dt.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 462960968864971784, guid: d33f67faa858fcc498af67ef28ee9c34, type: 3}
+      propertyPath: dt.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 14bcc02b467355f48a01e98c1615245b, type: 2}
     - target: {fileID: 462960968864971784, guid: d33f67faa858fcc498af67ef28ee9c34, type: 3}
@@ -33624,6 +33684,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1888013785737219916, guid: dbf6fe015164bb945be80e22c14daccd, type: 3}
+      propertyPath: perfil
+      value: 
+      objectReference: {fileID: 21300000, guid: 96e03157987f2d240ac3d01e5b63feb4, type: 3}
+    - target: {fileID: 1888013785737219916, guid: dbf6fe015164bb945be80e22c14daccd, type: 3}
+      propertyPath: dt.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888013785737219916, guid: dbf6fe015164bb945be80e22c14daccd, type: 3}
+      propertyPath: dt.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5203db0cd3b056c46a9b07ef8806f7e8, type: 2}
+    - target: {fileID: 1888013785737219916, guid: dbf6fe015164bb945be80e22c14daccd, type: 3}
       propertyPath: dialogoController
       value: 
       objectReference: {fileID: 1346034443}
@@ -33645,13 +33717,49 @@ PrefabInstance:
     m_TransformParent: {fileID: 1659794566}
     m_Modifications:
     - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
+      propertyPath: perfil
+      value: 
+      objectReference: {fileID: 21300000, guid: f6b548ba58895614aaabe7f05f0f7005, type: 3}
+    - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
+      propertyPath: dtTutorial
+      value: 
+      objectReference: {fileID: 11400000, guid: d1f580b058eb11f4e86e8817e9d096f3, type: 2}
+    - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
       propertyPath: dialogoTexto
       value: 
       objectReference: {fileID: 11400000, guid: d1f580b058eb11f4e86e8817e9d096f3, type: 2}
     - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
+      propertyPath: dt.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
+      propertyPath: dt.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d1f580b058eb11f4e86e8817e9d096f3, type: 2}
+    - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
+      propertyPath: dt.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 38a4ac262a68ea840aab4b6eb892747f, type: 2}
+    - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
       propertyPath: dialogoController
       value: 
       objectReference: {fileID: 1346034443}
+    - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
+      propertyPath: dialogoTextoTutorial
+      value: 
+      objectReference: {fileID: 11400000, guid: d1f580b058eb11f4e86e8817e9d096f3, type: 2}
+    - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
+      propertyPath: dtTutorial.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
+      propertyPath: dtTutorial.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d1f580b058eb11f4e86e8817e9d096f3, type: 2}
+    - target: {fileID: -4393330815293503620, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
+      propertyPath: dtTutorial.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 38a4ac262a68ea840aab4b6eb892747f, type: 2}
     - target: {fileID: 2792644527521278908, guid: 17360bd909fa8544eadc1c06d3057ab9, type: 3}
       propertyPath: m_Name
       value: Pedrinho
@@ -33775,7 +33883,19 @@ PrefabInstance:
       value: SeuPedro
       objectReference: {fileID: 0}
     - target: {fileID: 2912679638629083904, guid: 7d75f0bbf127c8446b571ce516c0da01, type: 3}
+      propertyPath: perfil
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a14875cda77b4644a0eb83513aebe8f, type: 3}
+    - target: {fileID: 2912679638629083904, guid: 7d75f0bbf127c8446b571ce516c0da01, type: 3}
       propertyPath: dialogoTexto
+      value: 
+      objectReference: {fileID: 11400000, guid: 814e423ee3daaea449446fd67a568579, type: 2}
+    - target: {fileID: 2912679638629083904, guid: 7d75f0bbf127c8446b571ce516c0da01, type: 3}
+      propertyPath: dt.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912679638629083904, guid: 7d75f0bbf127c8446b571ce516c0da01, type: 3}
+      propertyPath: dt.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 814e423ee3daaea449446fd67a568579, type: 2}
     - target: {fileID: 2912679638629083904, guid: 7d75f0bbf127c8446b571ce516c0da01, type: 3}
