@@ -10,7 +10,6 @@ public class VelhoDoidoBR : NPCs, ITalkable
 
     int indexAtual = 0;
 
-    string nome = "Velho Doido";
     [SerializeField] private Sprite perfil;
 
     public override void Interagir()
@@ -25,7 +24,7 @@ public class VelhoDoidoBR : NPCs, ITalkable
     }
     public void Falar(DialogoTexto dialogoTexto)
     {
-        dialogoTexto.nome = nome;
+        //dialogoTexto.nome = nome;
         dialogoTexto.perfilNPC = perfil;
         dialogoController.DisplayProximoParagrafo(dialogoTexto);
     }

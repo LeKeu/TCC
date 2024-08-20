@@ -98,7 +98,7 @@ public class JogadorController : Singleton<JogadorController>
     {
         if (!estaDashing && podeMover)
         {
-            estaDashing = true;
+            estaDashing = true; //JogadorVida.Instance.podeLevarDano = false;
             velocidade *= velDash;
             trailRenderer.emitting = true;
             StartCoroutine(AcabarDash());
@@ -113,7 +113,7 @@ public class JogadorController : Singleton<JogadorController>
         velocidade = velInicial;
         trailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
-        estaDashing = false;
+        estaDashing = false; //JogadorVida.Instance.podeLevarDano = true;
     }
 
 }

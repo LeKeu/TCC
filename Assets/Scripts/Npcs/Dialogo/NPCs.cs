@@ -10,8 +10,8 @@ public abstract class NPCs : MonoBehaviour, IInteractble
 
     void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame && DaParaInteragir())
-        {
+        if (Mouse.current.middleButton.wasPressedThisFrame && DaParaInteragir())
+        {//Keyboard.current.eKey.wasPressedThisFrame
             Interagir();
         }
 

@@ -12,15 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
   m_Name: TiaMartaText
   m_EditorClassIdentifier: 
-  nome: Tia Marta
+  nome: kusahkush
+  nomeJogador: Menina
   paragrafos:
-  - 'Vou quebrar a cuca na porrada
+  - 'Dona Marta_Vou quebrar a cuca na porrada
 
     mano sou muito forte'
-  - "Oi longhiiijhdsvgcjhsdvbj\nturn away \nif you could get me a drink of watyer
-    cause my lips are chapped \n"
-  - "A amizade consegue ser t\xE3o complexa.\r\nDeixa uns desanimados, outros bem
-    felizes.\r\n\xC9 a alimenta\xE7\xE3o dos fracos"
-  - "Faz-nos cometer erros\r\nOs fracos deixam se ir abaixo\r\nOs fortes erguem sempre
-    a cabe\xE7a"
+  - "Menina_Oloco vc \xE9 doida mesmo"
+  - Dona Marta_sou nada sai daqui
+  - Menina_heklp
   perfilNPC: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}

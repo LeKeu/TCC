@@ -33370,11 +33370,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6203783052731923401, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.52
+      value: 9.28
       objectReference: {fileID: 0}
     - target: {fileID: 6203783052731923401, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.64
+      value: -1.28
       objectReference: {fileID: 0}
     - target: {fileID: 6203783052731923401, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
       propertyPath: m_LocalPosition.z
@@ -33414,12 +33414,16 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}
     - target: {fileID: 7853027457160039733, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
       propertyPath: dt.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7853027457160039733, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
       propertyPath: dt.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 6533292d4cb1b4843838f0efa7876c74, type: 2}
+    - target: {fileID: 7853027457160039733, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
+      propertyPath: dt.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 955f204b17e50e940acd52a0c1c3307d, type: 2}
     - target: {fileID: 7853027457160039733, guid: ec92bf815e982c34e8a174c757b9f700, type: 3}
       propertyPath: dialogoController
       value: 

@@ -24,7 +24,7 @@ public class Pedrinho : NPCs, ITalkable
     }
     public void Falar(DialogoTexto dialogoTexto)
     {
-        dialogoTexto.nome = nome;
+        //dialogoTexto.nome = nome;
         dialogoTexto.perfilNPC = perfil;
         dialogoController.DisplayProximoParagrafo(dialogoTexto);
     }

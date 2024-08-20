@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
   m_Name: TiaMarta01
   m_EditorClassIdentifier: 
-  nome: Tia Marta
+  nome: Dona Marta
+  nomeJogador: Menina
   paragrafos:
-  - 'me lhamo west corvina '
-  - no me lhamo gleen dale
-  perfilNPC: {fileID: 0}
+  - 'Dona Marta_me lhamo west corvina '
+  - Menina_para mano odo dia isso
+  perfilNPC: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}

@@ -42,6 +42,7 @@ public class DialogoController : MonoBehaviour
         if (!estaDigitando)
         {
             p = paragrafos.Dequeue();
+            //Debug.Log("dequeue");
             digitandoDialogoCoroutine = StartCoroutine(DigitarDialogoTexto(p));
         }
         else
@@ -60,6 +61,12 @@ public class DialogoController : MonoBehaviour
 
     private IEnumerator DigitarDialogoTexto(string p)
     {
+        var aux = p.Split('_'); //essa parte quebra o paragrafo, separando no nome e texto
+        NPCNomeTexto.text = aux[0];
+        p = aux[1];
+
+        if (aux[0].Trim() == "Menina") { Debug.Log("playerrr"); }
+
         estaDigitando = true;
         NPCDialogoTexto.text = "";
 
@@ -95,13 +102,13 @@ public class DialogoController : MonoBehaviour
             gameObject.SetActive(true);
         }
 
-        NPCNomeTexto.text = dialogoTexto.nome;
+        //NPCNomeTexto.text = dialogoTexto.nome;
         NPCPerfil.sprite = dialogoTexto.perfilNPC;
         JOGADORPerfil.sprite = JogadorController.Instance.perfil;
 
         for(int i = 0; i < dialogoTexto.paragrafos.Length; i++)
         {
-            Debug.Log(dialogoTexto.paragrafos[i]);
+            //Debug.Log(dialogoTexto.paragrafos[i]);
             paragrafos.Enqueue(dialogoTexto.paragrafos[i]);
         }
 

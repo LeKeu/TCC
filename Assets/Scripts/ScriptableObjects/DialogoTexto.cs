@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class DialogoTexto : ScriptableObject
 {
-    public string nome; // nome do npc
+    //public string nome; // nome do npc
 
     [TextArea(5, 10)]
     public string[] paragrafos;
