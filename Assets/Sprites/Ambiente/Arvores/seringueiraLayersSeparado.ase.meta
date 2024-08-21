@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4bf9521f99da2ac41b668a18a29a8003
+guid: 8d27650373227fd40a6ec73037cbd4b4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: seringueiraLayers
+  - name: seringueiraLayersSeparado
     originalName: 
-    pivot: {x: 0.49514565, y: -0.019354839}
+    pivot: {x: 0.5076142, y: -0.020000001}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 103
-      height: 155
-    spriteID: 9a46ea5d18d62e34498c2df8acc6ed56
+      width: 197
+      height: 150
+    spriteID: a93ad68268181204ea59167dc73b9cc2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,24 +144,24 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -670707074
-    name: seringueiraLayers
+    guid: 1662499917
+    name: seringueiraLayersSeparado
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: seringueiraLayers
+    - name: seringueiraLayersSeparado
       frameIndex: 0
       cellRect:
-        x: 13
+        x: 0
         y: 3
-        width: 103
-        height: 155
-      spriteId: 9a46ea5d18d62e34498c2df8acc6ed56
+        width: 197
+        height: 150
+      spriteId: a93ad68268181204ea59167dc73b9cc2
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 128, y: 160}
+  canvasSize: {x: 200, y: 160}
