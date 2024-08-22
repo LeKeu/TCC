@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Comunidade/02_comunidade.unity
     guid: 2127400f006801449aea1d52805e9188
+  - enabled: 1
+    path: Assets/Scenes/Comunidade/TESTE.unity
+    guid: 7ac43024daef41047ac697509aa95618
   m_configObjects: {}
