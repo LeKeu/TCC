@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0ff965b1b411b2c42b5599d7ecaa3c5f
+guid: 83ddc09f309c57d4583ef60de620829f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,91 +121,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: madeira
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 286
-        width: 174
-        height: 205
-      alignment: 9
-      pivot: {x: 0.5, y: 0.051150586}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c013d339fe809e74ab7e89d69e800e0e
-      internalID: -541533856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: folhaFrente
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 171
-        width: 188
-        height: 112
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80fa843ab7caddb4395ce436baa56d2c
-      internalID: 8025151
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: folhaFundo
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 51
-        width: 188
-        height: 118
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ec136a9888e5834593ffa6da694eb9c
-      internalID: -737792400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sombra
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 188
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d75bd45844f66604597b6b3bd4d5ab24
-      internalID: -1465658959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -216,11 +132,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      folhaFrente: 8025151
-      folhaFundo: -737792400
-      madeira: -541533856
-      sombra: -1465658959
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
