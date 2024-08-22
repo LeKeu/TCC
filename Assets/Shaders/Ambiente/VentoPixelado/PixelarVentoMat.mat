@@ -58,10 +58,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _BlendValue: 0.05
-    - _CellDensity: 14
+    - _CellDensity: 11.5
     - _EnableExternalAlpha: 0
-    - _PixelateAmount: 100
-    - _Speed: 1
+    - _PixelateAmount: 120
+    - _Speed: 3
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
