@@ -13,13 +13,7 @@ public class VelhaNamia : NPCs, ITalkable
 
     string nome = "Velha Nâmia";
     [SerializeField] private Sprite perfil;
-    bool tutCompleto;
-
-    //private void Update()
-    //{
-    //    if(!tutCompleto)
-    //        CompletarTutorial();
-    //}
+    public bool tutCompleto;
 
     public override void Interagir()
     {
@@ -29,12 +23,11 @@ public class VelhaNamia : NPCs, ITalkable
             if (!tutCompleto)
                 CompletarTutorial();
 
-            if (tutCompleto)
+            if (tutCompleto) // só vai sair do txt de tut qnd tiver completa a 'quest'
                 indexAtual++;
-            Debug.Log("1indexatual = "+indexAtual);
+
             if (indexAtual == dt.Count && !tutCompleto) { indexAtual = 0; }
-            if (indexAtual == dt.Count && tutCompleto) { indexAtual = 1; }
-            Debug.Log("2indexatual = "+indexAtual);
+            if (indexAtual == dt.Count && tutCompleto) { indexAtual = 1; }; // index 0 sempre será o txt do tut, ent qnd ele estiver completo, não volta mais
         }
         Falar(dt[indexAtual]);
     }
@@ -47,6 +40,7 @@ public class VelhaNamia : NPCs, ITalkable
 
     void CompletarTutorial()
     {
-        if(ErvasVerdes.transform.childCount == 0) { Debug.Log("tut namia completo"); tutCompleto = true; }
+        if(ErvasVerdes.transform.childCount == 0) 
+            tutCompleto = true;
     }
 }

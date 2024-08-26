@@ -11,62 +11,47 @@ public class TiaMarta : NPCs, ITalkable
 
     int indexAtual = 0;
 
-    string nome = "Dona Marta";
-        int aaa = 0;
+    public bool tutCompleto;
     [SerializeField] private Sprite perfil;
+
+    VelhaNamia VelhaNamiaScript;
+
+    private void Start()
+    {
+        VelhaNamiaScript = GameObject.Find("VelhaNamia").GetComponent<VelhaNamia>();
+    }
 
     public override void Interagir()
     {
-        //var aux = dt[indexAtual].paragrafos[aaa].ToString().Split("_");
-        //string[] auxDt = new string[1];
-        //DialogoTexto omg = new DialogoTexto();
-        //if (aux.Length > 1)
-        //{
-        //    omg.nome = aux[0];
-        //    auxDt = new string[] { aux[1] };
-        //    omg.paragrafos = auxDt;
-        //}
-
-
-        Falar(dt[indexAtual]);
-        aaa++;
-        //Debug.Log(aaa);
         if (JogadorController.Instance.podeMover) // se o jogador pode se mover, no caso só ocorre quando a conversa acabou
         {
-            indexAtual++;
-            if (indexAtual == dt.Count) { indexAtual = 0; }
+            if (!VelhaNamiaScript.tutCompleto)
+                indexAtual = 0;// enqnt tut da velhaNamie n estiver completo, fica no txt 0 (pedindo p completar)
+            else
+            {
+                if (tutCompleto) // se o tut da DonaMarta e da velhaNamia estiverem completo, pode seguir p outros txts
+                    indexAtual++;
+                else
+                {
+                    indexAtual = 1; // se o tut da velhanamia estiver completo mas o da donamarta não, fica no txt pos 1, que é explicando o que fazer
+                    CompletarTutorial();
+                }
+            }
+            
+            if (indexAtual == dt.Count && tutCompleto) { indexAtual = 2; } // fica rodando entre os textos não relacionados a completar o tut
         }
+        Falar(dt[indexAtual]);
         
     }
     public void Falar(DialogoTexto dialogoTexto)
     {
-        //dialogoTexto.nome = nome;
         dialogoTexto.perfilNPC = perfil;
         dialogoController.DisplayProximoParagrafo(dialogoTexto);
     }
 
-    /*
-     Debug.Log(dialogoTexto.paragrafos.Length);
-            var aux = dialogoTexto.paragrafos[0].ToString().Split("_");
-            string[] auxDt = new string[1];
-            if (aux.Length > 1)
-            {
-                NPCNomeTexto.text = aux[0];
-                auxDt = new string[] { aux[1] };
-            }
-            else
-            {
-                auxDt = dialogoTexto.paragrafos;
-            }
-
-            //dtOriginal.perfilNPC = perfil;
-
-            DialogoTexto dtTeste = new DialogoTexto()
-            {
-                nome = NPCNomeTexto.text,
-                perfilNPC = dialogoTexto.perfilNPC,
-                paragrafos = dialogoTexto.paragrafos
-            };
-            Debug.Log("fuck");
-     */
+    void CompletarTutorial()
+    {
+        tutCompleto = true;
+        Debug.Log("entregando ervas");
+    }
 }

@@ -10,15 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
-  m_Name: TiaMartaText
+  m_Name: TiaMartaTut01
   m_EditorClassIdentifier: 
-  nome: kusahkush
-  nomeJogador: Menina
   paragrafos:
-  - 'Dona Marta_Vou quebrar a cuca na porrada
-
-    mano sou muito forte'
-  - "Menina_Oloco vc \xE9 doida mesmo"
-  - Dona Marta_sou nada sai daqui
-  - Menina_heklp
+  - "Dona Marta_vc pode pegar as plantas l\xE1 c a Velha n\xE2mia pfvr?"
   perfilNPC: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}
