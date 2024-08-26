@@ -62,8 +62,11 @@ public class DialogoController : MonoBehaviour
     private IEnumerator DigitarDialogoTexto(string p)
     {
         var aux = p.Split('_'); //essa parte quebra o paragrafo, separando no nome e texto
-        NPCNomeTexto.text = aux[0];
+        string nomeFalando = aux[0];
         p = aux[1];
+
+        if (nomeFalando.Length <= 1) nomeFalando = "Menina";
+        NPCNomeTexto.text = nomeFalando;
 
         if (aux[0].Trim() == "Menina") { Debug.Log("playerrr"); }
 

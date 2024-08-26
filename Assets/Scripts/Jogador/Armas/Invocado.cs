@@ -48,7 +48,7 @@ public class Invocado : MonoBehaviour
         if(colliders.Length <= 0) { PararMover(); }
         foreach (Collider2D c in colliders)
         {
-            if (c.GetComponent<InimigoVida>() && c.GetComponent<InimigoVida>().estaCorrompido)
+            if (c.GetComponent<InimigoVida>() && c.GetComponent<InimigoVida>().estaCorrompido && !c.GetComponent<InimigoVida>().estaAtordoado)
             {
                 movDirecao = (c.transform.position - gameObject.transform.position).normalized;
                 break;

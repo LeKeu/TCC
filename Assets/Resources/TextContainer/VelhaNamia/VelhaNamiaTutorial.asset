@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
   m_Name: VelhaNamiaTutorial
   m_EditorClassIdentifier: 
-  nome: "Velha N\xE2mia"
   paragrafos:
-  - temos que pegar eu sei
-  - pega-los eu tentarrei
+  - "Velha N\xE2mia_Bom dia, querida. \nHoje o dia t\xE1 lindo, n\xE3o?"
+  - "Velha N\xE2mia_Se importa de me ajudar com uma coisinha?"
+  - "_Claro, Velha N\xE2mia! Do que precisa?"
+  - "Velha N\xE2mia_Preciso que voc\xEA me ajude a colher algumas ervas. \nA querida
+    Marta t\xE1 preparando um rem\xE9dio pro Pedro."
+  - _Pode deixar, o que eu devo procurar?
+  - "Velha N\xE2mia_Procure pelas folhas verdes e brilhantes. \n"
+  - "Velha N\xE2mia_Ah... tome cuidado com as vermelhas, elas tem espinhos.\n"
   perfilNPC: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}

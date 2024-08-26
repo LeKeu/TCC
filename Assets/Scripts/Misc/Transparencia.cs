@@ -9,22 +9,22 @@ public class Transparencia : MonoBehaviour
     [SerializeField] private float qntdTransparencia = .8f;
     [SerializeField] private float sumirTempo = .4f;
 
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer[] spriteRenderer;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<JogadorController>())
         {
-            if (spriteRenderer)
-            {
-                StartCoroutine(SumirSprite(spriteRenderer, sumirTempo, spriteRenderer.color.a, qntdTransparencia));
+            //if (spriteRenderer)
+            //{
+                StartCoroutine(SumirSprite(spriteRenderer, sumirTempo, spriteRenderer[0].color.a, qntdTransparencia));
                 if (!JogadorController.Instance.estaSendoPerseguido) JogadorController.Instance.estaEscondido = true;
-            }
+            //}
         }
     }
 
@@ -32,34 +32,38 @@ public class Transparencia : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<JogadorController>())
         {
-            if (spriteRenderer)
-            {
-                StartCoroutine(AparecerSprite(spriteRenderer, sumirTempo, spriteRenderer.color.a, 1));
+            //if (spriteRenderer)
+            //{
+                StartCoroutine(AparecerSprite(spriteRenderer, sumirTempo, spriteRenderer[0].color.a, 1));
                 JogadorController.Instance.estaEscondido = false;
-            }
+            //}
         }
     }
 
-    private IEnumerator SumirSprite(SpriteRenderer spriteRenderer, float sumirTempo, float valorInicial, float alvoTransparencia)
+    private IEnumerator SumirSprite(SpriteRenderer[] spriteRenderer, float sumirTempo, float valorInicial, float alvoTransparencia)
     {
         float tempoPassado = 0;
         while(tempoPassado < sumirTempo)
         {
             tempoPassado += Time.deltaTime;
             float novoAlpha = Mathf.Lerp(valorInicial, alvoTransparencia, tempoPassado / sumirTempo);
-            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, novoAlpha);
+            foreach(var sr in spriteRenderer)
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, novoAlpha);
+            
+            
             yield return null;
         }
     }
 
-    private IEnumerator AparecerSprite(SpriteRenderer spriteRenderer, float sumirTempo, float valorInicial, float alvoTransparencia)
+    private IEnumerator AparecerSprite(SpriteRenderer[] spriteRenderer, float sumirTempo, float valorInicial, float alvoTransparencia)
     {
         float tempoPassado = 0;
         while (tempoPassado < sumirTempo)
         {
             tempoPassado += Time.deltaTime;
             float novoAlpha = Mathf.Lerp(valorInicial, alvoTransparencia, tempoPassado / sumirTempo);
-            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, novoAlpha);
+            foreach(var sr in spriteRenderer)
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, novoAlpha);
             yield return null;
         }
     }
