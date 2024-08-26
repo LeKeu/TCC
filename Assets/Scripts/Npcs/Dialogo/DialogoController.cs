@@ -68,7 +68,18 @@ public class DialogoController : MonoBehaviour
         if (nomeFalando.Length <= 1) nomeFalando = "Menina";
         NPCNomeTexto.text = nomeFalando;
 
-        if (aux[0].Trim() == "Menina") { Debug.Log("playerrr"); }
+        if (aux[0].Trim() == nomeFalando) // mudança de sprite dependendo de qual personagem estiver falando
+        {
+            Debug.Log("npc falando");
+            JOGADORPerfil.GetComponent<Image>().color = Color.grey;
+            NPCPerfil.GetComponent<Image>().color = Color.white;
+        }
+        else
+        {
+            JOGADORPerfil.GetComponent<Image>().color = Color.white;
+            NPCPerfil.GetComponent<Image>().color = Color.grey;
+            Debug.Log("menina falando");
+        }
 
         estaDigitando = true;
         NPCDialogoTexto.text = "";
@@ -94,7 +105,9 @@ public class DialogoController : MonoBehaviour
     private void AcabarParagrafoCedo()
     {
         StopCoroutine(digitandoDialogoCoroutine);
-        NPCDialogoTexto.text = p;
+
+        var aux = p.Split('_');
+        NPCDialogoTexto.text = aux[1];
         estaDigitando = false;
     }
 

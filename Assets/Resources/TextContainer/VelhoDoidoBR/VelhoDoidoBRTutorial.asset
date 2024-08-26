@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: VelhoDoidoBRTutorial
   m_EditorClassIdentifier: 
   paragrafos:
-  - Velho Doido_kkkkkkkkkkhjsdgcvujysgvcuj
-  - Velho Doido_sdbcjhsgjsdscrrsudhkn
+  - "_Opa Velh\xE3o. Como o senhor t\xE1?"
+  - Velho Doido_O rio, Menina.
+  - "_Iiiihhh.. l\xE1 vem. O que tem o rio?"
+  - "Velho Doido_Est\xE1 chorando... voc\xEA ouve, Menina?"
+  - "_Sinceramente? S\xF3 escuto o barulho do rio. Mesmo barulho de sempre."
+  - "Velho Doido_A \xE1gua guarda segredos... e os conta praqueles que merecem ouvir...
+    que desejam ouvir."
+  - "Velho Doido_Acreditando ou n\xE3o, o perigo \xE9 real. Eles v\xEAm... eles v\xEAm
+    por n\xF3s... vem por n\xF3s... vem por todos n\xF3s."
+  - "_Desculpa, Velh\xE3o. \xC9 dif\xEDcil de acreditar quando voc\xEA fala essas
+    coisas."
   perfilNPC: {fileID: 21300000, guid: bfda510a0f0c17d469b95c2de9d97fa5, type: 3}
