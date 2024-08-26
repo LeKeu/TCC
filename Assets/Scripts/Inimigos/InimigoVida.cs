@@ -22,6 +22,7 @@ public class InimigoVida : MonoBehaviour
     Rigidbody2D rb;
 
     public bool estaCorrompido;
+    bool dropouObj; // dropar apenas uma vez o obj qnd for purificado
 
     private void Awake()
     {
@@ -62,10 +63,11 @@ public class InimigoVida : MonoBehaviour
 
         if (tempoAtual <= TempoAtordoamento)
         {
-            if (Keyboard.current.qKey.wasPressedThisFrame && EstaNaRange)
+            if (Keyboard.current.qKey.wasPressedThisFrame && EstaNaRange) // está atordoado e vamos chegar perto para purificar
             {
                 inimigoIA.VirarPurificado();
-                gameObject.GetComponent<PegarExtras>().DroparItens();
+                if (!dropouObj) { gameObject.GetComponent<PegarExtras>().DroparItens(); dropouObj = true; }
+                    
                 //Destroy(gameObject);
                 return;
             }
