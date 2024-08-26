@@ -11,10 +11,13 @@ public class Menino : MonoBehaviour
     Rigidbody2D rb;
     Vector2 movDir;
     bool estaLonge;
+
+    public bool podeMover;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        podeMover = true;
     }
 
     private void Andar()
@@ -25,9 +28,12 @@ public class Menino : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Andar();
-        if(estaLonge)
-            rb.MovePosition(rb.position + movDir * (movVel * Time.deltaTime));
+        if (podeMover)
+        {
+            Andar();
+            if (estaLonge)
+                rb.MovePosition(rb.position + movDir * (movVel * Time.deltaTime));
+        }
     }
 
     void IrPara()

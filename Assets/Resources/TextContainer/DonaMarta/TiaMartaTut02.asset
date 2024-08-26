@@ -13,5 +13,16 @@ MonoBehaviour:
   m_Name: TiaMartaTut02
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Dona Marta_vc pode pegar as plantas l\xE1 c a Velha n\xE2mia pfvr?"
+  - "Dona Marta_Ah, voc\xEAs trouxeram as ervas! Maravilhoso. Muito obrigada, crian\xE7as!"
+  - "Dona Marta_Fiquem a\xED que vou j\xE1 precisar de voc\xEAs."
+  - Bernardo_Tem ensopado hoje, Dona Marta?
+  - Dona Marta_Se os meninos trouxerem os peixes que eu pedi...
+  - _Com batatinha?!
+  - Dona Marta_Claro, querida.
+  - Dona Marta_E...
+  - Dona Marta_Prontinho!
+  - "Dona Marta_O rem\xE9dio t\xE1 pronto. Agora voc\xEAs amores, podem fazer o favor
+    de levar isso pro Seu Pedro?"
+  - _Claro, Dona Marta!
+  - Bernardo_E vamo garantir que eles tragam o peixe que a senhora pediu!!
   perfilNPC: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}

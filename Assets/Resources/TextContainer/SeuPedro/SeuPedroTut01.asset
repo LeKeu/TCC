@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
-  m_Name: SeuPedroTutorial
+  m_Name: SeuPedroTut01
   m_EditorClassIdentifier: 
-  nome: Seu Pedro
   paragrafos:
-  - "ele \xE9 um mentiroso"
-  - cuidado
+  - Seu Pedro_ow vcs podem pegar meu remedio pfvr?
+  - Seu Pedro_pfvrrrr
   perfilNPC: {fileID: 21300000, guid: 6a14875cda77b4644a0eb83513aebe8f, type: 3}

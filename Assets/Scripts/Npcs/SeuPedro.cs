@@ -10,23 +10,49 @@ public class SeuPedro : NPCs, ITalkable
 
     int indexAtual = 0;
 
-    string nome = "Seu Pedro";
+    bool tutCompleto;
     [SerializeField] private Sprite perfil;
+
+    TiaMarta TiaMartaScript;
+
+    private void Start()
+    {
+        TiaMartaScript = GameObject.Find("DonaMarta").GetComponent<TiaMarta>();
+    }
 
     public override void Interagir()
     {
-        Falar(dt[indexAtual]);
-
         if (JogadorController.Instance.podeMover) // se o jogador pode se mover, no caso só ocorre quando a conversa acabou
         {
-            indexAtual++;
-            if (indexAtual == dt.Count) { indexAtual = 0; }
+            if (!TiaMartaScript.tutCompleto)
+                indexAtual = 0;// enqnt tut da TiaMarta n estiver completo, fica no txt 0 (pedindo p completar)
+            else
+            {
+                if (tutCompleto) // se o tut da TiaMarta e do SeuPedro estiverem completo, pode seguir p outros txts
+                    indexAtual++;
+                else
+                {
+                    indexAtual = 1; // se o tut da TiaMarta estiver completo mas o da donamarta não, fica no txt pos 1, que é explicando o que fazer
+                    CompletarTutorial();
+                }
+            }
+
+            if (indexAtual == dt.Count && tutCompleto) { indexAtual = 2; } // fica rodando entre os textos não relacionados a completar o tut
         }
+        Falar(dt[indexAtual]);
+
     }
+
     public void Falar(DialogoTexto dialogoTexto)
     {
         //dialogoTexto.nome = nome;
         dialogoTexto.perfilNPC = perfil;
         dialogoController.DisplayProximoParagrafo(dialogoTexto);
+    }
+
+    void CompletarTutorial()
+    {
+        tutCompleto = true;
+        Debug.Log("seu pedro OK");
     }
 }

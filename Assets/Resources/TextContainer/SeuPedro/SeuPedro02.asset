@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
-  m_Name: TiaMarta01
+  m_Name: SeuPedro02
   m_EditorClassIdentifier: 
   paragrafos:
-  - Dona Marta_to fazendo ensopado po
-  - _ahblz
-  perfilNPC: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}
+  - Seu Pedro_Valeu pelo remedio glr
+  - Seu Pedro_mt nice
+  perfilNPC: {fileID: 21300000, guid: 6a14875cda77b4644a0eb83513aebe8f, type: 3}
