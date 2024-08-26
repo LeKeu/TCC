@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Saida : MonoBehaviour
 {
     [SerializeField] private string proxCena;
-    //[SerializeField] private string proyena;
     [SerializeField] private string cenaTransicaoNome;
 
 
@@ -14,8 +13,8 @@ public class Saida : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<JogadorController>())
         { 
-            SceneManager.LoadScene(proxCena);
             SceneManagement.Instance.SetTransicaoNome(cenaTransicaoNome);
+            SceneManager.LoadScene(proxCena);
         }
     }
 }
