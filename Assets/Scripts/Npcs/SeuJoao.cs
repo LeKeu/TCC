@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class SeuJoao : NPCs, ITalkable
 {
@@ -10,8 +12,33 @@ public class SeuJoao : NPCs, ITalkable
 
     int indexAtual = 0;
 
-    string nome = "Seu João";
     [SerializeField] private Sprite perfil;
+
+    public bool tutCompleto;
+    public bool podePegarBola;
+    public bool foiPego;
+
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (!tutCompleto)
+    //    {
+    //        if (collision.GetComponent<JogadorController>())
+    //        {
+    //            if (collision.GetComponent<JogadorController>().estaEscondido)
+    //            {
+    //                podePegarBola = true;
+    //            }
+    //            else
+    //            {
+    //                podePegarBola = false;
+    //                foiPego = true;
+    //                Debug.Log("Foi pego");
+    //            }
+    //        }
+    //        foiPego = false;
+    //    }
+        
+    //}
 
     public override void Interagir()
     {
@@ -29,4 +56,10 @@ public class SeuJoao : NPCs, ITalkable
         dialogoTexto.perfilNPC = perfil;
         dialogoController.DisplayProximoParagrafo(dialogoTexto);
     }
+
+    //void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, 5f);
+    //}
 }

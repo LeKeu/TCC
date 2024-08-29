@@ -82,6 +82,10 @@ public class JogadorController : Singleton<JogadorController>
     private void Movimentar()
     {
         if (empurrao.serEmpurrado) { return; }
+
+        if (estaEscondido) velocidade = velInicial / 2;// se tiver stealth, diminui a velocidade
+        else velocidade = velInicial;
+
         rb.MovePosition(rb.position + movimento * (velocidade * Time.fixedDeltaTime));
     }
 

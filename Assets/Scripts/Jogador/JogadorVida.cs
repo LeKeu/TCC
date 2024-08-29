@@ -39,8 +39,8 @@ public class JogadorVida : Singleton<JogadorVida>
         if (inimigo && podeLevarDano && !inimigoVida.estaAtordoado)
         {
             LevarDano(1);
-            empurrao.SerEmpurrado(collision.gameObject.transform, empurraoValor);
-            StartCoroutine(flash.FlashRoutine());
+            EmpurrarPlayer(collision.gameObject.transform);
+            //StartCoroutine(flash.FlashRoutine());
         }
     }
 
@@ -52,9 +52,15 @@ public class JogadorVida : Singleton<JogadorVida>
         {
             Destroy(collision.gameObject);
             LevarDano(1);
-            empurrao.SerEmpurrado(collision.gameObject.transform, empurraoValor);
-            StartCoroutine(flash.FlashRoutine());
+            EmpurrarPlayer(collision.gameObject.transform);
+            //StartCoroutine(flash.FlashRoutine());
         }
+    }
+
+    public void EmpurrarPlayer(Transform collision)
+    {
+        empurrao.SerEmpurrado(collision, empurraoValor);
+        StartCoroutine(flash.FlashRoutine());
     }
 
     public void CurarPlayer(int valor)
@@ -66,7 +72,7 @@ public class JogadorVida : Singleton<JogadorVida>
         }
     }
 
-    private void LevarDano(int dano)
+    public void LevarDano(int dano)
     {
         if (!podeLevarDano) { return; }
 
