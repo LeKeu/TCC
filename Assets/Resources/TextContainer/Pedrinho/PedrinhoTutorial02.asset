@@ -13,13 +13,6 @@ MonoBehaviour:
   m_Name: PedrinhoTutorial02
   m_EditorClassIdentifier: 
   paragrafos:
-  - Pedrinho_Menina, Bernardo!!
-  - _O que foi, Pedrinho? Aconteceu alguma coisa?
-  - "Pedrinho_O pai da Elo\xE1 pegou a minha bola e n\xE3o quer devolver. * chorando
-    * "
-  - _De novo?
-  - "Pedrinho_Sim, mas dessa vez ele disse que n\xE3o vai devolver!"
-  - "Pedrinho_Por favor, eu preciso da ajuda de voc\xEAs..."
-  - _Bernardo, fica aqui com o Pedrinho.
-  - _Calma, Pedrinho. Eu vou pegar a sua bola de volta.
+  - Pedrinho_Minha Bola! Valeu gente
+  - _De boas, cara. Bora Bernardo.
   perfilNPC: {fileID: 21300000, guid: f6b548ba58895614aaabe7f05f0f7005, type: 3}
