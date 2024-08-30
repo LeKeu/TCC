@@ -9,23 +9,36 @@ public class Pedrinho : NPCs, ITalkable
 
     int indexAtual = 0;
 
-    string nome = "Pedrinho";
+    public bool podePegarBola;
+    bool tutCompleto;
     [SerializeField] private Sprite perfil;
 
     public override void Interagir()
     {
-        Falar(dt[indexAtual]);
+
+        if(indexAtual == 0) podePegarBola = true;
+        if(indexAtual == 1) podePegarBola = false;
 
         if (JogadorController.Instance.podeMover) // se o jogador pode se mover, no caso só ocorre quando a conversa acabou
         {
-            indexAtual++;
-            if (indexAtual == dt.Count) { indexAtual = 0; }
+            if (tutCompleto)
+                indexAtual++;
+
+            if (indexAtual == dt.Count & !tutCompleto) { indexAtual = 0; }
+            if (indexAtual == dt.Count & tutCompleto)  { indexAtual = 1; }
         }
+
+        Falar(dt[indexAtual]);
     }
     public void Falar(DialogoTexto dialogoTexto)
     {
         //dialogoTexto.nome = nome;
         dialogoTexto.perfilNPC = perfil;
         dialogoController.DisplayProximoParagrafo(dialogoTexto);
+    }
+
+    public void CompletarTutorial()
+    {
+        tutCompleto = true;
     }
 }

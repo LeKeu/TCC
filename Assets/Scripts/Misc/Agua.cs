@@ -14,6 +14,11 @@ public class Agua : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Player") { Debug.Log("jogador"); }
+        if(collision.gameObject.tag == "Player") { JogadorController.Instance.DiminuirVelocidade(); Debug.Log("nadando"); }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player") { JogadorController.Instance.VoltarVelocidadeNormal(); }
     }
 }

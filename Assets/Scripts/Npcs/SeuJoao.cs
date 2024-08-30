@@ -57,6 +57,11 @@ public class SeuJoao : NPCs, ITalkable
         dialogoController.DisplayProximoParagrafo(dialogoTexto);
     }
 
+    public void CompletarTutorial()
+    {
+        tutCompleto = true;
+    }
+
     //void OnDrawGizmos()
     //{
     //    Gizmos.color = Color.red;

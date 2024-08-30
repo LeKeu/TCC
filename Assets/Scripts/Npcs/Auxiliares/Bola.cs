@@ -5,17 +5,20 @@ using UnityEngine;
 public class Bola : MonoBehaviour
 {
     SeuJoao seuJoao;
+    Pedrinho pedrinho;
     private void Start()
     {
         //seuJoao = GameObject.Find("SeuJoao").GetComponent<SeuJoao>();
         seuJoao = transform.GetComponentInParent<SeuJoao>();
+        pedrinho = GameObject.Find("Pedrinho").GetComponent<Pedrinho>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (JogadorController.Instance.estaEscondido)
+        if (JogadorController.Instance.estaEscondido && pedrinho.podePegarBola) // se eu já tiver falado com o pedrinho p pegar a bola
         {
-            seuJoao.tutCompleto = true;
+            seuJoao.CompletarTutorial();
+            pedrinho.CompletarTutorial();
             Destroy(this.gameObject);
         }
         //if (seuJoao.podePegarBola && !seuJoao.foiPego)
