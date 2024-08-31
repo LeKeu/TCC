@@ -10,7 +10,7 @@ public class Pedrinho : NPCs, ITalkable
     int indexAtual = 0;
 
     public bool podePegarBola;
-    bool tutCompleto;
+    public bool tutCompleto;
     [SerializeField] private Sprite perfil;
 
     public override void Interagir()

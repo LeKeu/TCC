@@ -10,7 +10,7 @@ public class SeuPedro : NPCs, ITalkable
 
     int indexAtual = 0;
 
-    bool tutCompleto;
+    public bool tutCompleto;
     [SerializeField] private Sprite perfil;
 
     TiaMarta TiaMartaScript;

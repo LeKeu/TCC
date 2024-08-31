@@ -91,13 +91,13 @@ public class JogadorController : Singleton<JogadorController>
 
     public void DiminuirVelocidade()
     {
-        Debug.Log("diminuindo vel");
+        //Debug.Log("diminuindo vel");
         velocidade = velInicial / 2;
     }
 
     public void VoltarVelocidadeNormal()
     {
-        Debug.Log("voltando vel");
+        //Debug.Log("voltando vel");
         velocidade = velInicial;
     }
 
