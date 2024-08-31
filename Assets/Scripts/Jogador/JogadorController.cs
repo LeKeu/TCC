@@ -25,7 +25,9 @@ public class JogadorController : Singleton<JogadorController>
     private bool estaDashing = false;
 
     public bool estaEscondido = false;
+    public bool estaNaAgua = false;
     public bool estaSendoPerseguido = false;
+    public bool estaAndando;
     public bool podeMover;
 
     protected override void Awake()
@@ -83,8 +85,11 @@ public class JogadorController : Singleton<JogadorController>
     {
         if (empurrao.serEmpurrado) { return; }
 
-        if (estaEscondido) DiminuirVelocidade();// se tiver stealth, diminui a velocidade
+        if (estaEscondido || estaNaAgua) DiminuirVelocidade();// se tiver stealth, diminui a velocidade
         else VoltarVelocidadeNormal();
+
+        if (movimento == Vector2.zero) estaAndando = false;
+        else estaAndando = true;
 
         rb.MovePosition(rb.position + movimento * (velocidade * Time.fixedDeltaTime));
     }

@@ -70,7 +70,6 @@ public class DialogoController : MonoBehaviour
 
         if (aux[0].Trim() == nomeFalando) // mudança de sprite dependendo de qual personagem estiver falando
         {
-            Debug.Log("npc falando");
             JOGADORPerfil.GetComponent<Image>().color = Color.grey;
             NPCPerfil.GetComponent<Image>().color = Color.white;
         }
@@ -78,7 +77,6 @@ public class DialogoController : MonoBehaviour
         {
             JOGADORPerfil.GetComponent<Image>().color = Color.white;
             NPCPerfil.GetComponent<Image>().color = Color.grey;
-            Debug.Log("menina falando");
         }
 
         estaDigitando = true;

@@ -5,20 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class Agua : MonoBehaviour
 {
-    TilemapCollider2D tc;
-    // Start is called before the first frame update
-    void Start()
-    {
-        tc = GetComponent<TilemapCollider2D>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player") { collision.GetComponent<JogadorController>().DiminuirVelocidade(); }
+        if(collision.gameObject.tag == "Player") { collision.GetComponent<JogadorController>().estaNaAgua = true; }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player") { JogadorController.Instance.VoltarVelocidadeNormal(); }
+        if(collision.gameObject.tag == "Player") { collision.GetComponent<JogadorController>().estaNaAgua = false; }
     }
 }

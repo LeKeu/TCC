@@ -39,7 +39,9 @@ public class SeuPedro : NPCs, ITalkable
 
             if (indexAtual == dt.Count && tutCompleto) { indexAtual = 2; } // fica rodando entre os textos não relacionados a completar o tut
         }
-        Falar(dt[indexAtual]);
+        Debug.Log(JogadorController.Instance.estaAndando);
+        if(!JogadorController.Instance.estaAndando)
+            Falar(dt[indexAtual]);
 
     }
 

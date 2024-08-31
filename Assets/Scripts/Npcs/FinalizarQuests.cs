@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinalizarQuests : NPCs, ITalkable
 {
@@ -52,6 +53,6 @@ public class FinalizarQuests : NPCs, ITalkable
     void CompletarTutorial()
     {
         if (velhaNamia.tutCompleto && tiaMarta.tutCompleto && seuPedro.tutCompleto && pedrinho.tutCompleto)
-        { todosTutCompleto = true;  Debug.Log("tudo completo"); }
+        { todosTutCompleto = true;  SceneManager.LoadScene("02_comunidade"); }
     }
 }
