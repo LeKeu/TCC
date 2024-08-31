@@ -28,7 +28,8 @@ public class Pedrinho : NPCs, ITalkable
             if (indexAtual == dt.Count & tutCompleto)  { indexAtual = 1; }
         }
 
-        Falar(dt[indexAtual]);
+        if (!JogadorController.Instance.estaAndando)
+            Falar(dt[indexAtual]);
     }
     public void Falar(DialogoTexto dialogoTexto)
     {

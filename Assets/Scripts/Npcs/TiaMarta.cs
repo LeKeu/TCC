@@ -40,8 +40,9 @@ public class TiaMarta : NPCs, ITalkable
             
             if (indexAtual == dt.Count && tutCompleto) { indexAtual = 2; } // fica rodando entre os textos não relacionados a completar o tut
         }
-        Falar(dt[indexAtual]);
-        
+        if (!JogadorController.Instance.estaAndando)
+            Falar(dt[indexAtual]);
+
     }
     public void Falar(DialogoTexto dialogoTexto)
     {

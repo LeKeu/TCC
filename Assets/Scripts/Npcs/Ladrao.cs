@@ -15,13 +15,15 @@ public class Ladrao : NPCs, ITalkable
 
     public override void Interagir()
     {
-        Falar(dt[indexAtual]);
 
         if (JogadorController.Instance.podeMover) // se o jogador pode se mover, no caso só ocorre quando a conversa acabou
         {
             indexAtual++;
             if (indexAtual == dt.Count) { indexAtual = 0; }
         }
+
+        if (!JogadorController.Instance.estaAndando)
+            Falar(dt[indexAtual]);
     }
     public void Falar(DialogoTexto dialogoTexto)
     {

@@ -16,6 +16,8 @@ public class Menino : MonoBehaviour
     public bool podeMover;
 
     Pedrinho pedrinho;
+
+    bool estaFreezado;
     void Start()
     {
         pedrinho = GameObject.Find("Pedrinho").GetComponent<Pedrinho>();
@@ -30,7 +32,7 @@ public class Menino : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (podeMover)
+        if (podeMover && JogadorController.Instance.podeMover)
         {
             if(pedrinho.podePegarBola == false) // se a menina for atrás da bola, ele fica esperando
                 Andar();
@@ -44,13 +46,22 @@ public class Menino : MonoBehaviour
         Vector3 jogadorPos = JogadorController.Instance.transform.position;
         
         if(Vector3.Distance(transform.position, jogadorPos) <= distMaxJogador)
+        { // perto do player
             estaLonge = false;
+            if (!estaFreezado)
+                FreezarMov();
+        }
         else
         {
             estaLonge = true;
             movDir = (jogadorPos - transform.position).normalized;
+            if (estaFreezado)
+                DesfreezarMov();
         }
     }
+
+    void FreezarMov() { rb.constraints = RigidbodyConstraints2D.FreezeAll; estaFreezado = true; }
+    void DesfreezarMov() { rb.constraints = RigidbodyConstraints2D.None; rb.constraints = RigidbodyConstraints2D.FreezeRotation; estaFreezado = false; }
 
     public void PararDeSeguir() => podeMover = false;
     public void VoltarASeguir() => podeMover = true;

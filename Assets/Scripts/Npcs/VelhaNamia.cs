@@ -29,7 +29,8 @@ public class VelhaNamia : NPCs, ITalkable
             if (indexAtual == dt.Count && !tutCompleto) { indexAtual = 0; }
             if (indexAtual == dt.Count && tutCompleto) { indexAtual = 1; }; // index 0 sempre será o txt do tut, ent qnd ele estiver completo, não volta mais
         }
-        Falar(dt[indexAtual]);
+        if (!JogadorController.Instance.estaAndando)
+            Falar(dt[indexAtual]);
     }
     public void Falar(DialogoTexto dialogoTexto)
     {
