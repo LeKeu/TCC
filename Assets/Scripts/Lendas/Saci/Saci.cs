@@ -8,21 +8,42 @@ public class Saci : MonoBehaviour
     [SerializeField] float tempoDeVida = 5f;
 
     bool primeiraInteracao;
+    bool podeTeletransportar;
 
-    [SerializeField] List<GameObject> pontosSpawn = new List<GameObject>();
+    [SerializeField] List<GameObject> pontosSpawn = new List<GameObject>(); // dos invocados
+    [SerializeField] List<GameObject> pontosSpawnSaci = new List<GameObject>();
+
     List<GameObject> invocadosSummonados = new List<GameObject>();
+
+    int posAnterior = 0;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SummonarBichoRoutine());
+        podeTeletransportar = true;
+        //StartCoroutine(SummonarBichoRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(collision.transform.tag == "FlechaPlayer" || collision.transform.tag == "Player")
+        {
+            if(podeTeletransportar) { Teletransportar(); }
+        }
     }
 
+    void Teletransportar()
+    {
+        int pos = Random.Range(0, 4);
+
+        if(pos == posAnterior)
+            pos += 1 > 3 ? pos -= 1 : pos += 1;
+
+        Debug.Log(pos);
+        gameObject.transform.position = pontosSpawnSaci[pos].transform.position;
+        posAnterior = pos;
+    }
+
+    #region Summonar Invocado (Bichinho)
     IEnumerator SummonarBichoRoutine()
     {
         SummonarBicho(3);
@@ -39,4 +60,5 @@ public class Saci : MonoBehaviour
             invocadosSummonados.Add(bichoSummonado);
         }
     }
+    #endregion
 }

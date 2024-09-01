@@ -38,17 +38,11 @@ public class InvocadoInimigo : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.GetComponent<InimigoVida>())
+        if (collision.gameObject.GetComponent<JogadorVida>())
         {
-            collision.GetComponent<InimigoVida>().ReceberDano(2);
+            collision.gameObject.GetComponent<JogadorVida>().LevarDano(1);
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, pegarDist);
     }
 }
