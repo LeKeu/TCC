@@ -14,34 +14,16 @@ public class Saci : MonoBehaviour
 
     //List<GameObject> invocadosSummonados = new List<GameObject>();
     [SerializeField] int roundsInvocados = 4;
-    bool podeSummonar;
-    bool estaAtordoado;
     bool podeTeletransportar;
+    bool estaAtordoado;
 
     int posAnterior = 0;
 
     void Start()
     {
-        podeSummonar = true;
-        estaAtordoado = false;
         podeTeletransportar = true;
-    }
-
-    private void FixedUpdate()
-    {
-        if (roundsInvocados > 0)
-        {
-            if (GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0 && roundsInvocados != 4 && !podeSummonar)
-            {
-                estaAtordoado = true;
-                StartCoroutine(AtordoarSaciRoutine());
-            }
-            if (!estaAtordoado && podeSummonar && GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length <= 3)
-            {
-                podeSummonar = false;
-                StartCoroutine(SummonarBichoRoutine());
-            }
-        }
+        estaAtordoado = false;
+        StartCoroutine(ComecarBatalhaRoutine());
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -49,10 +31,6 @@ public class Saci : MonoBehaviour
         if (collision.transform.tag == "FlechaPlayer" || collision.transform.tag == "Player")
         {
             if (podeTeletransportar) { Teletransportar(); }
-            Debug.Log("podeSummonar = " + podeSummonar);
-            Debug.Log("estaAtordoado = " + estaAtordoado);
-            Debug.Log("roundsInvocados = " + roundsInvocados);
-            Debug.Log("inimigos sumonados qntd = "+ GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length);
         }
     }
 
@@ -75,44 +53,36 @@ public class Saci : MonoBehaviour
         posAnterior = pos;
     }
 
-    #region Summonar Invocado (Bichinho)
-    IEnumerator SummonarBichoRoutine()
+    IEnumerator ComecarBatalhaRoutine()
     {
-        podeSummonar = false;
-        SummonarBicho();
-        yield return new WaitForSeconds(1);
-        SummonarBicho();
-        yield return new WaitForSeconds(1);
-        SummonarBicho();
+        if(roundsInvocados != 0)    // por x rounds, vai ter o ciclo de inst inimigos, derrotar, atordoar e repetir o round até que chegue a 0
+        {
+            SummonarBichos(3);
+            yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0);
+            Debug.Log("todos m,ortos");
+            StartCoroutine(AtordoarSaciRoutine());
+        }
     }
-    void SummonarBicho()
-    {
-        Debug.Log("SUMONANDO");
-        //podeSummonar = false;
-        if(GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length < 3)
-            Instantiate(bicho, pontosSpawn[Random.Range(0, 4)].transform);
-            //invocadosSummonados.Add(bichoSummonado);
-    }
-    #endregion
 
-    #region Atordoar Saci
     IEnumerator AtordoarSaciRoutine()
     {
-        podeSummonar = false;
-        estaAtordoado = true;
+        roundsInvocados--;
         podeTeletransportar = false;
-
         yield return new WaitForSeconds(5);
-
-        podeSummonar = true;
-        estaAtordoado = false;
         podeTeletransportar = true;
+        Debug.Log("rounds = "+ roundsInvocados);
+        StartCoroutine(ComecarBatalhaRoutine());
     }
 
-    void ReceberDano(int dano)
+    void SummonarBichos(int qntd)
+    {
+        for (int i = 0; i < qntd; i++)
+            Instantiate(bicho, pontosSpawn[Random.Range(0, 4)].transform);
+    }
+
+    public void ReceberDano(int dano)
     {
         Vida -= dano;
-        //Debug.Log("vida = " + Vida);
+        Debug.Log("vida = " + Vida);
     }
-    #endregion
 }

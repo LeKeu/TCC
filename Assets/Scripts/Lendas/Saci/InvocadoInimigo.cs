@@ -46,7 +46,7 @@ public class InvocadoInimigo : MonoBehaviour
         }
     }
 
-    public void ReceberDano()
+    public void ReceberDano(int dano)
     {
         Destroy(gameObject);
     }

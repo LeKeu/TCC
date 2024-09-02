@@ -8,8 +8,12 @@ public class OrigemDano : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         InimigoVida inimigoVida = collision.GetComponent<InimigoVida>();
-        InvocadoInimigo invocadoInimigo = collision.GetComponent<InvocadoInimigo>();
         inimigoVida?.ReceberDano(valorDano);
-        invocadoInimigo?.ReceberDano();
+
+        InvocadoInimigo invocadoInimigo = collision.GetComponent<InvocadoInimigo>();
+        invocadoInimigo?.ReceberDano(valorDano);
+
+        Saci saci = collision.GetComponent<Saci>();
+        saci?.ReceberDano(valorDano);
     }
 }
