@@ -45,4 +45,9 @@ public class InvocadoInimigo : MonoBehaviour
             collision.gameObject.GetComponent<JogadorVida>().LevarDano(1);
         }
     }
+
+    public void ReceberDano()
+    {
+        Destroy(gameObject);
+    }
 }

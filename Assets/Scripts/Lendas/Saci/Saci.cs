@@ -1,33 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Saci : MonoBehaviour
 {
+    [SerializeField] int Vida = 20;
     [SerializeField] GameObject bicho;
     [SerializeField] float tempoDeVida = 5f;
-
-    bool primeiraInteracao;
-    bool podeTeletransportar;
 
     [SerializeField] List<GameObject> pontosSpawn = new List<GameObject>(); // dos invocados
     [SerializeField] List<GameObject> pontosSpawnSaci = new List<GameObject>();
 
-    List<GameObject> invocadosSummonados = new List<GameObject>();
+    //List<GameObject> invocadosSummonados = new List<GameObject>();
+    [SerializeField] int roundsInvocados = 4;
+    bool podeSummonar;
+    bool estaAtordoado;
+    bool podeTeletransportar;
 
     int posAnterior = 0;
-    // Start is called before the first frame update
+
     void Start()
     {
+        podeSummonar = true;
+        estaAtordoado = false;
         podeTeletransportar = true;
-        //StartCoroutine(SummonarBichoRoutine());
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        if(collision.transform.tag == "FlechaPlayer" || collision.transform.tag == "Player")
+        if (roundsInvocados > 0)
         {
-            if(podeTeletransportar) { Teletransportar(); }
+            if (GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0 && roundsInvocados != 4 && !podeSummonar)
+            {
+                estaAtordoado = true;
+                StartCoroutine(AtordoarSaciRoutine());
+            }
+            if (!estaAtordoado && podeSummonar && GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length <= 3)
+            {
+                podeSummonar = false;
+                StartCoroutine(SummonarBichoRoutine());
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "FlechaPlayer" || collision.transform.tag == "Player")
+        {
+            if (podeTeletransportar) { Teletransportar(); }
+            Debug.Log("podeSummonar = " + podeSummonar);
+            Debug.Log("estaAtordoado = " + estaAtordoado);
+            Debug.Log("roundsInvocados = " + roundsInvocados);
+            Debug.Log("inimigos sumonados qntd = "+ GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "FlechaPlayer" || collision.transform.tag == "Player")
+        {
+            if (estaAtordoado) { ReceberDano(2); }
         }
     }
 
@@ -35,10 +68,9 @@ public class Saci : MonoBehaviour
     {
         int pos = Random.Range(0, 4);
 
-        if(pos == posAnterior)
-            pos += 1 > 3 ? pos -= 1 : pos += 1;
+        if (pos == posAnterior)
+            pos += pos + 1 > 3 ? -1 : 1;
 
-        Debug.Log(pos);
         gameObject.transform.position = pontosSpawnSaci[pos].transform.position;
         posAnterior = pos;
     }
@@ -46,19 +78,41 @@ public class Saci : MonoBehaviour
     #region Summonar Invocado (Bichinho)
     IEnumerator SummonarBichoRoutine()
     {
-        SummonarBicho(3);
-        yield return new WaitForSeconds(tempoDeVida);
-        foreach (GameObject bicho in invocadosSummonados)
-            Destroy(bicho);
+        podeSummonar = false;
+        SummonarBicho();
+        yield return new WaitForSeconds(1);
+        SummonarBicho();
+        yield return new WaitForSeconds(1);
+        SummonarBicho();
+    }
+    void SummonarBicho()
+    {
+        Debug.Log("SUMONANDO");
+        //podeSummonar = false;
+        if(GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length < 3)
+            Instantiate(bicho, pontosSpawn[Random.Range(0, 4)].transform);
+            //invocadosSummonados.Add(bichoSummonado);
+    }
+    #endregion
+
+    #region Atordoar Saci
+    IEnumerator AtordoarSaciRoutine()
+    {
+        podeSummonar = false;
+        estaAtordoado = true;
+        podeTeletransportar = false;
+
+        yield return new WaitForSeconds(5);
+
+        podeSummonar = true;
+        estaAtordoado = false;
+        podeTeletransportar = true;
     }
 
-    void SummonarBicho(int qntd)
+    void ReceberDano(int dano)
     {
-        for(int i = 0; i < qntd; i++)
-        {
-            GameObject bichoSummonado = Instantiate(bicho, pontosSpawn[i].transform);
-            invocadosSummonados.Add(bichoSummonado);
-        }
+        Vida -= dano;
+        //Debug.Log("vida = " + Vida);
     }
     #endregion
 }

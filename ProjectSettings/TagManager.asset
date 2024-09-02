@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - FlechaPlayer
+  - InvocadoInimigo
   layers:
   - Default
   - TransparentFX
