@@ -11,7 +11,7 @@ public class OrigemDano : MonoBehaviour
         inimigoVida?.ReceberDano(valorDano);
 
         InvocadoInimigo invocadoInimigo = collision.GetComponent<InvocadoInimigo>();
-        invocadoInimigo?.ReceberDano(valorDano);
+        invocadoInimigo?.ReceberDano(valorDano); // dano no invocado do saci
 
         Saci saci = collision.GetComponent<Saci>();
         saci?.ReceberDano(valorDano);

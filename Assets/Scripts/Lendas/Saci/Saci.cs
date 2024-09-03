@@ -19,8 +19,6 @@ public class Saci : MonoBehaviour
     [SerializeField] List<GameObject> pontosSpawn = new List<GameObject>(); // dos invocados
     [SerializeField] List<GameObject> pontosSpawnSaci = new List<GameObject>();
 
-    //List<GameObject> invocadosSummonados = new List<GameObject>();
-    [SerializeField] int roundsInvocados = 4;
     bool podeTeletransportar;
     bool estaAtordoado;
 
@@ -43,6 +41,7 @@ public class Saci : MonoBehaviour
         if(primeiroEncontro && !comecouPrimeiroEncontro) // situação da primeira vez encontrando o saci
         { comecouPrimeiroEncontro = true; StartCoroutine(ComecarBatalhaRoutine()); }
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.transform.tag == "FlechaPlayer" || collision.transform.tag == "Player")
@@ -70,6 +69,7 @@ public class Saci : MonoBehaviour
         posAnterior = pos;
     }
 
+    #region Primeiro Encontro (invocar bichinhos e atordoar)
     IEnumerator ComecarBatalhaRoutine()
     {
         if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
@@ -86,7 +86,6 @@ public class Saci : MonoBehaviour
 
     IEnumerator AtordoarSaciRoutine()
     {
-        roundsInvocados--;
         podeTeletransportar = false;
 
         yield return new WaitForSeconds(5);
@@ -100,6 +99,7 @@ public class Saci : MonoBehaviour
         for (int i = 0; i < qntd; i++)
             Instantiate(bicho, pontosSpawn[Random.Range(0, 4)].transform);
     }
+    #endregion
 
     public void ReceberDano(int dano)
     {
