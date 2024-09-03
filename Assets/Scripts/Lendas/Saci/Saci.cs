@@ -10,6 +10,7 @@ public class Saci : MonoBehaviour
     bool comecouPrimeiroEncontro;
 
     #endregion
+    BarraVidaBosses barraVidaBosses;
 
     [SerializeField] int Vida = 20;
     [SerializeField] GameObject bicho;
@@ -25,10 +26,15 @@ public class Saci : MonoBehaviour
 
     int posAnterior = 0;
 
+    string nome = "Saci";
+
     void Start()
     {
+        barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
+
         podeTeletransportar = true;
         estaAtordoado = false;
+        primeiroEncontro = true;
         //StartCoroutine(ComecarBatalhaRoutine());
     }
 
@@ -66,6 +72,9 @@ public class Saci : MonoBehaviour
 
     IEnumerator ComecarBatalhaRoutine()
     {
+        if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
+            barraVidaBosses.CriarContainer(Vida, nome);
+
         if(Vida > 0)    // por x rounds, vai ter o ciclo de inst inimigos, derrotar, atordoar e repetir o round até que chegue a 0
         {
             SummonarBichos(1);
@@ -94,7 +103,10 @@ public class Saci : MonoBehaviour
 
     public void ReceberDano(int dano)
     {
-        Vida -= dano;
-        Debug.Log("vida = " + Vida);
+        if(Vida >= 0)
+        {
+            Vida -= dano;
+            barraVidaBosses.ReceberDano(dano);
+        }
     }
 }

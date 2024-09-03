@@ -11,7 +11,9 @@ public class JogadorVida : Singleton<JogadorVida>
 
     private Slider vidaSlider;
     private int vidaAtual;
+
     public bool podeLevarDano = true;
+
     private Empurrao empurrao;
     private Flash flash;
     TremerCamera tremerCamera;
