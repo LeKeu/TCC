@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Saci : MonoBehaviour
 {
+    #region Situações da História
+    bool primeiroEncontro;
+    bool comecouPrimeiroEncontro;
+
+    #endregion
+
     [SerializeField] int Vida = 20;
     [SerializeField] GameObject bicho;
     [SerializeField] float tempoDeVida = 5f;
@@ -23,9 +29,14 @@ public class Saci : MonoBehaviour
     {
         podeTeletransportar = true;
         estaAtordoado = false;
-        StartCoroutine(ComecarBatalhaRoutine());
+        //StartCoroutine(ComecarBatalhaRoutine());
     }
 
+    private void Update()
+    {
+        if(primeiroEncontro && !comecouPrimeiroEncontro) // situação da primeira vez encontrando o saci
+        { comecouPrimeiroEncontro = true; StartCoroutine(ComecarBatalhaRoutine()); }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.transform.tag == "FlechaPlayer" || collision.transform.tag == "Player")
@@ -55,9 +66,9 @@ public class Saci : MonoBehaviour
 
     IEnumerator ComecarBatalhaRoutine()
     {
-        if(roundsInvocados != 0)    // por x rounds, vai ter o ciclo de inst inimigos, derrotar, atordoar e repetir o round até que chegue a 0
+        if(Vida > 0)    // por x rounds, vai ter o ciclo de inst inimigos, derrotar, atordoar e repetir o round até que chegue a 0
         {
-            SummonarBichos(3);
+            SummonarBichos(1);
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0);
             Debug.Log("todos m,ortos");
             StartCoroutine(AtordoarSaciRoutine());
@@ -68,9 +79,10 @@ public class Saci : MonoBehaviour
     {
         roundsInvocados--;
         podeTeletransportar = false;
+
         yield return new WaitForSeconds(5);
+
         podeTeletransportar = true;
-        Debug.Log("rounds = "+ roundsInvocados);
         StartCoroutine(ComecarBatalhaRoutine());
     }
 
