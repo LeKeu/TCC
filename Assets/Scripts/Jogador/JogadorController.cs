@@ -128,9 +128,12 @@ public class JogadorController : Singleton<JogadorController>
 
     private IEnumerator AcabarDash()
     {
+        gameObject.GetComponent<JogadorVida>().podeLevarDano = false;
         float dashTime = .2f;
         float dashCD = .25f;
         yield return new WaitForSeconds(dashTime);
+
+        gameObject.GetComponent<JogadorVida>().podeLevarDano = true;
         velocidade = velInicial;
         trailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
