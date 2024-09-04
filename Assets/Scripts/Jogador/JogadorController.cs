@@ -86,7 +86,7 @@ public class JogadorController : Singleton<JogadorController>
         if (empurrao.serEmpurrado) { return; }
 
         if (estaEscondido || estaNaAgua) DiminuirVelocidade();// se tiver stealth, diminui a velocidade
-        else VoltarVelocidadeNormal();
+        else if(!estaDashing) VoltarVelocidadeNormal();
 
         if (movimento == Vector2.zero) estaAndando = false;
         else estaAndando = true;
@@ -121,6 +121,7 @@ public class JogadorController : Singleton<JogadorController>
         {
             estaDashing = true; //JogadorVida.Instance.podeLevarDano = false;
             velocidade *= velDash;
+            Debug.Log("vel antes acabar dash "+ velocidade);
             trailRenderer.emitting = true;
             StartCoroutine(AcabarDash());
         }
@@ -130,8 +131,9 @@ public class JogadorController : Singleton<JogadorController>
     {
         gameObject.GetComponent<JogadorVida>().podeLevarDano = false;
         float dashTime = .2f;
-        float dashCD = .25f;
+        float dashCD = .25f; // cooldown
         yield return new WaitForSeconds(dashTime);
+        Debug.Log("vel depois acabar dash " + velocidade);
 
         gameObject.GetComponent<JogadorVida>().podeLevarDano = true;
         velocidade = velInicial;
