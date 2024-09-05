@@ -117,13 +117,15 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Dash()
     {
-        if (!estaDashing && podeMover)
+        if (!estaNaAgua)
         {
-            estaDashing = true; //JogadorVida.Instance.podeLevarDano = false;
-            velocidade *= velDash;
-            Debug.Log("vel antes acabar dash "+ velocidade);
-            trailRenderer.emitting = true;
-            StartCoroutine(AcabarDash());
+            if (!estaDashing && podeMover)
+            {
+                estaDashing = true; //JogadorVida.Instance.podeLevarDano = false;
+                velocidade *= velDash;
+                trailRenderer.emitting = true;
+                StartCoroutine(AcabarDash());
+            }
         }
     }
 
@@ -133,7 +135,6 @@ public class JogadorController : Singleton<JogadorController>
         float dashTime = .2f;
         float dashCD = .25f; // cooldown
         yield return new WaitForSeconds(dashTime);
-        Debug.Log("vel depois acabar dash " + velocidade);
 
         gameObject.GetComponent<JogadorVida>().podeLevarDano = true;
         velocidade = velInicial;
