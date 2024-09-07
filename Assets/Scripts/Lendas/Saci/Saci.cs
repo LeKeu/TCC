@@ -32,7 +32,7 @@ public class Saci : MonoBehaviour
 
         podeTeletransportar = true;
         estaAtordoado = false;
-        primeiroEncontro = true;
+        primeiroEncontro = true; // ver onde setar
         //StartCoroutine(ComecarBatalhaRoutine());
     }
 
@@ -52,21 +52,10 @@ public class Saci : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "FlechaPlayer" || collision.transform.tag == "Player")
-        {
+        if (collision.transform.tag == "FlechaPlayer")
+        { // o dano da espada é feito no script "OrigemDano"
             if (estaAtordoado) { ReceberDano(2); }
         }
-    }
-
-    void Teletransportar()
-    {
-        int pos = Random.Range(0, 4);
-
-        if (pos == posAnterior)
-            pos += pos + 1 > 3 ? -1 : 1;
-
-        gameObject.transform.position = pontosSpawnSaci[pos].transform.position;
-        posAnterior = pos;
     }
 
     #region Primeiro Encontro (invocar bichinhos e atordoar)
@@ -100,6 +89,16 @@ public class Saci : MonoBehaviour
             Instantiate(bicho, pontosSpawn[Random.Range(0, 4)].transform);
     }
     #endregion
+    void Teletransportar()
+    {
+        int pos = Random.Range(0, 4);
+
+        if (pos == posAnterior)
+            pos += pos + 1 > 3 ? -1 : 1;
+
+        gameObject.transform.position = pontosSpawnSaci[pos].transform.position;
+        posAnterior = pos;
+    }
 
     public void ReceberDano(int dano)
     {

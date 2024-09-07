@@ -30,8 +30,16 @@ public class InvocadoInimigo : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
     }
 
+    private void Update()
+    {
+        if (estaAtordoado && Input.GetKeyDown(KeyCode.Q) && estaNaRange)
+            Purificar();
+    }
+
     private void FixedUpdate()
     {
+        
+
         if (!estaAtordoado && !estaPurificado)
         {
             IrParaJogador();
@@ -42,9 +50,6 @@ public class InvocadoInimigo : MonoBehaviour
 
             rb.MovePosition(rb.position + movDir * (movVel * Time.deltaTime));
         }
-
-        if (estaAtordoado && Input.GetKeyDown(KeyCode.Q) && estaNaRange)
-            Purificar();
     }
 
     void IrParaJogador()

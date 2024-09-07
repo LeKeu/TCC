@@ -16,6 +16,7 @@ public class Pontes : MonoBehaviour
         if (collision.GetComponent<JogadorController>())
         {
             AguaFundoGrid.GetComponent<TilemapCollider2D>().enabled = false;
+            collision.GetComponent<JogadorController>().estaNaPonte = true;
         }
     }
 
@@ -24,6 +25,7 @@ public class Pontes : MonoBehaviour
         if (collision.GetComponent<JogadorController>())
         {
             AguaFundoGrid.GetComponent<TilemapCollider2D>().enabled = true;
+            collision.GetComponent<JogadorController>().estaNaPonte = false;
 
         }
     }

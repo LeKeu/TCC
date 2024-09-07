@@ -26,6 +26,7 @@ public class JogadorController : Singleton<JogadorController>
 
     public bool estaEscondido = false;
     public bool estaNaAgua = false;
+    public bool estaNaPonte = false;
     public bool estaSendoPerseguido = false;
     public bool estaAndando;
     public bool podeMover;
@@ -85,7 +86,7 @@ public class JogadorController : Singleton<JogadorController>
     {
         if (empurrao.serEmpurrado) { return; }
 
-        if (estaEscondido || estaNaAgua) DiminuirVelocidade();// se tiver stealth, diminui a velocidade
+        if ((estaEscondido || estaNaAgua) && !estaNaPonte) DiminuirVelocidade();// se tiver stealth, diminui a velocidade
         else if(!estaDashing) VoltarVelocidadeNormal();
 
         if (movimento == Vector2.zero) estaAndando = false;
@@ -119,7 +120,7 @@ public class JogadorController : Singleton<JogadorController>
     {
         if (!estaNaAgua)
         {
-            if (!estaDashing && podeMover)
+            if (!estaDashing && podeMover) // não pode dar dash na água
             {
                 estaDashing = true; //JogadorVida.Instance.podeLevarDano = false;
                 velocidade *= velDash;

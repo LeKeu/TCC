@@ -10,6 +10,8 @@ public class InimigoProjetil : MonoBehaviour
     [SerializeField] float tempoVivo = 4f;
 
     float auxTempo = 0f;
+
+    public bool seguirJogador = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,9 @@ public class InimigoProjetil : MonoBehaviour
 
         movDir = (JogadorController.Instance.transform.position - transform.position).normalized;
         rb.MovePosition(rb.position + movDir * (velProj * Time.deltaTime));
-        if(auxTempo >= tempoVivo) { Destroy(this.gameObject); auxTempo = 0f; }
+        //rb.gameObject.transform.Translate(Vector2.right * velProj * Time.deltaTime);
+
+        if (auxTempo >= tempoVivo) { Destroy(this.gameObject); auxTempo = 0f; }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
