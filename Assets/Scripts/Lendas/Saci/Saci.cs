@@ -67,6 +67,7 @@ public class Saci : MonoBehaviour
         if(Vida > 0)    // por x rounds, vai ter o ciclo de inst inimigos, derrotar, atordoar e repetir o round até que chegue a 0
         {
             SummonarBichos(1);
+            barraVidaBosses.MudarCorNaoPodeLevarDano();
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0);
             Debug.Log("todos m,ortos");
             StartCoroutine(AtordoarSaciRoutine());
@@ -76,6 +77,7 @@ public class Saci : MonoBehaviour
     IEnumerator AtordoarSaciRoutine()
     {
         podeTeletransportar = false;
+        barraVidaBosses.MudarCorPodeLevarDano();
 
         yield return new WaitForSeconds(5);
 
