@@ -176,6 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7f9413ad17fd646babe63f15335799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movDirecao: {x: 0, y: 0}
+  rb: {fileID: 0}
+  estado: 0
   movVel: 2
   pegarDist: 2
   Vida: 4
@@ -223,4 +226,4 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0.3
+  m_EdgeRadius: 0.2

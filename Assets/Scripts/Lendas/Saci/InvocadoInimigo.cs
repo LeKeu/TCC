@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InvocadoInimigo : MonoBehaviour
+public class InvocadoInimigo : BasicAndar
 {
     [SerializeField] public float movVel = 2f;
     [SerializeField] public float pegarDist = 2f;
     [SerializeField] public int Vida = 4;
+    float velInicial;
 
-    Rigidbody2D rb;
+    //Rigidbody2D rb;
     Vector2 movDir;
     private Empurrao empurrao;
     SpriteRenderer spriteRenderer;
@@ -21,6 +22,9 @@ public class InvocadoInimigo : MonoBehaviour
 
     private void Awake()
     {
+        velInicial = movVel;
+
+        estado = Estado.Parado;
         estaPurificado = false;
         estaAtordoado = false;
 
@@ -38,8 +42,6 @@ public class InvocadoInimigo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-
         if (!estaAtordoado && !estaPurificado)
         {
             IrParaJogador();
@@ -103,13 +105,11 @@ public class InvocadoInimigo : MonoBehaviour
         Freezar();
 
         yield return new WaitForSeconds(10);
+        //yield return new WaitUntil(() => estaPurificado);
 
         if (estaPurificado)
-        {
-            Debug.Log("hihihi");
-            //Purificar();
             yield break;
-        }
+
         Desfrizar();
         estaAtordoado = false;
         Vida++;
@@ -122,8 +122,12 @@ public class InvocadoInimigo : MonoBehaviour
         circleCollider.enabled = false;
         gameObject.transform.tag = "Untagged";
 
-        Debug.Log("PURIFICANDOW");
         gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+
+        Desfrizar();
+        estado = Estado.Andando;
+        SetVelocidade(2);
+        StartCoroutine(Andando(2));
     }
 
     void Freezar() => rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -133,4 +137,7 @@ public class InvocadoInimigo : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+
+    public void DiminuirVelocidade() => movVel = velInicial / 2;
+    public void VoltarVelocidadeNormal() => movVel = velInicial;
 }

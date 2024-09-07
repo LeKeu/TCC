@@ -13,6 +13,13 @@ public class BasicAndar : MonoBehaviour
     public Vector2 movDirecao;
     public Rigidbody2D rb;
     public Estado estado;
+    float velocidade;
+
+    void FixedUpdate()
+    {
+        if(estado == Estado.Andando)
+            rb.MovePosition(rb.position + movDirecao * (velocidade * Time.fixedDeltaTime));
+    }
 
     public IEnumerator Andando(float tempo)
     {
@@ -27,6 +34,11 @@ public class BasicAndar : MonoBehaviour
             yield return new WaitForSeconds(tempo);
             IrPara(andandoPos);
         }
+    }
+
+    public void SetVelocidade(float vel)
+    {
+        velocidade = vel;
     }
 
     void IrPara(Vector2 posAlvo)

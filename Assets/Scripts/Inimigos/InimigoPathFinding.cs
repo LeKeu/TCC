@@ -6,6 +6,7 @@ public class InimigoPathFinding : MonoBehaviour
 {
     [SerializeField] public float movVel = 2f;
     [SerializeField] public float pegarDist = 2f;
+    float velInicial;
 
     Rigidbody2D rb;
     InimigoVida InimigoVida;
@@ -16,6 +17,7 @@ public class InimigoPathFinding : MonoBehaviour
 
     private void Awake()
     {
+        velInicial = movVel;
         spriteRenderer = GetComponent<SpriteRenderer>();
         InimigoVida = GetComponent<InimigoVida>();
         InimigoIA = GetComponent<InimigoIA>();
@@ -35,13 +37,12 @@ public class InimigoPathFinding : MonoBehaviour
         }
     }
 
-    public void MoverPara(Vector2 alvoPos)
-    {
-        movDirecao = alvoPos;
-    }
+    public void MoverPara(Vector2 alvoPos) => movDirecao = alvoPos;
+    public void PararMover() => movDirecao = Vector3.zero;
 
-    public void PararMover()
-    {
-        movDirecao = Vector3.zero;
-    }
+    public void DiminuirVelocidade() => movVel = velInicial / 2;
+    public void VoltarVelocidadeNormal() => movVel = velInicial;
+
+
+
 }

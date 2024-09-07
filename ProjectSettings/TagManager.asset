@@ -6,6 +6,9 @@ TagManager:
   tags:
   - FlechaPlayer
   - InvocadoInimigo
+  - Ponte
+  - InimigoPadrao
+  - InimigoAtirador
   layers:
   - Default
   - TransparentFX

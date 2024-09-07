@@ -95,17 +95,9 @@ public class JogadorController : Singleton<JogadorController>
         rb.MovePosition(rb.position + movimento * (velocidade * Time.fixedDeltaTime));
     }
 
-    public void DiminuirVelocidade()
-    {
-        //Debug.Log("diminuindo vel");
-        velocidade = velInicial / 2;
-    }
+    public void DiminuirVelocidade() => velocidade = velInicial / 2;
 
-    public void VoltarVelocidadeNormal()
-    {
-        //Debug.Log("voltando vel");
-        velocidade = velInicial;
-    }
+    public void VoltarVelocidadeNormal() => velocidade = velInicial;
 
     private void AjustarJogadorEncarandoLado()  // ver segundo
     {

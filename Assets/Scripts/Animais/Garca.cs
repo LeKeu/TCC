@@ -10,6 +10,7 @@ public class Garca : BasicAndar
 
     void Awake()
     {
+        SetVelocidade(movVel);
         estado = Estado.Andando;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -19,11 +20,11 @@ public class Garca : BasicAndar
         StartCoroutine(Andando(tempoParado));
     }
 
-    void FixedUpdate()
-    {
-        Vector2 teste = movDirecao * (movVel * Time.fixedDeltaTime);
-        rb.MovePosition(rb.position + teste);
-    }
+    //void FixedUpdate()
+    //{
+    //    Vector2 teste = movDirecao * (movVel * Time.fixedDeltaTime);
+    //    rb.MovePosition(rb.position + teste);
+    //}
 
     
 }
