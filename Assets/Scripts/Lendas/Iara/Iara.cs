@@ -4,50 +4,53 @@ using UnityEngine;
 
 public class Iara : MonoBehaviour
 {
-    float movVel = 2f;
-    float distMaxJogador = 1f;
+    public enum Estado
+    {
+        Distante,
+        Centro
+    }
+
+    Estado estado;
 
     Rigidbody2D rb;
-    Vector2 movDir;
-    bool estaLonge;
 
-    bool estaFreezado;
-    void Start()
+    BarraVidaBosses barraVidaBosses;
+
+    [SerializeField] int Vida;
+    [SerializeField] List<GameObject> PosLagoFunda;
+
+    bool Boss1;
+    int posAnterior = 0;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        estado = Estado.Distante;
+        Boss1 = true;
+
+        StartCoroutine(MudarLagoFundo());
     }
 
-    private void Andar()
+    IEnumerator MudarLagoFundo()
     {
-        IrPara();
-    }
-
-    void FixedUpdate()
-    {        
-        Andar();
-        
-        rb.MovePosition(rb.position + movDir * (movVel * Time.deltaTime));
-        
-    }
-
-    void IrPara()
-    {
-        Vector3 jogadorPos = JogadorController.Instance.transform.position;
-
-        if (Vector3.Distance(transform.position, jogadorPos) <= distMaxJogador)
-        { // perto do player
-            if (!estaFreezado)
-                FreezarMov();
-        }
-        else
+        float tempoAle;
+        while (estado == Estado.Distante)
         {
-            movDir = (jogadorPos - transform.position).normalized;
-            if (estaFreezado)
-                DesfreezarMov();
+            Teletransportar();
+            tempoAle = Random.Range(3, 11);
+            Debug.Log(tempoAle);
+            yield return new WaitForSeconds(tempoAle);
         }
     }
 
-    void FreezarMov() { rb.constraints = RigidbodyConstraints2D.FreezeAll; estaFreezado = true; }
-    void DesfreezarMov() { rb.constraints = RigidbodyConstraints2D.None; rb.constraints = RigidbodyConstraints2D.FreezeRotation; estaFreezado = false; }
+    void Teletransportar()
+    {
+        int pos = Random.Range(0, 4);
 
+        if (pos == posAnterior)
+            pos += pos + 1 > 3 ? -1 : 1;
+
+        gameObject.transform.position = PosLagoFunda[pos].transform.position;
+        posAnterior = pos;
+    }
 }
