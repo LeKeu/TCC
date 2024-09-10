@@ -30,11 +30,13 @@ public class Projetil : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         InimigoVida inimigoVida = collision.GetComponent<InimigoVida>();
+        Iara iara = collision.GetComponent<Iara>();
         Indestrutivel indestrutivel = collision.gameObject.GetComponent<Indestrutivel>();
 
-        if (!collision.isTrigger && (inimigoVida || indestrutivel))
+        if (!collision.isTrigger && (inimigoVida || indestrutivel || iara))
         {
             inimigoVida?.ReceberDano(armasInfo.armaDano);
+            iara?.ReceberDano(armasInfo.armaDano);
             //Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
             Destroy(gameObject);
         }

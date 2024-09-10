@@ -15,5 +15,8 @@ public class OrigemDano : MonoBehaviour
 
         Saci saci = collision.GetComponent<Saci>();
         saci?.ReceberDano(valorDano);
+
+        Iara iara = collision.GetComponent<Iara>();
+        iara?.ReceberDano(valorDano);
     }
 }
