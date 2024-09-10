@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Iara : MonoBehaviour
@@ -16,7 +17,8 @@ public class Iara : MonoBehaviour
 
     BarraVidaBosses barraVidaBosses;
 
-    [SerializeField] int Vida = 100; // precisa ser divisível por 4! dar um número inteiro!
+    string nome = "Iara";
+    [SerializeField] int Vida = 100; // precisa ser divisível por 4! dar um número inteiro! batalha eé dividida em 4 etapas!
     [SerializeField] List<GameObject> PosLagoFunda;
     [SerializeField] GameObject PosLagoCentro;
 
@@ -30,6 +32,8 @@ public class Iara : MonoBehaviour
 
     private void Start()
     {
+        barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
+
         rb = GetComponent<Rigidbody2D>();
         estado = Estado.Distante;
         Boss1 = true;
@@ -46,44 +50,37 @@ public class Iara : MonoBehaviour
 
     void ChecarFaseBoss1()
     {
-        Debug.Log($"vida atual --> {vidaAtual}");
-        Debug.Log($"PRIMEIRO --> {Vida - auxVida}");
-        Debug.Log($"SEGUNDO --> {Vida - auxVida*2}");
-        Debug.Log($"TERCEIRO --> {Vida - auxVida*3}");
-
-        if (vidaAtual > Vida - auxVida) //se minha vida atual for maior que 75
+        if (vidaAtual > Vida - auxVida) //se a vida atual for maior que 75
         {
             estado = Estado.Distante;
-            Debug.Log("1");
-        }else if(vidaAtual > Vida - auxVida*2 && vidaAtual <= Vida - auxVida) //se minha vida atual for maior que 50 e menor ou igual a 75
+        }else if(vidaAtual > Vida - auxVida*2 && vidaAtual <= Vida - auxVida) //se a vida atual for maior que 50 e menor ou igual a 75
         {
             estado = Estado.Centro;
-            Debug.Log("2");
         }
         else if(vidaAtual > Vida - auxVida*3 && vidaAtual <= Vida - auxVida * 2)
         {
             estado = Estado.Distante;
-            Debug.Log("3");
         }
         else
         {
             estado = Estado.Centro;
-            Debug.Log("4");
         }
     }
 
     void EstadosBoss1()
     {
-        if(estado == Estado.Distante)
+        if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
+            barraVidaBosses.CriarContainer(Vida, nome);
+
+        if(Vida > 0)
         {
-            if(!chamandoDistante)
+            if (estado == Estado.Distante && !chamandoDistante)
                 StartCoroutine(EstadoDistante());
-        }
-        if(estado == Estado.Centro)
-        {
-            if (!chamandoCentro)
+        
+            if(estado == Estado.Centro && !chamandoCentro)
                 StartCoroutine(EstadoCentro());
         }
+        
     }
 
     IEnumerator EstadoDistante()
@@ -115,6 +112,10 @@ public class Iara : MonoBehaviour
 
     public void ReceberDano(int dano)
     {
-        vidaAtual -= dano;
+        if(vidaAtual >= 0)
+        {
+            vidaAtual -= dano;
+            barraVidaBosses.ReceberDano(dano);
+        }
     }
 }
