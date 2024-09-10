@@ -11,7 +11,6 @@ public class VelhaNamia : NPCs, ITalkable
 
     int indexAtual = 0;
 
-    string nome = "Velha Nâmia";
     [SerializeField] private Sprite perfil;
     public bool tutCompleto;
 

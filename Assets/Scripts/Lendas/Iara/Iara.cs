@@ -14,7 +14,7 @@ public class Iara : MonoBehaviour
     Estado estado;
 
     Rigidbody2D rb;
-
+    BalaSpawner balaSpawner;
     BarraVidaBosses barraVidaBosses;
 
     string nome = "Iara";
@@ -35,6 +35,7 @@ public class Iara : MonoBehaviour
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
 
         rb = GetComponent<Rigidbody2D>();
+        balaSpawner = GetComponent<BalaSpawner>();
         estado = Estado.Distante;
         Boss1 = true;
         vidaAtual = Vida;
@@ -87,7 +88,9 @@ public class Iara : MonoBehaviour
     {
         chamandoDistante = true;
         Teletransportar();
+        balaSpawner.IniciarTiros();
         yield return new WaitForSeconds(Random.Range(3, 11));
+        balaSpawner.PararTiros();
         chamandoDistante = false;
     }
 

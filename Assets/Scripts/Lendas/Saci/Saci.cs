@@ -14,7 +14,7 @@ public class Saci : MonoBehaviour
 
     [SerializeField] int Vida = 20;
     [SerializeField] GameObject bicho;
-    [SerializeField] float tempoDeVida = 5f;
+    //[SerializeField] float tempoDeVida = 5f;
 
     [SerializeField] List<GameObject> pontosSpawn = new List<GameObject>(); // dos invocados
     [SerializeField] List<GameObject> pontosSpawnSaci = new List<GameObject>();

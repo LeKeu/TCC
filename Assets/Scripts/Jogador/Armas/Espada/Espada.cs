@@ -8,7 +8,7 @@ public class Espada : MonoBehaviour, IArma
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimPontoSpawn;
     //[SerializeField] private Transform armaCollider;
-    [SerializeField] private float espadaAtaqueCD = .5f;
+    //[SerializeField] private float espadaAtaqueCD = .5f;
     [SerializeField] private Armas armasInfo;
 
     Transform armaCollider;

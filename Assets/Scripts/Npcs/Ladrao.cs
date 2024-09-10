@@ -10,7 +10,6 @@ public class Ladrao : NPCs, ITalkable
 
     int indexAtual = 0;
 
-    string nome = "Ladrão";
     [SerializeField] private Sprite perfil;
 
     public override void Interagir()
