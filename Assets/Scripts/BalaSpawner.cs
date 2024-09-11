@@ -5,6 +5,8 @@ using UnityEngine;
 public class BalaSpawner : MonoBehaviour
 {
     enum SpawnerTipo { Reto, Gira, Leque, Espiral, Circulo, Onda }
+    List<SpawnerTipo> listaTipos = new List<SpawnerTipo>() 
+    { SpawnerTipo.Reto, SpawnerTipo.Gira, SpawnerTipo.Leque, SpawnerTipo.Espiral, SpawnerTipo.Circulo, SpawnerTipo.Onda };
 
     [Header("Bala Attributos")]
     public GameObject bala;
@@ -52,7 +54,9 @@ public class BalaSpawner : MonoBehaviour
     }
 
     public void IniciarTiros() => iaraEstaAtirando = true;
-    public void PararTiros() => iaraEstaAtirando = false;
+    public void PararTiros()
+    { iaraEstaAtirando = false; MudarTipoBala(); }
+    void MudarTipoBala() => spawnerTipo = listaTipos[Random.Range(0, listaTipos.Count)];
 
     private void Atirar()
     {
