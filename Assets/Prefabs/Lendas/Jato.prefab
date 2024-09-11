@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8098028377022785891}
   - component: {fileID: 704653812795279848}
   - component: {fileID: -1815892503573508499}
+  - component: {fileID: 3213364076818573073}
+  - component: {fileID: -4872045135654395600}
   m_Layer: 0
   m_Name: Jato
   m_TagString: Untagged
@@ -100,3 +102,51 @@ MonoBehaviour:
   vidaBala: 5
   rotacao: 1
   vel: 3
+--- !u!114 &3213364076818573073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3962272971091752960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902b759a011e54d449f459780f9ce8e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dano: 2
+--- !u!70 &-4872045135654395600
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3962272971091752960}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.078125, y: 0}
+  m_Size: {x: 0.15625, y: 0.09375}
+  m_Direction: 1

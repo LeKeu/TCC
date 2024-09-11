@@ -46,7 +46,6 @@ public class Iara : MonoBehaviour
     private void Update()
     {
         EstadosBoss1();
-        ChecarFaseBoss1();
     }
 
     void ChecarFaseBoss1()
@@ -70,6 +69,8 @@ public class Iara : MonoBehaviour
 
     void EstadosBoss1()
     {
+        ChecarFaseBoss1();
+
         if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
             barraVidaBosses.CriarContainer(Vida, nome);
 
