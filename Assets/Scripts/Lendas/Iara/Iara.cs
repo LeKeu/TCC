@@ -21,6 +21,7 @@ public class Iara : MonoBehaviour
     [SerializeField] int Vida = 100; // precisa ser divisível por 4! dar um número inteiro! batalha eé dividida em 4 etapas!
     [SerializeField] List<GameObject> PosLagoFunda;
     [SerializeField] GameObject PosLagoCentro;
+    [SerializeField] float velocidade;
 
     bool Boss1;
     bool chamandoCentro;
@@ -29,6 +30,8 @@ public class Iara : MonoBehaviour
     int posAnterior = 0;
     int vidaAtual;
     int auxVida;
+
+    float timer = 0f;
 
     private void Start()
     {
@@ -73,20 +76,21 @@ public class Iara : MonoBehaviour
 
         if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
             barraVidaBosses.CriarContainer(Vida, nome);
-
+        //Debug.Log(estado.ToString());
         if(Vida > 0)
         {
             if (estado == Estado.Distante && !chamandoDistante)
                 StartCoroutine(EstadoDistante());
         
             if(estado == Estado.Centro && !chamandoCentro)
-                StartCoroutine(EstadoCentro());
+                EstadoCentro();
         }
         
     }
 
     IEnumerator EstadoDistante()
     {
+        //Freezar();
         chamandoDistante = true;
         Teletransportar();
         balaSpawner.IniciarTiros();
@@ -95,12 +99,23 @@ public class Iara : MonoBehaviour
         chamandoDistante = false;
     }
 
-    IEnumerator EstadoCentro()
+    void EstadoCentro()
     {
-        chamandoCentro = true;
+        //Desfrizar();
+        //chamandoCentro = true;
+        timer += Time.deltaTime; 
+
         gameObject.transform.position = PosLagoCentro.transform.position;
-        yield return new WaitForSeconds(3);
-        chamandoCentro = false;
+        float x = timer * velocidade * transform.right.x;
+        float y = timer * velocidade * transform.right.y;
+        transform.position = new Vector2(x + transform.position.x, y + transform.position.y);
+        //yield return new WaitForSeconds(3);
+        //chamandoCentro = false;
+    }
+
+    void AndarCentro()
+    {
+
     }
 
     void Teletransportar()
@@ -121,5 +136,13 @@ public class Iara : MonoBehaviour
             vidaAtual -= dano;
             barraVidaBosses.ReceberDano(dano);
         }
+    }
+
+    void Freezar() => rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+    void Desfrizar()
+    {
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }

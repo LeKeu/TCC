@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BalaSpawner : MonoBehaviour
 {
-    enum SpawnerTipo { Reto, Gira, Leque, Espiral, Circulo, Onda }
+    enum SpawnerTipo { Leque, Espiral, Circulo, Onda }
     List<SpawnerTipo> listaTipos = new List<SpawnerTipo>() 
-    { SpawnerTipo.Reto, SpawnerTipo.Gira, SpawnerTipo.Leque, SpawnerTipo.Espiral, SpawnerTipo.Circulo, SpawnerTipo.Onda };
+    { SpawnerTipo.Leque, SpawnerTipo.Espiral, SpawnerTipo.Circulo, SpawnerTipo.Onda };
 
     [Header("Bala Attributos")]
     public GameObject bala;
@@ -44,7 +44,6 @@ public class BalaSpawner : MonoBehaviour
         if (iaraEstaAtirando)
         {
             timer += Time.deltaTime;
-            if (spawnerTipo == SpawnerTipo.Gira) transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
             if (timer >= atirandoRate)
             {
                 Atirar();
@@ -88,14 +87,6 @@ public class BalaSpawner : MonoBehaviour
                     spawnedBala.GetComponent<BalaIara>().vidaBala = balaVida;
                 }
                 espiralAngulo += espiralRotVel;
-            }
-
-            if (spawnerTipo == SpawnerTipo.Gira)
-            {
-                spawnedBala = Instantiate(bala, transform.position, Quaternion.identity);
-                spawnedBala.GetComponent<BalaIara>().vel = vel;
-                spawnedBala.GetComponent<BalaIara>().vidaBala = balaVida;
-                spawnedBala.transform.rotation = transform.rotation;
             }
 
             if (spawnerTipo == SpawnerTipo.Circulo)
