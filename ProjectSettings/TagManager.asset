@@ -9,6 +9,7 @@ TagManager:
   - Ponte
   - InimigoPadrao
   - InimigoAtirador
+  - AguaIaraCollider
   layers:
   - Default
   - TransparentFX

@@ -43,8 +43,6 @@ public class BasicAndar : MonoBehaviour
 
     void IrPara(Vector2 posAlvo)
     {
-        Debug.Log(posAlvo);
-        Debug.Log(velocidade);
         movDirecao = posAlvo;
         if (movDirecao.x < 0) gameObject.transform.localScale = new Vector2(1, 1);
         else gameObject.transform.localScale = new Vector2(-1, 1);

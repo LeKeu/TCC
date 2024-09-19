@@ -25,6 +25,7 @@ public class Iara : MonoBehaviour
 
     bool Boss1;
     bool chamandoCentro;
+    bool andandoCentro;
     bool chamandoDistante;
 
     int posAnterior = 0;
@@ -32,6 +33,8 @@ public class Iara : MonoBehaviour
     int auxVida;
 
     float timer = 0f;
+    public Vector2 movDirecao;
+
 
     private void Start()
     {
@@ -43,21 +46,24 @@ public class Iara : MonoBehaviour
         Boss1 = true;
         vidaAtual = Vida;
         auxVida = Vida / 4;
-
     }
 
     private void Update()
     {
         EstadosBoss1();
+
+        if(Boss1 && estado == Estado.Centro) 
+        { rb.MovePosition(rb.position + movDirecao * (velocidade * Time.fixedDeltaTime)); }
     }
 
     void ChecarFaseBoss1()
     {
         if (vidaAtual > Vida - auxVida) //se a vida atual for maior que 75
         {
-            estado = Estado.Distante;
+            estado = Estado.Distante; // mudar os tipos
         }else if(vidaAtual > Vida - auxVida*2 && vidaAtual <= Vida - auxVida) //se a vida atual for maior que 50 e menor ou igual a 75
         {
+            //chamandoCentro = false;
             estado = Estado.Centro;
         }
         else if(vidaAtual > Vida - auxVida*3 && vidaAtual <= Vida - auxVida * 2)
@@ -66,6 +72,7 @@ public class Iara : MonoBehaviour
         }
         else
         {
+            //chamandoCentro = false;
             estado = Estado.Centro;
         }
     }
@@ -82,15 +89,16 @@ public class Iara : MonoBehaviour
             if (estado == Estado.Distante && !chamandoDistante)
                 StartCoroutine(EstadoDistante());
         
-            if(estado == Estado.Centro && !chamandoCentro)
+            if(estado == Estado.Centro /*&& !chamandoCentro*/)
                 EstadoCentro();
         }
-        
     }
 
     IEnumerator EstadoDistante()
     {
-        //Freezar();
+        chamandoCentro = false;
+
+        Freezar();
         chamandoDistante = true;
         Teletransportar();
         balaSpawner.IniciarTiros();
@@ -101,21 +109,36 @@ public class Iara : MonoBehaviour
 
     void EstadoCentro()
     {
-        //Desfrizar();
-        //chamandoCentro = true;
-        timer += Time.deltaTime; 
+        balaSpawner.PararTiros();
+        if(!chamandoCentro)
+            gameObject.transform.position = PosLagoCentro.transform.position;
+        Desfrizar();
+        chamandoCentro = true;
 
-        gameObject.transform.position = PosLagoCentro.transform.position;
-        float x = timer * velocidade * transform.right.x;
-        float y = timer * velocidade * transform.right.y;
-        transform.position = new Vector2(x + transform.position.x, y + transform.position.y);
+        if (!andandoCentro)
+            StartCoroutine(AndarCentro());
+        
         //yield return new WaitForSeconds(3);
         //chamandoCentro = false;
     }
 
-    void AndarCentro()
+    IEnumerator AndarCentro()
     {
+        andandoCentro = true;
+        float x = Random.Range(-10f, 10f);
+        float y = Random.Range(-10f, 10f);
 
+        movDirecao = new Vector2(x, y);
+        yield return new WaitForSeconds(Random.Range(2, 6));
+        yield return new WaitUntil(() => movDirecao.x == x && movDirecao.y == y);
+        
+        andandoCentro = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "AguaIaraCollider")
+            movDirecao *= -1;
     }
 
     void Teletransportar()
