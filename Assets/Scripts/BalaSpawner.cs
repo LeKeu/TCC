@@ -54,8 +54,13 @@ public class BalaSpawner : MonoBehaviour
 
     public void IniciarTiros() => iaraEstaAtirando = true;
     public void PararTiros()
-    { iaraEstaAtirando = false; MudarTipoBala(); }
+    { iaraEstaAtirando = false; DestruirBalas(); MudarTipoBala(); }
     void MudarTipoBala() => spawnerTipo = listaTipos[Random.Range(0, listaTipos.Count)];
+    void DestruirBalas()
+    {
+        foreach(GameObject bala in GameObject.FindGameObjectsWithTag("AtqBalaIaraDist"))
+            Destroy(bala);
+    }
 
     private void Atirar()
     {

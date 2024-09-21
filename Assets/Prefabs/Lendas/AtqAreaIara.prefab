@@ -93,7 +93,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4129546478852413021}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -136,3 +136,4 @@ MonoBehaviour:
   tempoVida: 3
   tempoAteDano: 2
   dano: 4
+  alcanceExpl: 1

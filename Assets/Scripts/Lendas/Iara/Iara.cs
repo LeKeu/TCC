@@ -37,8 +37,10 @@ public class Iara : MonoBehaviour
     bool estaNoCentro;
     bool chamandoDistante;
     bool chamandoCentro;
-    bool estaAtqPerseguidor;
     
+    bool estaAtqPerseguidor;
+    bool estaAtqDireto;
+    bool estaAtqNenhum;
 
     int posAnterior = 0;
     int vidaAtual;
@@ -130,11 +132,13 @@ public class Iara : MonoBehaviour
                 TrocarAtaque();
                 break;
             case TipoAtaque.Direto:
-                AtqDireto();
+                if(!estaAtqDireto)
+                    StartCoroutine(AtqDireto());
                 TrocarAtaque();
                 break;
             case TipoAtaque.Nenhum:
-                Debug.Log("nenhum");
+                if(!estaAtqNenhum)
+                    StartCoroutine(AtqNenhum());
                 TrocarAtaque();
                 break;
         }
@@ -143,8 +147,8 @@ public class Iara : MonoBehaviour
     IEnumerator AtqPerseguidor()
     {
         estaAtqPerseguidor = true;
-        Debug.Log("perseguidor");
-        if(GameObject.FindGameObjectsWithTag("AtqAreaIara").Length < 3)
+
+        if(GameObject.FindGameObjectsWithTag("AtqAreaIara").Length < 1)
         {
             yield return new WaitForSeconds(.5f);
             Instantiate(AtqAreaIara, JogadorController.Instance.transform.position, Quaternion.identity);
@@ -152,9 +156,20 @@ public class Iara : MonoBehaviour
         estaAtqPerseguidor = false;
     }
 
-    void AtqDireto()
+    IEnumerator AtqNenhum()
     {
+        estaAtqNenhum = true;
+        Debug.Log("nenhum");
+        yield return new WaitForSeconds(3);
+        estaAtqNenhum = false;
+    }
+
+    IEnumerator AtqDireto()
+    {
+        estaAtqDireto = true;
         Debug.Log("direto");
+        yield return new WaitForSeconds(3);
+        estaAtqDireto = false;
     }
 
     void TrocarAtaque()
