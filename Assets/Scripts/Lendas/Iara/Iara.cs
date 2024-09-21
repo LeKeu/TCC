@@ -111,44 +111,53 @@ public class Iara : MonoBehaviour
     IEnumerator EstadoDistante()
     {
         estaNoCentro = false;
-
-        Freezar();
         chamandoDistante = true;
+
         Teletransportar();
         balaSpawner.IniciarTiros();
+
         yield return new WaitForSeconds(Random.Range(3, 11));
+
         balaSpawner.PararTiros();
         chamandoDistante = false;
     }
 
     IEnumerator EstadoCentro()
     {
-        yield return new WaitForSeconds(3);
-        switch (tipoAtaque)
+        if(estado == Estado.Centro)
         {
-            case TipoAtaque.Perseguidor:
-                if(!estaAtqPerseguidor)
-                    StartCoroutine(AtqPerseguidor());
-                TrocarAtaque();
-                break;
-            case TipoAtaque.Direto:
-                if(!estaAtqDireto)
-                    StartCoroutine(AtqDireto());
-                TrocarAtaque();
-                break;
-            case TipoAtaque.Nenhum:
-                if(!estaAtqNenhum)
-                    StartCoroutine(AtqNenhum());
-                TrocarAtaque();
-                break;
+            if (!estaNoCentro)
+                transform.position = PosLagoCentro.transform.position;
+            estaNoCentro = true;
+
+            yield return new WaitForSeconds(3);
+            switch (tipoAtaque)
+            {
+                case TipoAtaque.Perseguidor:
+                    if (!estaAtqPerseguidor)
+                        StartCoroutine(AtqPerseguidor());
+                    TrocarAtaque();
+                    break;
+                case TipoAtaque.Direto:
+                    if (!estaAtqDireto)
+                        StartCoroutine(AtqDireto());
+                    TrocarAtaque();
+                    break;
+                case TipoAtaque.Nenhum:
+                    if (!estaAtqNenhum)
+                        StartCoroutine(AtqNenhum());
+                    TrocarAtaque();
+                    break;
+            }
         }
+        
     }
 
     IEnumerator AtqPerseguidor()
     {
         estaAtqPerseguidor = true;
 
-        if(GameObject.FindGameObjectsWithTag("AtqAreaIara").Length < 1)
+        if(GameObject.FindGameObjectsWithTag("AtqAreaIara").Length < 3)
         {
             yield return new WaitForSeconds(.5f);
             Instantiate(AtqAreaIara, JogadorController.Instance.transform.position, Quaternion.identity);
