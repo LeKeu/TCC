@@ -14,7 +14,8 @@ public class Iara : MonoBehaviour
     public enum TipoAtaque
     {
         Perseguidor,
-        Direto
+        Direto,
+        Nenhum
     }
 
     Estado estado;
@@ -23,7 +24,7 @@ public class Iara : MonoBehaviour
     Rigidbody2D rb;
     BalaSpawner balaSpawner;
     BarraVidaBosses barraVidaBosses;
-    List<TipoAtaque> tipoAtaqueLista = new List<TipoAtaque>() { TipoAtaque.Perseguidor, TipoAtaque.Direto };
+    List<TipoAtaque> tipoAtaqueLista = new List<TipoAtaque>() { TipoAtaque.Perseguidor, TipoAtaque.Direto, TipoAtaque.Nenhum };
 
     string nome = "Iara";
     [SerializeField] int Vida = 100; // precisa ser divisível por 4! dar um número inteiro! batalha eé dividida em 4 etapas!
@@ -34,7 +35,6 @@ public class Iara : MonoBehaviour
 
     bool Boss1;
     bool estaNoCentro;
-    bool andandoCentro;
     bool chamandoDistante;
     bool chamandoCentro;
     bool estaAtqPerseguidor;
@@ -43,8 +43,8 @@ public class Iara : MonoBehaviour
     int posAnterior = 0;
     int vidaAtual;
     int auxVida;
+    int indexAtq = 0;
 
-    float timer = 0f;
     public Vector2 movDirecao;
 
 
@@ -59,51 +59,50 @@ public class Iara : MonoBehaviour
         Boss1 = true;
         vidaAtual = Vida;
         auxVida = Vida / 4;
-        EstadosBoss1();
     }
 
     private void Update()
     {
+        EstadosBoss1();
         if(Boss1 && estado == Estado.Centro) 
         { rb.MovePosition(rb.position + movDirecao * (velocidade * Time.fixedDeltaTime)); }
+    }
+
+    void EstadosBoss1()
+    {
+        
+        ChecarFaseBoss1();
+
+        if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
+            barraVidaBosses.CriarContainer(Vida, nome);
+        //Debug.Log(estado.ToString());
+        if (Vida > 0)
+        {
+            if (estado == Estado.Distante && !chamandoDistante)
+                StartCoroutine(EstadoDistante());
+
+            if (estado == Estado.Centro && !chamandoCentro)
+                StartCoroutine(EstadoCentro());
+        }
     }
 
     void ChecarFaseBoss1()
     {
         if (vidaAtual > Vida - auxVida) //se a vida atual for maior que 75
         {
-            estado = Estado.Distante; // mudar os tipos
-        }else if(vidaAtual > Vida - auxVida*2 && vidaAtual <= Vida - auxVida) //se a vida atual for maior que 50 e menor ou igual a 75
-        {
-            estado = Estado.Centro;
+            estado = Estado.Centro; // mudar os tipos
         }
-        else if(vidaAtual > Vida - auxVida*3 && vidaAtual <= Vida - auxVida * 2)
+        else if (vidaAtual > Vida - auxVida * 2 && vidaAtual <= Vida - auxVida) //se a vida atual for maior que 50 e menor ou igual a 75
         {
             estado = Estado.Distante;
         }
-        else
+        else if (vidaAtual > Vida - auxVida * 3 && vidaAtual <= Vida - auxVida * 2)
         {
             estado = Estado.Centro;
         }
-    }
-
-    void EstadosBoss1()
-    {
-        while (Boss1)
+        else
         {
-            ChecarFaseBoss1();
-
-            if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
-                barraVidaBosses.CriarContainer(Vida, nome);
-            //Debug.Log(estado.ToString());
-            if (Vida > 0)
-            {
-                if (estado == Estado.Distante && !chamandoDistante)
-                    StartCoroutine(EstadoDistante());
-
-                if (estado == Estado.Centro && !chamandoCentro)
-                    EstadoCentro();
-            }
+            estado = Estado.Distante;
         }
     }
 
@@ -120,42 +119,50 @@ public class Iara : MonoBehaviour
         chamandoDistante = false;
     }
 
-    void EstadoCentro()
+    IEnumerator EstadoCentro()
     {
-        if(!estaNoCentro)
-            gameObject.transform.position = PosLagoCentro.transform.position;
+        yield return new WaitForSeconds(3);
         switch (tipoAtaque)
         {
             case TipoAtaque.Perseguidor:
                 if(!estaAtqPerseguidor)
-                    StartCoroutine(InstanciarAtqArea());
-                StartCoroutine(TrocarAtaque());
-                estaAtqPerseguidor = false;
+                    StartCoroutine(AtqPerseguidor());
+                TrocarAtaque();
                 break;
             case TipoAtaque.Direto:
-                Debug.Log("direto"); 
-                StartCoroutine(TrocarAtaque());
+                AtqDireto();
+                TrocarAtaque();
+                break;
+            case TipoAtaque.Nenhum:
+                Debug.Log("nenhum");
+                TrocarAtaque();
                 break;
         }
-        
-        estaNoCentro = true;
     }
 
-    IEnumerator TrocarAtaque()
+    IEnumerator AtqPerseguidor()
     {
-        tipoAtaque = tipoAtaqueLista[Random.Range(0, tipoAtaqueLista.Count)];
-        yield return new WaitForSeconds(3);
-    }
-
-    IEnumerator InstanciarAtqArea()
-    {
-        chamandoCentro = true;
         estaAtqPerseguidor = true;
+        Debug.Log("perseguidor");
+        if(GameObject.FindGameObjectsWithTag("AtqAreaIara").Length < 3)
+        {
+            yield return new WaitForSeconds(.5f);
+            Instantiate(AtqAreaIara, JogadorController.Instance.transform.position, Quaternion.identity);
+        }
+        estaAtqPerseguidor = false;
+    }
 
-        Instantiate(AtqAreaIara, JogadorController.Instance.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(1);
-        
-        chamandoCentro = false;
+    void AtqDireto()
+    {
+        Debug.Log("direto");
+    }
+
+    void TrocarAtaque()
+    {
+        if(indexAtq == tipoAtaqueLista.Count)
+            indexAtq = 0;
+        tipoAtaque = tipoAtaqueLista[indexAtq];
+        indexAtq++;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
