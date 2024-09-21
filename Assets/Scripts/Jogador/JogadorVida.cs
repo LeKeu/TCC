@@ -102,7 +102,7 @@ public class JogadorVida : Singleton<JogadorVida>
         if(vidaAtual <= 0)
         {
             vidaAtual = 0;
-            Debug.Log("morreueuue");
+            //Debug.Log("morreueuue");
         }
     }
 

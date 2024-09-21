@@ -11,7 +11,7 @@ public class Machucar : MonoBehaviour
         {
             JogadorVida.Instance.LevarDano(dano);
             JogadorVida.Instance.EmpurrarPlayer(collision.gameObject.transform);
-            Debug.Log("machucando");
+            //Debug.Log("machucando");
         }
     }
 
@@ -21,7 +21,7 @@ public class Machucar : MonoBehaviour
         {
             JogadorVida.Instance.LevarDano(dano);
             JogadorVida.Instance.EmpurrarPlayer(collision.gameObject.transform);
-            Debug.Log("machucando");
+            //Debug.Log("machucando");
         }
     }
 }
