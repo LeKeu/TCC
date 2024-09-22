@@ -33,6 +33,8 @@ public class Iara : MonoBehaviour
     [SerializeField] GameObject AtqAreaIara;
     [SerializeField] float velocidade;
 
+    [SerializeField] GameObject AreaJatoDireto;
+
     bool Boss1;
     bool estaNoCentro;
     bool chamandoDistante;
@@ -57,10 +59,11 @@ public class Iara : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         balaSpawner = GetComponent<BalaSpawner>();
         estado = Estado.Distante;
-        tipoAtaque = TipoAtaque.Perseguidor;
-        Boss1 = true;
+        tipoAtaque = TipoAtaque.Direto;
         vidaAtual = Vida;
         auxVida = Vida / 4;
+        
+        Boss1 = true;
     }
 
     private void Update()
@@ -72,7 +75,6 @@ public class Iara : MonoBehaviour
 
     void EstadosBoss1()
     {
-        
         ChecarFaseBoss1();
 
         if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
@@ -108,6 +110,7 @@ public class Iara : MonoBehaviour
         }
     }
 
+    #region ATQ DISTANTE
     IEnumerator EstadoDistante()
     {
         estaNoCentro = false;
@@ -121,16 +124,20 @@ public class Iara : MonoBehaviour
         balaSpawner.PararTiros();
         chamandoDistante = false;
     }
+    #endregion
+
+    #region ATQ CENTRO
 
     IEnumerator EstadoCentro()
     {
         if(estado == Estado.Centro)
         {
+            chamandoCentro = true;
             if (!estaNoCentro)
                 transform.position = PosLagoCentro.transform.position;
             estaNoCentro = true;
 
-            yield return new WaitForSeconds(3);
+            Debug.Log(tipoAtaque.ToString());
             switch (tipoAtaque)
             {
                 case TipoAtaque.Perseguidor:
@@ -138,17 +145,21 @@ public class Iara : MonoBehaviour
                         StartCoroutine(AtqPerseguidor());
                     TrocarAtaque();
                     break;
+
                 case TipoAtaque.Direto:
                     if (!estaAtqDireto)
                         StartCoroutine(AtqDireto());
                     TrocarAtaque();
                     break;
+
                 case TipoAtaque.Nenhum:
                     if (!estaAtqNenhum)
                         StartCoroutine(AtqNenhum());
                     TrocarAtaque();
                     break;
             }
+            yield return new WaitForSeconds(10);
+            chamandoCentro = false;
         }
         
     }
@@ -168,7 +179,6 @@ public class Iara : MonoBehaviour
     IEnumerator AtqNenhum()
     {
         estaAtqNenhum = true;
-        Debug.Log("nenhum");
         yield return new WaitForSeconds(3);
         estaAtqNenhum = false;
     }
@@ -176,16 +186,23 @@ public class Iara : MonoBehaviour
     IEnumerator AtqDireto()
     {
         estaAtqDireto = true;
-        Debug.Log("direto");
-        yield return new WaitForSeconds(3);
-        estaAtqDireto = false;
+        GameObject areaJato = Instantiate(AreaJatoDireto, transform.position, Quaternion.identity);
+
+        yield return new WaitUntil(() => areaJato.GetComponent<AtqDiretoJato>().CompletouRot());
+        areaJato.GetComponent<AtqDiretoJato>().DestruirArea();
+           
     }
+
+    
+
+    #endregion
 
     void TrocarAtaque()
     {
         if(indexAtq == tipoAtaqueLista.Count)
             indexAtq = 0;
         tipoAtaque = tipoAtaqueLista[indexAtq];
+        Debug.Log($"novo atq:{tipoAtaque.ToString()}");
         indexAtq++;
     }
 
