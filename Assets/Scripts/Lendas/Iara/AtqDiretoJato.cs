@@ -5,6 +5,7 @@ using UnityEngine;
 public class AtqDiretoJato : MonoBehaviour
 {
     float timerTamanho = 0f;
+    bool podeRotacionar;
 
     private void Update()
     {
@@ -19,14 +20,16 @@ public class AtqDiretoJato : MonoBehaviour
 
     void Rotacionar()
     {
-        transform.Rotate(new Vector3(0, 0, 20) * Time.deltaTime * -2);
+        if(podeRotacionar)
+            transform.Rotate(new Vector3(0, 0, 20) * Time.deltaTime * -2);
     }
 
     void EsticarBala()
     {
-        var teste = new Vector3(1 * timerTamanho * 10, 1, 1);
-        Debug.Log(teste);
-        transform.GetChild(0).GetComponent<Transform>().localScale = teste;
+        float x = 1 * timerTamanho * 10;
+        if (x <= 50)
+            transform.GetChild(0).GetComponent<Transform>().localScale = new Vector3(x, 1, 1);
+        else podeRotacionar = true;
     }
 
     public void DestruirArea() => Destroy(gameObject);
