@@ -26,7 +26,7 @@ public class AtqDiretoJato : MonoBehaviour
 
     void EsticarBala()
     {
-        float x = 1 * timerTamanho * 10;
+        float x = 1 * timerTamanho * 50;
         if (x <= 50)
             transform.GetChild(0).GetComponent<Transform>().localScale = new Vector3(x, 1, 1);
         else podeRotacionar = true;

@@ -168,7 +168,7 @@ public class Iara : MonoBehaviour
     {
         estaAtqPerseguidor = true;
 
-        if(GameObject.FindGameObjectsWithTag("AtqAreaIara").Length < 3)
+        for(int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(.5f);
             Instantiate(AtqAreaIara, JogadorController.Instance.transform.position, Quaternion.identity);
@@ -190,10 +190,11 @@ public class Iara : MonoBehaviour
 
         yield return new WaitUntil(() => areaJato.GetComponent<AtqDiretoJato>().CompletouRot());
         areaJato.GetComponent<AtqDiretoJato>().DestruirArea();
-           
+        estaAtqDireto = false;
+
     }
 
-    
+
 
     #endregion
 
@@ -202,7 +203,7 @@ public class Iara : MonoBehaviour
         if(indexAtq == tipoAtaqueLista.Count)
             indexAtq = 0;
         tipoAtaque = tipoAtaqueLista[indexAtq];
-        Debug.Log($"novo atq:{tipoAtaque.ToString()}");
+        //Debug.Log($"novo atq:{tipoAtaque.ToString()}");
         indexAtq++;
     }
 
