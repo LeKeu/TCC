@@ -53,8 +53,7 @@ public class BalaSpawner : MonoBehaviour
     }
 
     public void IniciarTiros() => iaraEstaAtirando = true;
-    public void PararTiros()
-    { iaraEstaAtirando = false; DestruirBalas(); MudarTipoBala(); }
+    public void PararTiros() { iaraEstaAtirando = false; DestruirBalas(); MudarTipoBala(); }
     void MudarTipoBala() => spawnerTipo = listaTipos[Random.Range(0, listaTipos.Count)];
     public void DestruirBalas()
     {
@@ -75,7 +74,7 @@ public class BalaSpawner : MonoBehaviour
                 float angleStep = 360f / numBalas;
                 for (int i = 0; i < numBalas; i++)
                 {
-                    float angle = i * angleStep;
+                    float angle = i * angleStep + espiralAngulo;
                     Quaternion rotation = Quaternion.Euler(0, 0, angle);
                     spawnedBala = Instantiate(bala, transform.position, rotation);
                     spawnedBala.GetComponent<BalaIara>().vel = vel;
@@ -103,7 +102,7 @@ public class BalaSpawner : MonoBehaviour
             {
                 for (int i = 0; i < numBalas; i++)
                 {
-                    float angle = (i / (float)numBalas) * 360f;
+                    float angle = (i / (float)numBalas) * 360f + espiralAngulo;
                     Quaternion rotation = Quaternion.Euler(0, 0, angle);
                     spawnedBala = Instantiate(bala, transform.position, rotation);
                     spawnedBala.GetComponent<BalaIara>().vel = vel;
@@ -119,7 +118,7 @@ public class BalaSpawner : MonoBehaviour
 
                 for (int i = 0; i < numWaveBullets; i++)
                 {
-                    float angle = i * bulletSpacing;
+                    float angle = i * bulletSpacing + espiralAngulo;
                     float yOffset = waveAmplitude * Mathf.Sin(waveFrequency * currentTime + (i * bulletSpacing));
                     Vector3 spawnPosition = transform.position + new Vector3(0, yOffset, 0);
                     Quaternion rotation = Quaternion.Euler(0, 0, angle);
@@ -131,12 +130,5 @@ public class BalaSpawner : MonoBehaviour
             }
         }
 
-    }
-
-    private void RotacionarSpawner()
-    {
-        // Rotacione o spawner em torno do seu próprio eixo (por exemplo, no eixo Z)
-        float rotationAngle = waveSpeed * Time.time;
-        transform.rotation = Quaternion.Euler(0, 0, rotationAngle);
     }
 }
