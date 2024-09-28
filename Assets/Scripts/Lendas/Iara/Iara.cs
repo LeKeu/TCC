@@ -11,7 +11,7 @@ public class Iara : MonoBehaviour
         Centro
     }
 
-    public enum TipoAtaque
+    public enum TipoAtaqueCentro
     {
         Perseguidor,
         Direto,
@@ -19,12 +19,14 @@ public class Iara : MonoBehaviour
     }
 
     Estado estado;
-    TipoAtaque tipoAtaque;
+    TipoAtaqueCentro tipoAtaqueCentro;
 
     Rigidbody2D rb;
     BalaSpawner balaSpawner;
     BarraVidaBosses barraVidaBosses;
-    List<TipoAtaque> tipoAtaqueLista = new List<TipoAtaque>() { TipoAtaque.Perseguidor, TipoAtaque.Direto, TipoAtaque.Nenhum };
+    AjusteTamanhoCamera ajusteTamanhoCamera;
+
+    List<TipoAtaqueCentro> tipoAtaqueLista = new List<TipoAtaqueCentro>() { TipoAtaqueCentro.Perseguidor, TipoAtaqueCentro.Direto, TipoAtaqueCentro.Nenhum };
 
     string nome = "Iara";
     [SerializeField] int Vida = 100; // precisa ser divisível por 4! dar um número inteiro! batalha eé dividida em 4 etapas!
@@ -39,7 +41,8 @@ public class Iara : MonoBehaviour
     bool estaNoCentro;
     bool chamandoDistante;
     bool chamandoCentro;
-    
+
+    bool estaAtacandoCentro;
     bool estaAtqPerseguidor;
     bool estaAtqDireto;
     bool estaAtqNenhum;
@@ -50,16 +53,17 @@ public class Iara : MonoBehaviour
     int indexAtq = 0;
 
     public Vector2 movDirecao;
-
+    
 
     private void Start()
-    {
+    {   
+        ajusteTamanhoCamera = GameObject.Find("Virtual Camera").GetComponent<AjusteTamanhoCamera>();
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
 
         rb = GetComponent<Rigidbody2D>();
         balaSpawner = GetComponent<BalaSpawner>();
         estado = Estado.Distante;
-        tipoAtaque = TipoAtaque.Direto;
+        tipoAtaqueCentro = TipoAtaqueCentro.Direto;
         vidaAtual = Vida;
         auxVida = Vida / 4;
         
@@ -68,20 +72,24 @@ public class Iara : MonoBehaviour
 
     private void Update()
     {
-        EstadosBoss1();
+        if(Boss1)
+            EstadosBoss1();
         if(Boss1 && estado == Estado.Centro) 
         { rb.MovePosition(rb.position + movDirecao * (velocidade * Time.fixedDeltaTime)); }
+        if (!Boss1) TamanhoCamera(3);
     }
 
     void EstadosBoss1()
     {
+        TamanhoCamera(7);
         ChecarFaseBoss1();
 
         if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
             barraVidaBosses.CriarContainer(Vida, nome);
-        //Debug.Log(estado.ToString());
+
         if (Vida > 0)
         {
+            //Debug.Log(estado.ToString());
             if (estado == Estado.Distante && !chamandoDistante)
                 StartCoroutine(EstadoDistante());
 
@@ -113,7 +121,8 @@ public class Iara : MonoBehaviour
     #region ATQ DISTANTE
     IEnumerator EstadoDistante()
     {
-        estaNoCentro = false;
+        GameObject.FindWithTag("AtqJatoCentro")?.GetComponent<AtqDiretoJato>().DestruirArea();
+        ReiniciarAtaqueCentro();
         chamandoDistante = true;
 
         Teletransportar();
@@ -132,40 +141,42 @@ public class Iara : MonoBehaviour
     {
         if(estado == Estado.Centro)
         {
+            gameObject.GetComponent<BalaSpawner>().DestruirBalas();
+
             chamandoCentro = true;
             if (!estaNoCentro)
                 transform.position = PosLagoCentro.transform.position;
             estaNoCentro = true;
 
-            Debug.Log(tipoAtaque.ToString());
-            switch (tipoAtaque)
+            Debug.Log(tipoAtaqueCentro.ToString());
+            switch (tipoAtaqueCentro)
             {
-                case TipoAtaque.Perseguidor:
+                case TipoAtaqueCentro.Perseguidor:
                     if (!estaAtqPerseguidor)
                         StartCoroutine(AtqPerseguidor());
                     TrocarAtaque();
                     break;
 
-                case TipoAtaque.Direto:
+                case TipoAtaqueCentro.Direto:
                     if (!estaAtqDireto)
                         StartCoroutine(AtqDireto());
                     TrocarAtaque();
                     break;
 
-                case TipoAtaque.Nenhum:
+                case TipoAtaqueCentro.Nenhum:
                     if (!estaAtqNenhum)
                         StartCoroutine(AtqNenhum());
                     TrocarAtaque();
                     break;
             }
-            yield return new WaitForSeconds(10);
+            yield return new WaitUntil(() => !estaAtacandoCentro);
             chamandoCentro = false;
         }
-        
     }
 
     IEnumerator AtqPerseguidor()
     {
+        estaAtacandoCentro = true;
         estaAtqPerseguidor = true;
 
         for(int i = 0; i < 3; i++)
@@ -173,28 +184,32 @@ public class Iara : MonoBehaviour
             yield return new WaitForSeconds(.5f);
             Instantiate(AtqAreaIara, JogadorController.Instance.transform.position, Quaternion.identity);
         }
+        yield return new WaitForSeconds(2);
         estaAtqPerseguidor = false;
+        estaAtacandoCentro = false;
     }
 
     IEnumerator AtqNenhum()
     {
+        estaAtacandoCentro = true;
         estaAtqNenhum = true;
         yield return new WaitForSeconds(3);
         estaAtqNenhum = false;
+        estaAtacandoCentro = false;
     }
 
     IEnumerator AtqDireto()
     {
+        estaAtacandoCentro = true;
         estaAtqDireto = true;
         GameObject areaJato = Instantiate(AreaJatoDireto, transform.position, Quaternion.identity);
 
         yield return new WaitUntil(() => areaJato.GetComponent<AtqDiretoJato>().CompletouRot());
+
         areaJato.GetComponent<AtqDiretoJato>().DestruirArea();
         estaAtqDireto = false;
-
+        estaAtacandoCentro = false;
     }
-
-
 
     #endregion
 
@@ -202,7 +217,7 @@ public class Iara : MonoBehaviour
     {
         if(indexAtq == tipoAtaqueLista.Count)
             indexAtq = 0;
-        tipoAtaque = tipoAtaqueLista[indexAtq];
+        tipoAtaqueCentro = tipoAtaqueLista[indexAtq];
         //Debug.Log($"novo atq:{tipoAtaque.ToString()}");
         indexAtq++;
     }
@@ -240,5 +255,19 @@ public class Iara : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    void TamanhoCamera(float tam)
+    {
+        if (!ajusteTamanhoCamera.ChecarTamanhoCamera(tam))
+            ajusteTamanhoCamera.AjustarTamanhoCamera(tam);
+    }
+    void ReiniciarAtaqueCentro()
+    {
+        estaAtqDireto = false;
+        estaAtqNenhum = false;
+        estaAtqPerseguidor = false;
+        estaAtacandoCentro = false;
+        estaNoCentro = false;
     }
 }

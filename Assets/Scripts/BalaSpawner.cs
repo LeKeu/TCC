@@ -56,10 +56,14 @@ public class BalaSpawner : MonoBehaviour
     public void PararTiros()
     { iaraEstaAtirando = false; DestruirBalas(); MudarTipoBala(); }
     void MudarTipoBala() => spawnerTipo = listaTipos[Random.Range(0, listaTipos.Count)];
-    void DestruirBalas()
+    public void DestruirBalas()
     {
-        foreach(GameObject bala in GameObject.FindGameObjectsWithTag("AtqBalaIaraDist"))
-            Destroy(bala);
+        GameObject[] balas = GameObject.FindGameObjectsWithTag("AtqBalaIaraDist");
+        if(balas.Length != 0)
+        {
+            foreach (GameObject bala in balas)
+                Destroy(bala);
+        }
     }
 
     private void Atirar()
@@ -77,6 +81,7 @@ public class BalaSpawner : MonoBehaviour
                     spawnedBala.GetComponent<BalaIara>().vel = vel;
                     spawnedBala.GetComponent<BalaIara>().vidaBala = balaVida;
                 }
+                espiralAngulo += espiralRotVel;
             }
 
             if (spawnerTipo == SpawnerTipo.Espiral)
@@ -104,6 +109,7 @@ public class BalaSpawner : MonoBehaviour
                     spawnedBala.GetComponent<BalaIara>().vel = vel;
                     spawnedBala.GetComponent<BalaIara>().vidaBala = balaVida;
                 }
+                espiralAngulo += espiralRotVel;
             }
 
             if (spawnerTipo == SpawnerTipo.Onda)
@@ -121,7 +127,7 @@ public class BalaSpawner : MonoBehaviour
                     spawnedBala.GetComponent<BalaIara>().vel = vel;
                     spawnedBala.GetComponent<BalaIara>().vidaBala = balaVida;
                 }
-
+                espiralAngulo += espiralRotVel;
             }
         }
 

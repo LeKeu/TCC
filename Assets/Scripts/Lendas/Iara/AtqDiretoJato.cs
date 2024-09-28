@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AtqDiretoJato : MonoBehaviour
 {
     float timerTamanho = 0f;
     bool podeRotacionar;
+
+    int qntdRot = 0;
 
     private void Update()
     {
@@ -21,14 +21,18 @@ public class AtqDiretoJato : MonoBehaviour
     void Rotacionar()
     {
         if(podeRotacionar)
-            transform.Rotate(new Vector3(0, 0, 20) * Time.deltaTime * -2);
+            transform.Rotate(new Vector3(0, 0, 1) * Time.deltaTime * 50);
     }
 
     void EsticarBala()
     {
         float x = 1 * timerTamanho * 50;
+
         if (x <= 50)
+        {
             transform.GetChild(0).GetComponent<Transform>().localScale = new Vector3(x, 1, 1);
+            transform.GetChild(1).GetComponent<Transform>().localScale = new Vector3(x, 1, 1);
+        }
         else podeRotacionar = true;
     }
 
@@ -36,7 +40,7 @@ public class AtqDiretoJato : MonoBehaviour
 
     public bool CompletouRot()
     {
-        if (transform.rotation.z > 0)
+        if (transform.localRotation.eulerAngles.z >= 359)
             return true;
         return false;
     } 
