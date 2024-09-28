@@ -12,6 +12,8 @@ TagManager:
   - AguaIaraCollider
   - AtqAreaIara
   - AtqBalaIaraDist
+  - AtqJatoCentro
+  - PartAguaRipple
   layers:
   - Default
   - TransparentFX
