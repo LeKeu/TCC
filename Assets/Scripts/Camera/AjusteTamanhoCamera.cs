@@ -11,7 +11,7 @@ public class AjusteTamanhoCamera : MonoBehaviour
         camVirtual = GetComponent<CinemachineVirtualCamera>();
     }
 
-    public void AjustarTamanhoCamera(float tamanho = 3) // 3 é o padrão. se mudar lá é preciso mudar aqui
+    public void AjustarTamanhoCamera(float tamanho = 2) // esse é o padrão. se mudar lá é preciso mudar aqui
     {
         camVirtual.m_Lens.OrthographicSize = tamanho;
     }

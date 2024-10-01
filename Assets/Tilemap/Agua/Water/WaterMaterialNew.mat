@@ -87,7 +87,7 @@ Material:
     - _CurrentWorldTextureScale: 0.005681818
     - _FoamBlurAmount: 5
     - _FoamScale: 0.16
-    - _Pixelization: 16
+    - _Pixelization: 64
     - _SpecularScale: 0.83
     - _SpecularScale2: 3.68
     - _SpecularSpeed: 0.3
