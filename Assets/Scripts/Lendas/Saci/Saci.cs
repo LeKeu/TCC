@@ -10,6 +10,7 @@ public class Saci : MonoBehaviour
     bool comecouPrimeiroEncontro;
 
     #endregion
+
     BarraVidaBosses barraVidaBosses;
 
     [SerializeField] int Vida = 20;
