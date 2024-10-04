@@ -68,30 +68,6 @@ public class Cuca : MonoBehaviour
         chamandoFase1 = false;
     }
 
-    //void Fase1()
-    //{
-    //    Debug.Log($"ataque atual --> {ataque}");
-    //    switch (ataque)
-    //    {
-    //        case (Ataques.InvocarMenino):
-    //            if (!estaInvocandoMenino) InvocarMenino();
-    //            MudarAtaque();
-    //            break;
-    //        case (Ataques.Copias):
-    //            Debug.Log("copias");
-    //            MudarAtaque();
-    //            break;
-    //        case (Ataques.DashAleatorio):
-    //            Debug.Log("dash");
-    //            MudarAtaque();
-    //            break;
-    //        case (Ataques.Impulso):
-    //            Debug.Log("impulso");
-    //            MudarAtaque();
-    //            break;
-    //    }
-    //}
-
     void MudarAtaque() => ataque = ataquesLista[Random.Range(0, ataquesLista.Count)];
 
     void InvocarMenino()
@@ -101,3 +77,36 @@ public class Cuca : MonoBehaviour
         estaInvocandoMenino = false;
     }
 }
+
+
+/* PARA SEMPRE MENINOS EM TODO LUGAR FOREVER TOUJOUR
+     private void Update()
+    {
+        if (fase == Fases.Fase1)
+            StartCoroutine(Fase1());
+    }
+
+        void Fase1()
+    {
+        Debug.Log($"ataque atual --> {ataque}");
+        switch (ataque)
+        {
+            case (Ataques.InvocarMenino):
+                if (!estaInvocandoMenino) InvocarMenino();
+                MudarAtaque();
+                break;
+            case (Ataques.Copias):
+                Debug.Log("copias");
+                MudarAtaque();
+                break;
+            case (Ataques.DashAleatorio):
+                Debug.Log("dash");
+                MudarAtaque();
+                break;
+            case (Ataques.Impulso):
+                Debug.Log("impulso");
+                MudarAtaque();
+                break;
+        }
+    }
+     */
