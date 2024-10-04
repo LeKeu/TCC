@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4294411398366922698}
   - component: {fileID: 7177117671935546019}
-  - component: {fileID: 6882367808717126627}
   - component: {fileID: 8570716088546867240}
-  - component: {fileID: 4603797377579870382}
+  - component: {fileID: 3134081937844083561}
+  - component: {fileID: 1023054683551695251}
+  - component: {fileID: 3366344562054012775}
   m_Layer: 0
   m_Name: Menino
   m_TagString: Untagged
@@ -87,21 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6882367808717126627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8605654276348253745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23ec5c7a6a1d5ee499837a2a4e1146d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movVel: 2
-  distMaxJogador: 1
-  podeMover: 0
 --- !u!50 &8570716088546867240
 Rigidbody2D:
   serializedVersion: 4
@@ -129,8 +115,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &4603797377579870382
-CircleCollider2D:
+--- !u!114 &3134081937844083561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605654276348253745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44845b714d2d5944aa63b2094fd3e039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movVel: 1
+  distMaxJogador: 1
+  sumirTempo: 0.4
+  qntdTransparencia: 0.8
+--- !u!114 &1023054683551695251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605654276348253745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3739d1750d6c0aa4db018594cdaedde3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qntdTransparencia: 0.9
+  sumirTempo: 0.4
+--- !u!70 &3366344562054012775
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,6 +177,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.15
+  m_Offset: {x: 0, y: -0.21}
+  m_Size: {x: 0.38, y: 0.66}
+  m_Direction: 0
