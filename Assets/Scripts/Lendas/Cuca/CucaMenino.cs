@@ -6,13 +6,21 @@ public class CucaMenino : MonoBehaviour
 {
     Rigidbody2D rb;
     Vector2 movDir;
-    float movVel = 4.3f; 
-    float distMaxJogador = 1f;
+    [SerializeField] float movVel = 1;//= 4.3f;
+    [SerializeField] float distMaxJogador = 1f;
     bool estaFreezado;
     bool estaLonge;
 
+    [SerializeField] private float sumirTempo = .4f;
+    [SerializeField] private float qntdTransparencia = .8f;
+
+    Transparencia transparencia;
+    SpriteRenderer spriteRenderer;
+
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        transparencia = GetComponent<Transparencia>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -45,4 +53,19 @@ public class CucaMenino : MonoBehaviour
     void FreezarMov() { rb.constraints = RigidbodyConstraints2D.FreezeAll; estaFreezado = true; }
     void DesfreezarMov() { rb.constraints = RigidbodyConstraints2D.None; rb.constraints = RigidbodyConstraints2D.FreezeRotation; estaFreezado = false; }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<JogadorController>() || collision.gameObject.GetComponent<Projetil>())
+        {
+            StartCoroutine(transparencia.SumirSpriteIndividual(spriteRenderer, sumirTempo, spriteRenderer.color.a, qntdTransparencia));
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<JogadorController>() || collision.gameObject.GetComponent<Projetil>())
+        {
+            StartCoroutine(transparencia.AparecerSpriteIndividual(spriteRenderer, sumirTempo, spriteRenderer.color.a, 1));
+        }
+    }
 }

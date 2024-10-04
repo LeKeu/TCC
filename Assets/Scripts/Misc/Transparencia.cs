@@ -68,4 +68,27 @@ public class Transparencia : MonoBehaviour
         }
     }
 
+    public IEnumerator SumirSpriteIndividual(SpriteRenderer spriteRenderer, float sumirTempo, float valorInicial, float alvoTransparencia)
+    {
+        float tempoPassado = 0;
+        while (tempoPassado < sumirTempo)
+        {
+            tempoPassado += Time.deltaTime;
+            float novoAlpha = Mathf.Lerp(valorInicial, alvoTransparencia, tempoPassado / sumirTempo);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, novoAlpha);
+            yield return null;
+        }
+    }
+    public IEnumerator AparecerSpriteIndividual(SpriteRenderer spriteRenderer, float sumirTempo, float valorInicial, float alvoTransparencia)
+    {
+        float tempoPassado = 0;
+        while (tempoPassado < sumirTempo)
+        {
+            tempoPassado += Time.deltaTime;
+            float novoAlpha = Mathf.Lerp(valorInicial, alvoTransparencia, tempoPassado / sumirTempo);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, novoAlpha);
+            yield return null;
+        }
+    }
+
 }
