@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44845b714d2d5944aa63b2094fd3e039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movVel: 1
-  distMaxJogador: 1
+  movVel: 4
+  distMaxJogador: 0.5
   sumirTempo: 0.4
   qntdTransparencia: 0.8
 --- !u!114 &1023054683551695251

@@ -93,11 +93,11 @@ public class Cuca : MonoBehaviour
     IEnumerator FasesFunc(int faseIndex)
     { // 0 fase1; 1 fase2
         chamandoFases = true;
-        Debug.Log(ataque);
+        //Debug.Log(ataque);
         switch (ataque)
         {
             case (Ataques.InvocarMenino): // só na fase 2
-                if (!estaInvocandoMenino && fase == Fases.Fase2) StartCoroutine(InvocarMenino());
+                if (!estaInvocandoMenino && fase == Fases.Fase2 && copiaOriginal) StartCoroutine(InvocarMenino());
                 MudarAtaque();
                 break;
             case (Ataques.Copias):
@@ -113,7 +113,7 @@ public class Cuca : MonoBehaviour
                 break;
         }
         //yield return new WaitUntil(() => acabouAtaque);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         chamandoFases = false;
     }
 
@@ -121,6 +121,8 @@ public class Cuca : MonoBehaviour
 
     IEnumerator InvocarMenino()
     {
+        if (!copiaOriginal)
+            Debug.Log("copia incvocando menino");
         estaInvocandoMenino = true;
         for(int i = 0; i < qntdMeninos; i++)
         {
@@ -157,6 +159,14 @@ public class Cuca : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "FlechaPlayer")
+        {
+            ReceberDano(2);
+        }
+    }
+
     public void ReceberDano(int dano)
     {
         if (copiaOriginal)
@@ -165,7 +175,7 @@ public class Cuca : MonoBehaviour
             {
                 vidaAtual -= dano;
                 barraVidaBosses.ReceberDano(dano);
-                Debug.Log("vida atual " + vidaAtual);
+                //Debug.Log("vida atual " + vidaAtual);
             }
             else
             {

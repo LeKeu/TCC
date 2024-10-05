@@ -8,6 +8,7 @@ public class CucaMenino : MonoBehaviour
     Vector2 movDir;
     [SerializeField] float movVel = 1;//= 4.3f;
     [SerializeField] float distMaxJogador = 1f;
+    [SerializeField] int dano = 5;
     bool estaFreezado;
     bool estaLonge;
 
@@ -16,9 +17,11 @@ public class CucaMenino : MonoBehaviour
 
     Transparencia transparencia;
     SpriteRenderer spriteRenderer;
+    TremerCamera tremerCamera;
 
     private void Start()
     {
+        tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         transparencia = GetComponent<Transparencia>();
         rb = GetComponent<Rigidbody2D>();
@@ -38,16 +41,38 @@ public class CucaMenino : MonoBehaviour
         if (Vector3.Distance(transform.position, jogadorPos) <= distMaxJogador)
         { // perto do player
             estaLonge = false;
-            if (!estaFreezado)
-                FreezarMov();
+            StartCoroutine(AtacarJogador());
         }
         else
         {
             estaLonge = true;
             movDir = (jogadorPos - transform.position).normalized;
-            if (estaFreezado)
-                DesfreezarMov();
         }
+    }
+
+    IEnumerator AtacarJogador()
+    {
+        FreezarMov();
+
+        yield return new WaitForSeconds(1f);
+        Danificar();
+        Destroy(this.gameObject);
+    }
+
+    void Danificar()
+    {
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(origin, 2f);
+
+        foreach (Collider2D c in colliders)
+        {
+            if (c.GetComponent<JogadorVida>())
+            {
+                c.GetComponent<JogadorVida>().LevarDano(dano);
+            }
+        }
+
+        tremerCamera.TremerCameraFunc();
     }
 
     void FreezarMov() { rb.constraints = RigidbodyConstraints2D.FreezeAll; estaFreezado = true; }
