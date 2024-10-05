@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cuca : MonoBehaviour
 {
+    [SerializeField] bool copiaOriginal;
     public enum Ataques
     {
         Copias,
@@ -22,11 +23,11 @@ public class Cuca : MonoBehaviour
     Ataques ataque;
     Fases fase;
     bool chamandoFase1;
-    bool acabouAtaque;
 
     #region Ataque InvocarMenino
     [SerializeField] GameObject MeninoInvocar;
     [SerializeField] Transform PosSpawnMenino;
+    [SerializeField] int qntdMeninos = 2; // fazer isso
     bool estaInvocandoMenino;
     #endregion
 
@@ -49,7 +50,7 @@ public class Cuca : MonoBehaviour
         switch (ataque)
         {
             case (Ataques.InvocarMenino):
-                if (!estaInvocandoMenino) InvocarMenino();
+                if (!estaInvocandoMenino) StartCoroutine(InvocarMenino());
                 MudarAtaque();
                 break;
             case (Ataques.Copias): Debug.Log("copias");
@@ -70,10 +71,14 @@ public class Cuca : MonoBehaviour
 
     void MudarAtaque() => ataque = ataquesLista[Random.Range(0, ataquesLista.Count)];
 
-    void InvocarMenino()
+    IEnumerator InvocarMenino()
     {
         estaInvocandoMenino = true;
-        Instantiate(MeninoInvocar, PosSpawnMenino.position, Quaternion.identity);
+        for(int i = 0; i < qntdMeninos; i++)
+        {
+            Instantiate(MeninoInvocar, PosSpawnMenino.position, Quaternion.identity);
+            yield return new WaitForSeconds(1);
+        }
         estaInvocandoMenino = false;
     }
 }
