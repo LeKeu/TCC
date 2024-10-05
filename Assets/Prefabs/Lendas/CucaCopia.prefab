@@ -167,10 +167,13 @@ MonoBehaviour:
   VidaMaxFase1: 10
   VidaMaxFase2: 15
   vidaCopias: 10
+  velocidade: 0.5
   MeninoInvocar: {fileID: 8605654276348253745, guid: ad416b1491c7a254899a5ad957b3eae9, type: 3}
   PosSpawnMenino: {fileID: 3366300377132931356}
   qntdMeninos: 2
   CucaCopia: {fileID: 0}
+  velocidadeDash: 3
+  tempoDash: 0.5
 --- !u!70 &-3312075186159542648
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

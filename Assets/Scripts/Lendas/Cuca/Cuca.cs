@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class Cuca : MonoBehaviour
 {
+    [Header("Geral")]
     [SerializeField] bool copiaOriginal;
     [SerializeField] int VidaMaxFase1;
     [SerializeField] int VidaMaxFase2;
     [SerializeField] int vidaCopias;
+    [SerializeField] float velocidade;
 
     BarraVidaBosses barraVidaBosses;
     int vidaAtual;
@@ -19,10 +21,10 @@ public class Cuca : MonoBehaviour
     {
         Copias,
         InvocarMenino,
-        DashAleatorio,
+        DashSurpresa,
         Impulso
     }
-    List<Ataques> ataquesLista = new List<Ataques>() { Ataques.InvocarMenino, Ataques.Copias, Ataques.DashAleatorio, Ataques.Impulso }; 
+    List<Ataques> ataquesLista = new List<Ataques>() { Ataques.InvocarMenino, Ataques.Copias, Ataques.DashSurpresa, Ataques.Impulso }; 
 
     public enum Fases
     {
@@ -48,10 +50,19 @@ public class Cuca : MonoBehaviour
     bool estaCopiandoCuca;
     #endregion
 
+    #region DashSurpresa
+    [Header("DashSurpresa")]
+    [SerializeField] float velocidadeDash;
+    [SerializeField] float tempoDash;
+    float velAux;
+    bool estaDashing;
+    #endregion
+
     private void Start()
     {
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
         vidaAtual = VidaMaxFase1;
+        velAux = velocidade;
 
         fase = Fases.Fase1;
         if (copiaOriginal)
@@ -61,6 +72,7 @@ public class Cuca : MonoBehaviour
 
     private void Update()
     {
+        transform.position = Vector2.MoveTowards(this.transform.position, JogadorController.Instance.transform.position, velocidade * Time.deltaTime);
         ControleFases();
     }
 
@@ -81,7 +93,7 @@ public class Cuca : MonoBehaviour
     IEnumerator FasesFunc(int faseIndex)
     { // 0 fase1; 1 fase2
         chamandoFases = true;
-        Debug.Log($"{copiaOriginal} atual --> {ataque}");
+        Debug.Log(ataque);
         switch (ataque)
         {
             case (Ataques.InvocarMenino): // só na fase 2
@@ -92,16 +104,16 @@ public class Cuca : MonoBehaviour
                 if (!estaCopiandoCuca && copiaOriginal) CopiarCuca();
                 MudarAtaque();
                 break;
-            case (Ataques.DashAleatorio): Debug.Log("dash");
+            case (Ataques.DashSurpresa): 
+                if(!estaDashing) StartCoroutine(DashSurpresa());
                 MudarAtaque();
                 break;
             case (Ataques.Impulso):
-                Debug.Log("impulso");
                 MudarAtaque();
                 break;
         }
         //yield return new WaitUntil(() => acabouAtaque);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         chamandoFases = false;
     }
 
@@ -126,6 +138,15 @@ public class Cuca : MonoBehaviour
             Instantiate(CucaCopia, PosSpawnMenino.position, Quaternion.identity);
             estaCopiandoCuca = false;
         }
+    }
+
+    IEnumerator DashSurpresa()
+    {
+        estaDashing = true;
+        velocidade = velocidadeDash;
+        yield return new WaitForSeconds(tempoDash);
+        velocidade = velAux;
+        estaDashing = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
