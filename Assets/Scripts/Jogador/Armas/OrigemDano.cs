@@ -18,5 +18,7 @@ public class OrigemDano : MonoBehaviour
 
         Iara iara = collision.GetComponent<Iara>();
         iara?.ReceberDano(valorDano);
+
+        //HitStop.hitStop(1);
     }
 }

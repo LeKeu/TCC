@@ -55,7 +55,7 @@ public class CucaMenino : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<JogadorController>() || collision.gameObject.GetComponent<Projetil>())
+        if (collision.gameObject.GetComponent<JogadorController>() || collision.gameObject.GetComponent<Projetil>() || collision.gameObject.GetComponent<OrigemDano>())
         {
             StartCoroutine(transparencia.SumirSpriteIndividual(spriteRenderer, sumirTempo, spriteRenderer.color.a, qntdTransparencia));
         }
@@ -63,7 +63,7 @@ public class CucaMenino : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<JogadorController>() || collision.gameObject.GetComponent<Projetil>())
+        if (collision.gameObject.GetComponent<JogadorController>() || collision.gameObject.GetComponent<Projetil>() || collision.gameObject.GetComponent<OrigemDano>())
         {
             StartCoroutine(transparencia.AparecerSpriteIndividual(spriteRenderer, sumirTempo, spriteRenderer.color.a, 1));
         }

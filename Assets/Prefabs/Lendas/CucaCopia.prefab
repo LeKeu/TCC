@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 5731502079163512878}
   m_Layer: 0
   m_Name: CucaCopia
-  m_TagString: Untagged
+  m_TagString: CucaCopia
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   copiaOriginal: 0
+  VidaMaxFase1: 10
+  VidaMaxFase2: 15
   MeninoInvocar: {fileID: 8605654276348253745, guid: ad416b1491c7a254899a5ad957b3eae9, type: 3}
   PosSpawnMenino: {fileID: 3366300377132931356}
   qntdMeninos: 2
