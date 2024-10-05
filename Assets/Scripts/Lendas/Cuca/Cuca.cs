@@ -8,6 +8,8 @@ public class Cuca : MonoBehaviour
     [SerializeField] bool copiaOriginal;
     [SerializeField] int VidaMaxFase1;
     [SerializeField] int VidaMaxFase2;
+    [SerializeField] int vidaCopias;
+
     BarraVidaBosses barraVidaBosses;
     int vidaAtual;
     string nome = "Cuca";
@@ -30,8 +32,7 @@ public class Cuca : MonoBehaviour
 
     Ataques ataque;
     Fases fase;
-    bool chamandoFase1;
-    bool chamandoFase2;
+    bool chamandoFases;
 
     #region Ataque InvocarMenino
     [Header("AtaqueInvocar")]
@@ -70,14 +71,16 @@ public class Cuca : MonoBehaviour
 
         if (!derrotada)
         {
-            if (fase == Fases.Fase1 && !chamandoFase1)
+            if (fase == Fases.Fase1 && !chamandoFases)
                 StartCoroutine(FasesFunc(0));
+            if (fase == Fases.Fase2 && !chamandoFases)
+                StartCoroutine(FasesFunc(1));
         }
     }
 
     IEnumerator FasesFunc(int faseIndex)
-    { // 1 fase1; 2 fase2
-        chamandoFase1 = true;
+    { // 0 fase1; 1 fase2
+        chamandoFases = true;
         Debug.Log($"{copiaOriginal} atual --> {ataque}");
         switch (ataque)
         {
@@ -99,7 +102,7 @@ public class Cuca : MonoBehaviour
         }
         //yield return new WaitUntil(() => acabouAtaque);
         yield return new WaitForSeconds(3);
-        chamandoFase1 = false;
+        chamandoFases = false;
     }
 
     void MudarAtaque() => ataque = ataquesLista[Random.Range(0, ataquesLista.Count)];
@@ -135,23 +138,30 @@ public class Cuca : MonoBehaviour
 
     public void ReceberDano(int dano)
     {
-        if(vidaAtual > 0)
+        if (copiaOriginal)
         {
-            vidaAtual -= dano;
-            barraVidaBosses.ReceberDano(dano);
-            Debug.Log("vida atual "+vidaAtual);
+            if (vidaAtual > 0)
+            {
+                vidaAtual -= dano;
+                barraVidaBosses.ReceberDano(dano);
+                Debug.Log("vida atual " + vidaAtual);
+            }
+            else
+            {
+                if (fase == Fases.Fase1)
+                {
+                    fase = Fases.Fase2;
+                    vidaAtual = VidaMaxFase2;
+                    barraVidaBosses.CriarContainer(VidaMaxFase2, nome);
+                }
+                else derrotada = true;
+            }
         }
         else
         {
-            if (fase == Fases.Fase1) 
-            {
-                Debug.Log("FASE 2 AGORA");
-                fase = Fases.Fase2; 
-                vidaAtual = VidaMaxFase2;
-                Debug.Log($"vida atualç {vidaAtual}");
-                barraVidaBosses.CriarContainer(VidaMaxFase2, nome);
-            }
-            else derrotada = true;
+            if (vidaCopias > 0)
+                vidaCopias -= dano;
+            else Destroy(this.gameObject);
         }
     }
 }

@@ -37,7 +37,7 @@ public class Projetil : MonoBehaviour
         {
             inimigoVida?.ReceberDano(armasInfo.armaDano);
             iara?.ReceberDano(armasInfo.armaDano);
-            //HitStop.hitStop(1);
+            //StartCoroutine(HitStop.hitStop(1));
             //Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
             Destroy(gameObject);
         }

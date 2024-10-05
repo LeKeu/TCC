@@ -125,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4243070408228911128}
   - component: {fileID: 5731502079163512878}
+  - component: {fileID: -3312075186159542648}
   m_Layer: 0
   m_Name: CucaCopia
   m_TagString: CucaCopia
@@ -165,10 +166,46 @@ MonoBehaviour:
   copiaOriginal: 0
   VidaMaxFase1: 10
   VidaMaxFase2: 15
+  vidaCopias: 10
   MeninoInvocar: {fileID: 8605654276348253745, guid: ad416b1491c7a254899a5ad957b3eae9, type: 3}
   PosSpawnMenino: {fileID: 3366300377132931356}
   qntdMeninos: 2
   CucaCopia: {fileID: 0}
+--- !u!70 &-3312075186159542648
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5824573146377356106}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &8697384394168884010
 GameObject:
   m_ObjectHideFlags: 0
