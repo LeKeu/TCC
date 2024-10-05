@@ -31,10 +31,17 @@ public class Cuca : MonoBehaviour
     bool estaInvocandoMenino;
     #endregion
 
+    #region Ataque Copia
+    [SerializeField] GameObject CucaCopia;
+    bool estaCopiandoCuca;
+    #endregion
+
     private void Start()
     {
         fase = Fases.Fase1;
-        ataque = Ataques.InvocarMenino;
+        if (copiaOriginal)
+            ataque = Ataques.Copias;
+        else ataque = Ataques.InvocarMenino;
     }
 
     private void Update()
@@ -46,14 +53,15 @@ public class Cuca : MonoBehaviour
     IEnumerator Fase1()
     {
         chamandoFase1 = true;
-        Debug.Log($"ataque atual --> {ataque}");
+        Debug.Log($"{copiaOriginal} atual --> {ataque}");
         switch (ataque)
         {
             case (Ataques.InvocarMenino):
                 if (!estaInvocandoMenino) StartCoroutine(InvocarMenino());
                 MudarAtaque();
                 break;
-            case (Ataques.Copias): Debug.Log("copias");
+            case (Ataques.Copias):
+                if (!estaCopiandoCuca && copiaOriginal) CopiarCuca();
                 MudarAtaque();
                 break;
             case (Ataques.DashAleatorio): Debug.Log("dash");
@@ -80,6 +88,13 @@ public class Cuca : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         estaInvocandoMenino = false;
+    }
+
+    void CopiarCuca()
+    {
+        estaCopiandoCuca = true;
+        Instantiate(CucaCopia, PosSpawnMenino.position, Quaternion.identity);
+        estaCopiandoCuca = false;
     }
 }
 
