@@ -32,6 +32,7 @@ public class Cuca : MonoBehaviour
         Impulso
     }
     List<Ataques> ataquesLista = new List<Ataques>() { Ataques.InvocarMenino, Ataques.Copias, Ataques.DashSurpresa, Ataques.Impulso }; 
+    List<Ataques> ataquesListaCopia = new List<Ataques>() { Ataques.DashSurpresa, Ataques.Impulso }; 
 
     public enum Fases
     {
@@ -117,7 +118,9 @@ public class Cuca : MonoBehaviour
     IEnumerator FasesFunc(int faseIndex)
     { // 0 fase1; 1 fase2
         chamandoFases = true;
-        Debug.Log(ataque);
+
+        if(copiaOriginal) Debug.Log(ataque);
+
         switch (ataque)
         {
             case (Ataques.InvocarMenino): // só na fase 2
@@ -141,13 +144,16 @@ public class Cuca : MonoBehaviour
                 break;
         }
 
-        MudarAtaque();
+        if (copiaOriginal) MudarAtaque();
+        else MudarAtaqueCopia();
+
         //yield return new WaitUntil(() => acabouAtaque);
         yield return new WaitForSeconds(2);
         chamandoFases = false;
     }
 
     void MudarAtaque() => ataque = ataquesLista[Random.Range(0, ataquesLista.Count)];
+    void MudarAtaqueCopia() => ataque = ataquesListaCopia[Random.Range(0, ataquesListaCopia.Count)];
 
     #region Ataque Invocar Menino
     IEnumerator InvocarMenino()
