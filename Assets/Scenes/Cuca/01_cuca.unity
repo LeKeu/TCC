@@ -44600,7 +44600,7 @@ MonoBehaviour:
   qntdMeninos: 2
   CucaCopia: {fileID: 5824573146377356106, guid: 0bce5c28fedc72748857f83fb0c935bb, type: 3}
   velocidadeDash: 4
-  tempoDash: 1
+  tempoDash: 0.6
 --- !u!70 &9125215139793733718
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

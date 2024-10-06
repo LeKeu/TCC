@@ -59,7 +59,7 @@ public class JogadorVida : Singleton<JogadorVida>
         }
     }
 
-    public void EmpurrarPlayer(Transform collision)
+    public void EmpurrarPlayer(Transform collision, float empurrarValorFunc = 10f)
     {
         empurrao.SerEmpurrado(collision, empurraoValor);
         StartCoroutine(flash.FlashRoutine());

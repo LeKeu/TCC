@@ -17,6 +17,8 @@ public class Cuca : MonoBehaviour
     string nome = "Cuca";
     bool derrotada;
 
+    bool irAteJogador;
+
     public enum Ataques
     {
         Copias,
@@ -58,6 +60,14 @@ public class Cuca : MonoBehaviour
     bool estaDashing;
     #endregion
 
+    #region Impulsionar
+    [Header("Impulsionar")]
+    [SerializeField] int danoImpulsionar;
+    [SerializeField] float tamanhoAreaAtaque = 3f;
+    [SerializeField] float tempoEsperaImp;
+    bool estaImpulsionando;
+    #endregion
+
     private void Start()
     {
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
@@ -66,13 +76,14 @@ public class Cuca : MonoBehaviour
 
         fase = Fases.Fase1;
         if (copiaOriginal)
-            ataque = Ataques.Copias;
+            ataque = Ataques.Impulso;
         else ataque = Ataques.InvocarMenino;
     }
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(this.transform.position, JogadorController.Instance.transform.position, velocidade * Time.deltaTime);
+        if(irAteJogador) // só anda na direção do jogador se for verdadeiro
+            transform.position = Vector2.MoveTowards(this.transform.position, JogadorController.Instance.transform.position, velocidade * Time.deltaTime);
         ControleFases();
     }
 
@@ -97,28 +108,33 @@ public class Cuca : MonoBehaviour
         switch (ataque)
         {
             case (Ataques.InvocarMenino): // só na fase 2
-                if (!estaInvocandoMenino && fase == Fases.Fase2 && copiaOriginal) StartCoroutine(InvocarMenino());
-                MudarAtaque();
+                if (!estaInvocandoMenino && fase == Fases.Fase2 && copiaOriginal) 
+                    StartCoroutine(InvocarMenino());
                 break;
             case (Ataques.Copias):
-                if (!estaCopiandoCuca && copiaOriginal) CopiarCuca();
-                MudarAtaque();
+                if (!estaCopiandoCuca && copiaOriginal) 
+                    CopiarCuca();
                 break;
             case (Ataques.DashSurpresa): 
-                if(!estaDashing) StartCoroutine(DashSurpresa());
-                MudarAtaque();
+                if(!estaDashing) 
+                    StartCoroutine(DashSurpresa());
                 break;
             case (Ataques.Impulso):
-                MudarAtaque();
+                if (!estaImpulsionando) 
+                    StartCoroutine(Impulsionar());
                 break;
         }
+
+        //MudarAtaque();
         //yield return new WaitUntil(() => acabouAtaque);
         yield return new WaitForSeconds(1);
         chamandoFases = false;
     }
 
     void MudarAtaque() => ataque = ataquesLista[Random.Range(0, ataquesLista.Count)];
+    void IrAteJogador(bool valor) => irAteJogador = valor;
 
+    #region Ataque Invocar Menino
     IEnumerator InvocarMenino()
     {
         if (!copiaOriginal)
@@ -131,7 +147,9 @@ public class Cuca : MonoBehaviour
         }
         estaInvocandoMenino = false;
     }
+    #endregion
 
+    #region Ataque Copiar Cuca
     void CopiarCuca()
     {
         if(GameObject.FindGameObjectsWithTag("CucaCopia").Length < 3)
@@ -141,7 +159,9 @@ public class Cuca : MonoBehaviour
             estaCopiandoCuca = false;
         }
     }
+    #endregion
 
+    #region Ataque Dash Surpresa
     IEnumerator DashSurpresa()
     {
         estaDashing = true;
@@ -150,6 +170,36 @@ public class Cuca : MonoBehaviour
         velocidade = velAux;
         estaDashing = false;
     }
+    #endregion
+
+    #region Ataque Impulsionar
+    IEnumerator Impulsionar()
+    {
+        estaImpulsionando = true;
+        irAteJogador = true;
+
+        yield return new WaitForSeconds(tempoEsperaImp);
+        
+        AtacarImpulsionar(danoImpulsionar);
+        irAteJogador = false;
+        estaImpulsionando = false;
+    }
+
+    void AtacarImpulsionar(int dano)
+    {
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(origin, 3f);
+
+        foreach (Collider2D c in colliders)
+        {
+            if (c.GetComponent<JogadorVida>())
+            {
+                c.GetComponent<JogadorVida>().LevarDano(dano);
+                c.GetComponent<JogadorVida>().EmpurrarPlayer(gameObject.transform, 20f);
+            }
+        }
+    }
+    #endregion
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -184,6 +234,7 @@ public class Cuca : MonoBehaviour
                     fase = Fases.Fase2;
                     vidaAtual = VidaMaxFase2;
                     barraVidaBosses.CriarContainer(VidaMaxFase2, nome);
+                    barraVidaBosses.ReceberDano(dano);
                 }
                 else derrotada = true;
             }

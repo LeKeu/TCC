@@ -72,7 +72,7 @@ public class CucaMenino : MonoBehaviour
             }
         }
 
-        tremerCamera.TremerCameraFunc();
+        //tremerCamera.TremerCameraFunc();
     }
 
     void FreezarMov() { rb.constraints = RigidbodyConstraints2D.FreezeAll; estaFreezado = true; }
