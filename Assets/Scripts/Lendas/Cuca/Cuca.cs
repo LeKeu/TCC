@@ -29,10 +29,11 @@ public class Cuca : MonoBehaviour
         Copias,
         InvocarMenino,
         DashSurpresa,
-        Impulso
+        Impulso,
+        Distante
     }
-    List<Ataques> ataquesLista = new List<Ataques>() { Ataques.InvocarMenino, Ataques.Copias, Ataques.DashSurpresa, Ataques.Impulso }; 
-    List<Ataques> ataquesListaCopia = new List<Ataques>() { Ataques.DashSurpresa, Ataques.Impulso }; 
+    List<Ataques> ataquesLista = new List<Ataques>() { Ataques.InvocarMenino, Ataques.Copias, Ataques.DashSurpresa, Ataques.Impulso, Ataques.Distante }; 
+    List<Ataques> ataquesListaCopia = new List<Ataques>() { Ataques.DashSurpresa, Ataques.Impulso, Ataques.Distante }; 
 
     public enum Fases
     {
@@ -75,6 +76,14 @@ public class Cuca : MonoBehaviour
     bool estaImpulsionando;
     #endregion
 
+    #region Distancia
+    [Header("Distante")]
+    [SerializeField] GameObject projetil;
+    [SerializeField] int qndtProjetil = 6;
+    [SerializeField] float tempoEntreBalas = .5f;
+    bool estaAtirandoProjetil;
+    #endregion
+
     private void Start()
     {
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
@@ -82,7 +91,7 @@ public class Cuca : MonoBehaviour
         velAux = velocidade;
 
         fase = Fases.Fase1;
-        ataque = Ataques.Impulso;
+        ataque = Ataques.Distante;
     }
 
     private void Update()
@@ -141,6 +150,11 @@ public class Cuca : MonoBehaviour
             case (Ataques.Impulso):
                 if (!estaImpulsionando) 
                     StartCoroutine(Impulsionar());
+                break;
+
+            case (Ataques.Distante):
+                if (!estaAtirandoProjetil)
+                    StartCoroutine(CriarProjetilDistante());
                 break;
         }
 
@@ -231,6 +245,20 @@ public class Cuca : MonoBehaviour
                 break;
             }
         }
+    }
+    #endregion
+
+    #region Ataque Distante
+    IEnumerator CriarProjetilDistante()
+    {
+        Debug.Log("atirando vezes "+ qndtProjetil);
+        estaAtirandoProjetil = true;
+        for (int i = 0; i < qndtProjetil; i++)
+        {
+            Instantiate(projetil, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(tempoEntreBalas);
+        }
+        estaAtirandoProjetil = false;
     }
     #endregion
 

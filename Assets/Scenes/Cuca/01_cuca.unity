@@ -29346,6 +29346,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440313944}
   m_CullTransparentMesh: 1
+--- !u!1001 &1447185491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2230437733496348883, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_Name
+      value: projetilCuca
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.4646416
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.08016531
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661392286717462349, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
 --- !u!1 &1454591266
 GameObject:
   m_ObjectHideFlags: 0
@@ -44601,6 +44658,13 @@ MonoBehaviour:
   CucaCopia: {fileID: 5824573146377356106, guid: 0bce5c28fedc72748857f83fb0c935bb, type: 3}
   velocidadeDash: 4
   tempoDash: 0.6
+  danoImpulsionar: 0
+  tamanhoAreaAtaque: 3
+  tempoEsperaImp: 0
+  distMaxJogador: 1
+  projetil: {fileID: 2230437733496348883, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
+  qndtProjetil: 6
+  tempoEntreBalas: 0.5
 --- !u!70 &9125215139793733718
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -44663,3 +44727,4 @@ SceneRoots:
   - {fileID: 1619727824}
   - {fileID: 695872227}
   - {fileID: 1202962107}
+  - {fileID: 1447185491}

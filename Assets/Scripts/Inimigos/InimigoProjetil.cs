@@ -11,7 +11,7 @@ public class InimigoProjetil : MonoBehaviour
 
     float auxTempo = 0f;
 
-    public bool seguirJogador = false;
+    public bool seguirJogador;
     // Start is called before the first frame update
     void Start()
     {
