@@ -9,7 +9,7 @@ public class CucaMenino : MonoBehaviour
     [SerializeField] float movVel = 1;//= 4.3f;
     [SerializeField] float distMaxJogador = 1f;
     [SerializeField] int dano = 5;
-    bool estaFreezado;
+
     bool estaLonge;
 
     [SerializeField] private float sumirTempo = .4f;
@@ -17,11 +17,9 @@ public class CucaMenino : MonoBehaviour
 
     Transparencia transparencia;
     SpriteRenderer spriteRenderer;
-    TremerCamera tremerCamera;
 
     private void Start()
     {
-        tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         transparencia = GetComponent<Transparencia>();
         rb = GetComponent<Rigidbody2D>();
@@ -69,14 +67,15 @@ public class CucaMenino : MonoBehaviour
             if (c.GetComponent<JogadorVida>())
             {
                 c.GetComponent<JogadorVida>().LevarDano(dano);
+                break;
             }
         }
 
         //tremerCamera.TremerCameraFunc();
     }
 
-    void FreezarMov() { rb.constraints = RigidbodyConstraints2D.FreezeAll; estaFreezado = true; }
-    void DesfreezarMov() { rb.constraints = RigidbodyConstraints2D.None; rb.constraints = RigidbodyConstraints2D.FreezeRotation; estaFreezado = false; }
+    void FreezarMov() { rb.constraints = RigidbodyConstraints2D.FreezeAll; }
+    void DesfreezarMov() { rb.constraints = RigidbodyConstraints2D.None; rb.constraints = RigidbodyConstraints2D.FreezeRotation; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
