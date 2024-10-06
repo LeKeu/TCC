@@ -276,7 +276,14 @@ public class Cuca : MonoBehaviour
 
     void Derrotar()
     {
-        
+        derrotada = true;
+        GameObject[] copias = GameObject.FindGameObjectsWithTag("CucaCopia");
+        if(copias.Length != 0)
+        {
+            foreach (GameObject copia in copias)
+                Destroy(copia);
+        }
+        StopAllCoroutines();
     }
 }
 
