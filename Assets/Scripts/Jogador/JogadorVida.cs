@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class JogadorVida : Singleton<JogadorVida>
 {
-    [SerializeField] private int vidaMax = 3;
-    [SerializeField] private float empurraoValor = 10f;
-    [SerializeField] private float tempoRecoveryDano = 1f;
+    [SerializeField] int vidaMax = 3;
+    [SerializeField] float empurraoValor = 10f;
+    [SerializeField] float tempoRecoveryDano = 1f;
+    [SerializeField] float tempoHitstop = 0.1f;
 
-    private Slider vidaSlider;
-    private int vidaAtual;
+    Slider vidaSlider;
+    int vidaAtual;
 
     public bool podeLevarDano = true;
 
@@ -79,6 +80,7 @@ public class JogadorVida : Singleton<JogadorVida>
         if (!podeLevarDano) { return; }
 
         tremerCamera.TremerCameraFunc();
+        FindObjectOfType<HitStop>().hitStop(tempoHitstop);
 
         podeLevarDano = false;
         vidaAtual -= dano;

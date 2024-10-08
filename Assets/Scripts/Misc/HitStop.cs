@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class HitStop : MonoBehaviour
 {
-    public static IEnumerator hitStop(float tempo)
+    bool esperando;
+    public void hitStop(float duracao)
     {
-        Debug.Log("HITSTOP");
+        if (esperando)
+            return;
+        Debug.Log("HITSOP "+ duracao);
         Time.timeScale = 0;
-        yield return new WaitForSeconds(tempo);
+        StartCoroutine(Esperar(duracao));
+    }
+
+    IEnumerator Esperar(float duracao)
+    {
+        esperando = true;
+        yield return new WaitForSecondsRealtime(duracao);
         Time.timeScale = 1;
+        esperando = false;
     }
 
 }
