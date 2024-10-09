@@ -267,21 +267,21 @@ public class Cuca : MonoBehaviour
     }
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "FlechaPlayer")
-        {
-            ReceberDano(2);
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.transform.tag == "FlechaPlayer")
+    //    {
+    //        ReceberDano(2);
+    //    }
+    //}
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "FlechaPlayer")
-        {
-            ReceberDano(2);
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.transform.tag == "FlechaPlayer")
+    //    {
+    //        ReceberDano(2);
+    //    }
+    //}
 
     public void ReceberDano(int dano)
     {

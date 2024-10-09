@@ -31,12 +31,14 @@ public class Projetil : MonoBehaviour
     {
         InimigoVida inimigoVida = collision.GetComponent<InimigoVida>();
         Iara iara = collision.GetComponent<Iara>();
+        Cuca cuca = collision.GetComponent<Cuca>();
         Indestrutivel indestrutivel = collision.gameObject.GetComponent<Indestrutivel>();
 
-        if (!collision.isTrigger && (inimigoVida || indestrutivel || iara))
+        if (!collision.isTrigger && (inimigoVida || indestrutivel || iara || cuca))
         {
             inimigoVida?.ReceberDano(armasInfo.armaDano);
             iara?.ReceberDano(armasInfo.armaDano);
+            cuca?.ReceberDano(armasInfo.armaDano);
             //StartCoroutine(HitStop.hitStop(1));
             //Instantiate(particleOnHitPrefabVFX, transform.position, transform.rotation);
             Destroy(gameObject);
