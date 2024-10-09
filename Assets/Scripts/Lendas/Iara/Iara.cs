@@ -51,18 +51,11 @@ public class Iara : MonoBehaviour
     int auxVida;
     int indexAtq = 0;
 
-    int vida75;
-    int vida50;
-    int vida25;
-
     public Vector2 movDirecao;
     
 
     private void Start()
     {
-        vida75 = Vida - auxVida; // 75% da vida total
-        vida50 = Vida - auxVida * 2; // 50% da vida total
-        vida25 = Vida - auxVida * 3;
 
         ajusteTamanhoCamera = GameObject.Find("Virtual Camera").GetComponent<AjusteTamanhoCamera>();
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();

@@ -15,8 +15,8 @@ public class JogadorVida : Singleton<JogadorVida>
 
     public bool podeLevarDano = true;
 
-    private Empurrao empurrao;
-    private Flash flash;
+    Empurrao empurrao;
+    Flash flash;
     TremerCamera tremerCamera;
 
     protected override void Awake()

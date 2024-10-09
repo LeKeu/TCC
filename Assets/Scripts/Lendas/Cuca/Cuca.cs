@@ -13,6 +13,9 @@ public class Cuca : MonoBehaviour
     float velAux;
 
     BarraVidaBosses barraVidaBosses;
+    Empurrao empurrao;
+    Flash flash;
+
     int vidaAtual;
     string nome = "Cuca";
     bool derrotada;
@@ -86,6 +89,9 @@ public class Cuca : MonoBehaviour
     private void Start()
     {
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
+        empurrao = GetComponent<Empurrao>();
+        flash = GetComponentInChildren<Flash>();
+
         vidaAtual = VidaMaxFase1;
         velAux = velocidade;
 
@@ -279,12 +285,14 @@ public class Cuca : MonoBehaviour
 
     public void ReceberDano(int dano)
     {
-        if (copiaOriginal)
+        if (copiaOriginal) // CUCA
         {
             if (vidaAtual > 0)
             {
                 vidaAtual -= dano;
                 barraVidaBosses.ReceberDano(dano);
+
+                StartCoroutine(flash.FlashRoutine());
             }
             else // se a vida for menor que 0
             {
@@ -295,10 +303,13 @@ public class Cuca : MonoBehaviour
                 else Derrotar();
             }
         }
-        else
+        else // CUCA CÓPIA
         {
             if (vidaCopias > 0)
+            {
                 vidaCopias -= dano;
+                StartCoroutine(flash.FlashRoutine());
+            }
             else Destroy(this.gameObject);
         }
     }
