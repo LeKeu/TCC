@@ -167,7 +167,7 @@ public class Cuca : MonoBehaviour
         else MudarAtaqueCopia();
 
         //yield return new WaitUntil(() => acabouAtaque);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(10);
         chamandoFases = false;
     }
 
@@ -287,6 +287,8 @@ public class Cuca : MonoBehaviour
     {
         if (copiaOriginal) // CUCA
         {
+            Debug.Log("dano recebido "+dano);
+            Debug.Log("vida atual "+vidaAtual);
             if (vidaAtual > 0)
             {
                 vidaAtual -= dano;

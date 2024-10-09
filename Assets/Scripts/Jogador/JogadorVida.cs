@@ -56,7 +56,6 @@ public class JogadorVida : Singleton<JogadorVida>
             Destroy(collision.gameObject);
             LevarDano(1);
             EmpurrarPlayer(collision.gameObject.transform);
-            //StartCoroutine(flash.FlashRoutine());
         }
     }
 

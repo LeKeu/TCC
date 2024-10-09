@@ -6,6 +6,7 @@ public class CucaMenino : MonoBehaviour
 {
     Rigidbody2D rb;
     Vector2 movDir;
+
     [SerializeField] float movVel = 1;//= 4.3f;
     [SerializeField] float distMaxJogador = 1f;
     [SerializeField] int dano = 5;

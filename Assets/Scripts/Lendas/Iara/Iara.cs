@@ -249,14 +249,6 @@ public class Iara : MonoBehaviour
         else Boss1 = false;
     }
 
-    void Freezar() => rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-    void Desfrizar()
-    {
-        rb.constraints = RigidbodyConstraints2D.None;
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-    }
-
     void TamanhoCamera(float tam)
     {
         if (!ajusteTamanhoCamera.ChecarTamanhoCamera(tam))
