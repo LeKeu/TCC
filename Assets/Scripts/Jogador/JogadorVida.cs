@@ -7,7 +7,7 @@ public class JogadorVida : Singleton<JogadorVida>
 {
     [SerializeField] int vidaMax = 3;
     [SerializeField] float empurraoValor = 10f;
-    [SerializeField] float tempoRecoveryDano = 1f;
+    [SerializeField] float tempoRecoveryDano = .5f;
     [SerializeField] float tempoHitstop = 0.1f;
 
     Slider vidaSlider;

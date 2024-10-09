@@ -47,7 +47,7 @@ public class BarraVidaBosses : MonoBehaviour
 
     public bool ContainerEstaAtivo() => ContainerSliderBoss.activeSelf;
 
-    public void MudarCorPodeLevarDano() => GameObject.Find("FillCor").GetComponent<Image>().color = Color.green;
-    public void MudarCorNaoPodeLevarDano() => GameObject.Find("FillCor").GetComponent<Image>().color = Color.grey;
+    public void MudarCorBarra(Color cor) => GameObject.Find("FillCor").GetComponent<Image>().color = cor;
+    //public void MudarCorNaoPodeLevarDano() => GameObject.Find("FillCor").GetComponent<Image>().color = Color.grey;
 
 }

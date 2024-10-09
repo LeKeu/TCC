@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Cuca : MonoBehaviour
@@ -286,16 +285,12 @@ public class Cuca : MonoBehaviour
             {
                 vidaAtual -= dano;
                 barraVidaBosses.ReceberDano(dano);
-                //Debug.Log("vida atual " + vidaAtual);
             }
-            else
+            else // se a vida for menor que 0
             {
                 if (fase == Fases.Fase1)
                 {
-                    fase = Fases.Fase2;
-                    vidaAtual = VidaMaxFase2;
-                    barraVidaBosses.CriarContainer(VidaMaxFase2, nome);
-                    barraVidaBosses.ReceberDano(dano);
+                    IniciarFase2();
                 }
                 else Derrotar();
             }
@@ -318,6 +313,15 @@ public class Cuca : MonoBehaviour
                 Destroy(copia);
         }
         StopAllCoroutines();
+    }
+
+    void IniciarFase2()
+    {
+        fase = Fases.Fase2;
+        vidaAtual = VidaMaxFase2;
+        barraVidaBosses.CriarContainer(VidaMaxFase2, nome);
+        barraVidaBosses.MudarCorBarra(Color.red);
+        //barraVidaBosses.ReceberDano(dano);
     }
 }
 
