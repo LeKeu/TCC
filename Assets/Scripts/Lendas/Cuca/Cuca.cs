@@ -10,6 +10,7 @@ public class Cuca : MonoBehaviour
     [SerializeField] int VidaMaxFase2;
     [SerializeField] int vidaCopias;
     [SerializeField] float velocidade;
+    float tempoEntreAtaques = 5f;
     float velAux;
 
     BarraVidaBosses barraVidaBosses;
@@ -39,7 +40,7 @@ public class Cuca : MonoBehaviour
         Impulso,
         Distante
     }
-    List<Ataques> ataquesLista = new List<Ataques>() { Ataques.InvocarMenino, Ataques.Copias, Ataques.DashSurpresa, Ataques.Impulso, Ataques.Distante }; 
+    List<Ataques> ataquesLista = new List<Ataques>() { Ataques.DashSurpresa, Ataques.Impulso, Ataques.Distante, Ataques.Copias, Ataques.InvocarMenino }; 
     List<Ataques> ataquesListaCopia = new List<Ataques>() { Ataques.DashSurpresa, Ataques.Impulso, Ataques.Distante }; 
 
     public enum Fases
@@ -64,6 +65,7 @@ public class Cuca : MonoBehaviour
     #region Ataque Copia
     [Header("AtaqueCopiar")]
     [SerializeField] GameObject CucaCopia;
+    [SerializeField] List<Transform> pontosSpawnCopias;
     bool estaCopiandoCuca;
     #endregion
 
@@ -211,11 +213,11 @@ public class Cuca : MonoBehaviour
         else MudarAtaqueCopia();
 
         //yield return new WaitUntil(() => acabouAtaque);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(tempoEntreAtaques);
         chamandoFases = false;
     }
 
-    void MudarAtaque() => ataque = ataquesLista[Random.Range(0, ataquesLista.Count)];
+    void MudarAtaque() => ataque = fase == Fases.Fase1?  ataquesLista[Random.Range(0, ataquesLista.Count-1)] : ataquesLista[Random.Range(0, ataquesLista.Count)];
     void MudarAtaqueCopia() => ataque = ataquesListaCopia[Random.Range(0, ataquesListaCopia.Count)];
 
     #region Ataque Invocar Menino
@@ -238,10 +240,12 @@ public class Cuca : MonoBehaviour
     {
         StartCoroutine(PararPAtacar());
 
-        if (GameObject.FindGameObjectsWithTag("CucaCopia").Length < 3)
+        if (GameObject.FindGameObjectsWithTag("CucaCopia").Length == 0)
         {
             estaCopiandoCuca = true;
-            Instantiate(CucaCopia, PosSpawnMenino.position, Quaternion.identity);
+            Instantiate(CucaCopia, pontosSpawnCopias[0].position, Quaternion.identity);
+            Instantiate(CucaCopia, pontosSpawnCopias[1].position, Quaternion.identity);
+            Instantiate(CucaCopia, pontosSpawnCopias[2].position, Quaternion.identity);
             estaCopiandoCuca = false;
         }
     }
