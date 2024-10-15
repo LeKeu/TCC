@@ -22,6 +22,7 @@ public class Cuca : MonoBehaviour
 
     #region Movimentacao
     [SerializeField] float distMaxJogadorNormal = 5f;
+    [SerializeField] float tempoParadaEmAtaque = 2f;
     bool irAteJogador;
     bool estaPertoDoJogadorAtaque;
     bool estaPertoDoJogadorNormal;
@@ -112,6 +113,7 @@ public class Cuca : MonoBehaviour
         ControleFases();
     }
 
+    #region Movimentação
     void Movimentar()
     {
         if(!ataqueDeMovimento)
@@ -149,6 +151,7 @@ public class Cuca : MonoBehaviour
             estaPertoDoJogadorNormal = false;
         }
     }
+    #endregion
 
     void MudarStatsFase2()
     {
@@ -165,7 +168,7 @@ public class Cuca : MonoBehaviour
         {
             if (fase == Fases.Fase1 && !chamandoFases)
                 StartCoroutine(FasesFunc(0));
-            if (fase == Fases.Fase2 && !chamandoFases) { }
+            if (fase == Fases.Fase2 && !chamandoFases)
                 StartCoroutine(FasesFunc(1));
         }
     }
@@ -218,8 +221,8 @@ public class Cuca : MonoBehaviour
     #region Ataque Invocar Menino
     IEnumerator InvocarMenino()
     {
-        if (!copiaOriginal)
-            Debug.Log("copia incvocando menino");
+        StartCoroutine(PararPAtacar());
+
         estaInvocandoMenino = true;
         for(int i = 0; i < qntdMeninos; i++)
         {
@@ -233,7 +236,9 @@ public class Cuca : MonoBehaviour
     #region Ataque Copiar Cuca
     void CopiarCuca()
     {
-        if(GameObject.FindGameObjectsWithTag("CucaCopia").Length < 3)
+        StartCoroutine(PararPAtacar());
+
+        if (GameObject.FindGameObjectsWithTag("CucaCopia").Length < 3)
         {
             estaCopiandoCuca = true;
             Instantiate(CucaCopia, PosSpawnMenino.position, Quaternion.identity);
@@ -312,12 +317,17 @@ public class Cuca : MonoBehaviour
     }
     #endregion
 
+    IEnumerator PararPAtacar()
+    {
+        podeMover = false;
+        yield return new WaitForSeconds(tempoParadaEmAtaque);
+        podeMover = true;
+    }
+
     public void ReceberDano(int dano)
     {
         if (copiaOriginal) // CUCA
         {
-            Debug.Log("dano recebido "+dano);
-            Debug.Log("vida atual "+vidaAtual);
             if (vidaAtual > 0)
             {
                 vidaAtual -= dano;
