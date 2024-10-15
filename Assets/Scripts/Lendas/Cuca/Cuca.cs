@@ -21,8 +21,12 @@ public class Cuca : MonoBehaviour
     bool derrotada;
 
     #region Movimentacao
+    [SerializeField] float distMaxJogadorNormal = 5f;
     bool irAteJogador;
-    bool estaPertoDoJogador;
+    bool estaPertoDoJogadorAtaque;
+    bool estaPertoDoJogadorNormal;
+    bool ataqueDeMovimento;
+    bool podeMover;
     #endregion
 
     #region Enums
@@ -91,6 +95,7 @@ public class Cuca : MonoBehaviour
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
         empurrao = GetComponent<Empurrao>();
         flash = GetComponentInChildren<Flash>();
+        podeMover = true;
 
         vidaAtual = VidaMaxFase1;
         velAux = velocidade;
@@ -101,18 +106,54 @@ public class Cuca : MonoBehaviour
 
     private void Update()
     {
-        if (irAteJogador) // só anda na direção do jogador se for verdadeiro
-            IrAteJogadorFunc();
+        if (podeMover)
+            Movimentar();
+
         ControleFases();
+    }
+
+    void Movimentar()
+    {
+        if(!ataqueDeMovimento)
+            IrLongeJogador();
+        else
+            IrAteJogadorFunc();
     }
 
     void IrAteJogadorFunc()
     {
-        if(!estaPertoDoJogador)
+        if(!estaPertoDoJogadorAtaque)
             transform.position = Vector2.MoveTowards(this.transform.position, JogadorController.Instance.transform.position, velocidade * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, JogadorController.Instance.transform.position) <= distMaxJogador)
-            estaPertoDoJogador = true;
+            estaPertoDoJogadorAtaque = true;
+    }
+
+    void IrLongeJogador()
+    {
+        if (Vector3.Distance(transform.position, JogadorController.Instance.transform.position) < distMaxJogadorNormal)
+        {
+            estaPertoDoJogadorNormal = true;
+        }
+
+        if (estaPertoDoJogadorNormal)
+        {
+            Vector2 direcaoOposta = (transform.position - JogadorController.Instance.transform.position).normalized;
+
+            transform.position = Vector2.MoveTowards(this.transform.position, this.transform.position + (Vector3)direcaoOposta, velocidade * Time.deltaTime);
+        }
+
+        // Verifica se o objeto está longe o suficiente do jogador para parar de se mover
+        if (Vector3.Distance(transform.position, JogadorController.Instance.transform.position) >= distMaxJogadorNormal)
+        {
+            estaPertoDoJogadorNormal = false;
+        }
+    }
+
+    void MudarStatsFase2()
+    {
+        velocidade += 2;
+        velAux = velocidade;
     }
 
     void ControleFases()
@@ -124,7 +165,7 @@ public class Cuca : MonoBehaviour
         {
             if (fase == Fases.Fase1 && !chamandoFases)
                 StartCoroutine(FasesFunc(0));
-            if (fase == Fases.Fase2 && !chamandoFases)
+            if (fase == Fases.Fase2 && !chamandoFases) { }
                 StartCoroutine(FasesFunc(1));
         }
     }
@@ -167,7 +208,7 @@ public class Cuca : MonoBehaviour
         else MudarAtaqueCopia();
 
         //yield return new WaitUntil(() => acabouAtaque);
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(2);
         chamandoFases = false;
     }
 
@@ -204,6 +245,7 @@ public class Cuca : MonoBehaviour
     #region Ataque Dash Surpresa
     IEnumerator DashSurpresa()
     {
+        ataqueDeMovimento = true;
         estaDashing = true;
         irAteJogador = true; // dependendo de como for a mov da cuca, retirar isso
         velocidade = velocidadeDash;
@@ -213,18 +255,20 @@ public class Cuca : MonoBehaviour
         velocidade = velAux;
         irAteJogador = false;
         estaDashing = false;
+        ataqueDeMovimento = false;
     }
     #endregion
 
     #region Ataque Impulsionar
     IEnumerator Impulsionar()
     {
+        ataqueDeMovimento = true;
         estaImpulsionando = true;
         irAteJogador = true;
 
         velocidade *= 2;
 
-        yield return new WaitUntil(() => estaPertoDoJogador); // começar o ataque somente quando a cuca estiver perto do jogador
+        yield return new WaitUntil(() => estaPertoDoJogadorAtaque); // começar o ataque somente quando a cuca estiver perto do jogador
         yield return new WaitForSeconds(tempoEsperaImp);
 
         AtacarImpulsionar(danoImpulsionar);
@@ -233,7 +277,8 @@ public class Cuca : MonoBehaviour
 
         irAteJogador = false;
         estaImpulsionando = false;
-        estaPertoDoJogador = false;
+        ataqueDeMovimento = false;
+        estaPertoDoJogadorAtaque = false;
     }
 
     void AtacarImpulsionar(int dano)
@@ -256,7 +301,7 @@ public class Cuca : MonoBehaviour
     #region Ataque Distante
     IEnumerator CriarProjetilDistante()
     {
-        Debug.Log("atirando vezes "+ qndtProjetil);
+        //Debug.Log("atirando vezes "+ qndtProjetil);
         estaAtirandoProjetil = true;
         for (int i = 0; i < qndtProjetil; i++)
         {
@@ -266,22 +311,6 @@ public class Cuca : MonoBehaviour
         estaAtirandoProjetil = false;
     }
     #endregion
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.transform.tag == "FlechaPlayer")
-    //    {
-    //        ReceberDano(2);
-    //    }
-    //}
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.transform.tag == "FlechaPlayer")
-    //    {
-    //        ReceberDano(2);
-    //    }
-    //}
 
     public void ReceberDano(int dano)
     {
@@ -301,6 +330,7 @@ public class Cuca : MonoBehaviour
                 if (fase == Fases.Fase1)
                 {
                     IniciarFase2();
+                    MudarStatsFase2();
                 }
                 else Derrotar();
             }

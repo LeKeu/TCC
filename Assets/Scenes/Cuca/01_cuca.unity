@@ -5260,7 +5260,7 @@ Tilemap:
       - {fileID: -789301179, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -150664405, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 811915624, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -7, y: -4, z: 0}
@@ -44623,7 +44623,7 @@ MonoBehaviour:
   tempoEsperaImp: 1.5
   distMaxJogador: 1
   projetil: {fileID: 2230437733496348883, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
-  qndtProjetil: 6
+  qndtProjetil: 2
   tempoEntreBalas: 0.5
 --- !u!70 &9125215139793733718
 CapsuleCollider2D:

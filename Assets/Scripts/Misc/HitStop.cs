@@ -9,7 +9,7 @@ public class HitStop : MonoBehaviour
     {
         if (esperando)
             return;
-        Debug.Log("HITSOP "+ duracao);
+        //Debug.Log("HITSOP "+ duracao);
         Time.timeScale = 0;
         StartCoroutine(Esperar(duracao));
     }
