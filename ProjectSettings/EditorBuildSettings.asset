@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Comunidade/TESTE.unity
     guid: 7ac43024daef41047ac697509aa95618
+  - enabled: 1
+    path: Assets/Scenes/Saci/01_saci.unity
+    guid: d1c0966fad423364b9c7db41a1bc5035
   m_configObjects: {}

@@ -53,6 +53,6 @@ public class TiaMarta : NPCs, ITalkable
     void CompletarTutorial()
     {
         tutCompleto = true;
-        Debug.Log("entregando ervas");
+        //Debug.Log("entregando ervas");
     }
 }

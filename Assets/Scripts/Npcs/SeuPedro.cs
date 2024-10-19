@@ -55,6 +55,6 @@ public class SeuPedro : NPCs, ITalkable
     void CompletarTutorial()
     {
         tutCompleto = true;
-        Debug.Log("seu pedro OK");
+        //Debug.Log("seu pedro OK");
     }
 }

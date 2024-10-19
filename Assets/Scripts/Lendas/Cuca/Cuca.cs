@@ -38,9 +38,10 @@ public class Cuca : MonoBehaviour
         InvocarMenino,
         DashSurpresa,
         Impulso,
-        Distante
+        Distante,
+        Garra
     }
-    List<Ataques> ataquesLista = new List<Ataques>() { Ataques.DashSurpresa, Ataques.Impulso, Ataques.Distante, Ataques.Copias, Ataques.InvocarMenino }; 
+    List<Ataques> ataquesLista = new List<Ataques>() { Ataques.DashSurpresa, Ataques.Impulso, Ataques.Distante, Ataques.Copias, Ataques.Garra, Ataques.InvocarMenino }; 
     List<Ataques> ataquesListaCopia = new List<Ataques>() { Ataques.DashSurpresa, Ataques.Impulso, Ataques.Distante }; 
 
     public enum Fases
@@ -83,6 +84,12 @@ public class Cuca : MonoBehaviour
     [SerializeField] float tempoEsperaImp = 1.5f;
     [SerializeField] float distMaxJogador = 1f;
     bool estaImpulsionando;
+    #endregion
+
+    #region Garra
+    [Header("Garra")]
+    [SerializeField] int danoGarra = 3;
+    bool estaGarra;
     #endregion
 
     #region Distancia
@@ -200,7 +207,7 @@ public class Cuca : MonoBehaviour
 
             case (Ataques.Impulso):
                 if (!estaImpulsionando) 
-                    StartCoroutine(Impulsionar());
+                    StartCoroutine(Impulsionar(0));
                 break;
 
             case (Ataques.Distante):
@@ -268,11 +275,14 @@ public class Cuca : MonoBehaviour
     }
     #endregion
 
-    #region Ataque Impulsionar
-    IEnumerator Impulsionar()
-    {
+    #region Ataque Impulsionar e Garra
+    IEnumerator Impulsionar(int tipo)
+    { // tipo = 0 --> impulsionar, 1 --> garra
         ataqueDeMovimento = true;
-        estaImpulsionando = true;
+
+        if (tipo == 0) estaImpulsionando = true;
+        else estaGarra = true;
+
         irAteJogador = true;
 
         velocidade *= 2;
@@ -280,12 +290,18 @@ public class Cuca : MonoBehaviour
         yield return new WaitUntil(() => estaPertoDoJogadorAtaque); // começar o ataque somente quando a cuca estiver perto do jogador
         yield return new WaitForSeconds(tempoEsperaImp);
 
-        AtacarImpulsionar(danoImpulsionar);
+        if (tipo == 0)
+            AtacarImpulsionar(danoImpulsionar);
+        else
+            AtaqueGarra(danoGarra);
 
         velocidade = velAux;
 
         irAteJogador = false;
-        estaImpulsionando = false;
+        
+        if (tipo == 0) estaImpulsionando = true;
+        else estaGarra = true;
+
         ataqueDeMovimento = false;
         estaPertoDoJogadorAtaque = false;
     }
@@ -300,10 +316,15 @@ public class Cuca : MonoBehaviour
             if (c.GetComponent<JogadorVida>())
             {
                 c.GetComponent<JogadorVida>().LevarDano(dano);
-                c.GetComponent<JogadorVida>().EmpurrarPlayer(gameObject.transform, 20f);
+                c.GetComponent<JogadorVida>().EmpurrarPlayer(gameObject.transform, 40f);
                 break;
             }
         }
+    }
+
+    void AtaqueGarra(int dano)
+    {
+
     }
     #endregion
 
