@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
   m_Name: SeuJoaoTutorial
   m_EditorClassIdentifier: 
-  nome: "Seu Jo\xE3o"
   paragrafos:
-  - o pedrinho rouboub minha bola
-  - socorro
+  - "Seu Jo\xE3o_o pedrinho rouboub minha bola"
+  - "Seu Jo\xE3o_socorro"
   perfilNPC: {fileID: 21300000, guid: a22f1ac1a7b020f4687724b688addcaa, type: 3}

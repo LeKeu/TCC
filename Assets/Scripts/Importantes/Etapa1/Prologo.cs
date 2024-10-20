@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Prologo : MonoBehaviour
 {
-    int totalNpcsConversaveis = 1;
+    int totalNpcsConversaveis = 7;
     public static int qntdNpcsConversados = 0;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +19,7 @@ public class Prologo : MonoBehaviour
 
     public void Brigar()
     {
-        if (qntdNpcsConversados == 1)
+        if (qntdNpcsConversados == totalNpcsConversaveis)
             Debug.Log("pode brigarrr");
     }
 

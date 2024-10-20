@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menino : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class Menino : MonoBehaviour
     bool estaFreezado;
     void Start()
     {
-        pedrinho = GameObject.Find("Pedrinho").GetComponent<Pedrinho>();
+        if(SceneManager.GetActiveScene().name == "01_comunidade")
+            pedrinho = GameObject.Find("Pedrinho").GetComponent<Pedrinho>();
         rb = GetComponent<Rigidbody2D>();
         podeMover = true;
     }
@@ -34,7 +36,7 @@ public class Menino : MonoBehaviour
     {
         if (podeMover && JogadorController.Instance.podeMover)
         {
-            if(pedrinho.podePegarBola == false) // se a menina for atrás da bola, ele fica esperando
+            if(pedrinho?.podePegarBola == false || SceneManager.GetActiveScene().name == "02_comunidade") // se a menina for atrás da bola, ele fica esperando
                 Andar();
                 if (estaLonge)
                     rb.MovePosition(rb.position + movDir * (movVel * Time.deltaTime));
