@@ -79,7 +79,7 @@ public class JogadorVida : Singleton<JogadorVida>
         if (!podeLevarDano) { return; }
 
         tremerCamera.TremerCameraFunc();
-        FindObjectOfType<HitStop>().hitStop(tempoHitstop);
+        FindObjectOfType<HitStop>()?.hitStop(tempoHitstop);
 
         podeLevarDano = false;
         vidaAtual -= dano;

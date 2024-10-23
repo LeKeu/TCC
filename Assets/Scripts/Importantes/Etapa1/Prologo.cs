@@ -6,6 +6,7 @@ public class Prologo : MonoBehaviour
 {
     int totalNpcsConversaveis = 7;
     public static int qntdNpcsConversados = 0;
+    bool aconteceuBriga;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,12 +21,13 @@ public class Prologo : MonoBehaviour
     public void Brigar()
     {
         if (qntdNpcsConversados == totalNpcsConversaveis)
-            Debug.Log("pode brigarrr");
+            aconteceuBriga = true;
     }
 
     public void CucaSequestraMenino()
     {
-        Debug.Log("sequestro");
+        if(aconteceuBriga)
+            Debug.Log("sequestro");
     }
 
     public void PerseguirCuca()
