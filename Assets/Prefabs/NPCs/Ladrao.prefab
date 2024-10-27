@@ -132,8 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interagirSprite: {fileID: 5234424695186952930}
-  dialogoTexto: {fileID: 11400000, guid: 9d1fb5832bcd5924fa4c0b5912b9c018, type: 2}
+  dt: []
   dialogoController: {fileID: 0}
+  perfil: {fileID: 0}
 --- !u!1 &2803386710652553400
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7ec394bbb9e492848b670ffca2604310, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

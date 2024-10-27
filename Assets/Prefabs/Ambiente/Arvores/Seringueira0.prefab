@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -541533856, guid: 0ff965b1b411b2c42b5599d7ecaa3c5f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -262,7 +262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 124226343335675089}
   - component: {fileID: 555810271197634061}
-  - component: {fileID: 8823774147202676229}
   - component: {fileID: 1503513886133827209}
   - component: {fileID: 129901266343175393}
   m_Layer: 0
@@ -303,20 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae182ef9496e0748a41c299bfc2bfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8823774147202676229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754908299884473239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3739d1750d6c0aa4db018594cdaedde3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qntdTransparencia: 0.8
-  sumirTempo: 0.4
 --- !u!58 &1503513886133827209
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -459,7 +444,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d921bb39ede01e449a784ef0f5723b56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6203783052731923401}
   - component: {fileID: 6529808379241427295}
+  - component: {fileID: 7354919140850904359}
   m_Layer: 0
   m_Name: VelhaNamia
   m_TagString: Untagged
@@ -48,8 +49,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interagirSprite: {fileID: 5234424695186952930}
-  dialogoTexto: {fileID: 11400000, guid: 61624eef687ed7d41a1c7a809b2aafe9, type: 2}
+  dt: []
   dialogoController: {fileID: 0}
+  ErvasVerdes: {fileID: 0}
+  perfil: {fileID: 0}
+  tutCompleto: 0
+--- !u!95 &7354919140850904359
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2792644527521278908}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2803386710652553400
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +231,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
