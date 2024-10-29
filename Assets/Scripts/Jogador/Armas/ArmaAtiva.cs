@@ -34,7 +34,8 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     private void Update()
     {
-        Atacar();
+        if(JogadorController.Instance.podeAtacar)
+            Atacar();
     }
 
     public void NovaArma(MonoBehaviour novaArma)

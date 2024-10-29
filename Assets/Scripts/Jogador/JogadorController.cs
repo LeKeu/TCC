@@ -30,6 +30,7 @@ public class JogadorController : Singleton<JogadorController>
     public bool estaSendoPerseguido = false;
     public bool estaAndando;
     public bool podeMover;
+    public bool podeAtacar;
 
     protected override void Awake()
     {
