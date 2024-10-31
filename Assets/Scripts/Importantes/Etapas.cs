@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Etapas 
+public class Etapas : MonoBehaviour
 {
-    public const bool Etapa1 = true;
-    public const bool Etapa2 = false;
-    public const bool Etapa3 = false;
-    public const bool Etapa4 = false;
+    public static bool ETAPA1;
+
+    public static bool Prologo;
+    public static bool MeninaTocandoUkulele;
+
+    public static bool ETAPA2;
+    public static bool ETAPA3;
+    public static bool ETAPA4;
 }

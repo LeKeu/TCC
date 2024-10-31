@@ -7,6 +7,7 @@ public class Prologo : MonoBehaviour
 {
     [SerializeField] AudioClip musicaMenina;
     AudioSource musicaSource;
+    Menino meninoScript;
 
     public static int qntdNpcsConversados = 0;
     int totalNpcsConversaveis = 7;
@@ -15,6 +16,7 @@ public class Prologo : MonoBehaviour
     private void Awake()
     {
         musicaSource = GetComponent<AudioSource>();
+        meninoScript = GameObject.Find("Menino").GetComponent<Menino>();
     }
 
     private void Start()
@@ -35,15 +37,27 @@ public class Prologo : MonoBehaviour
 
     IEnumerator IniciarJogo_MeninaTocando()
     {
+        Etapas.MeninaTocandoUkulele = true;
+
         JogadorController.Instance.podeAtacar = false;
         JogadorController.Instance.podeMover = false;
 
         musicaSource.PlayOneShot(musicaMenina);
 
-        yield return new WaitForSeconds(musicaMenina.length);
+        yield return new WaitForSeconds(10); // música tocando por x segundos
+
+        meninoScript.podeMover = true;
+        musicaSource.Stop();
+
+        yield return new WaitUntil(() => !meninoScript.estaLonge); // esperar até o menino chegar perto
+        meninoScript.Interagir();
+
+        yield return new WaitUntil(() => JogadorController.Instance.podeMover); // esperar dialogo com menino acabar
 
         JogadorController.Instance.podeAtacar = true;
-        JogadorController.Instance.podeMover = true;
+        Menino.acabouFalar = true;
+
+        Etapas.MeninaTocandoUkulele = false;
     }
 
     void Brigar()

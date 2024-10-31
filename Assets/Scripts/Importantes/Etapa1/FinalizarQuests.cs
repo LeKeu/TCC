@@ -26,8 +26,8 @@ public class FinalizarQuests : NPCs, ITalkable
         seuPedro = GameObject.Find("SeuPedro").GetComponent<SeuPedro>();
         pedrinho = GameObject.Find("Pedrinho").GetComponent<Pedrinho>();
 
-        Debug.Log($"cena:{SceneManager.GetActiveScene().name}");
-        Debug.Log($"todosTutComp:{todosTutCompleto}");
+        //Debug.Log($"cena:{SceneManager.GetActiveScene().name}");
+        //Debug.Log($"todosTutComp:{todosTutCompleto}");
     }
 
     public override void Interagir()
@@ -36,7 +36,8 @@ public class FinalizarQuests : NPCs, ITalkable
         //{
         //    CompletarTutorial();
         //}
-        CompletarTutorial(); // DESCOMENTAR A PARTE DE CIMA E TIRAR ESSA!!
+        
+        CompletarTutorial(); // DESCOMENTAR A PARTE DE CIMA E TIRAR ESSE IF!!
 
         if (SceneManager.GetActiveScene().name == "01_comunidade" && !todosTutCompleto)
         {

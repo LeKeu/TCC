@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Menino : MonoBehaviour
@@ -10,21 +12,31 @@ public class Menino : MonoBehaviour
     [SerializeField] float movVel = 2f;
     [SerializeField] float distMaxJogador = 1f;
 
+    #region Parametros de Dialogo
+    [Header("Dialogo")]
+    [SerializeField] Sprite perfil;
+    [SerializeField] private DialogoController dialogoController;
+    [SerializeField] private List<DialogoTexto> dt;
+    int indexAtual = 0;
+    #endregion
+
     Rigidbody2D rb;
     Vector2 movDir;
-    bool estaLonge;
+    public bool estaLonge;
 
     public bool podeMover;
+    public static bool acabouFalar; // usado apenas logo no início, esperando para falar com a menina
 
     Pedrinho pedrinho;
-
     bool estaFreezado;
+
     void Start()
     {
         if(SceneManager.GetActiveScene().name == "01_comunidade")
             pedrinho = GameObject.Find("Pedrinho").GetComponent<Pedrinho>();
         rb = GetComponent<Rigidbody2D>();
-        podeMover = true;
+        podeMover = false;
+        estaLonge = true;
     }
 
     private void Andar()
@@ -32,15 +44,34 @@ public class Menino : MonoBehaviour
         IrPara();
     }
 
+    private void Update()
+    {
+        if (!acabouFalar && Mouse.current.middleButton.wasPressedThisFrame && Etapas.MeninaTocandoUkulele)
+        {
+            Interagir();
+        }
+    }
+
     void FixedUpdate()
     {
-        if (podeMover && JogadorController.Instance.podeMover)
+        if (podeMover /*&& JogadorController.Instance.podeMover*/)
         {
             if(pedrinho?.podePegarBola == false || SceneManager.GetActiveScene().name == "02_comunidade") // se a menina for atrás da bola, ele fica esperando
                 Andar();
                 if (estaLonge)
                     rb.MovePosition(rb.position + movDir * (movVel * Time.deltaTime));
         }
+    }
+
+    public void Interagir()
+    {
+        Falar(dt[indexAtual]);
+    }
+
+    public void Falar(DialogoTexto dialogoTexto)
+    {
+        dialogoTexto.perfilNPC = perfil;
+        dialogoController.DisplayProximoParagrafo(dialogoTexto);
     }
 
     void IrPara()
@@ -67,4 +98,5 @@ public class Menino : MonoBehaviour
 
     public void PararDeSeguir() => podeMover = false;
     public void VoltarASeguir() => podeMover = true;
+
 }

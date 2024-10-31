@@ -15,6 +15,9 @@ public abstract class NPCs : MonoBehaviour, IInteractble
             Interagir();
         }
 
+        //if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.MeninaTocandoUkulele)
+        //    Interagir();
+
         if (_interagirSprite.gameObject.activeSelf && !DaParaInteragir())
             _interagirSprite.gameObject.SetActive(false);
         else if (!_interagirSprite.gameObject.activeSelf && DaParaInteragir())
