@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Prologo : MonoBehaviour
@@ -10,7 +11,7 @@ public class Prologo : MonoBehaviour
     Menino meninoScript;
 
     public static int qntdNpcsConversados = 0;
-    int totalNpcsConversaveis = 7;
+    int totalNpcsConversaveis = 1;
     bool aconteceuBriga;
 
     #region NPCS SCRIPTS
@@ -45,8 +46,7 @@ public class Prologo : MonoBehaviour
     {
         Etapas.MeninaTocandoUkulele = true;
 
-        JogadorController.Instance.podeAtacar = false;
-        JogadorController.Instance.podeMover = false;
+        MudarEstadoJogador(false);
 
         musicaSource.PlayOneShot(musicaMenina);
 
@@ -60,8 +60,7 @@ public class Prologo : MonoBehaviour
 
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo); // esperar dialogo com menino acabar
 
-        JogadorController.Instance.podeAtacar = true;
-        JogadorController.Instance.podeMover = true;
+        MudarEstadoJogador(true);
         Menino.acabouFalar = true;
 
         Etapas.MeninaTocandoUkulele = false;
@@ -69,11 +68,32 @@ public class Prologo : MonoBehaviour
 
     IEnumerator Brigar()
     {
+        Etapas.BrigaCelebracao = true;
+        // setar a posição do player fixa com transform, se n delsiza
+        // parte de apertar um botao e passar para a proxima parte do dialogo nos npcs
+        // (talvez uma função genérica aqui mesmo?? chamando o interagir de cada script necessário de cada gameobject)
+
+        Debug.Log("BRIGARRR");
+        MudarEstadoJogador(false);
+
         aconteceuBriga = true;
-        velhaNamiaCelebracaoScript.Interagir_CelebracaoCutscene(0);
+        //velhaNamiaCelebracaoScript.Interagir_CelebracaoCutscene(0);
+        Interagir_Celebracao(velhaNamiaCelebracaoScript, 0);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
+        //meninoScript.Interagir_CelebracaoCutscene(0);
+
+        MudarEstadoJogador(true);
+        Etapas.BrigaCelebracao = false;
+    }
+
+    void Interagir_Celebracao(MonoBehaviour script, int index)
+    {
+        object[] parametros = { index };
+
+        var metodo = script.GetType().GetMethod($"Interagir_CelebracaoCutscene");
+        metodo.Invoke(script, parametros);
     }
 
     void CucaSequestraMenino()
@@ -85,5 +105,11 @@ public class Prologo : MonoBehaviour
     void PerseguirCuca()
     {
         Debug.Log("perseguir");
+    }
+
+    void MudarEstadoJogador(bool acao)
+    {
+        JogadorController.Instance.podeAtacar = acao;
+        JogadorController.Instance.podeMover = acao;
     }
 }

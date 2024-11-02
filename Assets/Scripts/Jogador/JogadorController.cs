@@ -51,8 +51,10 @@ public class JogadorController : Singleton<JogadorController>
     {
         if (SceneManager.GetActiveScene().name != "01_comunidade")
             podeAtacar = true;
+
         if (SceneManager.GetActiveScene().name == "01_comunidade")
-            acabouDialogo = false;
+            acabouDialogo = false; // se no inicio de uma cena for uma cutscene, pode começar assim que ela não vai se mover
+        else acabouDialogo = true;
 
         jogadorControls.Combat.Dash.performed += _ => Dash();
 

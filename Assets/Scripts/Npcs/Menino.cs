@@ -64,6 +64,13 @@ public class Menino : MonoBehaviour
         Falar(dt[indexAtual]);
     }
 
+    public void Interagir_CelebracaoCutscene(int index)
+    { 
+        // 0 - primeiro momento da briga
+        // 1 - 
+        Falar(dt[index]);
+    }
+
     public void Falar(DialogoTexto dialogoTexto)
     {
         dialogoTexto.perfilNPC = perfil;

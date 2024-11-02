@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class VelhaNamiaCelebracao : NPCs, ITalkable
 {
@@ -10,6 +11,12 @@ public class VelhaNamiaCelebracao : NPCs, ITalkable
     int indexAtual = 0;
 
     [SerializeField] private Sprite perfil;
+
+    private void Update()
+    {
+        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BrigaCelebracao)
+            Interagir_CelebracaoCutscene();
+    }
 
     public override void Interagir()
     {
@@ -24,7 +31,7 @@ public class VelhaNamiaCelebracao : NPCs, ITalkable
             Falar(dt[indexAtual]);
     }
 
-    public void Interagir_CelebracaoCutscene(int index)
+    public void Interagir_CelebracaoCutscene(int index=0)
     {
         // 0 - primeira vez falando
         // 1 - após briga?

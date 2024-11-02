@@ -8,6 +8,7 @@ public class Etapas : MonoBehaviour
 
     public static bool Prologo;
     public static bool MeninaTocandoUkulele;
+    public static bool BrigaCelebracao;
 
     public static bool ETAPA2;
     public static bool ETAPA3;
