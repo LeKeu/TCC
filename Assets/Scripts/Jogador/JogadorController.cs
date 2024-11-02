@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JogadorController : Singleton<JogadorController>
 {
@@ -23,6 +24,7 @@ public class JogadorController : Singleton<JogadorController>
 
     private bool olhandoEsq = false;
     private bool estaDashing = false;
+    public bool acabouDialogo;
 
     public bool estaEscondido = false;
     public bool estaNaAgua = false;
@@ -46,6 +48,8 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name != "01_comunidade")
+            podeAtacar = true;
         jogadorControls.Combat.Dash.performed += _ => Dash();
 
         velInicial = velocidade;

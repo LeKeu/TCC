@@ -13,6 +13,10 @@ public class Prologo : MonoBehaviour
     int totalNpcsConversaveis = 7;
     bool aconteceuBriga;
 
+    #region NPCS SCRIPTS
+    VelhaNamiaCelebracao velhaNamiaCelebracaoScript;
+    #endregion
+
     private void Awake()
     {
         musicaSource = GetComponent<AudioSource>();
@@ -21,14 +25,16 @@ public class Prologo : MonoBehaviour
 
     private void Start()
     {
+        velhaNamiaCelebracaoScript = GameObject.Find("VelhaNamia").GetComponent<VelhaNamiaCelebracao>();
+
         if (SceneManager.GetActiveScene().name == "01_comunidade")
             StartCoroutine(IniciarJogo_MeninaTocando());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga")
-            Brigar();
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados == totalNpcsConversaveis)
+            StartCoroutine(Brigar());
         if(collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq")
             CucaSequestraMenino();
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerPerseguirCuca")
@@ -52,18 +58,22 @@ public class Prologo : MonoBehaviour
         yield return new WaitUntil(() => !meninoScript.estaLonge); // esperar até o menino chegar perto
         meninoScript.Interagir();
 
-        yield return new WaitUntil(() => JogadorController.Instance.podeMover); // esperar dialogo com menino acabar
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo); // esperar dialogo com menino acabar
 
         JogadorController.Instance.podeAtacar = true;
+        JogadorController.Instance.podeMover = true;
         Menino.acabouFalar = true;
 
         Etapas.MeninaTocandoUkulele = false;
     }
 
-    void Brigar()
+    IEnumerator Brigar()
     {
-        if (qntdNpcsConversados == totalNpcsConversaveis)
-            aconteceuBriga = true;
+        aconteceuBriga = true;
+        velhaNamiaCelebracaoScript.Interagir_CelebracaoCutscene(0);
+
+        yield return new WaitForSeconds(1);
+
     }
 
     void CucaSequestraMenino()

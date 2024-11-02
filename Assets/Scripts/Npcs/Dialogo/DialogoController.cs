@@ -29,7 +29,7 @@ public class DialogoController : MonoBehaviour
         {
             if (!conversaAcabou)
             {
-                JogadorController.Instance.podeMover = false;
+                JogadorController.Instance.acabouDialogo = false;
                 IniciarConversa(dialogoTexto);
             }
             else if(conversaAcabou && !estaDigitando)
@@ -130,7 +130,7 @@ public class DialogoController : MonoBehaviour
 
     private void AcabarConversa()
     {
-        JogadorController.Instance.podeMover = true;
+        JogadorController.Instance.acabouDialogo = true;
 
         conversaAcabou = false;
         if (gameObject.activeSelf)

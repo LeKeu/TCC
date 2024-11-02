@@ -25,19 +25,16 @@ public class FinalizarQuests : NPCs, ITalkable
         tiaMarta = GameObject.Find("DonaMarta").GetComponent<TiaMarta>();
         seuPedro = GameObject.Find("SeuPedro").GetComponent<SeuPedro>();
         pedrinho = GameObject.Find("Pedrinho").GetComponent<Pedrinho>();
-
-        //Debug.Log($"cena:{SceneManager.GetActiveScene().name}");
-        //Debug.Log($"todosTutComp:{todosTutCompleto}");
     }
 
     public override void Interagir()
     {
-        //if (velhaNamia.tutCompleto && tiaMarta.tutCompleto && seuPedro.tutCompleto && pedrinho.tutCompleto)
-        //{
-        //    CompletarTutorial();
-        //}
-        
-        CompletarTutorial(); // DESCOMENTAR A PARTE DE CIMA E TIRAR ESSE IF!!
+        if (velhaNamia.tutCompleto && tiaMarta.tutCompleto && seuPedro.tutCompleto && pedrinho.tutCompleto)
+        {
+            CompletarTutorial();
+        }
+
+        //CompletarTutorial(); // DESCOMENTAR A PARTE DE CIMA E TIRAR ESSE IF!!
 
         if (SceneManager.GetActiveScene().name == "01_comunidade" && !todosTutCompleto)
         {

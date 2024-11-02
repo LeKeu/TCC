@@ -23,6 +23,14 @@ public class VelhaNamiaCelebracao : NPCs, ITalkable
         if (!JogadorController.Instance.estaAndando)
             Falar(dt[indexAtual]);
     }
+
+    public void Interagir_CelebracaoCutscene(int index)
+    {
+        // 0 - primeira vez falando
+        // 1 - após briga?
+        Falar(dt[index]);
+    }
+
     public void Falar(DialogoTexto dialogoTexto)
     {
         //dialogoTexto.nome = nome;
