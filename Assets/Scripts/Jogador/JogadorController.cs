@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -50,6 +51,9 @@ public class JogadorController : Singleton<JogadorController>
     {
         if (SceneManager.GetActiveScene().name != "01_comunidade")
             podeAtacar = true;
+        if (SceneManager.GetActiveScene().name == "01_comunidade")
+            acabouDialogo = false;
+
         jogadorControls.Combat.Dash.performed += _ => Dash();
 
         velInicial = velocidade;
@@ -62,6 +66,10 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Update()
     {
+        if (!acabouDialogo)
+            podeMover = false;
+        else podeMover = true;
+
         JogadorInput();
     }
     private void FixedUpdate()
