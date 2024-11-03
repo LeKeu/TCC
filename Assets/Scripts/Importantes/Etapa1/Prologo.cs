@@ -58,7 +58,7 @@ public class Prologo : MonoBehaviour
                 velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
                 meninoGO.transform.position = Vector2.MoveTowards(meninoGO.transform.position, posMeninoBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
                 seuPedroGO.transform.position = Vector2.MoveTowards(seuPedroGO.transform.position, posSeuPedroBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
-                Debug.Log("andando");
+                
             }
 
             if(meninoPodeSair)
@@ -104,7 +104,6 @@ public class Prologo : MonoBehaviour
     IEnumerator Brigar()
     {
         Debug.Log("BRIGARRR");
-        aconteceuBriga = true;
         Etapas.BrigaCelebracao = true;
 
         #region Povo se movendo na direção de sua pos da cena
@@ -114,11 +113,12 @@ public class Prologo : MonoBehaviour
         #endregion
 
         MudarEstadoJogador(false);
+
         #region Dialogos Celebraçao
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
-
+        yield return new WaitForSeconds(2);
         #region Dialogo Briga
         Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
@@ -128,19 +128,20 @@ public class Prologo : MonoBehaviour
         meninoPodeSair = true;
         yield return new WaitForSeconds(3);
         meninoPodeSair = false;
-        meninoGO.SetActive(false);
+        //meninoGO.SetActive(false); // por algum motivo, desativar ele desativa tbm a continuação do dialogo
         #endregion
-
+        yield return new WaitForSeconds(2);
         #region Dialogos Pos Briga
         Interagir_Celebracao(seuPedroGO.GetComponent<SeuPedroCelebracao>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
-        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 2);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
-        //meninoScript.Interagir_CelebracaoCutscene(0);
 
         MudarEstadoJogador(true);
+
         Etapas.BrigaCelebracao = false;
+        aconteceuBriga = true;
     }
 
     void Interagir_Celebracao(MonoBehaviour script, int index)
