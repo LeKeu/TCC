@@ -14,8 +14,14 @@ public class Prologo : MonoBehaviour
     int totalNpcsConversaveis = 1;
     bool aconteceuBriga;
 
-    #region NPCS SCRIPTS
-    VelhaNamiaCelebracao velhaNamiaCelebracaoScript;
+    #region NPCS GO
+    GameObject velhaNamiaCelebracaoGO;
+    #endregion
+
+    #region BRIGA
+    [SerializeField] GameObject posMeninaBriga;
+    [SerializeField] GameObject posVelhaNamiaBriga;
+    bool pessoasAndando;
     #endregion
 
     private void Awake()
@@ -26,15 +32,26 @@ public class Prologo : MonoBehaviour
 
     private void Start()
     {
-        velhaNamiaCelebracaoScript = GameObject.Find("VelhaNamia").GetComponent<VelhaNamiaCelebracao>();
+        velhaNamiaCelebracaoGO = GameObject.Find("VelhaNamia");
 
         if (SceneManager.GetActiveScene().name == "01_comunidade")
             StartCoroutine(IniciarJogo_MeninaTocando());
     }
 
+    private void FixedUpdate()
+    {
+        if(Etapas.BrigaCelebracao && this.gameObject.name == "TriggerBriga" && pessoasAndando)
+        {
+            JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posMeninaBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+            velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+            Debug.Log("andando");
+        }
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados == totalNpcsConversaveis)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis)
             StartCoroutine(Brigar());
         if(collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq")
             CucaSequestraMenino();
@@ -68,20 +85,22 @@ public class Prologo : MonoBehaviour
 
     IEnumerator Brigar()
     {
-        Etapas.BrigaCelebracao = true;
-        // setar a posição do player fixa com transform, se n delsiza
-        // parte de apertar um botao e passar para a proxima parte do dialogo nos npcs
-        // (talvez uma função genérica aqui mesmo?? chamando o interagir de cada script necessário de cada gameobject)
-
         Debug.Log("BRIGARRR");
+        aconteceuBriga = true;
+        Etapas.BrigaCelebracao = true;
+
+        #region Povo se movendo na direção de sua pos da cena
+        pessoasAndando = true;
+        yield return new WaitForSeconds(3);
+        pessoasAndando = false;
+        #endregion
+
         MudarEstadoJogador(false);
 
-        aconteceuBriga = true;
-        //velhaNamiaCelebracaoScript.Interagir_CelebracaoCutscene(0);
-        Interagir_Celebracao(velhaNamiaCelebracaoScript, 0);
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 0);
 
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
-
+        Debug.Log("mia goth");
         //meninoScript.Interagir_CelebracaoCutscene(0);
 
         MudarEstadoJogador(true);

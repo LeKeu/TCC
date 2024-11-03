@@ -43,9 +43,11 @@ public class Menino : MonoBehaviour
     private void Update()
     {
         if (!acabouFalar && Mouse.current.middleButton.wasPressedThisFrame && Etapas.MeninaTocandoUkulele)
-        {
             Interagir();
-        }
+
+        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BrigaCelebracao)
+            Interagir_CelebracaoCutscene();
+
     }
 
     void FixedUpdate()
@@ -64,7 +66,7 @@ public class Menino : MonoBehaviour
         Falar(dt[indexAtual]);
     }
 
-    public void Interagir_CelebracaoCutscene(int index)
+    public void Interagir_CelebracaoCutscene(int index=0)
     { 
         // 0 - primeiro momento da briga
         // 1 - 
