@@ -16,12 +16,20 @@ public class Prologo : MonoBehaviour
 
     #region NPCS GO
     GameObject velhaNamiaCelebracaoGO;
+    GameObject meninoGO;
+    GameObject seuPedroGO;
     #endregion
 
     #region BRIGA
+    [Header("Posições Brigas")]
     [SerializeField] GameObject posMeninaBriga;
+    [SerializeField] GameObject posMeninoBriga;
     [SerializeField] GameObject posVelhaNamiaBriga;
+    [SerializeField] GameObject posSeuPedroBriga;
+
+    [SerializeField] GameObject posMeninoSaindo;
     bool pessoasAndando;
+    bool meninoPodeSair;
     #endregion
 
     private void Awake()
@@ -33,6 +41,8 @@ public class Prologo : MonoBehaviour
     private void Start()
     {
         velhaNamiaCelebracaoGO = GameObject.Find("VelhaNamia");
+        meninoGO = GameObject.Find("Menino");
+        seuPedroGO = GameObject.Find("SeuPedro");
 
         if (SceneManager.GetActiveScene().name == "01_comunidade")
             StartCoroutine(IniciarJogo_MeninaTocando());
@@ -40,11 +50,19 @@ public class Prologo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Etapas.BrigaCelebracao && this.gameObject.name == "TriggerBriga" && pessoasAndando)
+        if(Etapas.BrigaCelebracao && this.gameObject.name == "TriggerBriga")
         {
-            JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posMeninaBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
-            velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
-            Debug.Log("andando");
+            if (pessoasAndando)
+            {
+                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posMeninaBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+                velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+                meninoGO.transform.position = Vector2.MoveTowards(meninoGO.transform.position, posMeninoBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+                seuPedroGO.transform.position = Vector2.MoveTowards(seuPedroGO.transform.position, posSeuPedroBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+                Debug.Log("andando");
+            }
+
+            if(meninoPodeSair)
+                meninoGO.transform.position = Vector2.MoveTowards(meninoGO.transform.position, posMeninoSaindo.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
         }
 
     }
@@ -96,11 +114,29 @@ public class Prologo : MonoBehaviour
         #endregion
 
         MudarEstadoJogador(false);
-
-        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 0);
-
+        #region Dialogos Celebraçao
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
-        Debug.Log("mia goth");
+        #endregion
+
+        #region Dialogo Briga
+        Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 1);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        #endregion
+
+        #region Menino indo embora
+        meninoPodeSair = true;
+        yield return new WaitForSeconds(3);
+        meninoPodeSair = false;
+        meninoGO.SetActive(false);
+        #endregion
+
+        #region Dialogos Pos Briga
+        Interagir_Celebracao(seuPedroGO.GetComponent<SeuPedroCelebracao>(), 1);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        #endregion
         //meninoScript.Interagir_CelebracaoCutscene(0);
 
         MudarEstadoJogador(true);
@@ -110,7 +146,7 @@ public class Prologo : MonoBehaviour
     void Interagir_Celebracao(MonoBehaviour script, int index)
     {
         object[] parametros = { index };
-
+        Debug.Log(script.name);
         var metodo = script.GetType().GetMethod($"Interagir_CelebracaoCutscene");
         metodo.Invoke(script, parametros);
     }

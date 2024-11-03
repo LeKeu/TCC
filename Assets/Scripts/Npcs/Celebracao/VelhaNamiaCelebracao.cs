@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class VelhaNamiaCelebracao : NPCsCelebracao, ITalkable
 {
@@ -30,7 +29,6 @@ public class VelhaNamiaCelebracao : NPCsCelebracao, ITalkable
         // 0 - primeira vez falando
         // 1 - após briga?
         Falar(dt[index]);
-        Debug.Log("falar celeb");
     }
 
     public void Falar(DialogoTexto dialogoTexto)

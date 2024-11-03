@@ -22,9 +22,9 @@ public class Menino : MonoBehaviour
 
     public bool podeMover;
     public static bool acabouFalar; // usado apenas logo no início, esperando para falar com a menina
+    bool estaFreezado;
 
     Pedrinho pedrinho;
-    bool estaFreezado;
 
     void Start()
     {
@@ -67,9 +67,11 @@ public class Menino : MonoBehaviour
     }
 
     public void Interagir_CelebracaoCutscene(int index=0)
-    { 
+    {
         // 0 - primeiro momento da briga
         // 1 - 
+        Debug.Log($"dt count {dt.Count}");
+        Debug.Log($"index {index}");
         Falar(dt[index]);
     }
 

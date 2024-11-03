@@ -1969,7 +1969,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicaMenina: {fileID: 0}
   posMeninaBriga: {fileID: 0}
+  posMeninoBriga: {fileID: 0}
   posVelhaNamiaBriga: {fileID: 0}
+  posSeuPedroBriga: {fileID: 0}
+  posMeninoSaindo: {fileID: 0}
 --- !u!61 &485979955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2656,7 +2659,7 @@ Transform:
   m_GameObject: {fileID: 600450666}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.061365128, y: 1.0722321, z: -0.081681386}
+  m_LocalPosition: {x: 0.75, y: 0.88, z: -0.081681386}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32546,6 +32549,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb302abf62c84d6499c2c015daf323bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1270815159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270815160}
+  m_Layer: 0
+  m_Name: MeninoPosBriga
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1270815160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270815159}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.061365128, y: 1.0722321, z: -0.081681386}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2084495744}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1277143752
 GameObject:
   m_ObjectHideFlags: 0
@@ -32830,7 +32864,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicaMenina: {fileID: 0}
   posMeninaBriga: {fileID: 0}
+  posMeninoBriga: {fileID: 0}
   posVelhaNamiaBriga: {fileID: 0}
+  posSeuPedroBriga: {fileID: 0}
+  posMeninoSaindo: {fileID: 0}
 --- !u!1 &1346034439
 GameObject:
   m_ObjectHideFlags: 0
@@ -33428,7 +33465,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 16fffbc6d8ec69c41a28b89945e28d79, type: 3}
     - target: {fileID: 1390208535711577296, guid: 9942c7c2b39da914bb4ecb3b4a3619fb, type: 3}
       propertyPath: dt.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1390208535711577296, guid: 9942c7c2b39da914bb4ecb3b4a3619fb, type: 3}
       propertyPath: _interagirSprite
@@ -33438,6 +33475,10 @@ PrefabInstance:
       propertyPath: dt.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: b656f8096928f7b4e8b10aa73953d03a, type: 2}
+    - target: {fileID: 1390208535711577296, guid: 9942c7c2b39da914bb4ecb3b4a3619fb, type: 3}
+      propertyPath: dt.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d32dc8af3bea2944fb1fa857cfde7a34, type: 2}
     - target: {fileID: 1390208535711577296, guid: 9942c7c2b39da914bb4ecb3b4a3619fb, type: 3}
       propertyPath: dialogoController
       value: 
@@ -33670,6 +33711,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440313944}
   m_CullTransparentMesh: 1
+--- !u!1 &1448944241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448944242}
+  m_Layer: 0
+  m_Name: SeuPedroPosBriga
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1448944242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448944241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.36, y: 1.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2084495744}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1449586983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38033,7 +38105,7 @@ Tilemap:
       - {fileID: -1632449439, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1629452603, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 807328484, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: -7, z: 0}
@@ -38608,7 +38680,7 @@ Tilemap:
       - {fileID: -431330007, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 705410160, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1402667787, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 11, y: -2, z: 0}
@@ -40425,7 +40497,7 @@ Tilemap:
       - {fileID: -1632449439, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1629452603, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 807328484, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -12, y: 8, z: 0}
@@ -42076,6 +42148,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1790017961845165295, guid: 95f1109670ea8e8448ac249ea058415a, type: 3}
   m_PrefabInstance: {fileID: 1713564081}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1709565448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1709565449}
+  m_Layer: 0
+  m_Name: MeninaPosSaindo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1709565449
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709565448}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.48, y: 0.8, z: -0.081681386}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2084495744}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1713564081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57005,7 +57108,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 600450667}
+  - {fileID: 1709565449}
+  - {fileID: 1270815160}
   - {fileID: 606423575}
+  - {fileID: 1448944242}
   m_Father: {fileID: 55754216}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2084495745
@@ -57022,7 +57128,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicaMenina: {fileID: 0}
   posMeninaBriga: {fileID: 600450666}
+  posMeninoBriga: {fileID: 1270815159}
   posVelhaNamiaBriga: {fileID: 606423574}
+  posSeuPedroBriga: {fileID: 1448944241}
+  posMeninoSaindo: {fileID: 1709565448}
 --- !u!61 &2084495746
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -58210,7 +58319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interagirSprite: {fileID: 2179863294053218568}
   dt:
+  - {fileID: 11400000, guid: ec8c772fc1580dc4db8dc31a12563d1b, type: 2}
   - {fileID: 11400000, guid: 1a3af85f67752f74dac9f92b1c3d4818, type: 2}
+  - {fileID: 11400000, guid: 9f60c22eb67ac9441a533f04863e8649, type: 2}
   dialogoController: {fileID: 1346034443}
   perfil: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}
 --- !u!1001 &2365536064295076234
@@ -60732,10 +60843,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interagirSprite: {fileID: 8033051662542197061}
   dt:
-  - {fileID: 11400000, guid: 814e423ee3daaea449446fd67a568579, type: 2}
-  - {fileID: 11400000, guid: d6eb951761d1ac144922777b429039d6, type: 2}
-  - {fileID: 11400000, guid: 139134c574782a34faefeadd335c7cdf, type: 2}
-  - {fileID: 11400000, guid: cc24f747eea3b7f4eb7d0de1ba32bec3, type: 2}
+  - {fileID: 11400000, guid: 91b41de4ae4d0df448fe06e994186589, type: 2}
+  - {fileID: 11400000, guid: 2e56f296e43a2e04db50f746e01df236, type: 2}
   dialogoController: {fileID: 1346034443}
   perfil: {fileID: 21300000, guid: 6a14875cda77b4644a0eb83513aebe8f, type: 3}
 --- !u!4 &8342816622216838568

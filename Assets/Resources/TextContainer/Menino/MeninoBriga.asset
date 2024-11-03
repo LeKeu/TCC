@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
-  m_Name: VelhaNamiaCelebracao
+  m_Name: MeninoBriga
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_ oi meus pequenos amigos hehe"
-  - "Velha N\xE2mia_j\xE1 j\xE1 vamos come\xE7ar a ce\xE7lebra\xE7\xE3o einnn"
-  - _Beleza tia!
-  perfilNPC: {fileID: 0}
+  - "Bernardo_irm\xE3 vc \xE9 uma chata"
+  - "_Tu que \xE9 cara"
+  - Bernardo_aaaaaa te odeio
+  - _sai daqui manow
+  - Bernardo_vou mesmo!
+  perfilNPC: {fileID: 21300000, guid: 16fffbc6d8ec69c41a28b89945e28d79, type: 3}

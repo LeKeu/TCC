@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
-  m_Name: VelhaNamiaCelebracao
+  m_Name: VelhaNamiaBriga
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_ oi meus pequenos amigos hehe"
-  - "Velha N\xE2mia_j\xE1 j\xE1 vamos come\xE7ar a ce\xE7lebra\xE7\xE3o einnn"
-  - _Beleza tia!
+  - "Velha N\xE2mia_Oieee, vamios comecar essa celebracao"
+  - "Velha N\xE2mia_essa festa vai bombar"
+  - _uau to amando
   perfilNPC: {fileID: 0}
