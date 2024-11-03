@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeuJoaoCelebracao : NPCs, ITalkable
+public class SeuJoaoCelebracao : NPCsCelebracao, ITalkable
 {
     [SerializeField] private List<DialogoTexto> dt;
     [SerializeField] private DialogoController dialogoController;
@@ -23,6 +23,14 @@ public class SeuJoaoCelebracao : NPCs, ITalkable
         if (!JogadorController.Instance.estaAndando)
             Falar(dt[indexAtual]);
     }
+
+    public override void Interagir_CelebracaoCutscene(int index = 0)
+    {
+        // 0 - primeira vez falando
+        // 1 - após briga?
+        Falar(dt[index]);
+    }
+
     public void Falar(DialogoTexto dialogoTexto)
     {
         //dialogoTexto.nome = nome;
