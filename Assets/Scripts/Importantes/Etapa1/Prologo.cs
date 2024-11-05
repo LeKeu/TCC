@@ -232,6 +232,7 @@ public class Prologo : MonoBehaviour
         #endregion
 
         Debug.Log("acabou");
+        Debug.Log("acabou");
         Etapas.CucaSequestro = false;
     }
 
