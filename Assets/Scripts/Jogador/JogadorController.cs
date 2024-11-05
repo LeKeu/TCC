@@ -67,7 +67,7 @@ public class JogadorController : Singleton<JogadorController>
     }
 
     private void Update()
-    {
+    {//jogador controller
         if (!acabouDialogo)
             podeMover = false;
         else podeMover = true;

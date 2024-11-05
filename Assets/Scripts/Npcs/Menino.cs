@@ -48,6 +48,9 @@ public class Menino : MonoBehaviour
         if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BrigaCelebracao)
             Interagir_CelebracaoCutscene();
 
+        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.CucaSequestro) // organizar isso depois
+            Interagir_CelebracaoCutscene();
+
     }
 
     void FixedUpdate()
@@ -70,8 +73,8 @@ public class Menino : MonoBehaviour
     {
         // 0 - primeiro momento da briga
         // 1 - 
-        Debug.Log($"dt count {dt.Count}");
-        Debug.Log($"index {index}");
+        //Debug.Log($"dt count {dt.Count}");
+        //Debug.Log($"index {index}");
         Falar(dt[index]);
     }
 

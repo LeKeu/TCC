@@ -12,7 +12,7 @@ public abstract class NPCsCelebracao : MonoBehaviour, IInteractble
     {
         if (Mouse.current.middleButton.wasPressedThisFrame && DaParaInteragir() && !Etapas.BrigaCelebracao)
         {//Keyboard.current.eKey.wasPressedThisFrame
-            Debug.Log("aquiqiqi");
+            //Debug.Log("aquiqiqi");
             Interagir();
         }
 
