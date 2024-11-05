@@ -24,15 +24,22 @@ public class TremerCamera : MonoBehaviour
     {
         StartCoroutine(TremerCamRoutine());
     }
-    public void TremerCameraFuncDinamica(float intensidade)
+    public void TremerCameraFuncDinamica(float intensidade, float tempo)
     {
-        StartCoroutine(TremerCamRoutine(intensidade));
+        StartCoroutine(TremerCamRoutineDinamica(intensidade, tempo));
+    }
+
+    IEnumerator TremerCamRoutineDinamica(float intensidade, float tempo)
+    {
+        channelPerlin.m_AmplitudeGain = intensidade;
+        yield return new WaitForSeconds(tempo);
+        channelPerlin.m_AmplitudeGain = 0f;
     }
 
 
-    IEnumerator TremerCamRoutine(float tremerIntens=1f)
+    IEnumerator TremerCamRoutine()
     {
-        channelPerlin.m_AmplitudeGain = tremerIntens;
+        channelPerlin.m_AmplitudeGain = tremerIntensidade;
         yield return new WaitForSeconds(tremerTempo);
         channelPerlin.m_AmplitudeGain = 0f;
     }

@@ -39,6 +39,7 @@ public class Prologo : MonoBehaviour
     #region SEQUESTRO
     [Header("Sequestro Menino")]
     [SerializeField] GameObject posFrenteCasa;
+    [SerializeField] GameObject vulto;
 
     [SerializeField] AudioClip musicaCuca;
     [SerializeField] AudioClip vidroEstoura;
@@ -46,6 +47,7 @@ public class Prologo : MonoBehaviour
 
     AudioSource audioSourceSequestro;
     bool meninaIndoCasa;
+    bool vultoMovendo;
     #endregion
 
     JogadorController jogadorController;
@@ -101,6 +103,9 @@ public class Prologo : MonoBehaviour
             {
                 jogadorController.transform.position = Vector2.MoveTowards(jogadorController.transform.position, posFrenteCasa.transform.position, jogadorController.velocidade * Time.deltaTime);
             }
+
+            if (vultoMovendo)
+                vulto.transform.Translate(Vector2.right * 8f * Time.deltaTime);
         }
         #endregion
 
@@ -216,13 +221,13 @@ public class Prologo : MonoBehaviour
         yield return new WaitUntil(() => jogadorController.acabouDialogo);
         #endregion
 
-        #region Barulhos vidros e pedido socorro
+        #region Barulhos vidros, tremer cam, pedido socorro
         audioSourceSequestro.loop = false;
         audioSourceSequestro.Stop();
 
         yield return new WaitForSeconds(.5f);
         audioSourceSequestro.PlayOneShot(vidroEstoura);
-        tremerCamera.TremerCameraFuncDinamica(5f);
+        tremerCamera.TremerCameraFuncDinamica(3f, 2f);
         yield return new WaitForSeconds(vidroEstoura.length);
 
         Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 3);
@@ -231,8 +236,13 @@ public class Prologo : MonoBehaviour
         audioSourceSequestro.PlayOneShot(passosVidro);
         #endregion
 
-        Debug.Log("acabou");
-        Debug.Log("acabou");
+        #region Vulto movendo
+        vultoMovendo = true;
+        vulto.SetActive(true);
+        yield return new WaitForSeconds(2);
+        vulto.SetActive(false);
+        vultoMovendo = false;
+        #endregion
         Etapas.CucaSequestro = false;
     }
 
