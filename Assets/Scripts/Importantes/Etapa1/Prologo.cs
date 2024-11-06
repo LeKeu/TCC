@@ -45,9 +45,16 @@ public class Prologo : MonoBehaviour
     [SerializeField] AudioClip vidroEstoura;
     [SerializeField] AudioClip passosVidro;
 
+    [SerializeField] List<GameObject> moitasVermelhas;
+    [SerializeField] List<GameObject> listaPosMeninaCorrendo;
+
     AudioSource audioSourceSequestro;
     bool meninaIndoCasa;
     bool vultoMovendo;
+
+    bool meninaCorrendo;
+    GameObject proxPosMeninaAux;
+    bool podeIrProxPos;
     #endregion
 
     JogadorController jogadorController;
@@ -108,6 +115,13 @@ public class Prologo : MonoBehaviour
 
             if (vultoMovendo)
                 vulto.transform.Translate(Vector2.right * 8f * Time.deltaTime);
+
+            if (meninaCorrendo)
+            {
+                jogadorController.transform.position = Vector2.MoveTowards(jogadorController.transform.position, proxPosMeninaAux.transform.position, jogadorController.velocidade * Time.deltaTime);
+                if (Vector3.Distance(jogadorController.transform.position, proxPosMeninaAux.transform.position) <= 1f)
+                    podeIrProxPos = true;
+            }
         }
         #endregion
 
@@ -121,7 +135,7 @@ public class Prologo : MonoBehaviour
 
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
             StartCoroutine(Brigar());
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" && aconteceuBriga)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
             StartCoroutine(CucaSequestraMenino());
         //if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerPerseguirCuca")
         //    PerseguirCuca();
@@ -200,7 +214,7 @@ public class Prologo : MonoBehaviour
         yield return new WaitUntil(() => jogadorController.acabouDialogo);
         #endregion
 
-        #region tudo preto e dialogue
+        #region tudo preto, dialogue, volta de noite
         luzesCiclo.MudarCorAmbiente(Color.black, 4f);
         yield return new WaitForSeconds(10);
 
@@ -258,13 +272,29 @@ public class Prologo : MonoBehaviour
         audioSourceSequestro.PlayOneShot(passosVidro);
         #endregion
 
-        #region Vulto movendo
+        #region Vulto movendo, moitas sumindo
         vultoMovendo = true;
         vulto.SetActive(true);
         yield return new WaitForSeconds(2);
         vulto.SetActive(false);
         vultoMovendo = false;
+
+        foreach(GameObject moita in moitasVermelhas)
+            moita.SetActive(false);
         #endregion
+
+        #region Menina Correndo
+        meninaCorrendo = true;
+        foreach (GameObject pos in listaPosMeninaCorrendo)
+        {
+            proxPosMeninaAux = pos;
+            yield return new WaitUntil(() => podeIrProxPos);
+            podeIrProxPos = false;
+        }
+        meninaCorrendo = false;
+
+        #endregion
+
         Etapas.CucaSequestro = false;
     }
 
