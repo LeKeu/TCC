@@ -35,6 +35,8 @@ public class JogadorController : Singleton<JogadorController>
     public bool podeMover;
     public bool podeAtacar;
 
+    public bool estaDuranteCutscene;
+
     protected override void Awake()
     {
         base.Awake();
@@ -53,7 +55,10 @@ public class JogadorController : Singleton<JogadorController>
             podeAtacar = true;
 
         if (SceneManager.GetActiveScene().name == "01_comunidade")
+        {
             acabouDialogo = false; // se no inicio de uma cena for uma cutscene, pode começar assim que ela não vai se mover
+            estaDuranteCutscene = true;
+        }
         else acabouDialogo = true;
 
         jogadorControls.Combat.Dash.performed += _ => Dash();
@@ -68,9 +73,9 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Update()
     {//jogador controller
-        if (!acabouDialogo)
-            podeMover = false;
-        else podeMover = true;
+        if (acabouDialogo && !estaDuranteCutscene)
+            podeMover = true;
+        else if(!acabouDialogo && !estaDuranteCutscene) podeMover = false;
 
         JogadorInput();
     }

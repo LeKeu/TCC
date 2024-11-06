@@ -52,6 +52,7 @@ public class Prologo : MonoBehaviour
 
     JogadorController jogadorController;
     TremerCamera tremerCamera;
+    LuzesCiclo luzesCiclo;
 
     private void Awake()
     {
@@ -59,6 +60,7 @@ public class Prologo : MonoBehaviour
         meninoScript = GameObject.Find("Menino").GetComponent<Menino>();
         jogadorController = JogadorController.Instance;
         tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
+        luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
     }
 
     private void Start()
@@ -119,7 +121,7 @@ public class Prologo : MonoBehaviour
 
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
             StartCoroutine(Brigar());
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq"/* && aconteceuBriga*/)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" && aconteceuBriga)
             StartCoroutine(CucaSequestraMenino());
         //if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerPerseguirCuca")
         //    PerseguirCuca();
@@ -174,7 +176,9 @@ public class Prologo : MonoBehaviour
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);
         yield return new WaitUntil(() => jogadorController.acabouDialogo);
         #endregion
+
         yield return new WaitForSeconds(2);
+
         #region Dialogo Briga
         Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 1);
         yield return new WaitUntil(() => jogadorController.acabouDialogo);
@@ -186,11 +190,29 @@ public class Prologo : MonoBehaviour
         meninoPodeSair = false;
         //meninoGO.SetActive(false); // por algum motivo, desativar ele desativa tbm a continuação do dialogo
         #endregion
+
         yield return new WaitForSeconds(2);
+
         #region Dialogos Pos Briga
         Interagir_Celebracao(seuPedroGO.GetComponent<SeuPedroCelebracao>(), 1);
         yield return new WaitUntil(() => jogadorController.acabouDialogo);
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 2);
+        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        #endregion
+
+        #region tudo preto e dialogue
+        luzesCiclo.MudarCorAmbiente(Color.black, 4f);
+        yield return new WaitForSeconds(10);
+
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 3);
+        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        yield return new WaitForSeconds(2);
+        luzesCiclo.MudarCorAmbiente(new Color(0.19f, .2f, 1), 4f);
+        #endregion
+
+        #region Dialogos finalizando celebração
+        yield return new WaitForSeconds(4);
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 4);
         yield return new WaitUntil(() => jogadorController.acabouDialogo);
         #endregion
 
@@ -255,5 +277,6 @@ public class Prologo : MonoBehaviour
     {
         JogadorController.Instance.podeAtacar = acao;
         JogadorController.Instance.podeMover = acao;
+        JogadorController.Instance.estaDuranteCutscene = acao;
     }
 }

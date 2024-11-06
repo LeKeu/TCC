@@ -36,7 +36,6 @@ public class TremerCamera : MonoBehaviour
         channelPerlin.m_AmplitudeGain = 0f;
     }
 
-
     IEnumerator TremerCamRoutine()
     {
         channelPerlin.m_AmplitudeGain = tremerIntensidade;
