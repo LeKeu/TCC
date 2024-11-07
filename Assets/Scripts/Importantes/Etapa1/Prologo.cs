@@ -135,7 +135,7 @@ public class Prologo : MonoBehaviour
 
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
             StartCoroutine(Brigar());
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" && aconteceuBriga)
             StartCoroutine(CucaSequestraMenino());
         //if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerPerseguirCuca")
         //    PerseguirCuca();
@@ -215,13 +215,13 @@ public class Prologo : MonoBehaviour
         #endregion
 
         #region tudo preto, dialogue, volta de noite
-        luzesCiclo.MudarCorAmbiente(Color.black, 4f);
+        luzesCiclo.MudarCorAmbiente(Color.black, 5f);
         yield return new WaitForSeconds(10);
 
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 3);
         yield return new WaitUntil(() => jogadorController.acabouDialogo);
         yield return new WaitForSeconds(2);
-        luzesCiclo.MudarCorAmbiente(new Color(0.19f, .2f, 1), 4f);
+        luzesCiclo.MudarCorAmbiente(new Color(0.19f, .2f, 1), 5f);
         #endregion
 
         #region Dialogos finalizando celebração
@@ -263,7 +263,7 @@ public class Prologo : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
         audioSourceSequestro.PlayOneShot(vidroEstoura);
-        tremerCamera.TremerCameraFuncDinamica(3f, 2f);
+        tremerCamera.TremerCameraFuncDinamica(2f, 2f);
         yield return new WaitForSeconds(vidroEstoura.length);
 
         Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 3);
@@ -273,8 +273,8 @@ public class Prologo : MonoBehaviour
         #endregion
 
         #region Vulto movendo, moitas sumindo
-        vultoMovendo = true;
         vulto.SetActive(true);
+        vultoMovendo = true;
         yield return new WaitForSeconds(2);
         vulto.SetActive(false);
         vultoMovendo = false;
@@ -295,6 +295,9 @@ public class Prologo : MonoBehaviour
 
         #endregion
 
+
+        //menina caindo, efeitos sonoros tensos, tela escurece rápido, efeito sonoro de garra, volta sprite caído, bem mais de noite, menina segue caminho
+
         Etapas.CucaSequestro = false;
     }
 
@@ -305,8 +308,10 @@ public class Prologo : MonoBehaviour
 
     void MudarEstadoJogador(bool acao)
     {
+        Debug.Log("acao --> "+acao);
         JogadorController.Instance.podeAtacar = acao;
         JogadorController.Instance.podeMover = acao;
-        JogadorController.Instance.estaDuranteCutscene = acao;
+        JogadorController.Instance.estaDuranteCutscene = !acao;
+        //JogadorController.Instance.podeFlipX = !acao;
     }
 }

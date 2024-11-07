@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ArmaAtiva : Singleton<ArmaAtiva>
 {
@@ -26,10 +27,15 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     private void Start()
     {
-        jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
-        jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();
+        if (SceneManager.GetActiveScene().name != "01_comunidade" && SceneManager.GetActiveScene().name != "02_comunidade")
+        {
+            jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
+            jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();
 
-        AtaqueCoolDown();
+            AtaqueCoolDown();
+        }
+        else gameObject.SetActive(false);// se for nas cenas de comunidade, não tem como mudar nem utilizar a arma
+
     }
 
     private void Update()

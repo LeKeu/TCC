@@ -32,8 +32,10 @@ public class JogadorController : Singleton<JogadorController>
     public bool estaNaPonte = false;
     public bool estaSendoPerseguido = false;
     public bool estaAndando;
+
     public bool podeMover;
     public bool podeAtacar;
+    public bool podeFlipX;
 
     public bool estaDuranteCutscene;
 
@@ -51,6 +53,8 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Start()
     {
+        podeFlipX = true;
+
         if (SceneManager.GetActiveScene().name != "01_comunidade")
             podeAtacar = true;
 
@@ -73,9 +77,13 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Update()
     {//jogador controller
-        if (acabouDialogo && !estaDuranteCutscene)
-            podeMover = true;
-        else if(!acabouDialogo && !estaDuranteCutscene) podeMover = false;
+        if (estaDuranteCutscene)
+            podeMover = false;
+        else
+        {
+            if (acabouDialogo) podeMover = true;
+            else podeMover = false;
+        }
 
         JogadorInput();
     }
@@ -124,8 +132,11 @@ public class JogadorController : Singleton<JogadorController>
         Vector3 mousePosicao = Input.mousePosition;
         Vector3 jogadorScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
-        if(mousePosicao.x < jogadorScreenPoint.x) { spriteRenderer.flipX = true; olhandoEsq = true; }
-        else { spriteRenderer.flipX = false; olhandoEsq = false; }
+        if (podeFlipX)
+        {
+            if (mousePosicao.x < jogadorScreenPoint.x) { spriteRenderer.flipX = true; olhandoEsq = true; }
+            else { spriteRenderer.flipX = false; olhandoEsq = false; }
+        }
     }
 
     private void Dash()

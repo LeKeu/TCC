@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventarioAtivo : MonoBehaviour
 {
     private int indexSlotAtivo = 0;
 
     private JogadorControls jogadorControls;
+    public bool armasAtivas;
 
     private void Awake()
     {
         jogadorControls = new JogadorControls();
+        if (SceneManager.GetActiveScene().name == "01_comunidade" || SceneManager.GetActiveScene().name == "02_comunidade")
+        { // se for nas cenas de comunidade, não tem como mudar nem utilizar a arma
+            armasAtivas = false;
+            gameObject.SetActive(false);
+        }
     }
 
     private void Start()
@@ -27,7 +34,8 @@ public class InventarioAtivo : MonoBehaviour
 
     private void AtivarEspaco(int numValue) // ativar espaço ativo
     {
-        AtivarEspacoHighlight(numValue - 1);
+        if(armasAtivas)
+            AtivarEspacoHighlight(numValue - 1);
     }
 
     private void AtivarEspacoHighlight(int indexNum)
