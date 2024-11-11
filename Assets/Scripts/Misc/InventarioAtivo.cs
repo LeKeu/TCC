@@ -12,8 +12,15 @@ public class InventarioAtivo : MonoBehaviour
 
     private void Awake()
     {
+        DesativarArma();
+    }
+
+    void DesativarArma()
+    {
         jogadorControls = new JogadorControls();
-        if (SceneManager.GetActiveScene().name == "01_comunidade" || SceneManager.GetActiveScene().name == "02_comunidade")
+        if (SceneManager.GetActiveScene().name == "01_comunidade"
+            || SceneManager.GetActiveScene().name == "02_comunidade"
+            || SceneManager.GetActiveScene().name == "03_comunidade")
         { // se for nas cenas de comunidade, não tem como mudar nem utilizar a arma
             armasAtivas = false;
             gameObject.SetActive(false);

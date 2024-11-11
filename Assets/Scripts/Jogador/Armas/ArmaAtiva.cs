@@ -27,7 +27,15 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name != "01_comunidade" && SceneManager.GetActiveScene().name != "02_comunidade")
+        DesativarArma();
+
+    }
+
+    void DesativarArma()
+    {
+        if (SceneManager.GetActiveScene().name != "01_comunidade"
+            && SceneManager.GetActiveScene().name != "02_comunidade"
+            && SceneManager.GetActiveScene().name != "03_comunidade")
         {
             jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
             jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();
@@ -35,7 +43,6 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
             AtaqueCoolDown();
         }
         else gameObject.SetActive(false);// se for nas cenas de comunidade, não tem como mudar nem utilizar a arma
-
     }
 
     public void AtivarArma1(bool acao)
