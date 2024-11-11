@@ -38,6 +38,20 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     }
 
+    public void AtivarArma1(bool acao)
+    {
+        Debug.Log("arma ativa 1"+acao);
+        gameObject.SetActive(acao);
+
+        if (acao)
+        {
+            jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
+            jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();
+
+            AtaqueCoolDown();
+        }
+    }
+
     private void Update()
     {
         if(JogadorController.Instance.podeAtacar)

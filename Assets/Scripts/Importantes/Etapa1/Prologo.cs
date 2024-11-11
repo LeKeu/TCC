@@ -44,6 +44,8 @@ public class Prologo : MonoBehaviour
     [SerializeField] AudioClip musicaCuca;
     [SerializeField] AudioClip vidroEstoura;
     [SerializeField] AudioClip passosVidro;
+    [SerializeField] AudioClip garraCuca;
+    [SerializeField] AudioClip meninaCorpoCaindo;
 
     [SerializeField] List<GameObject> moitasVermelhas;
     [SerializeField] List<GameObject> listaPosMeninaCorrendo;
@@ -57,7 +59,11 @@ public class Prologo : MonoBehaviour
     bool podeIrProxPos;
     #endregion
 
-    JogadorController jogadorController;
+    #region SOZINHA FLORESTA
+    [Header("FLORESTA SOZINHA")]
+    [SerializeField] GameObject DialogoBox;
+    #endregion
+
     TremerCamera tremerCamera;
     LuzesCiclo luzesCiclo;
 
@@ -65,25 +71,28 @@ public class Prologo : MonoBehaviour
     {
         musicaSource = GetComponent<AudioSource>();
         meninoScript = GameObject.Find("Menino").GetComponent<Menino>();
-        jogadorController = JogadorController.Instance;
-        tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
         luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
-    }
 
-    private void Start()
-    {
-        Debug.Log(jogadorController.velocidade + " velllll");
+        tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
+        //Debug.Log(jogadorController.velocidade + " velllll");
         velhaNamiaCelebracaoGO = GameObject.Find("VelhaNamia");
         meninoGO = GameObject.Find("Menino");
         seuPedroGO = GameObject.Find("SeuPedro");
 
-        if (SceneManager.GetActiveScene().name == "01_comunidade")
-            StartCoroutine(IniciarJogo_MeninaTocando());
 
         if(this.gameObject.name == "TriggerCucaSeq")
         {
             audioSourceSequestro = GetComponent<AudioSource>();
         }
+    }
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "01_comunidade")
+            StartCoroutine(IniciarJogo_MeninaTocando());
+
+        if (SceneManager.GetActiveScene().name == "03_comunidade" && this.gameObject.name == "FlorestaSozinha")
+            StartCoroutine(Iniciar_FlorestaEscura());
     }
 
     private void FixedUpdate()
@@ -110,7 +119,7 @@ public class Prologo : MonoBehaviour
         {
             if (meninaIndoCasa)
             {
-                jogadorController.transform.position = Vector2.MoveTowards(jogadorController.transform.position, posFrenteCasa.transform.position, jogadorController.velocidade * Time.deltaTime);
+                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posFrenteCasa.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
             }
 
             if (vultoMovendo)
@@ -118,8 +127,8 @@ public class Prologo : MonoBehaviour
 
             if (meninaCorrendo)
             {
-                jogadorController.transform.position = Vector2.MoveTowards(jogadorController.transform.position, proxPosMeninaAux.transform.position, jogadorController.velocidade * Time.deltaTime);
-                if (Vector3.Distance(jogadorController.transform.position, proxPosMeninaAux.transform.position) <= 1f)
+                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+                if (Vector3.Distance(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position) <= 1f)
                     podeIrProxPos = true;
             }
         }
@@ -135,43 +144,52 @@ public class Prologo : MonoBehaviour
 
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
             StartCoroutine(Brigar());
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" && aconteceuBriga)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
             StartCoroutine(CucaSequestraMenino());
         //if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerPerseguirCuca")
         //    PerseguirCuca();
     } 
 
-    void Interagir_Celebracao(MonoBehaviour script, int index)
+    void Interagir_Celebracao(MonoBehaviour script, int index, string metodoNome = "Interagir_CelebracaoCutscene")
     {
         object[] parametros = { index };
         //Debug.Log(script.name);
-        var metodo = script.GetType().GetMethod($"Interagir_CelebracaoCutscene");
+        var metodo = script.GetType().GetMethod($"{metodoNome}");
         metodo.Invoke(script, parametros);
     }
 
     IEnumerator IniciarJogo_MeninaTocando()
     {
+        Debug.Log("inicio LET");
         Etapas.MeninaTocandoUkulele = true;
 
         MudarEstadoJogador(false);
 
+        #region Tocar ukulele
         musicaSource.PlayOneShot(musicaMenina);
 
         yield return new WaitForSeconds(10); // música tocando por x segundos
+        #endregion
 
+        #region menino chega, dialogo
         meninoScript.podeMover = true;
-        musicaSource.Stop();
 
         yield return new WaitUntil(() => !meninoScript.estaLonge); // esperar até o menino chegar perto
         meninoScript.Interagir();
+        musicaSource.Stop();
 
-        yield return new WaitUntil(() => jogadorController.acabouDialogo); // esperar dialogo com menino acabar
+        Debug.Log("para msuica LET");
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo); // esperar dialogo com menino acabar
+        #endregion
 
+        Debug.Log("antes etsado mudar LET");
         MudarEstadoJogador(true);
         Menino.acabouFalar = true;
+        Debug.Log("mudouuuu LET");
 
         Etapas.MeninaTocandoUkulele = false;
     }
+
 
     IEnumerator Brigar()
     {
@@ -188,14 +206,14 @@ public class Prologo : MonoBehaviour
 
         #region Dialogos Celebraçao
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);
-        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
         yield return new WaitForSeconds(2);
 
         #region Dialogo Briga
         Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 1);
-        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
         #region Menino indo embora
@@ -209,9 +227,9 @@ public class Prologo : MonoBehaviour
 
         #region Dialogos Pos Briga
         Interagir_Celebracao(seuPedroGO.GetComponent<SeuPedroCelebracao>(), 1);
-        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 2);
-        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
         #region tudo preto, dialogue, volta de noite
@@ -219,7 +237,7 @@ public class Prologo : MonoBehaviour
         yield return new WaitForSeconds(10);
 
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 3);
-        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         yield return new WaitForSeconds(2);
         luzesCiclo.MudarCorAmbiente(new Color(0.19f, .2f, 1), 5f);
         #endregion
@@ -227,7 +245,7 @@ public class Prologo : MonoBehaviour
         #region Dialogos finalizando celebração
         yield return new WaitForSeconds(4);
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 4);
-        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
         MudarEstadoJogador(true);
@@ -240,7 +258,6 @@ public class Prologo : MonoBehaviour
     {
         Debug.Log("SEQUESTROW");
 
-        MudarEstadoJogador(false);
         Etapas.CucaSequestro = true;
 
         #region Menina andando em direção da casa
@@ -250,11 +267,13 @@ public class Prologo : MonoBehaviour
         meninaIndoCasa = false;
         #endregion
 
+        MudarEstadoJogador(false);
+
         #region musica cuca e dialogo menina
         audioSourceSequestro.PlayOneShot(musicaCuca);
         audioSourceSequestro.loop = true;
         Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 2);
-        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
         #region Barulhos vidros, tremer cam, pedido socorro
@@ -267,7 +286,7 @@ public class Prologo : MonoBehaviour
         yield return new WaitForSeconds(vidroEstoura.length);
 
         Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 3);
-        yield return new WaitUntil(() => jogadorController.acabouDialogo);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
         audioSourceSequestro.PlayOneShot(passosVidro);
         #endregion
@@ -295,20 +314,54 @@ public class Prologo : MonoBehaviour
 
         #endregion
 
-
-        //menina caindo, efeitos sonoros tensos, tela escurece rápido, efeito sonoro de garra, volta sprite caído, bem mais de noite, menina segue caminho
+        //efeitos sonoros tensos, tela escurece rápido, efeito sonoro de garra, volta sprite menina caído, bem mais de noite, menina segue caminho
+        #region Tela escurecer, barulho garra, muda sprite, volta bem escuro, 
+        luzesCiclo.MudarCorAmbiente(Color.black);
+        yield return new WaitForSeconds(.5f);
+        audioSourceSequestro.PlayOneShot(garraCuca);
+        yield return new WaitForSeconds(garraCuca.length);
+        audioSourceSequestro.PlayOneShot(meninaCorpoCaindo);
+        yield return new WaitForSeconds(3);
+        //luzesCiclo.MudarCorAmbiente(new Color(0.05f, .07f, .21f), 4f);
+        #endregion
 
         Etapas.CucaSequestro = false;
+        SceneManager.LoadScene("03_comunidade");
     }
+    IEnumerator Iniciar_FlorestaEscura()
+    {
+        Debug.Log("oioajoiho");
+        #region fade from black
+        MudarEstadoJogador(false);
+        luzesCiclo.MudarCorAmbiente(Color.black);
+        luzesCiclo.MudarCorAmbiente(new Color(0.05f, .07f, .21f), 4f);
+        JogadorController.Instance.velocidade = 2f;
+        yield return new WaitForSeconds(5);
+        MudarEstadoJogador(true);
+        #endregion
 
-    //void PerseguirCuca()
-    //{
-    //    Debug.Log("perseguir");
-    //}
+        #region dialogos menina
+        JogadorController.Instance.falandoSozinha = true;
+        JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
+        yield return new WaitForSeconds(3);
+        JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
+        yield return new WaitForSeconds(3);
+        JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
+        yield return new WaitForSeconds(3);
+        JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
+        yield return new WaitForSeconds(3);
+        DialogoBox.SetActive(false);
+        #endregion
+        JogadorController.Instance.falandoSozinha = false;
+        JogadorController.Instance.estaDuranteCutscene = false;
+        JogadorController.Instance.acabouDialogo = true;
+    }
 
     void MudarEstadoJogador(bool acao)
     {
-        Debug.Log("acao --> "+acao);
+        //Debug.Log("acao --> "+acao);
+        Debug.Log("mudarestado LET");
+
         JogadorController.Instance.podeAtacar = acao;
         JogadorController.Instance.podeMover = acao;
         JogadorController.Instance.estaDuranteCutscene = !acao;

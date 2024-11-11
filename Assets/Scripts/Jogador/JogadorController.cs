@@ -38,6 +38,7 @@ public class JogadorController : Singleton<JogadorController>
     public bool podeFlipX;
 
     public bool estaDuranteCutscene;
+    public bool falandoSozinha;
 
     protected override void Awake()
     {
@@ -77,13 +78,18 @@ public class JogadorController : Singleton<JogadorController>
 
     private void Update()
     {//jogador controller
-        if (estaDuranteCutscene)
-            podeMover = false;
-        else
+        if (!falandoSozinha)
         {
-            if (acabouDialogo) podeMover = true;
-            else podeMover = false;
+            if (estaDuranteCutscene)
+                podeMover = false;
+            else
+            {
+                if (acabouDialogo) podeMover = true;
+                else podeMover = false;
+            }
         }
+        else podeMover = true;
+        
 
         JogadorInput();
     }

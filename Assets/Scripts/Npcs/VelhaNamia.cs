@@ -14,6 +14,9 @@ public class VelhaNamia : NPCs, ITalkable
     [SerializeField] private Sprite perfil;
     public bool tutCompleto;
 
+    [SerializeField] ArmaAtiva armaAtiva;
+    [SerializeField] InventarioAtivo inventarioAtivo;
+
     public override void Interagir()
     {
 
@@ -21,6 +24,12 @@ public class VelhaNamia : NPCs, ITalkable
         {
             if (!tutCompleto)
                 CompletarTutorial();
+
+            if (indexAtual == 0 && !tutCompleto)
+            {
+                armaAtiva.AtivarArma1(true);
+                inventarioAtivo.AtivarArma1(true);
+            }
 
             if (tutCompleto) // só vai sair do txt de tut qnd tiver completa a 'quest'
                 indexAtual++;
@@ -40,7 +49,11 @@ public class VelhaNamia : NPCs, ITalkable
 
     void CompletarTutorial()
     {
-        if(ErvasVerdes.transform.childCount == 0) 
+        if(ErvasVerdes.transform.childCount == 0)
+        {
             tutCompleto = true;
+            armaAtiva.AtivarArma1(false);
+            inventarioAtivo.AtivarArma1(false);
+        }
     }
 }

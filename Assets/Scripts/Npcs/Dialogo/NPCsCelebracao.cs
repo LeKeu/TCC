@@ -36,4 +36,9 @@ public abstract class NPCsCelebracao : MonoBehaviour, IInteractble
             return true;
         else return false;
     }
+
+    public void PassarDialogoAutomaticamente()
+    {
+        Interagir();
+    }
 }

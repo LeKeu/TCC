@@ -55,9 +55,15 @@ public class LuzesCiclo : MonoBehaviour
         }
     }
 
-    public void MudarCorAmbiente(Color corNova, float vel)
+    public void MudarCorAmbiente(Color corNova, float vel=0)
     {
         //luz2d.color = color;
+        Debug.Log("a1");
+        if(vel == 0)
+            luz2d.color = corNova;
+        else
+        {
         mudarCor = true; cor = corNova; velocidadeMudanca = vel;
+        }
     }
 }

@@ -12,12 +12,13 @@ public class TremerCamera : MonoBehaviour
 
     CinemachineBasicMultiChannelPerlin channelPerlin;
 
-    private void Awake()
+    private void Start()
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
         channelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();  
         channelPerlin.m_AmplitudeGain = 0f;
         virtualCamera.Follow = JogadorController.Instance.transform;
+        
     }
 
     public void TremerCameraFunc()

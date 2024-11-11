@@ -20,6 +20,12 @@ public class InventarioAtivo : MonoBehaviour
         }
     }
 
+    public void AtivarArma1(bool acao)
+    {
+        armasAtivas = acao;
+        gameObject.SetActive(acao);
+    }
+
     private void Start()
     {
         jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
