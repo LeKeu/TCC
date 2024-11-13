@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Prologo : MonoBehaviour
 {
     [SerializeField] AudioClip musicaMenina;
+    [SerializeField] SFX sfx_script;
     AudioSource musicaSource;
     Menino meninoScript;
 
@@ -330,12 +331,12 @@ public class Prologo : MonoBehaviour
     }
     IEnumerator Iniciar_FlorestaEscura()
     {
-        Debug.Log("oioajoiho");
+        sfx_script.FlorestaNoite();
         #region fade from black
         MudarEstadoJogador(false);
         luzesCiclo.MudarCorAmbiente(Color.black);
         luzesCiclo.MudarCorAmbiente(new Color(0.05f, .07f, .21f), 4f);
-        JogadorController.Instance.velocidade = 2f;
+        JogadorController.Instance.velocidade = 1f;
         yield return new WaitForSeconds(5);
         MudarEstadoJogador(true);
         #endregion
@@ -359,9 +360,6 @@ public class Prologo : MonoBehaviour
 
     void MudarEstadoJogador(bool acao)
     {
-        //Debug.Log("acao --> "+acao);
-        Debug.Log("mudarestado LET");
-
         JogadorController.Instance.podeAtacar = acao;
         JogadorController.Instance.podeMover = acao;
         JogadorController.Instance.estaDuranteCutscene = !acao;

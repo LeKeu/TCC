@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,19 +14,24 @@ public class InventarioAtivo : MonoBehaviour
 
     private void Awake()
     {
+        jogadorControls = new JogadorControls();
+    }
+    private void Start()
+    {
         DesativarArma();
+        jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
+
+        AtivarEspacoHighlight(0);
     }
 
     void DesativarArma()
     {
-        jogadorControls = new JogadorControls();
-        if (SceneManager.GetActiveScene().name == "01_comunidade"
-            || SceneManager.GetActiveScene().name == "02_comunidade"
-            || SceneManager.GetActiveScene().name == "03_comunidade")
-        { // se for nas cenas de comunidade, não tem como mudar nem utilizar a arma
+        string[] nomesCenas = { "01_comunidade", "02_comunidade", "03_comunidade", "01_saci" };
+        if (SceneManager.GetActiveScene().name.ContainsAny(nomesCenas))
+        { // se for nas cenas de comunidade ou saci1, não tem como mudar nem utilizar a arma
             armasAtivas = false;
             gameObject.SetActive(false);
-        }
+        } else armasAtivas = true;
     }
 
     public void AtivarArma1(bool acao)
@@ -33,12 +40,6 @@ public class InventarioAtivo : MonoBehaviour
         gameObject.SetActive(acao);
     }
 
-    private void Start()
-    {
-        jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
-
-        AtivarEspacoHighlight(0);
-    }
 
     private void OnEnable()
     {
@@ -85,7 +86,7 @@ public class InventarioAtivo : MonoBehaviour
 
         ArmaAtiva.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
         novaArma.transform.parent = ArmaAtiva.Instance.transform;
-
-        ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
+        if (armasAtivas)
+            ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
     }
 }

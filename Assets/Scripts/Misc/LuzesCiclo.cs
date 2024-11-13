@@ -48,7 +48,7 @@ public class LuzesCiclo : MonoBehaviour
     {
         if (mudarCor)
         {
-            Debug.Log("mudando cor");
+            //Debug.Log("mudando cor");
             luz2d.color = Color.Lerp(luz2d.color, cor, 1f * Time.deltaTime);
             if (luz2d.color == cor)
                 mudarCor = false;
@@ -57,8 +57,6 @@ public class LuzesCiclo : MonoBehaviour
 
     public void MudarCorAmbiente(Color corNova, float vel=0)
     {
-        //luz2d.color = color;
-        Debug.Log("a1");
         if(vel == 0)
             luz2d.color = corNova;
         else

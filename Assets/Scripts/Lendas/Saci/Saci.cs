@@ -30,18 +30,22 @@ public class Saci : MonoBehaviour
     void Start()
     {
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
+        BatalhaBoss1();
+    }
 
+    public void BatalhaBoss1()
+    {
         podeTeletransportar = true;
         estaAtordoado = false;
         primeiroEncontro = true; // ver onde setar
-        //StartCoroutine(ComecarBatalhaRoutine());
+        StartCoroutine(ComecarBatalhaRoutine());
     }
 
-    private void Update()
-    {
-        if(primeiroEncontro && !comecouPrimeiroEncontro) // situação da primeira vez encontrando o saci
-        { comecouPrimeiroEncontro = true; StartCoroutine(ComecarBatalhaRoutine()); }
-    }
+    //private void Update()
+    //{
+    //    if(primeiroEncontro && !comecouPrimeiroEncontro) // situação da primeira vez encontrando o saci
+    //    { comecouPrimeiroEncontro = true; StartCoroutine(ComecarBatalhaRoutine()); }
+    //}
 
     private void OnTriggerStay2D(Collider2D collision)
     {

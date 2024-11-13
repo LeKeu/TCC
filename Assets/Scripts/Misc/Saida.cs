@@ -12,9 +12,10 @@ public class Saida : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<JogadorController>())
-        { 
+        {
             SceneManagement.Instance.SetTransicaoNome(cenaTransicaoNome);
-            SceneManager.LoadScene(proxCena);
+            if(proxCena != "")
+                SceneManager.LoadScene(proxCena);
         }
     }
 }
