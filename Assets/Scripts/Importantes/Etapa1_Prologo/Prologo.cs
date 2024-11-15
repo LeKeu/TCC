@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Prologo : MonoBehaviour
 {
+    [Header("Gerais")]
+    [SerializeField] OQueFazer oQueFazer_script;
+    TremerCamera tremerCamera;
+    LuzesCiclo luzesCiclo;
+
     [Header("Audios Geral")]
     [SerializeField] SFX sfx_script;
     AudioSource musicaSource;
@@ -16,7 +21,7 @@ public class Prologo : MonoBehaviour
 
     #region bool de checagem de etapas ocorridas
     static bool aconteceuBriga;
-    bool aconteceuSequestro;
+    bool mudouTextAux;
     #endregion
 
     #region NPCS GO
@@ -70,8 +75,6 @@ public class Prologo : MonoBehaviour
     [SerializeField] Transform posInicialMenina;
     #endregion
 
-    TremerCamera tremerCamera;
-    LuzesCiclo luzesCiclo;
 
     private void Awake()
     {
@@ -97,12 +100,21 @@ public class Prologo : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "01_comunidade")
             StartCoroutine(IniciarJogo_MeninaTocando());
 
+        if (SceneManager.GetActiveScene().name == "02_comunidade")
+            oQueFazer_script.GerenciarQuadroQuest_celebr_seq(0);
+
         if (SceneManager.GetActiveScene().name == "T03_comunidade" && this.gameObject.name == "FlorestaSozinha")
             StartCoroutine(Iniciar_FlorestaEscura());
     }
 
     private void FixedUpdate()
     {
+        if(qntdNpcsConversados >= totalNpcsConversaveis  && !mudouTextAux)
+        {
+            oQueFazer_script.GerenciarQuadroQuest_celebr_seq(1);
+            mudouTextAux = true;
+        }
+
         #region Briga
         if (Etapas.BrigaCelebracao && this.gameObject.name == "TriggerBriga")
         {
@@ -162,6 +174,7 @@ public class Prologo : MonoBehaviour
     IEnumerator IniciarJogo_MeninaTocando()
     {
         Etapas.MeninaTocandoUkulele = true;
+        oQueFazer_script.AtivarPainelQuests(false);
 
         MudarEstadoJogador(false);
 
@@ -186,6 +199,7 @@ public class Prologo : MonoBehaviour
         Menino.acabouFalar = true;
 
         Etapas.MeninaTocandoUkulele = false;
+        oQueFazer_script.AtivarPainelQuests(true);
     }
 
     IEnumerator Brigar()
@@ -200,6 +214,7 @@ public class Prologo : MonoBehaviour
         #endregion
 
         MudarEstadoJogador(false);
+        oQueFazer_script.AtivarPainelQuests(false);
 
         #region Dialogos Celebraçao
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);
@@ -246,6 +261,8 @@ public class Prologo : MonoBehaviour
         #endregion
 
         MudarEstadoJogador(true);
+        oQueFazer_script.AtivarPainelQuests(true);
+        oQueFazer_script.GerenciarQuadroQuest_celebr_seq(2);
 
         Etapas.BrigaCelebracao = false;
         aconteceuBriga = true;
@@ -265,6 +282,7 @@ public class Prologo : MonoBehaviour
         #endregion
 
         MudarEstadoJogador(false);
+        oQueFazer_script.AtivarPainelQuests(false);
 
         #region musica cuca e dialogo menina
         audioSourceSequestro.PlayOneShot(musicaCuca);
@@ -328,7 +346,11 @@ public class Prologo : MonoBehaviour
     IEnumerator Iniciar_FlorestaEscura()
     {
         JogadorController.Instance.transform.position = posInicialMenina.position;
+        //oQueFazer_script.AtivarPainelQuests(false);
+        oQueFazer_script.GerenciarQuadroQuest_celebr_seq(3);
+
         sfx_script.FlorestaNoite();
+
         #region fade from black
         MudarEstadoJogador(false);
         luzesCiclo.MudarCorAmbiente(Color.black);
@@ -350,6 +372,8 @@ public class Prologo : MonoBehaviour
         yield return new WaitForSeconds(3);
         DialogoBox.SetActive(false);
         #endregion
+
+        //oQueFazer_script.AtivarPainelQuests(true);
         JogadorController.Instance.falandoSozinha = false;
         JogadorController.Instance.estaDuranteCutscene = false;
         JogadorController.Instance.acabouDialogo = true;

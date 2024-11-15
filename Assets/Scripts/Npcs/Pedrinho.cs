@@ -13,6 +13,8 @@ public class Pedrinho : NPCs, ITalkable
     public bool tutCompleto;
     [SerializeField] private Sprite perfil;
 
+    [SerializeField] OQueFazer oQueFazer_script;
+
     public override void Interagir()
     {
 
@@ -41,5 +43,6 @@ public class Pedrinho : NPCs, ITalkable
     public void CompletarTutorial()
     {
         tutCompleto = true;
+        oQueFazer_script.GerenciarQuadroQuest_tutorial(4);
     }
 }

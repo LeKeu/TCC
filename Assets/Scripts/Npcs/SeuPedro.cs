@@ -13,6 +13,7 @@ public class SeuPedro : NPCs, ITalkable
     public bool tutCompleto;
     [SerializeField] private Sprite perfil;
 
+    [SerializeField] OQueFazer oQueFazer_script;
     TiaMarta TiaMartaScript;
 
     private void Start()
@@ -55,6 +56,7 @@ public class SeuPedro : NPCs, ITalkable
     void CompletarTutorial()
     {
         tutCompleto = true;
+        oQueFazer_script.GerenciarQuadroQuest_tutorial(3);
         //Debug.Log("seu pedro OK");
     }
 }

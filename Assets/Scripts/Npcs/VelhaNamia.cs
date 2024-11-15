@@ -16,6 +16,7 @@ public class VelhaNamia : NPCs, ITalkable
 
     [SerializeField] ArmaAtiva armaAtiva;
     [SerializeField] InventarioAtivo inventarioAtivo;
+    [SerializeField] OQueFazer oQueFazer_script;
 
     public override void Interagir()
     {
@@ -52,6 +53,7 @@ public class VelhaNamia : NPCs, ITalkable
         if(ErvasVerdes.transform.childCount == 0)
         {
             tutCompleto = true;
+            oQueFazer_script.GerenciarQuadroQuest_tutorial(1);
             armaAtiva.AtivarArma1(false);       //
             inventarioAtivo.AtivarArma1(false); //
         }

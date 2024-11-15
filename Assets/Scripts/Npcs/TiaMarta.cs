@@ -13,6 +13,7 @@ public class TiaMarta : NPCs, ITalkable
 
     public bool tutCompleto;
     [SerializeField] private Sprite perfil;
+    [SerializeField] OQueFazer oQueFazer_script;
 
     VelhaNamia VelhaNamiaScript;
 
@@ -53,6 +54,7 @@ public class TiaMarta : NPCs, ITalkable
     void CompletarTutorial()
     {
         tutCompleto = true;
+        oQueFazer_script.GerenciarQuadroQuest_tutorial(2);
         //Debug.Log("entregando ervas");
     }
 }
