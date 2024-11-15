@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Net;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,8 +31,9 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     void DesativarArma()
     {
-        string[] nomesCenas = { "01_comunidade", "02_comunidade", "03_comunidade", "01_saci" };
-        if (!SceneManager.GetActiveScene().name.ContainsAny(nomesCenas))
+        if (SceneManager.GetActiveScene().name != "01_comunidade"
+            && SceneManager.GetActiveScene().name != "02_comunidade"
+            && SceneManager.GetActiveScene().name != "T03_comunidade")
         {
             jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
             jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();

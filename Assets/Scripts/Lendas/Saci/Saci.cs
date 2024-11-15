@@ -30,7 +30,7 @@ public class Saci : MonoBehaviour
     void Start()
     {
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
-        BatalhaBoss1();
+        //BatalhaBoss1();
     }
 
     public void BatalhaBoss1()

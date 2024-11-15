@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Comunidade/02_comunidade.unity
     guid: 9e4b2aff0906b784780437e39e760705
   - enabled: 1
-    path: Assets/Scenes/Comunidade/03_comunidade.unity
-    guid: d2efe5920c153664891df67d4bc0aa6c
+    path: Assets/Scenes/Comunidade/T03_comunidade.unity
+    guid: 17642348a5ad5184381d0d40cd910638
   - enabled: 1
     path: Assets/Scenes/Cuca/01_cuca.unity
     guid: 1186ad770cbbe344fb7283cddae41412

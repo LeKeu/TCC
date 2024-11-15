@@ -12,7 +12,8 @@ public class Etapas : MonoBehaviour
     public static bool BrigaCelebracao;
     public static bool CucaSequestro;
 
-    public static bool ETAPA2;
+    // ETAPA2;
+    public static bool PrimeiroEncontroSaci;
     public static bool ETAPA3;
     public static bool ETAPA4;
 }

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Prologo : MonoBehaviour
 {
-    [SerializeField] AudioClip musicaMenina;
+    [Header("Audios Geral")]
     [SerializeField] SFX sfx_script;
     AudioSource musicaSource;
     Menino meninoScript;
@@ -23,6 +23,10 @@ public class Prologo : MonoBehaviour
     GameObject velhaNamiaCelebracaoGO;
     GameObject meninoGO;
     GameObject seuPedroGO;
+    #endregion
+
+    #region UKULELE
+    [SerializeField] AudioClip musicaMenina;
     #endregion
 
     #region BRIGA
@@ -63,6 +67,7 @@ public class Prologo : MonoBehaviour
     #region SOZINHA FLORESTA
     [Header("FLORESTA SOZINHA")]
     [SerializeField] GameObject DialogoBox;
+    [SerializeField] Transform posInicialMenina;
     #endregion
 
     TremerCamera tremerCamera;
@@ -92,7 +97,7 @@ public class Prologo : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "01_comunidade")
             StartCoroutine(IniciarJogo_MeninaTocando());
 
-        if (SceneManager.GetActiveScene().name == "03_comunidade" && this.gameObject.name == "FlorestaSozinha")
+        if (SceneManager.GetActiveScene().name == "T03_comunidade" && this.gameObject.name == "FlorestaSozinha")
             StartCoroutine(Iniciar_FlorestaEscura());
     }
 
@@ -139,16 +144,11 @@ public class Prologo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("TRIGGER");
-        //Debug.Log(gameObject.name);
-        //Debug.Log(aconteceuBriga);
 
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
             StartCoroutine(Brigar());
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
             StartCoroutine(CucaSequestraMenino());
-        //if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerPerseguirCuca")
-        //    PerseguirCuca();
     } 
 
     void Interagir_Celebracao(MonoBehaviour script, int index, string metodoNome = "Interagir_CelebracaoCutscene")
@@ -161,7 +161,6 @@ public class Prologo : MonoBehaviour
 
     IEnumerator IniciarJogo_MeninaTocando()
     {
-        Debug.Log("inicio LET");
         Etapas.MeninaTocandoUkulele = true;
 
         MudarEstadoJogador(false);
@@ -183,14 +182,11 @@ public class Prologo : MonoBehaviour
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo); // esperar dialogo com menino acabar
         #endregion
 
-        Debug.Log("antes etsado mudar LET");
         MudarEstadoJogador(true);
         Menino.acabouFalar = true;
-        Debug.Log("mudouuuu LET");
 
         Etapas.MeninaTocandoUkulele = false;
     }
-
 
     IEnumerator Brigar()
     {
@@ -327,10 +323,11 @@ public class Prologo : MonoBehaviour
         #endregion
 
         Etapas.CucaSequestro = false;
-        SceneManager.LoadScene("03_comunidade");
+        SceneManager.LoadScene("T03_comunidade");
     }
     IEnumerator Iniciar_FlorestaEscura()
     {
+        JogadorController.Instance.transform.position = posInicialMenina.position;
         sfx_script.FlorestaNoite();
         #region fade from black
         MudarEstadoJogador(false);

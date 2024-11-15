@@ -52,8 +52,8 @@ public class VelhaNamia : NPCs, ITalkable
         if(ErvasVerdes.transform.childCount == 0)
         {
             tutCompleto = true;
-            armaAtiva.AtivarArma1(false);
-            inventarioAtivo.AtivarArma1(false);
+            armaAtiva.AtivarArma1(false);       //
+            inventarioAtivo.AtivarArma1(false); //
         }
     }
 }

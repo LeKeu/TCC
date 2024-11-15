@@ -2476,7 +2476,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.2, y: -2.6, z: -10}
+  m_LocalPosition: {x: 4.22, y: -0.54, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41437,6 +41437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicaMenina: {fileID: 0}
+  sfx_script: {fileID: 0}
   posMeninaBriga: {fileID: 0}
   posMeninoBriga: {fileID: 0}
   posVelhaNamiaBriga: {fileID: 0}
@@ -41459,6 +41460,7 @@ MonoBehaviour:
   - {fileID: 1947945946}
   - {fileID: 1888603599}
   - {fileID: 195161371}
+  DialogoBox: {fileID: 0}
 --- !u!82 &1341028940
 AudioSource:
   m_ObjectHideFlags: 0
@@ -45991,7 +45993,7 @@ Tilemap:
       - {fileID: 475806399, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -581906228, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1337139000, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 13, y: -11, z: 0}
@@ -46313,7 +46315,7 @@ Tilemap:
       - {fileID: -1599972479, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -229032524, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1812720589, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 6, y: -7, z: 0}
@@ -46750,7 +46752,7 @@ Tilemap:
       - {fileID: -1599972479, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -229032524, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1812720589, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 12, y: -2, z: 0}
@@ -46796,7 +46798,7 @@ Tilemap:
       - {fileID: -431330007, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 705410160, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1402667787, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -4, y: -1, z: 0}
@@ -46957,7 +46959,7 @@ Tilemap:
       - {fileID: 1133128325, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1708104942, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -209832231, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: -1, z: 0}
@@ -47325,7 +47327,7 @@ Tilemap:
       - {fileID: 1133128325, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1708104942, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -209832231, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 2, y: 1, z: 0}
@@ -48176,7 +48178,7 @@ Tilemap:
       - {fileID: -1628169057, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 40615822, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1422542245, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: 6, z: 0}
@@ -48268,7 +48270,7 @@ Tilemap:
       - {fileID: 988694446, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 722514835, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1581700420, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -12, y: 7, z: 0}
@@ -48590,7 +48592,7 @@ Tilemap:
       - {fileID: -431330007, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 705410160, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1402667787, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -13, y: 9, z: 0}
@@ -48659,7 +48661,7 @@ Tilemap:
       - {fileID: -754010298, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -879509458, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 485149445, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 7, y: 9, z: 0}
@@ -55287,7 +55289,7 @@ Transform:
   m_GameObject: {fileID: 1849874757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.2670317, y: -2.4768653, z: -9.990754}
+  m_LocalPosition: {x: 4.152968, y: -0.41686553, z: -9.990754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65108,6 +65110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicaMenina: {fileID: 0}
+  sfx_script: {fileID: 0}
   posMeninaBriga: {fileID: 600450666}
   posMeninoBriga: {fileID: 1270815159}
   posVelhaNamiaBriga: {fileID: 606423574}
@@ -65122,6 +65125,7 @@ MonoBehaviour:
   meninaCorpoCaindo: {fileID: 0}
   moitasVermelhas: []
   listaPosMeninaCorrendo: []
+  DialogoBox: {fileID: 0}
 --- !u!61 &2084495746
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66940,11 +66944,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3542962782931481375, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.2
+      value: 4.22
       objectReference: {fileID: 0}
     - target: {fileID: 3542962782931481375, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6
+      value: -0.54
       objectReference: {fileID: 0}
     - target: {fileID: 3542962782931481375, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_LocalPosition.z
