@@ -11,6 +11,10 @@ public class SFX : MonoBehaviour
     [SerializeField] AudioClip florestaNoite;
     #endregion
 
+    #region Saci
+    [SerializeField] AudioClip saciAssobio;
+    #endregion
+
     private void Start()
     {
         audioSource = GetComponents<AudioSource>();
@@ -21,4 +25,11 @@ public class SFX : MonoBehaviour
         audioSource[0].PlayOneShot(florestaNoite);
         audioSource[0].loop = true;
     }
+
+    public void AssobioSaci()
+    {
+        audioSource[1].PlayOneShot(saciAssobio);
+    }
+
+    public void PararAssobioSaci() => audioSource[1].Stop();
 }

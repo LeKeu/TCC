@@ -181,7 +181,7 @@ public class Prologo : MonoBehaviour
         #region Tocar ukulele
         musicaSource.PlayOneShot(musicaMenina);
 
-        yield return new WaitForSeconds(10); // música tocando por x segundos
+        yield return new WaitForSeconds(3); // música tocando por x segundos
         #endregion
 
         #region menino chega, dialogo

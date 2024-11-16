@@ -13,12 +13,13 @@ public class TiaMarta : NPCs, ITalkable
 
     public bool tutCompleto;
     [SerializeField] private Sprite perfil;
-    [SerializeField] OQueFazer oQueFazer_script;
+    OQueFazer oQueFazer_script;
 
     VelhaNamia VelhaNamiaScript;
 
     private void Start()
     {
+        oQueFazer_script = GameObject.FindObjectOfType<OQueFazer>();
         VelhaNamiaScript = GameObject.Find("VelhaNamia").GetComponent<VelhaNamia>();
     }
 

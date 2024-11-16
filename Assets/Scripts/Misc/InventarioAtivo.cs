@@ -18,28 +18,33 @@ public class InventarioAtivo : MonoBehaviour
     }
     private void Start()
     {
-        DesativarArma();
-        jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
+        if (SceneManager.GetActiveScene().name == "01_comunidade"
+            || SceneManager.GetActiveScene().name == "02_comunidade"
+            || SceneManager.GetActiveScene().name == "T03_comunidade")
+        {
+            DesativarArma();
+        }else
+        {
+            armasAtivas = true;
+            jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
 
-        AtivarEspacoHighlight(0);
+            AtivarEspacoHighlight(0);
+        }
     }
 
     void DesativarArma()
     {
-        //jogadorControls = new JogadorControls();
-        if (SceneManager.GetActiveScene().name == "01_comunidade"
-            || SceneManager.GetActiveScene().name == "02_comunidade"
-            || SceneManager.GetActiveScene().name == "T03_comunidade")
-        { // se for nas cenas de comunidade ou saci1, não tem como mudar nem utilizar a arma
-            armasAtivas = false;
-            gameObject.SetActive(false);
-        } else armasAtivas = true;
+        armasAtivas = false;
+        gameObject.SetActive(false);
     }
 
     public void AtivarArma1(bool acao)
     {
         armasAtivas = acao;
         gameObject.SetActive(acao);
+        jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
+
+        AtivarEspacoHighlight(0);
     }
 
 
