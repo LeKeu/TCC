@@ -14,8 +14,9 @@ public class Etapa2 : MonoBehaviour
 
     #region Primeiro Encontro Saci
     [SerializeField] Transform posMenina_ConversaSaci;
-    [SerializeField] AudioClip SaciAssobio; 
+    [SerializeField] AudioClip SaciAssobio;
 
+    bool aconteceuEncontro;
     bool meninaAndando_EncontroSaci;
     #endregion
     void Start()
@@ -40,7 +41,7 @@ public class Etapa2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<JogadorController>() && gameObject.name == "PrimeiroEncontroSaci")
+        if(collision.GetComponent<JogadorController>() && gameObject.name == "PrimeiroEncontroSaci" && !aconteceuEncontro)
         {
             StartCoroutine(PrimeiroEncontroSaci());
         }
@@ -66,7 +67,12 @@ public class Etapa2 : MonoBehaviour
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
+        #region inicio batalha saci
+        Saci.GetComponent<Saci>().IniciarBatalha_primeiroEncontroSaci();
+        #endregion
+
         MudarEstadoJogador(true);
+        aconteceuEncontro = true;
         Etapas.PrimeiroEncontroSaci = false;
         JogadorController.Instance.velocidade = 4f;
     }

@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
   m_Name: Saci_encontro01
   m_EditorClassIdentifier: 
-  paragrafos: []
-  perfilNPC: {fileID: 0}
+  paragrafos:
+  - Saci_oiiii sou eu
+  - "_cad\xEA meu irm\xE3o??"
+  - Saci_meia noite eu te conto
+  - '_marrapaz eu vou ti pegar '
+  - "_vem c\xE1 seu"
+  perfilNPC: {fileID: 21300000, guid: c33428fddcf554b41b82eb8310b9bafe, type: 3}

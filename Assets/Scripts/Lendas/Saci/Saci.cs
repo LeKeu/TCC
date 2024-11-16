@@ -20,6 +20,8 @@ public class Saci : MonoBehaviour
     [SerializeField] List<GameObject> pontosSpawn = new List<GameObject>(); // dos invocados
     [SerializeField] List<GameObject> pontosSpawnSaci = new List<GameObject>();
 
+    [SerializeField] List<GameObject> pontosSpawnEncontro1 = new List<GameObject>();
+
     bool podeTeletransportar;
     bool estaAtordoado;
 
@@ -41,11 +43,10 @@ public class Saci : MonoBehaviour
         StartCoroutine(ComecarBatalhaRoutine());
     }
 
-    //private void Update()
-    //{
-    //    if(primeiroEncontro && !comecouPrimeiroEncontro) // situação da primeira vez encontrando o saci
-    //    { comecouPrimeiroEncontro = true; StartCoroutine(ComecarBatalhaRoutine()); }
-    //}
+    public void IniciarBatalha_primeiroEncontroSaci()
+    {
+        SummonarBichos(3, pontosSpawnEncontro1);
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -71,7 +72,7 @@ public class Saci : MonoBehaviour
 
         if(Vida > 0)    // por x rounds, vai ter o ciclo de inst inimigos, derrotar, atordoar e repetir o round até que chegue a 0 a vida
         {
-            SummonarBichos(1);
+            SummonarBichos(1, pontosSpawn);
             barraVidaBosses.MudarCorBarra(Color.grey);
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0);
             StartCoroutine(AtordoarSaciRoutine());
@@ -89,10 +90,10 @@ public class Saci : MonoBehaviour
         StartCoroutine(ComecarBatalhaRoutine());
     }
 
-    void SummonarBichos(int qntd)
+    void SummonarBichos(int qntd, List<GameObject> pos)
     {
         for (int i = 0; i < qntd; i++)
-            Instantiate(bicho, pontosSpawn[Random.Range(0, 4)].transform);
+            Instantiate(bicho, pos[Random.Range(0, 4)].transform);
     }
     #endregion
     void Teletransportar()
