@@ -16,6 +16,7 @@ public class InvocadoInimigo : BasicAndar
     SpriteRenderer spriteRenderer;
     CircleCollider2D circleCollider;
 
+    public static bool podeAndar;
     bool estaPurificado;
     bool estaAtordoado;
     bool estaNaRange;
@@ -42,15 +43,18 @@ public class InvocadoInimigo : BasicAndar
 
     private void FixedUpdate()
     {
-        if (!estaAtordoado && !estaPurificado)
+        if (podeAndar)
         {
-            IrParaJogador();
+            if (!estaAtordoado && !estaPurificado)
+            {
+                IrParaJogador();
 
-            if (empurrao.serEmpurrado) { return; }
-            if (movDir.x < 0) spriteRenderer.flipX = true;
-            else if (movDir.x > 0) spriteRenderer.flipX = false;
+                if (empurrao.serEmpurrado) { return; }
+                if (movDir.x < 0) spriteRenderer.flipX = true;
+                else if (movDir.x > 0) spriteRenderer.flipX = false;
 
-            rb.MovePosition(rb.position + movDir * (movVel * Time.deltaTime));
+                rb.MovePosition(rb.position + movDir * (movVel * Time.deltaTime));
+            }
         }
     }
 

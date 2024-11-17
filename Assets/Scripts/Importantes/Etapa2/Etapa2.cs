@@ -13,11 +13,13 @@ public class Etapa2 : MonoBehaviour
 
 
     #region Primeiro Encontro Saci
-    [SerializeField] Transform posMenina_ConversaSaci;
     [SerializeField] AudioClip SaciAssobio;
+    [SerializeField] Transform posMenina_ConversaSaci;
+    [SerializeField] Transform posMenina_AcabouLuta;
 
     bool aconteceuEncontro;
     bool meninaAndando_EncontroSaci;
+    bool meninaAndando_AcabouLuta;
     #endregion
     void Start()
     {
@@ -36,6 +38,9 @@ public class Etapa2 : MonoBehaviour
         {
             if(meninaAndando_EncontroSaci)
                 JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posMenina_ConversaSaci.position, 1 * Time.deltaTime);
+            if(meninaAndando_AcabouLuta)
+                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posMenina_AcabouLuta.position, 1 * Time.deltaTime);
+
         }
     }
 
@@ -50,11 +55,14 @@ public class Etapa2 : MonoBehaviour
     IEnumerator PrimeiroEncontroSaci()
     {
         Etapas.PrimeiroEncontroSaci = true;
+        aconteceuEncontro = true;
+
         #region  menina andando e escuta assobio
         meninaAndando_EncontroSaci = true;
 
         sfx_script.AssobioSaci();
-        yield return new WaitForSeconds(2);
+        yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posMenina_ConversaSaci.transform.position) < 1);
+        //yield return new WaitForSeconds(10);
         meninaAndando_EncontroSaci = false;
         MudarEstadoJogador(false);
         #endregion
@@ -63,16 +71,36 @@ public class Etapa2 : MonoBehaviour
         sfx_script.PararAssobioSaci();
         Saci.SetActive(true);
         yield return new WaitForSeconds(3);
+
         Interagir_Geral(Saci.GetComponent<SaciDialog>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
+        Saci.GetComponent<Saci>().IniciarBatalha_primeiroEncontroSaci();
+        InvocadoInimigo.podeAndar = false;
+        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 1);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        InvocadoInimigo.podeAndar = true;
         #endregion
 
         #region inicio batalha saci
-        Saci.GetComponent<Saci>().IniciarBatalha_primeiroEncontroSaci();
+        MudarEstadoJogador(true);
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0);
+        Debug.Log("derrotou");
         #endregion
 
+        MudarEstadoJogador(false); // checar aqui!! o player ta andando estranho ás vezes
+
+        #region acabou luta, dialogo saci
+        yield return new WaitForSeconds(3);
+        meninaAndando_AcabouLuta = true;
+        yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posMenina_AcabouLuta.transform.position) < 1);
+        yield return new WaitForSeconds(3);
+        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 2);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        Saci.SetActive(false);
+        #endregion 
+
         MudarEstadoJogador(true);
-        aconteceuEncontro = true;
         Etapas.PrimeiroEncontroSaci = false;
         JogadorController.Instance.velocidade = 4f;
     }

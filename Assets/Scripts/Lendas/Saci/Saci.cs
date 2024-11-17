@@ -22,6 +22,7 @@ public class Saci : MonoBehaviour
 
     [SerializeField] List<GameObject> pontosSpawnEncontro1 = new List<GameObject>();
 
+
     bool podeTeletransportar;
     bool estaAtordoado;
 
@@ -45,7 +46,7 @@ public class Saci : MonoBehaviour
 
     public void IniciarBatalha_primeiroEncontroSaci()
     {
-        SummonarBichos(3, pontosSpawnEncontro1);
+        SummonarBichosOrganizado(3, pontosSpawnEncontro1);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -95,7 +96,14 @@ public class Saci : MonoBehaviour
         for (int i = 0; i < qntd; i++)
             Instantiate(bicho, pos[Random.Range(0, 4)].transform);
     }
+
+    void SummonarBichosOrganizado(int qntd, List<GameObject> pos)
+    {
+        for (int i = 0; i < qntd; i++)
+            Instantiate(bicho, pos[i].transform);
+    }
     #endregion
+
     void Teletransportar()
     {
         int pos = Random.Range(0, 4);
