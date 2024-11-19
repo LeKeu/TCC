@@ -8,11 +8,13 @@ public class Etapa2 : MonoBehaviour
 {
     [SerializeField] GameObject Saci;
 
-    [Header("Audios Geral")]
+    [Header("Geral")]
     [SerializeField] SFX sfx_script;
+    [SerializeField] Tutorial tutorial_script;
 
 
     #region Primeiro Encontro Saci
+    [Header("Primeiro Encontro Saci")]
     [SerializeField] AudioClip SaciAssobio;
     [SerializeField] Transform posMenina_ConversaSaci;
     [SerializeField] Transform posMenina_AcabouLuta;
@@ -82,7 +84,9 @@ public class Etapa2 : MonoBehaviour
         InvocadoInimigo.podeAndar = true;
         #endregion
 
-        #region inicio batalha saci
+        #region tutorial purificacao, inicio batalha saci
+        tutorial_script.IniciarTutorial_PararTempo("Aperte 'Q' para purificar o inimigo.", KeyCode.Q);
+        yield return new WaitUntil(() => !tutorial_script.duranteTutorial);
         MudarEstadoJogador(true);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0);
         Debug.Log("derrotou");
