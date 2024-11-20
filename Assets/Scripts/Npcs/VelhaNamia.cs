@@ -20,17 +20,10 @@ public class VelhaNamia : NPCs, ITalkable
 
     public override void Interagir()
     {
-
         if (JogadorController.Instance.podeMover) // se o jogador pode se mover, no caso só ocorre quando a conversa acabou
         {
             if (!tutCompleto)
                 CompletarTutorial();
-
-            if (indexAtual == 0 && !tutCompleto)
-            {
-                armaAtiva.AtivarArma1(true);
-                inventarioAtivo.AtivarArma1(true);
-            }
 
             if (tutCompleto) // só vai sair do txt de tut qnd tiver completa a 'quest'
                 indexAtual++;
@@ -40,6 +33,12 @@ public class VelhaNamia : NPCs, ITalkable
         }
         if (!JogadorController.Instance.estaAndando)
             Falar(dt[indexAtual]);
+
+        if (JogadorController.Instance.acabouDialogo && indexAtual == 0 && !tutCompleto)
+        { // ativar arma só qnd o dialogo acabar na quest de destruir moitas
+            armaAtiva.AtivarArma1(true);
+            inventarioAtivo.AtivarArma1(true);
+        }
     }
     public void Falar(DialogoTexto dialogoTexto)
     {

@@ -18,6 +18,7 @@ public class Etapa2 : MonoBehaviour
     [SerializeField] AudioClip SaciAssobio;
     [SerializeField] Transform posMenina_ConversaSaci;
     [SerializeField] Transform posMenina_AcabouLuta;
+    [SerializeField] GameObject barreiraMoitasVermelhas;
 
     bool aconteceuEncontro;
     bool meninaAndando_EncontroSaci;
@@ -96,12 +97,17 @@ public class Etapa2 : MonoBehaviour
 
         #region acabou luta, dialogo saci
         yield return new WaitForSeconds(3);
+
         meninaAndando_AcabouLuta = true;
         yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posMenina_AcabouLuta.transform.position) < 1);
+        
         yield return new WaitForSeconds(3);
+
         Interagir_Geral(Saci.GetComponent<SaciDialog>(), 2);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
         Saci.SetActive(false);
+        barreiraMoitasVermelhas.SetActive(false);
         #endregion 
 
         MudarEstadoJogador(true);
