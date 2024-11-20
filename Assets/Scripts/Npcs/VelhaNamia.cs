@@ -17,6 +17,7 @@ public class VelhaNamia : NPCs, ITalkable
     [SerializeField] ArmaAtiva armaAtiva;
     [SerializeField] InventarioAtivo inventarioAtivo;
     [SerializeField] OQueFazer oQueFazer_script;
+    [SerializeField] Tutorial tutorial_script;
 
     public override void Interagir()
     {
@@ -38,6 +39,7 @@ public class VelhaNamia : NPCs, ITalkable
         { // ativar arma só qnd o dialogo acabar na quest de destruir moitas
             armaAtiva.AtivarArma1(true);
             inventarioAtivo.AtivarArma1(true);
+            tutorial_script.IniciarTutorial_PararTempo("Aperte 'Botão direito' para atacar.", KeyCode.Mouse0);
         }
     }
     public void Falar(DialogoTexto dialogoTexto)

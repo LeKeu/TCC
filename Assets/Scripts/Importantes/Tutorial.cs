@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tutorial : MonoBehaviour
 {
-    [SerializeField] GameObject canvasPainel;
+    //[SerializeField] GameObject canvasPainel;
     public bool duranteTutorial;
     KeyCode teclaTutorial;
 
@@ -18,17 +18,17 @@ public class Tutorial : MonoBehaviour
 
     public void IniciarTutorial_PararTempo(string texto, KeyCode tecla)
     {
-        canvasPainel.SetActive(true);
+        gameObject.SetActive(true);
         duranteTutorial = true;
         teclaTutorial = tecla;
         Time.timeScale = 0;
 
-        canvasPainel.GetComponentInChildren<TextMeshProUGUI>().text = texto;
+        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = texto;
     }
 
     void PararTutorial()
     {
-        canvasPainel.SetActive(false);
+        gameObject.SetActive(false);
         duranteTutorial = false;
         Time.timeScale = 1;
     }
