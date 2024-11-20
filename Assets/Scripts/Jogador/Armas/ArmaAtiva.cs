@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,14 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
     float tempoEntreAtaques;
 
     bool atacarButBaixo, estaAtacando = false;
+
+    HashSet<string> cenasComArmaDesativada = new HashSet<string>
+    {
+        "01_comunidade",
+        "02_comunidade",
+        "T03_comunidade", 
+        "01_saci"
+    };
 
     protected override void Awake()
     {
@@ -31,9 +40,7 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     void DesativarArma()
     {
-        if (SceneManager.GetActiveScene().name != "01_comunidade"
-            && SceneManager.GetActiveScene().name != "02_comunidade"
-            && SceneManager.GetActiveScene().name != "T03_comunidade")
+        if (!cenasComArmaDesativada.Contains(SceneManager.GetActiveScene().name))
         {
             jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
             jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();

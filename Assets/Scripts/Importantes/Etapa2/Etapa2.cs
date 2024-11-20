@@ -11,6 +11,8 @@ public class Etapa2 : MonoBehaviour
     [Header("Geral")]
     [SerializeField] SFX sfx_script;
     [SerializeField] Tutorial tutorial_script;
+    [SerializeField] ArmaAtiva armaAtiva;
+    [SerializeField] InventarioAtivo inventarioAtivo;
 
 
     #region Primeiro Encontro Saci
@@ -85,12 +87,15 @@ public class Etapa2 : MonoBehaviour
         InvocadoInimigo.podeAndar = true;
         #endregion
 
-        #region tutorial purificacao, inicio batalha saci
+        #region ativar arma, tutorial purificacao, inicio batalha saci
+        armaAtiva.AtivarArma1(true);
+        inventarioAtivo.AtivarArma1(true);
+
         tutorial_script.IniciarTutorial_PararTempo("Aperte 'Q' para purificar o inimigo.", KeyCode.Q);
         yield return new WaitUntil(() => !tutorial_script.duranteTutorial);
+
         MudarEstadoJogador(true);
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0);
-        Debug.Log("derrotou");
         #endregion
 
         MudarEstadoJogador(false); // checar aqui!! o player ta andando estranho ás vezes

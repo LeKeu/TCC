@@ -12,18 +12,25 @@ public class InventarioAtivo : MonoBehaviour
     private JogadorControls jogadorControls;
     public bool armasAtivas;
 
+    HashSet<string> cenasComArmaDesativada = new HashSet<string>
+    {
+        "01_comunidade",
+        "02_comunidade",
+        "T03_comunidade",
+        "01_saci"
+    };
+
     private void Awake()
     {
         jogadorControls = new JogadorControls();
     }
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "01_comunidade"
-            || SceneManager.GetActiveScene().name == "02_comunidade"
-            || SceneManager.GetActiveScene().name == "T03_comunidade")
+        if (cenasComArmaDesativada.Contains(SceneManager.GetActiveScene().name))
         {
             DesativarArma();
-        }else
+        }
+        else
         {
             armasAtivas = true;
             jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
