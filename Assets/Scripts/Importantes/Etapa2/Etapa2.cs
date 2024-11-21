@@ -26,6 +26,17 @@ public class Etapa2 : MonoBehaviour
     bool meninaAndando_EncontroSaci;
     bool meninaAndando_AcabouLuta;
     #endregion
+
+    #region Boss Saci
+    [Header("Boss Saci")]
+    [SerializeField] Transform posMenina_BossSaci;
+    [SerializeField] Transform posMenina_DepoisBossSaci;
+    [SerializeField] Transform posSaci_DepoisBossSaci;
+
+    bool aconteceuBossSaci;
+    bool meninaAndando_inicioBossSaci;
+    bool meninaAndando_depoisBossSaci;
+    #endregion
     void Start()
     {
         if(SceneManager.GetActiveScene().name == "01_saci")
@@ -38,22 +49,35 @@ public class Etapa2 : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(JogadorController.Instance.velocidade);  
         if(Etapas.PrimeiroEncontroSaci && this.gameObject.name == "PrimeiroEncontroSaci")
         {
-            if(meninaAndando_EncontroSaci)
-                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posMenina_ConversaSaci.position, 1 * Time.deltaTime);
-            if(meninaAndando_AcabouLuta)
-                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posMenina_AcabouLuta.position, 1 * Time.deltaTime);
+            if (meninaAndando_EncontroSaci)
+                MovimentarGameObject(JogadorController.Instance.gameObject, posMenina_ConversaSaci, 1);
+            if (meninaAndando_AcabouLuta)
+                MovimentarGameObject(JogadorController.Instance.gameObject, posMenina_AcabouLuta, 1);
 
+        }
+
+        if (Etapas.BossSaci && this.gameObject.name == "BossSaci")
+        {
+            if (meninaAndando_inicioBossSaci)
+                MovimentarGameObject(JogadorController.Instance.gameObject, posMenina_BossSaci, 1);
+            if (meninaAndando_depoisBossSaci)
+                MovimentarGameObject(JogadorController.Instance.gameObject, posMenina_DepoisBossSaci, 1);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("colidiu");
         if(collision.GetComponent<JogadorController>() && gameObject.name == "PrimeiroEncontroSaci" && !aconteceuEncontro)
         {
             StartCoroutine(PrimeiroEncontroSaci());
+        }
+
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "BossSaci" && !aconteceuBossSaci)
+        {
+            StartCoroutine(BossSaci());
         }
     }
 
@@ -120,6 +144,55 @@ public class Etapa2 : MonoBehaviour
         JogadorController.Instance.velocidade = 4f;
     }
 
+    IEnumerator BossSaci()
+    {
+        aconteceuBossSaci = true;
+        Etapas.BossSaci = true;
+
+        #region ir em direção do saci, dialogo começa
+        meninaAndando_inicioBossSaci = true;
+        yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posMenina_BossSaci.transform.position) < 1);
+        meninaAndando_inicioBossSaci = false;
+
+        MudarEstadoJogador(false);
+        yield return new WaitForSeconds(2); // middle button n ta passando dialogo p esse saciii
+
+        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 0);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        #endregion
+
+        #region começar boss, esperar derrota saci
+        yield return new WaitForSeconds(3);
+
+        MudarEstadoJogador(true);
+        Saci.GetComponent<Saci>().BatalhaBoss1();
+        yield return new WaitUntil(() => Saci.GetComponent<Saci>().estaDerrotado);
+
+        yield return new WaitForSeconds(2);
+        MudarEstadoJogador(false);
+        Debug.Log("derrotou saci");
+        #endregion
+
+        #region saci derrotado, andar em direção, dialogo
+        yield return new WaitForSeconds(2);
+
+        meninaAndando_depoisBossSaci = true;
+        yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posMenina_DepoisBossSaci.transform.position) < 1);
+        meninaAndando_depoisBossSaci = false;
+
+        Saci.transform.position = posSaci_DepoisBossSaci.position;
+        yield return new WaitForSeconds(2);
+
+        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 1);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
+        yield return new WaitForSeconds(2);
+        Saci.SetActive(false);
+        #endregion
+
+        MudarEstadoJogador(true);
+    }
+
     void Interagir_Geral(MonoBehaviour script, int index, string metodoNome = "Interagir")
     {
         object[] parametros = { index };
@@ -127,11 +200,17 @@ public class Etapa2 : MonoBehaviour
         var metodo = script.GetType().GetMethod($"{metodoNome}");
         metodo.Invoke(script, parametros);
     }
+
     void MudarEstadoJogador(bool acao)
     {
         JogadorController.Instance.podeAtacar = acao;
         JogadorController.Instance.podeMover = acao;
         JogadorController.Instance.estaDuranteCutscene = !acao;
         //JogadorController.Instance.podeFlipX = !acao;
+    }
+
+    void MovimentarGameObject(GameObject posInicial, Transform posNova, float velocidade)
+    {
+        posInicial.transform.position = Vector2.MoveTowards(posInicial.transform.position, posNova.position, velocidade * Time.deltaTime);
     }
 }

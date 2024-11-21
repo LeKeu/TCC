@@ -23,6 +23,7 @@ public class Saci : MonoBehaviour
     [SerializeField] List<GameObject> pontosSpawnEncontro1 = new List<GameObject>();
 
 
+    public bool estaDerrotado;
     bool podeTeletransportar;
     bool estaAtordoado;
 
@@ -36,13 +37,6 @@ public class Saci : MonoBehaviour
         //BatalhaBoss1();
     }
 
-    public void BatalhaBoss1()
-    {
-        podeTeletransportar = true;
-        estaAtordoado = false;
-        primeiroEncontro = true; // ver onde setar
-        StartCoroutine(ComecarBatalhaRoutine());
-    }
 
     public void IniciarBatalha_primeiroEncontroSaci()
     {
@@ -65,19 +59,36 @@ public class Saci : MonoBehaviour
         }
     }
 
-    #region Primeiro Encontro (invocar bichinhos e atordoar)
+    #region Boss -- Primeiro Encontro (invocar bichinhos e atordoar)
+    public void BatalhaBoss1()
+    {
+        InvocadoInimigo.podeAndar = true;
+        podeTeletransportar = true;
+        estaAtordoado = false;
+        primeiroEncontro = true; // ver onde setar
+        StartCoroutine(ComecarBatalhaRoutine());
+    }
     IEnumerator ComecarBatalhaRoutine()
     {
         if (!barraVidaBosses.ContainerEstaAtivo()) // criar a barra de vida do saci
             barraVidaBosses.CriarContainer(Vida, nome);
 
-        if(Vida > 0)    // por x rounds, vai ter o ciclo de inst inimigos, derrotar, atordoar e repetir o round até que chegue a 0 a vida
+        if (Vida > 0)    // por x rounds, vai ter o ciclo de inst inimigos, derrotar, atordoar e repetir o round até que chegue a 0 a vida
         {
             SummonarBichos(1, pontosSpawn);
             barraVidaBosses.MudarCorBarra(Color.grey);
             yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0);
             StartCoroutine(AtordoarSaciRoutine());
         }
+        else Derrotado();
+
+    }
+
+    void Derrotado()
+    {
+        estaDerrotado = true;
+        podeTeletransportar = false;
+        barraVidaBosses.DesativarContainer();
     }
 
     IEnumerator AtordoarSaciRoutine()
@@ -96,13 +107,13 @@ public class Saci : MonoBehaviour
         for (int i = 0; i < qntd; i++)
             Instantiate(bicho, pos[Random.Range(0, 4)].transform);
     }
+    #endregion
 
     void SummonarBichosOrganizado(int qntd, List<GameObject> pos)
     {
         for (int i = 0; i < qntd; i++)
             Instantiate(bicho, pos[i].transform);
     }
-    #endregion
 
     void Teletransportar()
     {

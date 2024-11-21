@@ -18,6 +18,9 @@ public class SaciDialog : MonoBehaviour
     {
         if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.PrimeiroEncontroSaci)
             Interagir();
+
+        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BossSaci)
+            Interagir();
     }
 
     //public void Interagir()

@@ -14,6 +14,7 @@ public class Etapas : MonoBehaviour
 
     // ETAPA2;
     public static bool PrimeiroEncontroSaci;
+    public static bool BossSaci;
     public static bool ETAPA3;
     public static bool ETAPA4;
 }
