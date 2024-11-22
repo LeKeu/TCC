@@ -33,7 +33,8 @@ public class InventarioAtivo : MonoBehaviour
         else
         {
             armasAtivas = true;
-            jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
+            //DESATIVAR MUDANÇA DE ARMA P ARCO, SOMENTE DURANTE DEMO
+            //jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
 
             AtivarEspacoHighlight(0);
         }
@@ -49,7 +50,8 @@ public class InventarioAtivo : MonoBehaviour
     {
         armasAtivas = acao;
         gameObject.SetActive(acao);
-        jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
+        //DESATIVAR MUDANÇA DE ARMA P ARCO, SOMENTE DURANTE DEMO
+        //jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
 
         AtivarEspacoHighlight(0);
     }
