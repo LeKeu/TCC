@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class Prologo : MonoBehaviour
 {
     [Header("Gerais")]
     [SerializeField] OQueFazer oQueFazer_script;
+    CinemachineVirtualCamera virtualCamera;
     TremerCamera tremerCamera;
     LuzesCiclo luzesCiclo;
 
@@ -30,7 +32,6 @@ public class Prologo : MonoBehaviour
     [SerializeField] GameObject Npcs;
     List<GameObject> NpcsLista = new List<GameObject>();
 
-
     GameObject donaMartaGO;
     GameObject eloaGO;
     GameObject ladraoGO;
@@ -47,12 +48,10 @@ public class Prologo : MonoBehaviour
     #endregion
 
     #region BRIGA
-    [Header("Briga Menino")]
-    [SerializeField] GameObject posMeninaBriga;
-    [SerializeField] GameObject posMeninoBriga;
-    [SerializeField] GameObject posVelhaNamiaBriga;
-    [SerializeField] GameObject posSeuPedroBriga;
-    [SerializeField] GameObject posMeninoSaindo;
+    [Header("Celebração - Briga Menino")]
+    [SerializeField] GameObject posicoesNpcs;
+    [SerializeField] GameObject posCamera;
+    List<GameObject> posicoesNpcsLista = new List<GameObject>();
 
     bool pessoasAndando;
     bool meninoPodeSair;
@@ -87,19 +86,22 @@ public class Prologo : MonoBehaviour
     [SerializeField] Transform posInicialMenina;
     #endregion
 
-
     private void Awake()
     {
         musicaSource = GetComponent<AudioSource>();
         meninoScript = GameObject.Find("Menino").GetComponent<Menino>();
         luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
-        tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
 
-        foreach (Transform child in Npcs.transform)
-        {
-            // Adiciona o filho à lista
+        virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        tremerCamera = virtualCamera.GetComponent<TremerCamera>();
+
+        foreach (Transform child in Npcs.transform) // pegando GO de cada NPC
             NpcsLista.Add(child.gameObject);
-            Debug.Log(child.gameObject.name);
+
+        if(this.gameObject.name == "TriggerBriga")
+        {
+            foreach (Transform child in posicoesNpcs.transform) // posições durante celebração
+                posicoesNpcsLista.Add(child.gameObject);
         }
 
         #region Npcs GO
@@ -115,9 +117,7 @@ public class Prologo : MonoBehaviour
         #endregion
 
         if (this.gameObject.name == "TriggerCucaSeq")
-        {
             audioSourceSequestro = GetComponent<AudioSource>();
-        }
     }
 
     private void Start()
@@ -143,17 +143,13 @@ public class Prologo : MonoBehaviour
         #region Briga
         if (Etapas.BrigaCelebracao && this.gameObject.name == "TriggerBriga")
         {
-            if (pessoasAndando) // movimenetar os personagens para a área de celebração
+            if (pessoasAndando) // movimentar os personagens para a área de celebração
             {
-                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posMeninaBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
-                velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
-                meninoGO.transform.position = Vector2.MoveTowards(meninoGO.transform.position, posMeninoBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
-                seuPedroGO.transform.position = Vector2.MoveTowards(seuPedroGO.transform.position, posSeuPedroBriga.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
-                
+                MovimentarPessoas();
             }
 
             if(meninoPodeSair)
-                meninoGO.transform.position = Vector2.MoveTowards(meninoGO.transform.position, posMeninoSaindo.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+                meninoGO.transform.position = Vector2.MoveTowards(meninoGO.transform.position, posicoesNpcsLista[10].transform.position, 4.5f * Time.deltaTime);
         }
         #endregion
 
@@ -187,6 +183,20 @@ public class Prologo : MonoBehaviour
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
             StartCoroutine(CucaSequestraMenino());
     } 
+
+    void MovimentarPessoas()
+    {
+        JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posicoesNpcsLista[9].transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+        donaMartaGO.transform.position = Vector2.MoveTowards(donaMartaGO.transform.position, posicoesNpcsLista[0].transform.position, 2 * Time.deltaTime);
+        eloaGO.transform.position = Vector2.MoveTowards(eloaGO.transform.position, posicoesNpcsLista[1].transform.position, 2.5f * Time.deltaTime);
+        ladraoGO.transform.position = Vector2.MoveTowards(ladraoGO.transform.position, posicoesNpcsLista[2].transform.position, 2 * Time.deltaTime);
+        pedrinhoGO.transform.position = Vector2.MoveTowards(pedrinhoGO.transform.position, posicoesNpcsLista[3].transform.position, 2.5f * Time.deltaTime);
+        seuJoaoGO.transform.position = Vector2.MoveTowards(seuJoaoGO.transform.position, posicoesNpcsLista[4].transform.position, 1.5f * Time.deltaTime);
+        seuPedroGO.transform.position = Vector2.MoveTowards(seuPedroGO.transform.position, posicoesNpcsLista[5].transform.position, 2 * Time.deltaTime);
+        velhoDoidoGO.transform.position = Vector2.MoveTowards(velhoDoidoGO.transform.position, posicoesNpcsLista[6].transform.position, 1f * Time.deltaTime);
+        velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posicoesNpcsLista[7].transform.position, .5f * Time.deltaTime);
+        meninoGO.transform.position = Vector2.MoveTowards(meninoGO.transform.position, posicoesNpcsLista[8].transform.position, 3f * Time.deltaTime);
+    }
 
     void Interagir_Celebracao(MonoBehaviour script, int index, string metodoNome = "Interagir_CelebracaoCutscene")
     {
@@ -229,12 +239,12 @@ public class Prologo : MonoBehaviour
 
     IEnumerator Brigar()
     {
-        Debug.Log("BRIGARRR");
         Etapas.BrigaCelebracao = true;
+        virtualCamera.Follow = posCamera.transform;
 
         #region Povo se movendo na direção de sua pos da cena
         pessoasAndando = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posicoesNpcsLista[7].transform.position) < 0.1f);
         pessoasAndando = false;
         #endregion
 
@@ -289,6 +299,7 @@ public class Prologo : MonoBehaviour
         oQueFazer_script.AtivarPainelQuests(true);
         oQueFazer_script.GerenciarQuadroQuest_celebr_seq(2);
 
+        virtualCamera.Follow = JogadorController.Instance.transform;
         Etapas.BrigaCelebracao = false;
         aconteceuBriga = true;
     }
@@ -368,6 +379,7 @@ public class Prologo : MonoBehaviour
         Etapas.CucaSequestro = false;
         SceneManager.LoadScene("T03_comunidade");
     }
+
     IEnumerator Iniciar_FlorestaEscura()
     {
         JogadorController.Instance.transform.position = posInicialMenina.position;
