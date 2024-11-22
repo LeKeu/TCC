@@ -12,6 +12,7 @@ public class Etapa2 : MonoBehaviour
     [SerializeField] SFX sfx_script;
     [SerializeField] Tutorial tutorial_script;
     [SerializeField] ArmaAtiva armaAtiva;
+    [SerializeField] OQueFazer oQueFazer_script;
     [SerializeField] InventarioAtivo inventarioAtivo;
 
 
@@ -85,6 +86,7 @@ public class Etapa2 : MonoBehaviour
     {
         Etapas.PrimeiroEncontroSaci = true;
         aconteceuEncontro = true;
+        oQueFazer_script.AtivarPainelQuests(false);
 
         #region  menina andando e escuta assobio
         meninaAndando_EncontroSaci = true;
@@ -140,6 +142,10 @@ public class Etapa2 : MonoBehaviour
         #endregion 
 
         MudarEstadoJogador(true);
+
+        oQueFazer_script.AtivarPainelQuests(true);
+        oQueFazer_script.GerenciarQuadroQuest_saci_cenas(1);
+
         Etapas.PrimeiroEncontroSaci = false;
         JogadorController.Instance.velocidade = 4f;
     }
@@ -148,6 +154,7 @@ public class Etapa2 : MonoBehaviour
     {
         aconteceuBossSaci = true;
         Etapas.BossSaci = true;
+        oQueFazer_script.AtivarPainelQuests(false);
 
         #region ir em direção do saci, dialogo começa
         meninaAndando_inicioBossSaci = true;
@@ -189,6 +196,9 @@ public class Etapa2 : MonoBehaviour
         yield return new WaitForSeconds(2);
         Saci.SetActive(false);
         #endregion
+
+        oQueFazer_script.AtivarPainelQuests(true);
+        oQueFazer_script.GerenciarQuadroQuest_saci_cenas(2);
 
         MudarEstadoJogador(true);
     }

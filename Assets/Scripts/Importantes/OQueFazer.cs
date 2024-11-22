@@ -14,6 +14,9 @@ public class OQueFazer : MonoBehaviour
     public List<string> celebr_seq = new List<string>()
     { "Fale com o povo ao redor antes de começar a celebração", "Participe da celebração", "Procure seu irmão", "Saia da floresta escura" };
 
+    public List<string> saci_cenas = new List<string>()
+    { "saci 1", "saci 2", "saci 3", "saci 4" };
+
     private void Start()
     {
         if(SceneManager.GetActiveScene().name == "01_comunidade")
@@ -21,6 +24,9 @@ public class OQueFazer : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "02_comunidade")
             QuadroDeQuests.GetComponentInChildren<TextMeshProUGUI>().text = celebr_seq[0];
+
+        if (SceneManager.GetActiveScene().name == "01_saci")
+            QuadroDeQuests.GetComponentInChildren<TextMeshProUGUI>().text = saci_cenas[0];
     }
 
     public void GerenciarQuadroQuest_tutorial(int index) 
@@ -28,6 +34,9 @@ public class OQueFazer : MonoBehaviour
 
     public void GerenciarQuadroQuest_celebr_seq(int index)
         => QuadroDeQuests.GetComponentInChildren<TextMeshProUGUI>().text = celebr_seq[index];
+
+    public void GerenciarQuadroQuest_saci_cenas(int index)
+        => QuadroDeQuests.GetComponentInChildren<TextMeshProUGUI>().text = saci_cenas[index];
 
     public void AtivarPainelQuests(bool acao) => QuadroDeQuests.SetActive(acao);
 }

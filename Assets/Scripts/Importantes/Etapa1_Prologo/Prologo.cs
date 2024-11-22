@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static Unity.VisualScripting.Metadata;
 
 public class Prologo : MonoBehaviour
 {
@@ -25,9 +26,20 @@ public class Prologo : MonoBehaviour
     #endregion
 
     #region NPCS GO
+    [Header("NPCS")]
+    [SerializeField] GameObject Npcs;
+    List<GameObject> NpcsLista = new List<GameObject>();
+
+
+    GameObject donaMartaGO;
+    GameObject eloaGO;
+    GameObject ladraoGO;
+    GameObject pedrinhoGO;
+    GameObject seuJoaoGO;
+    GameObject seuPedroGO;
+    GameObject velhoDoidoGO;
     GameObject velhaNamiaCelebracaoGO;
     GameObject meninoGO;
-    GameObject seuPedroGO;
     #endregion
 
     #region UKULELE
@@ -81,15 +93,28 @@ public class Prologo : MonoBehaviour
         musicaSource = GetComponent<AudioSource>();
         meninoScript = GameObject.Find("Menino").GetComponent<Menino>();
         luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
-
         tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
-        //Debug.Log(jogadorController.velocidade + " velllll");
-        velhaNamiaCelebracaoGO = GameObject.Find("VelhaNamia");
-        meninoGO = GameObject.Find("Menino");
-        seuPedroGO = GameObject.Find("SeuPedro");
 
+        foreach (Transform child in Npcs.transform)
+        {
+            // Adiciona o filho à lista
+            NpcsLista.Add(child.gameObject);
+            Debug.Log(child.gameObject.name);
+        }
 
-        if(this.gameObject.name == "TriggerCucaSeq")
+        #region Npcs GO
+        donaMartaGO = NpcsLista[0];
+        eloaGO = NpcsLista[1];
+        ladraoGO = NpcsLista[2];
+        pedrinhoGO = NpcsLista[3];
+        seuJoaoGO = NpcsLista[4];
+        seuPedroGO = NpcsLista[5];
+        velhoDoidoGO = NpcsLista[6];
+        velhaNamiaCelebracaoGO = NpcsLista[7];
+        meninoGO = NpcsLista[8];
+        #endregion
+
+        if (this.gameObject.name == "TriggerCucaSeq")
         {
             audioSourceSequestro = GetComponent<AudioSource>();
         }

@@ -607,6 +607,11 @@ MonoBehaviour:
   - "Participe da celebra\xE7\xE3o"
   - "Procure seu irm\xE3o"
   - Saia da floresta escura
+  saci_cenas:
+  - saci 1
+  - saci 2
+  - saci 3
+  - saci 4
 --- !u!1 &104151581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2532,7 +2537,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.22, y: -0.54, z: -10}
+  m_LocalPosition: {x: -6.69, y: -2.48, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3028,11 +3033,11 @@ Transform:
   m_Children:
   - {fileID: 1063434708}
   - {fileID: 104151582}
+  - {fileID: 1776007474}
   - {fileID: 1659794566}
   - {fileID: 1410314996}
   - {fileID: 5847113452108057166}
   - {fileID: 340228131}
-  - {fileID: 1111598093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &606423574
@@ -41494,6 +41499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oQueFazer_script: {fileID: 86736280}
   sfx_script: {fileID: 0}
+  Npcs: {fileID: 1659794565}
   musicaMenina: {fileID: 0}
   posMeninaBriga: {fileID: 0}
   posMeninoBriga: {fileID: 0}
@@ -42210,7 +42216,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 603479787}
+    m_TransformParent: {fileID: 1659794566}
     m_Modifications:
     - target: {fileID: 1390208535711577296, guid: 9942c7c2b39da914bb4ecb3b4a3619fb, type: 3}
       propertyPath: perfil
@@ -46121,7 +46127,7 @@ Tilemap:
       - {fileID: 475806399, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -581906228, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1337139000, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: -11, z: 0}
@@ -46144,7 +46150,7 @@ Tilemap:
       - {fileID: 475806399, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -581906228, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1337139000, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -11, z: 0}
@@ -48030,7 +48036,7 @@ Tilemap:
       - {fileID: -754010298, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -879509458, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 485149445, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 5, y: 5, z: 0}
@@ -48559,7 +48565,7 @@ Tilemap:
       - {fileID: 1107502818, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 865270538, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 72385504, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 10, y: 8, z: 0}
@@ -50006,9 +50012,9 @@ Transform:
   - {fileID: 1900619217}
   - {fileID: 880619273}
   - {fileID: 2001997855}
-  - {fileID: 1776007474}
   - {fileID: 797847648}
   - {fileID: 1062377978}
+  - {fileID: 1111598093}
   m_Father: {fileID: 603479787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1671990825
@@ -55308,7 +55314,7 @@ Transform:
   - {fileID: 4629124736350491626}
   - {fileID: 4629124735232833894}
   - {fileID: 4629124734783813171}
-  m_Father: {fileID: 1659794566}
+  m_Father: {fileID: 603479787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1826836216 stripped
 GameObject:
@@ -55355,7 +55361,7 @@ Transform:
   m_GameObject: {fileID: 1849874757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.152968, y: -0.41686553, z: -9.990754}
+  m_LocalPosition: {x: -6.757032, y: -2.3568654, z: -9.990754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65279,6 +65285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oQueFazer_script: {fileID: 86736280}
   sfx_script: {fileID: 0}
+  Npcs: {fileID: 1659794565}
   musicaMenina: {fileID: 0}
   posMeninaBriga: {fileID: 600450666}
   posMeninoBriga: {fileID: 1270815159}
@@ -67114,11 +67121,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3542962782931481375, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.22
+      value: -6.69
       objectReference: {fileID: 0}
     - target: {fileID: 3542962782931481375, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.54
+      value: -2.48
       objectReference: {fileID: 0}
     - target: {fileID: 3542962782931481375, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_LocalPosition.z
