@@ -68,6 +68,9 @@ public class DialogoController : MonoBehaviour
         if (nomeFalando.Length <= 1) nomeFalando = "Menina";
         NPCNomeTexto.text = nomeFalando;
 
+        if(nomeFalando != "Menina")
+            NPCPerfil.sprite = AUX_NPCS_RESOURCES.perfilsNPCs[EncontrarIndexSprite(nomeFalando)];
+
         if (aux[0].Trim() == nomeFalando) // mudança de sprite dependendo de qual personagem estiver falando
         {
             JOGADORPerfil.GetComponent<Image>().color = Color.grey;
@@ -98,6 +101,16 @@ public class DialogoController : MonoBehaviour
         }
 
         estaDigitando = false;
+    }
+
+    int EncontrarIndexSprite(string nomeNPC)
+    {
+        for (int i = 0; i < AUX_NPCS_RESOURCES.perfilsNPCs.Length; i++)
+        {
+            if (AUX_NPCS_RESOURCES.perfilsNPCs[i].name == nomeNPC)
+                return i;
+        }
+        return -1;
     }
 
     private void AcabarParagrafoCedo()
