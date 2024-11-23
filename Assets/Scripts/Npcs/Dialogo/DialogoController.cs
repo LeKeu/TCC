@@ -10,7 +10,7 @@ public class DialogoController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI NPCDialogoTexto;
     [SerializeField] private Image NPCPerfil;
     [SerializeField] private Image JOGADORPerfil;
-    [SerializeField] private float digitarVel = 10f;
+    private float digitarVel = 5f;
 
     private Queue<string> paragrafos = new Queue<string>();
 

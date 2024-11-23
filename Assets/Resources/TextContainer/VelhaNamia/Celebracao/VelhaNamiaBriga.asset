@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: VelhaNamiaBriga
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_Oieee, vamios comecar essa celebracao"
-  - "Velha N\xE2mia_essa festa vai bombar"
-  - _uau to amando
-  perfilNPC: {fileID: 0}
+  - "Velha N\xE2mia_Estamos aqui reunidos para celebrar mais um dia de nossas vidas."
+  - "Velha N\xE2mia_Em comunh\xE3o com a floresta que nos rodeia, temos sa\xFAde,
+    alimento, fam\xEDlia e amor."
+  - "Velha N\xE2mia_Nada vale mais do que isso."
+  perfilNPC: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}

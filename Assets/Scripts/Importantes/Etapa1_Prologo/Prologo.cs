@@ -241,6 +241,7 @@ public class Prologo : MonoBehaviour
     {
         Etapas.BrigaCelebracao = true;
         virtualCamera.Follow = posCamera.transform;
+        oQueFazer_script.AtivarPainelQuests(false);
 
         #region Povo se movendo na direção de sua pos da cena
         pessoasAndando = true;
@@ -249,7 +250,6 @@ public class Prologo : MonoBehaviour
         #endregion
 
         MudarEstadoJogador(false);
-        oQueFazer_script.AtivarPainelQuests(false);
 
         #region Dialogos Celebraçao
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);

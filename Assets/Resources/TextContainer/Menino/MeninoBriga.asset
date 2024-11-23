@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: MeninoBriga
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Bernardo_irm\xE3 vc \xE9 uma chata"
-  - "_Tu que \xE9 cara"
-  - Bernardo_aaaaaa te odeio
-  - _sai daqui manow
-  - Bernardo_vou mesmo!
+  - "Bernardo_Por qu\xEA a gente tem que fazer isso toda noite?"
+  - "_Pra agradecer por mais um dia de nossas vidas, voc\xEA sabe disso."
+  - "Bernardo_Eu sei, eu sei, mas \xE9 t\xE3o chato."
+  - "_N\xE3o diga isso! Tenha respeito pela Velha N\xE2mia."
+  - _E principalmente respeito pela floresta!
+  - "Bernardo_N\xE3o fala assim comigo, s\xF3 disse que \xE9 chato!"
+  - "_J\xE1 chega, Bernardo!"
+  - Bernardo_Ah cansei, eu vou pra casa.
+  - "_Ent\xE3o vai! Ningu\xE9m precisa de voc\xEA aqui se for s\xF3 pra reclamar!"
   perfilNPC: {fileID: 21300000, guid: 16fffbc6d8ec69c41a28b89945e28d79, type: 3}
