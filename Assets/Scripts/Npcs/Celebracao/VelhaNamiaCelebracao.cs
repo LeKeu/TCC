@@ -20,8 +20,6 @@ public class VelhaNamiaCelebracao : NPCsCelebracao, ITalkable
             if (!Prologo.aconteceuBriga) indexAtual = 0;
             if (Prologo.aconteceuBriga && indexAtual < 5) indexAtual = 5;
 
-            Debug.Log("count="+dt.Count);
-            Debug.Log("indexatual="+indexAtual);
             if (indexAtual == dt.Count && Prologo.aconteceuBriga) indexAtual = 5; 
         }
 
@@ -30,7 +28,6 @@ public class VelhaNamiaCelebracao : NPCsCelebracao, ITalkable
 
         if (JogadorController.Instance.podeMover)
         {
-            Debug.Log("aquiuiuiuiu");
             if (indexAtual != dt.Count - 1)
                 indexAtual++;
         }

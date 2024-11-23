@@ -13,7 +13,26 @@ MonoBehaviour:
   m_Name: VelhaNamiaCelebracao
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_ oi meus pequenos amigos hehe"
-  - "Velha N\xE2mia_j\xE1 j\xE1 vamos come\xE7ar a ce\xE7lebra\xE7\xE3o einnn"
-  - _Beleza tia!
-  perfilNPC: {fileID: 0}
+  - "Velha N\xE2mia_Oi, meus queridos! Como voc\xEAs est\xE3o essa tarde?"
+  - "Bernardo_Oi, V\xF3 N\xE2mia!"
+  - "_A gente ta de boas, n\xE3o \xE9, maninho?"
+  - "Bernardo_T\xE1 sim... queria \xE9 ir pra casa logo... essas coisas s\xE3o muito
+    chatas!"
+  - "_Bernardo! Tu \xE9 doido, \xE9? Essas coisas s\xE3o importantes!"
+  - Bernardo_Eu sei! Mas precisa mesmo fazer todas as noites?? Queria brincar com
+    a Eloa e o Pedrinho!
+  - _Olha que o p-
+  - "Velha N\xE2mia_Calmem, meus lindinhos."
+  - "Velha N\xE2mia_Voc\xEAs me lembram de mim e da minha irm\xE3 mais nova! A gente
+    vivia se bicando..."
+  - "_Velha N\xE2mia, desculpa pelo o que ele falou..."
+  - "Velha N\xE2mia_Ah, minha querida, n\xE3o tem problema! Pode n\xE3o parecer,
+    mas j\xE1 fui jovem um dia, sei como \xE9."
+  - "Bernardo_N\xE3o parece mesmo..."
+  - "_Maninho! Pe\xE7a desculpas, agora!"
+  - "Velha N\xE2mia_Hahaha... esse menino tem uma boca ein..."
+  - "Velha N\xE2mia_V\xE3o dar uma voltinha, v\xE3o. Daqui a pouco come\xE7a nossa
+    celebra\xE7\xE3o."
+  - "Bernardo_Tudo bem... desculpa, V\xF3 N\xE2mia..."
+  - "Velha N\xE2mia_Sem problemas, meu querido."
+  perfilNPC: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}

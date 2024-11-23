@@ -12,5 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
   m_Name: EloaCelebracao02
   m_EditorClassIdentifier: 
-  paragrafos: []
-  perfilNPC: {fileID: 0}
+  paragrafos:
+  - 'Eloa_Opa! Voltastes! '
+  - _Voltei!
+  - Eloa_Agora a gente pode brincar? Bora logooo!
+  - _Hahaha, calma, Eloa!
+  - "_Depois da celebra\xE7\xE3o a gente pega um peixe e brinca de pega pega, que
+    tal?"
+  - "Eloa_Beleza! O primeiro a levar o farelo \xE9 a mulher do padre!"
+  - "_Mas a\xED a Mula-Sem-Cabe\xE7a vai aparecer!"
+  - "Eloa_\xC9gua! Verdade, n\xE9..."
+  - _Se prepara, que depois da janta a gente vai brincar muito, ok?
+  - Eloa_OK!
+  perfilNPC: {fileID: 21300000, guid: 96e03157987f2d240ac3d01e5b63feb4, type: 3}

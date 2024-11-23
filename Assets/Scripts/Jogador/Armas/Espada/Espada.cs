@@ -20,6 +20,8 @@ public class Espada : MonoBehaviour, IArma
 
     private GameObject slahsAnim;
 
+    SFX sfx_script;
+
 
     private void Awake()
     {
@@ -36,6 +38,7 @@ public class Espada : MonoBehaviour, IArma
         //jogadorControls.Combat.Attack.started += _ => Atacar();
         armaCollider = JogadorController.Instance.PegarArmaCollider();
         slashAnimPontoSpawn = GameObject.Find("splashSpawnPoint").transform;
+        sfx_script = GameObject.Find("AudioSource").GetComponent<SFX>();
     }
 
     void Update()
@@ -51,6 +54,7 @@ public class Espada : MonoBehaviour, IArma
 
     public void Atacar()
     {
+        sfx_script.JogadorEspadaAtaques();
         animator.SetTrigger("Ataque");
         armaCollider.gameObject.SetActive(true);
 

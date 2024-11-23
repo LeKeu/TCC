@@ -12,5 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
   m_Name: EloaCelebracao01
   m_EditorClassIdentifier: 
-  paragrafos: []
-  perfilNPC: {fileID: 0}
+  paragrafos:
+  - Eloa_Quando a gente vai brincar?
+  - "Eloa_O Pedrinho falou que voc\xEAs conseguiram pegar a bola de volta!"
+  - "_Sim... foi uma miss\xE3o extremamente perigosa..."
+  - Eloa_Uh... perigosa como??
+  - _Tinham inimigos ao redor!
+  - Eloa_Meu deus!
+  - Eloa_Como tu conseguieste pegar a bola??
+  - "_H\xE1! Tive que usar minhas habilidades especiais!"
+  - _Cheguei devagar... de fininho...
+  - Eloa_Igual uma capivara?!
+  - "_Ah... N\xE3- Sim!"
+  - _Isso mesmo, Eloa! Igual uma capivara!
+  - Eloa_Nossa, que legal!
+  - "_Da\xED, me enrolei pela grama, dei cambalhotas, nadei pelas profundezas do
+    rio mais fundo do universo..."
+  - Eloa_...
+  - _...
+  - _E peguei a bola!
+  - "Eloa_INCR\xCDVEL!"
+  - "Eloa_Mas... o Pedrinho falou que tu s\xF3 se agaixaste numa moita e pegou a
+    bola rapidinho."
+  - _Eh... quer dizer-
+  - "Eloa_E ainda trope\xE7ou no caminho."
+  - "_Ax\xED! T\xE1 ouvindo isso? Acho que tem algu\xE9m me chamando!"
+  - "Eloa_To ouvindo nada n\xE3o..."
+  - _Tenho que pegar o beco, ein! Tchau, Eloa!
+  perfilNPC: {fileID: 21300000, guid: 96e03157987f2d240ac3d01e5b63feb4, type: 3}

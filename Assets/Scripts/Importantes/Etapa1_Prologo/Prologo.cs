@@ -89,8 +89,10 @@ public class Prologo : MonoBehaviour
     private void Awake()
     {
         musicaSource = GetComponent<AudioSource>();
-        meninoScript = GameObject.Find("Bernardo").GetComponent<Menino>();
         luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
+
+        if(SceneManager.GetActiveScene().name != "T03_comunidade")
+            meninoScript = GameObject.Find("Bernardo").GetComponent<Menino>();
 
         virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         tremerCamera = virtualCamera.GetComponent<TremerCamera>();
