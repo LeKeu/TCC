@@ -139,7 +139,7 @@ public class JogadorController : Singleton<JogadorController>
 
     public void ModificarVelocidade(float velocidadeNova) => velocidade = velocidadeNova;
 
-    private void AjustarJogadorEncarandoLado()  // ver segundo
+    void AjustarJogadorEncarandoLado()  // ver segundo
     {
         Vector3 mousePosicao = Input.mousePosition;
         Vector3 jogadorScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
@@ -151,7 +151,7 @@ public class JogadorController : Singleton<JogadorController>
         }
     }
 
-    private void Dash()
+    void Dash()
     {
         if (!estaNaAgua)
         {
@@ -165,7 +165,7 @@ public class JogadorController : Singleton<JogadorController>
         }
     }
 
-    private IEnumerator AcabarDash()
+    IEnumerator AcabarDash()
     {
         gameObject.GetComponent<JogadorVida>().podeLevarDano = false;
         float dashTime = .2f;
@@ -177,6 +177,16 @@ public class JogadorController : Singleton<JogadorController>
         trailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
         estaDashing = false; //JogadorVida.Instance.podeLevarDano = true;
+    }
+
+    public void Morrer()
+    {
+
+    }
+
+    public void IrTelaDemo()
+    {
+        SceneManager.LoadScene("FinalDemo");
     }
 
 }

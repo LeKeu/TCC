@@ -38,9 +38,14 @@ public class Etapa2 : MonoBehaviour
     bool meninaAndando_inicioBossSaci;
     bool meninaAndando_depoisBossSaci;
     #endregion
+
+    LuzesCiclo luzesCiclo;
+
     void Start()
     {
-        if(SceneManager.GetActiveScene().name == "01_saci")
+        luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
+
+        if (SceneManager.GetActiveScene().name == "01_saci")
         {
             JogadorController.Instance.ModificarVelocidade(1f);
             sfx_script.FlorestaNoite();
@@ -152,18 +157,22 @@ public class Etapa2 : MonoBehaviour
 
     IEnumerator BossSaci()
     {
+        Debug.Log("teste1");
         aconteceuBossSaci = true;
         Etapas.BossSaci = true;
         oQueFazer_script.AtivarPainelQuests(false);
 
+        Debug.Log("teste2");
         #region ir em direção do saci, dialogo começa
         meninaAndando_inicioBossSaci = true;
         yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posMenina_BossSaci.transform.position) < 1);
         meninaAndando_inicioBossSaci = false;
 
+        Debug.Log("teste3");
         MudarEstadoJogador(false);
         yield return new WaitForSeconds(2); // middle button n ta passando dialogo p esse saciii
 
+        Debug.Log("teste4");
         Interagir_Geral(Saci.GetComponent<SaciDialog>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
@@ -175,8 +184,8 @@ public class Etapa2 : MonoBehaviour
         Saci.GetComponent<Saci>().BatalhaBoss1();
         yield return new WaitUntil(() => Saci.GetComponent<Saci>().estaDerrotado);
 
-        yield return new WaitForSeconds(2);
         MudarEstadoJogador(false);
+        yield return new WaitForSeconds(2);
         Debug.Log("derrotou saci");
         #endregion
 
@@ -196,6 +205,12 @@ public class Etapa2 : MonoBehaviour
         yield return new WaitForSeconds(2);
         Saci.SetActive(false);
         #endregion
+
+        //TEMPORÁRIO PARA DEMO
+        luzesCiclo.MudarCorAmbiente(Color.black, 5f);
+        yield return new WaitForSeconds(10);
+        JogadorController.Instance.IrTelaDemo();
+        //TEMPORÁRIO PARA DEMO
 
         oQueFazer_script.AtivarPainelQuests(true);
         oQueFazer_script.GerenciarQuadroQuest_saci_cenas(2);

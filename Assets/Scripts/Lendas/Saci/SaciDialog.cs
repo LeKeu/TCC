@@ -16,10 +16,10 @@ public class SaciDialog : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.PrimeiroEncontroSaci)
+        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.PrimeiroEncontroSaci && !JogadorController.Instance.acabouDialogo)
             Interagir();
 
-        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BossSaci)
+        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BossSaci && !JogadorController.Instance.acabouDialogo)
             Interagir();
     }
 
