@@ -42,7 +42,7 @@ public class Etapa2 : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "01_saci")
         {
-            JogadorController.Instance.velocidade = 1;
+            JogadorController.Instance.ModificarVelocidade(1f);
             sfx_script.FlorestaNoite();
             Saci.SetActive(false);
         }
@@ -147,7 +147,7 @@ public class Etapa2 : MonoBehaviour
         oQueFazer_script.GerenciarQuadroQuest_saci_cenas(1);
 
         Etapas.PrimeiroEncontroSaci = false;
-        JogadorController.Instance.velocidade = 4f;
+        JogadorController.Instance.ModificarVelocidade(4f);
     }
 
     IEnumerator BossSaci()

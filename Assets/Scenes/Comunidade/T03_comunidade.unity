@@ -1824,7 +1824,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 2.5
+  orthographic size: 1.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3707,6 +3707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ventosAssustadores: []
   florestaNoite: {fileID: 8300000, guid: ea97114ef2619e246bbd1c34dd51d282, type: 3}
+  saciAssobio: {fileID: 0}
 --- !u!4 &998149814
 Transform:
   m_ObjectHideFlags: 0
@@ -12645,12 +12646,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oQueFazer_script: {fileID: 896047685}
   sfx_script: {fileID: 998149813}
+  Npcs: {fileID: 0}
   musicaMenina: {fileID: 0}
-  posMeninaBriga: {fileID: 0}
-  posMeninoBriga: {fileID: 0}
-  posVelhaNamiaBriga: {fileID: 0}
-  posSeuPedroBriga: {fileID: 0}
-  posMeninoSaindo: {fileID: 0}
+  posicoesNpcs: {fileID: 0}
+  posCamera: {fileID: 0}
   posFrenteCasa: {fileID: 0}
   vulto: {fileID: 0}
   musicaCuca: {fileID: 0}
@@ -13207,7 +13206,6 @@ MonoBehaviour:
   NPCDialogoTexto: {fileID: 409694339}
   NPCPerfil: {fileID: 2099292157}
   JOGADORPerfil: {fileID: 393716685}
-  digitarVel: 10
 --- !u!1001 &1350534693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20317,7 +20315,7 @@ MonoBehaviour:
   m_Follow: {fileID: 695872227}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 2.5
+    OrthographicSize: 1.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -26578,12 +26576,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6394900535688684635, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
+      propertyPath: invocar
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7247505981052721391, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_Name
       value: Jogador
       objectReference: {fileID: 0}
     - target: {fileID: 7247505981052721391, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740209049827118091, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
+      propertyPath: velocidade
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

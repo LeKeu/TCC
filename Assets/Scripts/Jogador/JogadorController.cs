@@ -93,6 +93,7 @@ public class JogadorController : Singleton<JogadorController>
 
         JogadorInput();
     }
+
     private void FixedUpdate()
     {
         AjustarJogadorEncarandoLado();
@@ -132,6 +133,8 @@ public class JogadorController : Singleton<JogadorController>
     public void DiminuirVelocidade() => velocidade = velInicial / 2;
 
     public void VoltarVelocidadeNormal() => velocidade = velInicial;
+
+    public void ModificarVelocidade(float velocidadeNova) => velocidade = velocidadeNova;
 
     private void AjustarJogadorEncarandoLado()  // ver segundo
     {

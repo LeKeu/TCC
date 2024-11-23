@@ -45,10 +45,10 @@ public class Menino : MonoBehaviour
         if (!acabouFalar && Mouse.current.middleButton.wasPressedThisFrame && Etapas.MeninaTocandoUkulele)
             Interagir();
 
-        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BrigaCelebracao)
+        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BrigaCelebracao && !JogadorController.Instance.acabouDialogo)
             Interagir_CelebracaoCutscene();
 
-        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.CucaSequestro) // organizar isso depois
+        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.CucaSequestro && !JogadorController.Instance.acabouDialogo) // organizar isso depois
             Interagir_CelebracaoCutscene();
 
     }

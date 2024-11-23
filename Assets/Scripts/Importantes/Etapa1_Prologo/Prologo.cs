@@ -23,7 +23,7 @@ public class Prologo : MonoBehaviour
     int totalNpcsConversaveis = 1;
 
     #region bool de checagem de etapas ocorridas
-    static bool aconteceuBriga;
+    public static bool aconteceuBriga;
     bool mudouTextAux;
     #endregion
 
@@ -89,32 +89,35 @@ public class Prologo : MonoBehaviour
     private void Awake()
     {
         musicaSource = GetComponent<AudioSource>();
-        meninoScript = GameObject.Find("Menino").GetComponent<Menino>();
+        meninoScript = GameObject.Find("Bernardo").GetComponent<Menino>();
         luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
 
         virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         tremerCamera = virtualCamera.GetComponent<TremerCamera>();
 
-        foreach (Transform child in Npcs.transform) // pegando GO de cada NPC
-            NpcsLista.Add(child.gameObject);
+        if(this.gameObject.name == "TriggerBriga")
+        { // só pega os npcs nas cenas com comunidade
+            foreach (Transform child in Npcs.transform) // pegando GO de cada NPC
+                NpcsLista.Add(child.gameObject);
+        }
 
         if(this.gameObject.name == "TriggerBriga")
         {
             foreach (Transform child in posicoesNpcs.transform) // posições durante celebração
                 posicoesNpcsLista.Add(child.gameObject);
-        }
 
-        #region Npcs GO
-        donaMartaGO = NpcsLista[0];
-        eloaGO = NpcsLista[1];
-        ladraoGO = NpcsLista[2];
-        pedrinhoGO = NpcsLista[3];
-        seuJoaoGO = NpcsLista[4];
-        seuPedroGO = NpcsLista[5];
-        velhoDoidoGO = NpcsLista[6];
-        velhaNamiaCelebracaoGO = NpcsLista[7];
-        meninoGO = NpcsLista[8];
-        #endregion
+            #region Npcs GO
+            donaMartaGO = NpcsLista[0];
+            eloaGO = NpcsLista[1];
+            ladraoGO = NpcsLista[2];
+            pedrinhoGO = NpcsLista[3];
+            seuJoaoGO = NpcsLista[4];
+            seuPedroGO = NpcsLista[5];
+            velhoDoidoGO = NpcsLista[6];
+            velhaNamiaCelebracaoGO = NpcsLista[7];
+            meninoGO = NpcsLista[8];
+            #endregion
+        }
 
         if (this.gameObject.name == "TriggerCucaSeq")
             audioSourceSequestro = GetComponent<AudioSource>();
@@ -387,12 +390,12 @@ public class Prologo : MonoBehaviour
         oQueFazer_script.GerenciarQuadroQuest_celebr_seq(3);
 
         sfx_script.FlorestaNoite();
+        JogadorController.Instance.ModificarVelocidade(1f);
 
         #region fade from black
         MudarEstadoJogador(false);
         luzesCiclo.MudarCorAmbiente(Color.black);
         luzesCiclo.MudarCorAmbiente(new Color(0.05f, .07f, .21f), 4f);
-        JogadorController.Instance.velocidade = 1f;
         yield return new WaitForSeconds(5);
         MudarEstadoJogador(true);
         #endregion
@@ -400,13 +403,13 @@ public class Prologo : MonoBehaviour
         #region dialogos menina
         JogadorController.Instance.falandoSozinha = true;
         JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         DialogoBox.SetActive(false);
         #endregion
 
