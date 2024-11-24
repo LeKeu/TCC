@@ -14,14 +14,18 @@ public class JogadorVida : Singleton<JogadorVida>
     int vidaAtual;
 
     public bool podeLevarDano = true;
+    public static bool estaViva = true;
 
     Empurrao empurrao;
     Flash flash;
     TremerCamera tremerCamera;
+    LuzesCiclo luzesCiclo;
+    Respawnar respawnar;
 
     protected override void Awake()
     {
         base.Awake();
+        estaViva = true;
 
         flash = GetComponent<Flash>();
         empurrao = GetComponent<Empurrao>();
@@ -30,6 +34,8 @@ public class JogadorVida : Singleton<JogadorVida>
 
     void Start()
     {
+        luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
+        respawnar = GameObject.Find("RespawnPoint_Script").GetComponent<Respawnar>();
         vidaAtual = vidaMax;
         AtualizarVidaSlider();
     }
@@ -103,8 +109,21 @@ public class JogadorVida : Singleton<JogadorVida>
         if(vidaAtual <= 0)
         {
             vidaAtual = 0;
+            StartCoroutine(Morrer());
             //Debug.Log("morreueuue");
         }
+    }
+
+    IEnumerator Morrer()
+    {
+        estaViva = false;
+        respawnar.EsconderUI();
+
+        JogadorController.Instance.podeMover = false;
+        luzesCiclo.MudarCorAmbiente(Color.black, 5f);
+
+        yield return new WaitForSeconds(5);
+        respawnar.RespawnarJogador();
     }
 
     private IEnumerator RecoveryDanoRoutine()

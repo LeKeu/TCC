@@ -52,7 +52,7 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     public void AtivarArma1(bool acao)
     {
-        Debug.Log("arma ativa 1"+acao);
+        //Debug.Log("arma ativa 1"+acao);
         gameObject.SetActive(acao);
 
         if (acao)

@@ -43,7 +43,7 @@ public class InvocadoInimigo : BasicAndar
 
     private void FixedUpdate()
     {
-        if (podeAndar)
+        if (podeAndar && JogadorVida.estaViva)
         {
             if (!estaAtordoado && !estaPurificado)
             {

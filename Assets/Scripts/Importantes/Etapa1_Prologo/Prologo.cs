@@ -258,6 +258,9 @@ public class Prologo : MonoBehaviour
         #region Dialogos Celebraçao
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
+        Interagir_Celebracao(seuJoaoGO.GetComponent<SeuJoaoCelebracao>(), 1);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
         yield return new WaitForSeconds(2);

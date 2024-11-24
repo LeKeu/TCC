@@ -75,7 +75,7 @@ public class Etapa2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("colidiu");
+        //Debug.Log("colidiu");
         if(collision.GetComponent<JogadorController>() && gameObject.name == "PrimeiroEncontroSaci" && !aconteceuEncontro)
         {
             StartCoroutine(PrimeiroEncontroSaci());
