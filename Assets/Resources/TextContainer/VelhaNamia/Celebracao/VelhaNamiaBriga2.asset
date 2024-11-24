@@ -13,11 +13,23 @@ MonoBehaviour:
   m_Name: VelhaNamiaBriga2
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_Bom... vamos continuar"
-  - _...sim
-  - "Velha N\xE2mia_ estamos aqui enquanto a let\xEDcia ta acabando de fazer essa
-    cutscene"
-  - "Velha N\xE2mia_ beleza acabou aqui o papo da celebra\xE7\xE3o"
-  - "Velha N\xE2mia_ Pq ela tem que testar o jogo. Bjinho let\xEDcia tchau at\xE9
-    daqui a pocup"
-  perfilNPC: {fileID: 0}
+  - "Velha N\xE2mia_Minha filha... "
+  - "_Desculpa, Velha N\xE2mia. Vou falar com ele para n\xE3o acontecer outra vez..."
+  - "Velha N\xE2mia_Minha querida, essas coisas acontecem. Ele ainda \xE9 jovem,
+    n\xE3o consegue enxergar a import\xE2ncia de agradecer "
+  - _...
+  - 'Seu Pedro_Ah, eu era assim mesmo quando era menor... bons tempos... '
+  - "Dona Marta_Realmente, ein, Pedr\xE3o! Era assim mesmo. Lembra aquela vez que
+    ele xingou a celebra\xE7\xE3o e ningu\xE9m viu ele por 3 dias?"
+  - "Seu Pedro_Eh heheh, Martinha n\xE3o precisa relembrar is-"
+  - "Seu Jo\xE3o_HAHA VERDADE! S\xF3 foi mostrar a cara quando o Ruivo fui atr\xE1s
+    dele, n\xE9 Ruiv\xE3o?"
+  - Velho Doido_...
+  - "Velha N\xE2mia_Acho que o Bernardo n\xE3o \xE9 a \xFAnica crian\xE7a aqui, n\xE3o
+    \xE9 mesmo?"
+  - "Seu Jo\xE3o_\xC9gua, chefa, foi mal de novo."
+  - "Velha N\xE2mia_Ai ai, voc\xEAs fazem meus fios ficarem transparentes de brancos..."
+  - "Velha N\xE2mia_Queres ir atr\xE1s do teu irm\xE3o, minha flha?"
+  - "_N\xE3o n\xE3o, eu... Depois eu encontro ele... N\xE3o quero mais birra agora."
+  - _Pode continuar. Desculpa, galera...
+  perfilNPC: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}

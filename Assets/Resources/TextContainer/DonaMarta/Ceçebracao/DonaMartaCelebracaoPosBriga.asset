@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
+  m_Name: DonaMartaCelebracaoPosBriga
+  m_EditorClassIdentifier: 
+  paragrafos:
+  - Dona Marta_Eai, pixuta!
+  - _Oi Dona Marta, o que foi?
+  - "Dona Marta_Leva um pouco de a\xE7a\xED pro teu irm\xE3o, leva. "
+  - "_Ah, n\xE3o sei n\xE3o, ein! Se eu for l\xE1, ele n\xE3o vai receber a\xE7a\xED
+    n\xE3o... e sim uma bicuda minha!"
+  - "Dona Marta_E eu choro com isso! Eu heim, pelo menos leva o a\xE7a\xED junto
+    com a bicuda!"
+  perfilNPC: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}

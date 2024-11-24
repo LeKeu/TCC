@@ -12,5 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
   m_Name: VDCelebracao1
   m_EditorClassIdentifier: 
-  paragrafos: []
-  perfilNPC: {fileID: 0}
+  paragrafos:
+  - Velho Doido_Menina...
+  - "_Uh, oi, Ruivo. Voc\xEA t\xE1 bem? Parece meio... doente?"
+  - Velho Doido_O rio, ele parou de chorar.
+  - "_Isso \xE9 bom, n\xE3o?"
+  - "Velho Doido_Ele grita... esses... esses segredos n\xE3o s\xE3o mais segredos,
+    menina..."
+  - "_Iiiiihhh velh\xE3o... Isso de novo?"
+  - "Velho Doido_N\xE3o saia essa noite... o rio t\xE1 com raiva... raiva?... N\xE3o..."
+  - "_Pra onde eu iria, seu? N\xE3o se preocupa..."
+  - "Velho Doido_N\xE3o...N\xE3o...N\xE3o N\xE3o..."
+  - "_O senhor t\xE1 bem...?"
+  - "Velho Doido_N\xE3o \xE9 raiva, esses gritos... O rio t\xE1 de..."
+  - Velho Doido_...luto?
+  - _Eu... vou indo, tudo bem?
+  - Velho Doido_Luto... mas...
+  perfilNPC: {fileID: 21300000, guid: bfda510a0f0c17d469b95c2de9d97fa5, type: 3}

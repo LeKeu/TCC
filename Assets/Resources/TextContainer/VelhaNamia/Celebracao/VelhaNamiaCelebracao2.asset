@@ -13,6 +13,24 @@ MonoBehaviour:
   m_Name: VelhaNamiaCelebracao2
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_ acabou glr!"
-  - "Velha N\xE2mia_ guria vai achar teu irm\xE3o vai"
-  perfilNPC: {fileID: 0}
+  - "Velha N\xE2mia_Hoje demorou um pouco mais do que esperado, mas, mais uma vez,
+    estamos bem."
+  - "Velha N\xE2mia_A floresta escuta, entende e encanta."
+  - "Velha N\xE2mia_A gente toma conta dela, e ela toma conta da gente, como sempre
+    foi."
+  - "Pedrinho_V\xF3 Nana..."
+  - "Velha N\xE2mia_Oi, Pedrinho! J\xE1 sei o que voc\xEA quer..."
+  - "Velha N\xE2mia_Tu achas que eu n\xE3o vi o Seu Jo\xE3o sussurrando no seu ouvidinho?"
+  - "Seu Jo\xE3o_Eh-Uh-Quer dizer-Eu n\xE3o-"
+  - "_Mas ele n\xE3o aprende mesmo..."
+  - "Pedrinho_porfavorv\xF3nanaagentepodecomeeeer??"
+  - "Velha N\xE2mia_\xC9gua, Pedrinho! N\xE3o entendi \xE9 nada!"
+  - "Velha N\xE2mia_Massss, conhe\xE7o um olhar faminto como o teu, ein!"
+  - "Velha N\xE2mia_Dona Marta, a comida ta pronta?"
+  - "Dona Marta_T\xE1 quaaaase pronta, V\xF3zinha. T\xE1 ficando s\xF3 o creme!"
+  - "Velha N\xE2mia_Ent\xE3o se comportem, queridos, ou o Bicho-Pap\xE3o vai roubar
+    nossas comidas!"
+  - "Pedrinho_N\xC3O!"
+  - "Eloa_O BICHO PAP\xC3O N\xC3O!"
+  - "Velha N\xE2mia_Hahahaha... Voc\xEAs s\xE3o uma piada..."
+  perfilNPC: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}

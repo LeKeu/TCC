@@ -19,4 +19,6 @@ MonoBehaviour:
   - "Velha N\xE2mia_N\xE3o tem problema, querida."
   - "Velha N\xE2mia_Mais importante que tudo, voc\xEAs s\xE3o irm\xE3os."
   - "Velha N\xE2mia_Sempre v\xE3o se encontrar."
-  perfilNPC: {fileID: 0}
+  - "_Eu sei, Nana. S\xF3 queria um tempinho mesmo, ele me tira do s\xE9rio quando
+    fala essas coisas..."
+  perfilNPC: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}

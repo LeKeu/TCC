@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
-  m_Name: VelhaNamiaCelebracao1
+  m_Name: DonaMartaCelebracao01 1
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_ vamos continuar a celebra\xE7\xE3o yasss"
-  perfilNPC: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}
+  - 'Dona Marta_Xispem daqui! '
+  perfilNPC: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}

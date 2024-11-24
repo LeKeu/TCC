@@ -16,12 +16,19 @@ public class TiaMartaCelebracao : NPCsCelebracao, ITalkable
         if (JogadorController.Instance.podeMover) // se o jogador pode se mover, no caso só ocorre quando a conversa acabou
         {
             if (indexAtual == 0) { Prologo.qntdNpcsConversados++; } // se for a primeira vez conversando
-            indexAtual++;
-            if (indexAtual == dt.Count) { indexAtual = 0; }
+
+            if (!Prologo.aconteceuBriga && indexAtual > 1) indexAtual = 1;
+            if (indexAtual == dt.Count && Prologo.aconteceuBriga) indexAtual = 2;
         }
 
         if (!JogadorController.Instance.estaAndando)
             Falar(dt[indexAtual]);
+
+        if (JogadorController.Instance.podeMover)
+        {
+            if (indexAtual != dt.Count - 1)
+                indexAtual++;
+        }
     }
 
     public override void Interagir_CelebracaoCutscene(int index = 0)
