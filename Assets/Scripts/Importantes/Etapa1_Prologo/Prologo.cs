@@ -190,7 +190,7 @@ public class Prologo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" /*&& qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga*/)
             StartCoroutine(Brigar());
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
             StartCoroutine(CucaSequestraMenino());
@@ -292,7 +292,7 @@ public class Prologo : MonoBehaviour
 
         #region Dialogo Briga
         virtualCamera.Follow = JogadorController.Instance.transform;
-        ajusteTamanhoCamera.AjustarTamanhoCamera(1.5f);
+        ajusteTamanhoCamera.AjustarTamanhoCamera(1.5f, 30);
 
         Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
@@ -302,13 +302,14 @@ public class Prologo : MonoBehaviour
         meninoPodeSair = true;
         yield return new WaitForSeconds(3);
         meninoPodeSair = false;
+        meninoGO.GetComponentInChildren<SpriteRenderer>().enabled = false;
         //meninoGO.SetActive(false); // por algum motivo, desativar ele desativa tbm a continuação do dialogo
         #endregion
 
         yield return new WaitForSeconds(2);
 
         virtualCamera.Follow = posCamera.transform;
-        ajusteTamanhoCamera.AjustarTamanhoCamera();
+        ajusteTamanhoCamera.AjustarTamanhoCamera(tempo:30);
         #region Dialogos Pos Briga
         Interagir_Celebracao(seuPedroGO.GetComponent<SeuPedroCelebracao>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
@@ -318,7 +319,7 @@ public class Prologo : MonoBehaviour
 
         #region tudo preto, dialogue, volta de noite
         luzesCiclo.MudarCorAmbiente(Color.black, 5f);
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
 
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 3);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
