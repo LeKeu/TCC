@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -31,12 +32,13 @@ public class Menino : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "01_comunidade")
             pedrinho = GameObject.Find("Pedrinho").GetComponent<Pedrinho>();
         rb = GetComponent<Rigidbody2D>();
-        podeMover = false;
+        podeMover = SceneManager.GetActiveScene().name == "01_comunidade" ? false : true;
         estaLonge = true;
     }
 
     private void Andar()
     {
+        Debug.Log("andar meino");
         IrPara();
     }
 

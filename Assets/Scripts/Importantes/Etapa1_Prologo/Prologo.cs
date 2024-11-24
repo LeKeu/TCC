@@ -12,6 +12,7 @@ public class Prologo : MonoBehaviour
     [SerializeField] OQueFazer oQueFazer_script;
     CinemachineVirtualCamera virtualCamera;
     TremerCamera tremerCamera;
+    AjusteTamanhoCamera ajusteTamanhoCamera;
     LuzesCiclo luzesCiclo;
 
     [Header("Audios Geral")]
@@ -96,6 +97,7 @@ public class Prologo : MonoBehaviour
 
         virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         tremerCamera = virtualCamera.GetComponent<TremerCamera>();
+        ajusteTamanhoCamera = virtualCamera.GetComponent<AjusteTamanhoCamera>();
 
         if(this.gameObject.name == "TriggerBriga")
         { // só pega os npcs nas cenas com comunidade
@@ -128,10 +130,16 @@ public class Prologo : MonoBehaviour
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "01_comunidade")
+        {
             StartCoroutine(IniciarJogo_MeninaTocando());
+            sfx_script.ComunidadeFloresta();
+        }
 
         if (SceneManager.GetActiveScene().name == "02_comunidade")
+        {
             oQueFazer_script.GerenciarQuadroQuest_celebr_seq(0);
+            sfx_script.ComunidadeFloresta();
+        }
 
         if (SceneManager.GetActiveScene().name == "T03_comunidade" && this.gameObject.name == "FlorestaSozinha")
             StartCoroutine(Iniciar_FlorestaEscura());
@@ -244,8 +252,24 @@ public class Prologo : MonoBehaviour
     IEnumerator Brigar()
     {
         Etapas.BrigaCelebracao = true;
-        virtualCamera.Follow = posCamera.transform;
         oQueFazer_script.AtivarPainelQuests(false);
+
+        #region parando, escutando o sino, dialogo menina bernardo
+        MudarEstadoJogador(false);
+        yield return new WaitForSeconds(1);
+        sfx_script.ComunidadeSino();
+        yield return new WaitForSeconds(3);
+
+        Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 4);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
+        sfx_script.ComunidadeSino();
+        yield return new WaitForSeconds(3);
+
+        Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 5);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        MudarEstadoJogador(true);
+        #endregion
 
         #region Povo se movendo na direção de sua pos da cena
         pessoasAndando = true;
@@ -253,6 +277,7 @@ public class Prologo : MonoBehaviour
         pessoasAndando = false;
         #endregion
 
+        virtualCamera.Follow = posCamera.transform;
         MudarEstadoJogador(false);
 
         #region Dialogos Celebraçao
@@ -266,6 +291,9 @@ public class Prologo : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         #region Dialogo Briga
+        virtualCamera.Follow = JogadorController.Instance.transform;
+        ajusteTamanhoCamera.AjustarTamanhoCamera(1.5f);
+
         Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
@@ -279,6 +307,8 @@ public class Prologo : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
+        virtualCamera.Follow = posCamera.transform;
+        ajusteTamanhoCamera.AjustarTamanhoCamera();
         #region Dialogos Pos Briga
         Interagir_Celebracao(seuPedroGO.GetComponent<SeuPedroCelebracao>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);

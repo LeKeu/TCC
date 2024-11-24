@@ -16,6 +16,7 @@ public class SFX : MonoBehaviour
     #region Comunidade
     [Header("Comunidade")]
     [SerializeField] AudioClip comunidadeFloresta;
+    [SerializeField] AudioClip comunidadeSino;
     #endregion
 
     #region Jogador
@@ -36,18 +37,29 @@ public class SFX : MonoBehaviour
 
     public void FlorestaNoite()
     {
+        Debug.Log("floresta");
         audioSource[0].PlayOneShot(florestaNoite);
         audioSource[0].loop = true;
     }
 
     public void ComunidadeFloresta()
     {
-        audioSource[0].PlayOneShot(comunidadeFloresta);
-        audioSource[0].loop = true;
+        Debug.Log(audioSource[0].isPlaying);
+        if (audioSource[0].isPlaying)
+        {
+            audioSource[0].PlayOneShot(comunidadeFloresta);
+            audioSource[0].loop = true;
+        }
+    }
+
+    public void ComunidadeSino()
+    {
+        audioSource[1].PlayOneShot(comunidadeSino);
     }
 
     public void AssobioSaci()
     {
+        Debug.Log("assobio");
         audioSource[1].PlayOneShot(saciAssobio);
     }
 

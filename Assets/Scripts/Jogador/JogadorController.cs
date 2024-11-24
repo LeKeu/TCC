@@ -98,14 +98,14 @@ public class JogadorController : Singleton<JogadorController>
     private void FixedUpdate()
     {
         AjustarJogadorEncarandoLado();
-        Movimentar();
+        if(podeMover)
+            Movimentar();
     }
 
     public Transform PegarArmaCollider()
     {
         return armaCollider;
     }
-
 
     private void JogadorInput()
     {
