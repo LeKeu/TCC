@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
+  m_Name: SeuJoaoCelebracaoOutro 2
+  m_EditorClassIdentifier: 
+  paragrafos:
+  - "Seu Jo\xE3o_Aquele tampinha tem esp\xEDrito! Mas-"
+  - "_Para com isso, Seu Jo\xE3o! J\xE1 n\xE3o basta que tu \xE9 m\xF3 carrancudo,
+    tu-"
+  - "Seu Jo\xE3o_Ow, cabe\xE7a de Vento! Deixa eu acabar de falar!"
+  - _...
+  - "Seu Jo\xE3o_Apesar de ele ter esp\xEDrito, nem eu tenho coragem pra desrespeitar
+    a floresta assim... de novo."
+  - "Seu Jo\xE3o_Se n\xE3o fosse por aquele Ruivo fedido, a floresta teria me levado!"
+  - _Ah...
+  - "Seu Jo\xE3o_Voc\xEAs s\xE3o muito trouxos mesmo, dois malucos por desrespeitar
+    a floresta assim!"
+  - "_Ei! Eu n\xE3o fiz nada!"
+  - "Seu Jo\xE3o_Ah, dane-se! Larga daqui logo!"
+  perfilNPC: {fileID: 21300000, guid: a22f1ac1a7b020f4687724b688addcaa, type: 3}
