@@ -2798,7 +2798,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.76, y: -1.76, z: -10}
+  m_LocalPosition: {x: -8.8, y: -6.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3528,7 +3528,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619394800}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb7c288bdc6004f4f9fa443caa0027e0, type: 3}
   m_Name: 
@@ -41575,12 +41575,24 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7ec394bbb9e492848b670ffca2604310, type: 3}
     - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
       propertyPath: dt.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
       propertyPath: dt.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 9d1fb5832bcd5924fa4c0b5912b9c018, type: 2}
+      objectReference: {fileID: 11400000, guid: ee95c82b67299ea4b861e2ba0678af64, type: 2}
+    - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
+      propertyPath: dt.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 11dc329a11da99f4ab40a5ce458628d4, type: 2}
+    - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
+      propertyPath: dt.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: f75dfbf0fad26eb4aa5766dc667a82de, type: 2}
+    - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
+      propertyPath: dt.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: a710caefe192c3d429749c6ad22501fe, type: 2}
     - target: {fileID: 962357905915902815, guid: fde4ac950b06f9a45ba86e175483e956, type: 3}
       propertyPath: dialogoController
       value: 
@@ -47235,7 +47247,7 @@ Tilemap:
       - {fileID: -1599972479, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -229032524, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1812720589, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 7, y: -6, z: 0}
@@ -48178,7 +48190,7 @@ Tilemap:
       - {fileID: 1133128325, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1708104942, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -209832231, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 2, y: 1, z: 0}
@@ -49006,7 +49018,7 @@ Tilemap:
       - {fileID: -754010298, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -879509458, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 485149445, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 5, y: 6, z: 0}
@@ -49075,7 +49087,7 @@ Tilemap:
       - {fileID: -1599972479, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -229032524, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1812720589, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -14, y: 7, z: 0}
@@ -49466,7 +49478,7 @@ Tilemap:
       - {fileID: -1628169057, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 40615822, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1422542245, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -12, y: 9, z: 0}
@@ -56550,7 +56562,7 @@ Transform:
   m_GameObject: {fileID: 1849874757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.827032, y: -1.6368655, z: -9.990754}
+  m_LocalPosition: {x: -8.867032, y: -6.076865, z: -9.990754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -67719,7 +67731,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interagirSprite: {fileID: 1469633979775097149}
   dt:
-  - {fileID: 11400000, guid: 39040f0385acc844f8dfb359dcd9d54d, type: 2}
+  - {fileID: 11400000, guid: f0434e9f80fa5a64a9ebbf8ed62bd681, type: 2}
+  - {fileID: 11400000, guid: 8a356299f2cf4454eb64b64a9c71fd24, type: 2}
+  - {fileID: 11400000, guid: 536b805ade2782147aec11c62383b0f5, type: 2}
+  - {fileID: 11400000, guid: 68f02daf65d11eb458898ff9622cfad1, type: 2}
   dialogoController: {fileID: 1346034443}
   perfil: {fileID: 21300000, guid: bfda510a0f0c17d469b95c2de9d97fa5, type: 3}
 --- !u!1001 &1575976747148663692
@@ -68014,9 +68029,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interagirSprite: {fileID: 2365536064295076235}
   dt:
-  - {fileID: 11400000, guid: 955f204b17e50e940acd52a0c1c3307d, type: 2}
-  - {fileID: 11400000, guid: 6533292d4cb1b4843838f0efa7876c74, type: 2}
-  - {fileID: 11400000, guid: 2c7ef7af83f59ff45ad8c5947071ab97, type: 2}
+  - {fileID: 11400000, guid: cb5b36a03992f984995ba8e536f7af03, type: 2}
+  - {fileID: 11400000, guid: 559e71ecfab9b8242a21fe502ce1d596, type: 2}
+  - {fileID: 11400000, guid: 19bf505d3f777504487354d5b01ede49, type: 2}
+  - {fileID: 11400000, guid: a55a4872b13e252438eeaa833ea7bb10, type: 2}
   dialogoController: {fileID: 1346034443}
   perfil: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}
 --- !u!61 &2381824943739015596
@@ -68410,6 +68426,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 637ca4aef9992f349bcafb85ca542e6c, type: 2}
   - {fileID: 11400000, guid: 1e961458ff232a84e9c7fe03c45cc4a3, type: 2}
   - {fileID: 11400000, guid: cbc47971180a5964f9062977dac606ef, type: 2}
+  - {fileID: 11400000, guid: 1f614e4fb79e53c4bb935b5d0af8608c, type: 2}
   dialogoController: {fileID: 1346034443}
   perfil: {fileID: 21300000, guid: 96e03157987f2d240ac3d01e5b63feb4, type: 3}
 --- !u!1 &3661768732105981989
@@ -68532,11 +68549,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3542962782931481375, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.76
+      value: -8.8
       objectReference: {fileID: 0}
     - target: {fileID: 3542962782931481375, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.76
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 3542962782931481375, guid: 800620e7c3abb264e85cd861b7bb2f19, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69960,9 +69977,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interagirSprite: {fileID: 6192958017396350731}
   dt:
-  - {fileID: 11400000, guid: 38a4ac262a68ea840aab4b6eb892747f, type: 2}
-  - {fileID: 11400000, guid: d1f580b058eb11f4e86e8817e9d096f3, type: 2}
-  - {fileID: 11400000, guid: 91563c93c4f2bd2479a3378e1c228819, type: 2}
+  - {fileID: 11400000, guid: 693b26b95c568714e8891c84c71f4d81, type: 2}
+  - {fileID: 11400000, guid: b89c990adc690984692782e0703c690a, type: 2}
+  - {fileID: 11400000, guid: d7ef9c8ce27ea2545b7d326f36e1b3c7, type: 2}
+  - {fileID: 11400000, guid: d44b9614687e19b4cacf6ee3b33ff51c, type: 2}
   dialogoController: {fileID: 1346034443}
   perfil: {fileID: 21300000, guid: f6b548ba58895614aaabe7f05f0f7005, type: 3}
 --- !u!114 &6595341787652475464

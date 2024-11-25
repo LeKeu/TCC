@@ -284,7 +284,7 @@ public class Prologo : MonoBehaviour
         Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
-        Interagir_Celebracao(seuJoaoGO.GetComponent<SeuJoaoCelebracao>(), 1);
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 2);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
@@ -313,7 +313,7 @@ public class Prologo : MonoBehaviour
         #region Dialogos Pos Briga
         Interagir_Celebracao(seuPedroGO.GetComponent<SeuPedroCelebracao>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
-        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 2);
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 3);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
@@ -321,7 +321,7 @@ public class Prologo : MonoBehaviour
         luzesCiclo.MudarCorAmbiente(Color.black, 5f);
         yield return new WaitForSeconds(5);
 
-        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 3);
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 4);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         yield return new WaitForSeconds(2);
         luzesCiclo.MudarCorAmbiente(new Color(0.19f, .2f, 1), 5f);
@@ -329,7 +329,7 @@ public class Prologo : MonoBehaviour
 
         #region Dialogos finalizando celebração
         yield return new WaitForSeconds(4);
-        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 4);
+        Interagir_Celebracao(velhaNamiaCelebracaoGO.GetComponent<VelhaNamiaCelebracao>(), 5);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 

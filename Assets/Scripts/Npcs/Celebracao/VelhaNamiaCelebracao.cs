@@ -18,9 +18,9 @@ public class VelhaNamiaCelebracao : NPCsCelebracao, ITalkable
             if (indexAtual == 0) { Prologo.qntdNpcsConversados++; } // se for a primeira vez conversando
 
             if (!Prologo.aconteceuBriga) indexAtual = 0;
-            if (Prologo.aconteceuBriga && indexAtual < 5) indexAtual = 5;
+            if (Prologo.aconteceuBriga && indexAtual < 6) indexAtual = 6;
 
-            if (indexAtual == dt.Count && Prologo.aconteceuBriga) indexAtual = 5; 
+            if (indexAtual == dt.Count && Prologo.aconteceuBriga) indexAtual = 6; 
         }
 
         if (!JogadorController.Instance.estaAndando)

@@ -17,11 +17,8 @@ public class EloaCelebracao : NPCsCelebracao, ITalkable
         {
             if (indexAtual == 0) { Prologo.qntdNpcsConversados++; } // se for a primeira vez conversando
 
-            if (Prologo.aconteceuBriga) indexAtual = 2;
-
-            if (indexAtual == dt.Count-1 && !Prologo.aconteceuBriga) 
-            { indexAtual = 1; }
-
+            if (!Prologo.aconteceuBriga && indexAtual > 1) indexAtual = 1;
+            if (indexAtual == dt.Count && Prologo.aconteceuBriga) indexAtual = 2;
         }
 
         if (!JogadorController.Instance.estaAndando)
@@ -29,12 +26,9 @@ public class EloaCelebracao : NPCsCelebracao, ITalkable
 
         if (JogadorController.Instance.podeMover)
         {
-            Debug.Log("aquiuiuiuiu");
-            if(indexAtual != dt.Count-1)
-                indexAtual++;   
+            if (indexAtual != dt.Count - 1)
+                indexAtual++;
         }
-
-
     }
 
     public override void Interagir_CelebracaoCutscene(int index = 0)

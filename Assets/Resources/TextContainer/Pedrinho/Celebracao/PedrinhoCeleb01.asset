@@ -12,5 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
   m_Name: PedrinhoCeleb01
   m_EditorClassIdentifier: 
-  paragrafos: []
-  perfilNPC: {fileID: 0}
+  paragrafos:
+  - Pedrinho_Galera! Olha o que eu encontrei!
+  - _Eai, Pedrinho! O que foi dessa vez?
+  - "Bernardo_Pera... o que \xE9 isso?"
+  - "Pedrinho_Esse \xE9 meu novo amigo, o 'Arisgat\xF4'!"
+  - "_...'Arisgat\xF4'?"
+  - "Bernardo_Eca, Pedrinho! \xC9 um carapan\xE3 gigante!"
+  - "Pedrinho_Iiiih, que carapan\xE3 o que. Isso \xE9 uma formiga sa\xFAva! Tava
+    lendo nos livros da Velha N\xE2mia esses dias!"
+  - "_Ahhh, poxa, que legal ein... espero que tu e o 'Aristogat\xF4' se divirtam
+    muito, ein!"
+  - "Bernardo_\xC9... haha. Tchau, Pedrinho!"
+  perfilNPC: {fileID: 21300000, guid: f6b548ba58895614aaabe7f05f0f7005, type: 3}

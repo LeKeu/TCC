@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
+  m_Name: PedrinhoCeleb03
+  m_EditorClassIdentifier: 
+  paragrafos:
+  - "Pedrinho_Mana, tu tens que avisar o Bernardo que se ele ocntinuar sendo mla
+    educado, o Bicho-Pap\xE3o vai pegar nossa comida!"
+  - Pedrinho_E eu to com fomeeee.
+  - "_N\xE3o se preocupa, Pedrinho. O Bicho-Pap\xE3o s\xF3 vai pegar a comida dele,
+    n\xE3o a sua."
+  - "Pedrinho_Mas... e se ele pegar a nossa tamb\xE9m??"
+  - "_N\xE3o te bate com isso, Pedrinho! "
+  perfilNPC: {fileID: 21300000, guid: f6b548ba58895614aaabe7f05f0f7005, type: 3}

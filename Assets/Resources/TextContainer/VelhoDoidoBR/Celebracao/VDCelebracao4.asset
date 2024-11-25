@@ -13,14 +13,5 @@ MonoBehaviour:
   m_Name: VDCelebracao4
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velho Doido_N\xE3o vai pra perto dele, menina..."
-  - "_Do Bernardo? Ele \xE9 um chato, sim, mas \xE9 meu irm\xE3o, preciso achar ele...
-    e dar um pux\xE3o de orelha!"
-  - "Velho Doido_N\xE3o... n\xE3o."
-  - Velho Doido_Do assobio.
-  - _Que?
-  - "Velho Doido_N\xE3o vai pra perto do assobio..."
-  - "_...N\xE3o entendi, velh\xE3o. Quer que eu chame a Velha N\xE2mia?"
-  - Velho Doido_...
-  - _...
+  - "Velho Doido_N\xE3o seguie o assobio, menina... o rio..."
   perfilNPC: {fileID: 21300000, guid: bfda510a0f0c17d469b95c2de9d97fa5, type: 3}
