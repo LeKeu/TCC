@@ -44,7 +44,6 @@ public class SFX : MonoBehaviour
 
     public void ComunidadeFloresta()
     {
-        Debug.Log(audioSource[0].isPlaying);
         if (audioSource[0].isPlaying)
         {
             audioSource[0].PlayOneShot(comunidadeFloresta);

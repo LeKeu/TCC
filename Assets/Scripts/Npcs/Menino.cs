@@ -38,7 +38,6 @@ public class Menino : MonoBehaviour
 
     private void Andar()
     {
-        Debug.Log("andar meino");
         IrPara();
     }
 

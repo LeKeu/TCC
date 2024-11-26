@@ -60,6 +60,7 @@ public class Prologo : MonoBehaviour
 
     #region SEQUESTRO
     [Header("Sequestro Menino")]
+    [SerializeField] GameObject dialogosGeraisSeq;
     [SerializeField] GameObject posFrenteCasa;
     [SerializeField] GameObject vulto;
 
@@ -69,6 +70,7 @@ public class Prologo : MonoBehaviour
     [SerializeField] AudioClip garraCuca;
     [SerializeField] AudioClip meninaCorpoCaindo;
 
+    [SerializeField] List<GameObject> posVelhaNamiaSeqCuca;
     [SerializeField] List<GameObject> moitasVermelhas;
     [SerializeField] List<GameObject> listaPosMeninaCorrendo;
 
@@ -76,9 +78,11 @@ public class Prologo : MonoBehaviour
     bool meninaIndoCasa;
     bool vultoMovendo;
 
-    bool meninaCorrendo;
     GameObject proxPosMeninaAux;
+    bool meninaCorrendo;
     bool podeIrProxPos;
+    bool velhaNamiaAuxBool;
+    int velhaNamiaAuxInt;
     #endregion
 
     #region SOZINHA FLORESTA
@@ -99,17 +103,17 @@ public class Prologo : MonoBehaviour
         tremerCamera = virtualCamera.GetComponent<TremerCamera>();
         ajusteTamanhoCamera = virtualCamera.GetComponent<AjusteTamanhoCamera>();
 
-        if(this.gameObject.name == "TriggerBriga")
-        { // só pega os npcs nas cenas com comunidade
+        //if(this.gameObject.name == "TriggerBriga")
+        //{ // só pega os npcs nas cenas com comunidade
             foreach (Transform child in Npcs.transform) // pegando GO de cada NPC
                 NpcsLista.Add(child.gameObject);
-        }
+        //}
 
-        if(this.gameObject.name == "TriggerBriga")
+        if (this.gameObject.name == "TriggerBriga")
         {
             foreach (Transform child in posicoesNpcs.transform) // posições durante celebração
                 posicoesNpcsLista.Add(child.gameObject);
-
+        }
             #region Npcs GO
             donaMartaGO = NpcsLista[0];
             eloaGO = NpcsLista[1];
@@ -121,7 +125,7 @@ public class Prologo : MonoBehaviour
             velhaNamiaCelebracaoGO = NpcsLista[7];
             meninoGO = NpcsLista[8];
             #endregion
-        }
+        //}
 
         if (this.gameObject.name == "TriggerCucaSeq")
             audioSourceSequestro = GetComponent<AudioSource>();
@@ -183,6 +187,9 @@ public class Prologo : MonoBehaviour
                 if (Vector3.Distance(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position) <= 1f)
                     podeIrProxPos = true;
             }
+
+            if(velhaNamiaAuxBool)
+                velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca[velhaNamiaAuxInt].transform.position, 1f * Time.deltaTime);
         }
         #endregion
 
@@ -344,9 +351,26 @@ public class Prologo : MonoBehaviour
 
     IEnumerator CucaSequestraMenino()
     {
-        Debug.Log("SEQUESTROW");
-
         Etapas.CucaSequestro = true;
+
+        #region dialog velha nâmia
+        Debug.Log("teste1");
+        velhaNamiaCelebracaoGO.transform.position = posVelhaNamiaSeqCuca[0].transform.position;
+
+        Debug.Log("teste2");
+        MudarEstadoJogador(false);
+        Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 0);
+        Debug.Log("teste3");
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
+        velhaNamiaAuxInt = 1;
+        velhaNamiaAuxBool = true;
+        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca[1].transform.position) < 0.1f);
+        velhaNamiaAuxBool = false;
+
+        Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 1);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        #endregion
 
         #region Menina andando em direção da casa
         meninaIndoCasa = true;
