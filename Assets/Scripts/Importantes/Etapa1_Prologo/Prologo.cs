@@ -64,12 +64,6 @@ public class Prologo : MonoBehaviour
     [SerializeField] GameObject posFrenteCasa;
     [SerializeField] GameObject vulto;
 
-    [SerializeField] AudioClip musicaCuca;
-    [SerializeField] AudioClip vidroEstoura;
-    [SerializeField] AudioClip passosVidro;
-    [SerializeField] AudioClip garraCuca;
-    [SerializeField] AudioClip meninaCorpoCaindo;
-
     [SerializeField] List<GameObject> posVelhaNamiaSeqCuca;
     [SerializeField] List<GameObject> moitasVermelhas;
     [SerializeField] List<GameObject> listaPosMeninaCorrendo;
@@ -360,6 +354,7 @@ public class Prologo : MonoBehaviour
         MudarEstadoJogador(false);
         Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
         #endregion
 
         #region velha namia conversando com menina e indo embora
@@ -371,9 +366,11 @@ public class Prologo : MonoBehaviour
         Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
+        yield return new WaitForSeconds(2);
+
         velhaNamiaAuxInt = 0;
         velhaNamiaAuxBool = true;
-        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca[1].transform.position) < 0.1f);
+        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca[0].transform.position) < 0.1f);
         velhaNamiaAuxBool = false;
         #endregion
 
@@ -385,7 +382,7 @@ public class Prologo : MonoBehaviour
 
         #region Menina andando em direção da casa, musica tocando
         meninaIndoCasa = true;
-        audioSourceSequestro.PlayOneShot(musicaCuca);
+        sfx_script.MusicaCuca();
         audioSourceSequestro.loop = true;
         yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posFrenteCasa.transform.position) < 0.1f);
         meninaIndoCasa = false;
@@ -404,16 +401,26 @@ public class Prologo : MonoBehaviour
         #region Barulhos vidros, tremer cam, pedido socorro
         audioSourceSequestro.loop = false;
         audioSourceSequestro.Stop();
+        #endregion
 
-        yield return new WaitForSeconds(.5f);
-        audioSourceSequestro.PlayOneShot(vidroEstoura);
-        tremerCamera.TremerCameraFuncDinamica(2f, 1f);
-        yield return new WaitForSeconds(vidroEstoura.length);
+        #region barulho coisa caindo, dialogo menina
+        sfx_script.CoisasCaindo();
+        yield return new WaitForSeconds(1.5f);
 
         Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 4);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        #endregion
 
-        audioSourceSequestro.PlayOneShot(passosVidro);
+        #region barulho de vidro, dialogo
+        yield return new WaitForSeconds(.5f);
+        sfx_script.VidroEstora();
+        tremerCamera.TremerCameraFuncDinamica(2f, 1f);
+        yield return new WaitForSeconds(1);
+
+        Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 5);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
+        sfx_script.PassosVidro();
         #endregion
 
         #region Vulto movendo, moitas sumindo
@@ -423,7 +430,10 @@ public class Prologo : MonoBehaviour
         vulto.SetActive(false);
         vultoMovendo = false;
 
-        foreach(GameObject moita in moitasVermelhas)
+        Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 6);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
+        foreach (GameObject moita in moitasVermelhas)
             moita.SetActive(false);
         #endregion
 
@@ -436,16 +446,15 @@ public class Prologo : MonoBehaviour
             podeIrProxPos = false;
         }
         meninaCorrendo = false;
-
         #endregion
 
         //efeitos sonoros tensos, tela escurece rápido, efeito sonoro de garra, volta sprite menina caído, bem mais de noite, menina segue caminho
         #region Tela escurecer, barulho garra, muda sprite, volta bem escuro, 
         luzesCiclo.MudarCorAmbiente(Color.black);
         yield return new WaitForSeconds(.5f);
-        audioSourceSequestro.PlayOneShot(garraCuca);
-        yield return new WaitForSeconds(garraCuca.length);
-        audioSourceSequestro.PlayOneShot(meninaCorpoCaindo);
+        sfx_script.GarraCuca();
+        yield return new WaitForSeconds(1);
+        sfx_script.MeninaCaindo();
         yield return new WaitForSeconds(3);
         //luzesCiclo.MudarCorAmbiente(new Color(0.05f, .07f, .21f), 4f);
         #endregion

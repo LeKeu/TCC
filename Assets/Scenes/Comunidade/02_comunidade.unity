@@ -6170,6 +6170,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 525aad7d18a177543afffec238113a81, type: 2}
   - {fileID: 11400000, guid: f667b9d993f9f34449c0a28639082b27, type: 2}
   - {fileID: 11400000, guid: 0b21345ef0b62d24f98f21d709d3184a, type: 2}
+  - {fileID: 11400000, guid: 8cdab62d3fe18b341b7fe534cb3df1dd, type: 2}
+  - {fileID: 11400000, guid: 43114c60d12cb664c9a14dcb05d684e6, type: 2}
   dialogoController: {fileID: 1346034443}
   perfil: {fileID: 21300000, guid: d6b881526e0969446856aed13b8d8da4, type: 3}
 --- !u!1 &1018951917
@@ -28173,6 +28175,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5252832538109088573, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: garraCuca
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ed142736d411c84799c03a7e1aa8796, type: 3}
+    - target: {fileID: 5252832538109088573, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: musicaCuca
+      value: 
+      objectReference: {fileID: 8300000, guid: 74f6d7ff5c15d4f4b810972784b02e2e, type: 3}
+    - target: {fileID: 5252832538109088573, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: passosVidro
+      value: 
+      objectReference: {fileID: 8300000, guid: 34aa5c895bac591439d578ae6950e090, type: 3}
+    - target: {fileID: 5252832538109088573, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: coisasCaindo
+      value: 
+      objectReference: {fileID: 8300000, guid: 5eb90fad4ed7ef44bbf2fe640089cc57, type: 3}
+    - target: {fileID: 5252832538109088573, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: vidroEstoura
+      value: 
+      objectReference: {fileID: 8300000, guid: 966df26ae3964e0478116be12f3d3232, type: 3}
+    - target: {fileID: 5252832538109088573, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: meninaCorpoCaindo
+      value: 
+      objectReference: {fileID: 8300000, guid: dd6130983adc8e646a07160d9d2c304d, type: 3}
     - target: {fileID: 7643353175963343172, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
       propertyPath: m_Name
       value: AudioSource
@@ -42453,11 +42479,6 @@ MonoBehaviour:
   dialogosGeraisSeq: {fileID: 995968907}
   posFrenteCasa: {fileID: 812090185}
   vulto: {fileID: 166899333}
-  musicaCuca: {fileID: 8300000, guid: 74f6d7ff5c15d4f4b810972784b02e2e, type: 3}
-  vidroEstoura: {fileID: 8300000, guid: 966df26ae3964e0478116be12f3d3232, type: 3}
-  passosVidro: {fileID: 8300000, guid: 34aa5c895bac591439d578ae6950e090, type: 3}
-  garraCuca: {fileID: 8300000, guid: 2ed142736d411c84799c03a7e1aa8796, type: 3}
-  meninaCorpoCaindo: {fileID: 8300000, guid: dd6130983adc8e646a07160d9d2c304d, type: 3}
   posVelhaNamiaSeqCuca:
   - {fileID: 508430960}
   - {fileID: 277710789}
@@ -47154,7 +47175,7 @@ Tilemap:
       - {fileID: 475806399, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -581906228, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1337139000, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 14, y: -11, z: 0}
@@ -47269,7 +47290,7 @@ Tilemap:
       - {fileID: -754010298, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -879509458, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 485149445, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 4, y: -10, z: 0}
@@ -47568,7 +47589,7 @@ Tilemap:
       - {fileID: -431330007, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 705410160, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1402667787, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 7, y: -5, z: 0}
@@ -47821,7 +47842,7 @@ Tilemap:
       - {fileID: -17399659, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1505392389, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 2063713644, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -3, y: -2, z: 0}
@@ -47890,7 +47911,7 @@ Tilemap:
       - {fileID: -1599972479, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -229032524, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1812720589, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 12, y: -2, z: 0}
@@ -47982,7 +48003,7 @@ Tilemap:
       - {fileID: 988694446, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 722514835, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1581700420, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -1, y: -1, z: 0}
@@ -48120,7 +48141,7 @@ Tilemap:
       - {fileID: 1133128325, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1708104942, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -209832231, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: -1, z: 0}
@@ -49017,7 +49038,7 @@ Tilemap:
       - {fileID: -1628169057, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 40615822, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1422542245, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: 4, z: 0}
@@ -49132,7 +49153,7 @@ Tilemap:
       - {fileID: -1628169057, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 40615822, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1422542245, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: 5, z: 0}
@@ -49477,7 +49498,7 @@ Tilemap:
       - {fileID: -1632449439, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1629452603, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 807328484, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: 7, z: 0}
@@ -49569,7 +49590,7 @@ Tilemap:
       - {fileID: -431330007, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 705410160, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -1402667787, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 6, y: 8, z: 0}
@@ -50098,7 +50119,7 @@ Tilemap:
       - {fileID: -754010298, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -879509458, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 485149445, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5000002
+      m_AnimationSpeed: 2.5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -13, y: 11, z: 0}
@@ -66873,11 +66894,6 @@ MonoBehaviour:
   dialogosGeraisSeq: {fileID: 0}
   posFrenteCasa: {fileID: 0}
   vulto: {fileID: 0}
-  musicaCuca: {fileID: 0}
-  vidroEstoura: {fileID: 0}
-  passosVidro: {fileID: 0}
-  garraCuca: {fileID: 0}
-  meninaCorpoCaindo: {fileID: 0}
   posVelhaNamiaSeqCuca: []
   moitasVermelhas: []
   listaPosMeninaCorrendo: []

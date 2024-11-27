@@ -30,6 +30,15 @@ public class SFX : MonoBehaviour
     [SerializeField] AudioClip saciAssobio;
     #endregion
 
+    #region seq cuca
+    [SerializeField] AudioClip musicaCuca;
+    [SerializeField] AudioClip coisasCaindo;
+    [SerializeField] AudioClip vidroEstoura;
+    [SerializeField] AudioClip passosVidro;
+    [SerializeField] AudioClip garraCuca;
+    [SerializeField] AudioClip meninaCorpoCaindo;
+    #endregion
+
     private void Start()
     {
         audioSource = GetComponents<AudioSource>();
@@ -56,6 +65,16 @@ public class SFX : MonoBehaviour
         audioSource[1].PlayOneShot(comunidadeSino);
     }
 
+    #region seq cuca 
+    public void MusicaCuca() => audioSource[1].PlayOneShot(musicaCuca);
+    public void VidroEstora() => audioSource[1].PlayOneShot(vidroEstoura);
+    public void PassosVidro() => audioSource[1].PlayOneShot(passosVidro);
+    public void GarraCuca() => audioSource[1].PlayOneShot(garraCuca);
+    public void MeninaCaindo() => audioSource[1].PlayOneShot(meninaCorpoCaindo);
+    public void CoisasCaindo() => audioSource[1].PlayOneShot(coisasCaindo);
+    #endregion
+
+    #region saci
     public void AssobioSaci()
     {
         Debug.Log("assobio");
@@ -63,6 +82,7 @@ public class SFX : MonoBehaviour
     }
 
     public void PararAssobioSaci() => audioSource[1].Stop();
+    #endregion
 
     #region Jogador
 
