@@ -175,7 +175,7 @@ public class Prologo : MonoBehaviour
         {
             if (meninaIndoCasa)
             {
-                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posFrenteCasa.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posFrenteCasa.transform.position, 1 * Time.deltaTime);
             }
 
             if (vultoMovendo)
@@ -183,7 +183,7 @@ public class Prologo : MonoBehaviour
 
             if (meninaCorrendo)
             {
-                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
+                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position, 8 * Time.deltaTime);
                 if (Vector3.Distance(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position) <= 1f)
                     podeIrProxPos = true;
             }
@@ -352,17 +352,17 @@ public class Prologo : MonoBehaviour
     IEnumerator CucaSequestraMenino()
     {
         Etapas.CucaSequestro = true;
+        oQueFazer_script.AtivarPainelQuests(false);
 
-        #region dialog velha nâmia
-        Debug.Log("teste1");
+        #region Velha namia falando de longe
         velhaNamiaCelebracaoGO.transform.position = posVelhaNamiaSeqCuca[0].transform.position;
 
-        Debug.Log("teste2");
         MudarEstadoJogador(false);
         Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 0);
-        Debug.Log("teste3");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        #endregion
 
+        #region velha namia conversando com menina e indo embora
         velhaNamiaAuxInt = 1;
         velhaNamiaAuxBool = true;
         yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca[1].transform.position) < 0.1f);
@@ -370,24 +370,36 @@ public class Prologo : MonoBehaviour
 
         Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 1);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
+        velhaNamiaAuxInt = 0;
+        velhaNamiaAuxBool = true;
+        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca[1].transform.position) < 0.1f);
+        velhaNamiaAuxBool = false;
         #endregion
 
-        #region Menina andando em direção da casa
+        #region menina falando sozinha
+        yield return new WaitForSeconds(2);
+        Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 2);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        #endregion
+
+        #region Menina andando em direção da casa, musica tocando
         meninaIndoCasa = true;
-        //yield return new WaitUntil(() => new Vector2(jogadorController.transform.position.x, jogadorController.transform.position.y) == new Vector2(posFrenteCasa.transform.position.x, posFrenteCasa.transform.position.y) ? true : false);
-        yield return new WaitForSeconds(3);
+        audioSourceSequestro.PlayOneShot(musicaCuca);
+        audioSourceSequestro.loop = true;
+        yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posFrenteCasa.transform.position) < 0.1f);
         meninaIndoCasa = false;
+
+        Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 3);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
         MudarEstadoJogador(false);
-        oQueFazer_script.AtivarPainelQuests(false);
 
-        #region musica cuca e dialogo menina
-        audioSourceSequestro.PlayOneShot(musicaCuca);
-        audioSourceSequestro.loop = true;
-        Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 2);
-        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
-        #endregion
+        //#region dialogo menina
+        //Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 2);
+        //yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        //#endregion
 
         #region Barulhos vidros, tremer cam, pedido socorro
         audioSourceSequestro.loop = false;
@@ -395,10 +407,10 @@ public class Prologo : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
         audioSourceSequestro.PlayOneShot(vidroEstoura);
-        tremerCamera.TremerCameraFuncDinamica(2f, 2f);
+        tremerCamera.TremerCameraFuncDinamica(2f, 1f);
         yield return new WaitForSeconds(vidroEstoura.length);
 
-        Interagir_Celebracao(meninoGO.GetComponent<Menino>(), 3);
+        Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 4);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
         audioSourceSequestro.PlayOneShot(passosVidro);

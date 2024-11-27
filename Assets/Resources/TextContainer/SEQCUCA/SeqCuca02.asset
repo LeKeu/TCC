@@ -13,7 +13,39 @@ MonoBehaviour:
   m_Name: SeqCuca02
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_AAA"
-  - _aham
-  - "Seu Jo\xE3o_blzz"
-  perfilNPC: {fileID: 0}
+  - "Velha N\xE2mia_Ai uf uf... Calma, minha filha, voc\xEA anda muito r\xE1pido..."
+  - "_V\xF3 N\xE2mia, voc\xEA que tem pernas curtinhas!"
+  - "_Mas... T\xE1 tudo bem?"
+  - "Velha N\xE2mia_T\xE1 sim, minha querida. S\xF3 queria conversar com voc\xEA
+    um pouco."
+  - "Velha N\xE2mia_Eu sei que voc\xEA ta chateada com o Bernardinho, mas deixa eu
+    te contar uma coisa..."
+  - "Velha N\xE2mia_Irm\xE3o \xE9 mais que sangue, querida. \xC9 apoio, \xE9 amor."
+  - "_V\xF3 N\xE2mia, eu sei dis-"
+  - "Velha N\xE2mia_L\xE1 na minha casinha, quando eu era um brotinho, sempre brigava
+    com os meus irm\xE3os, sabe?"
+  - _...aham.
+  - "Velha N\xE2mia_Mas depois, era s\xF3 dar uma risada e pedir desculpas!"
+  - "_Mas, Velha N\xE2mia! Ele foi mal educado e xingou a celebra\xE7\xE3o na frente
+    de todos!"
+  - _Parecia um pirralho mimado!
+  - "Velha N\xE2mia_Voc\xEA \xE9 mais velha, n\xE3o \xE9?"
+  - _Uai, sim, mas...
+  - "Velha N\xE2mia_\xC0s vezes, a gente tem que ser a calma quando o outro n\xE3o
+    consegue ser."
+  - "Velha N\xE2mia_O que ele fez foi errado, sim. Mas n\xE3o vai deixar isso atrapalhar
+    o futuro de voc\xEAs, t\xE1 bom?"
+  - _...
+  - "Velha N\xE2mia_O que tu podes fazer agora, \xE9 ir l\xE1. Fale com o seu irm\xE3o,
+    conversem... Isso faz diferen\xE7a, minha filha."
+  - "_\xC9gua, V\xF3 N\xE2mia. \xC9 s\xF3 que \xE1s vezes \xE9 cansativo ficar tomando
+    conta dele."
+  - "Velha N\xE2mia_Eu sei que \xE9, meu broto. Mas a vida \xE9 curta demais pra
+    deixar uma briga atrapalhar voc\xEAs, n\xE3o achas?"
+  - "_\xC9..."
+  - "Velha N\xE2mia_Pensa nisso, minha filha. N\xE3o precisa fazer as pazes agora,
+    t\xE1 bom?"
+  - "_T\xE1 bom."
+  - "_Ah... Obrigada, V\xF3 N\xE2mia..."
+  - "Velha N\xE2mia_Disponha, querida. Agora vai l\xE1 vai."
+  perfilNPC: {fileID: 21300000, guid: d6b881526e0969446856aed13b8d8da4, type: 3}
