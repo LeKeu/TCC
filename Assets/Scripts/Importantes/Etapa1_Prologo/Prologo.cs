@@ -198,6 +198,8 @@ public class Prologo : MonoBehaviour
 
         yield return new WaitForSeconds(5);
 
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        Debug.Log("ahshshah");
         Interagir_Celebracao(dialogosGerais.GetComponent<DialogosGerais>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
@@ -215,15 +217,24 @@ public class Prologo : MonoBehaviour
 
     void MovimentarPessoas()
     {
+        donaMartaGO.transform.position = posicoesNpcsLista[0].transform.position;
+        eloaGO.transform.position = posicoesNpcsLista[1].transform.position;
+        ladraoGO.transform.position = posicoesNpcsLista[2].transform.position;
+        pedrinhoGO.transform.position = posicoesNpcsLista[3].transform.position;
+        seuJoaoGO.transform.position = posicoesNpcsLista[4].transform.position;
+        seuPedroGO.transform.position = posicoesNpcsLista[5].transform.position;
+        velhoDoidoGO.transform.position = posicoesNpcsLista[6].transform.position;
+        velhaNamiaCelebracaoGO.transform.position = posicoesNpcsLista[7].transform.position;
+
         JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, posicoesNpcsLista[9].transform.position, JogadorController.Instance.velocidade * Time.deltaTime);
-        donaMartaGO.transform.position = Vector2.MoveTowards(donaMartaGO.transform.position, posicoesNpcsLista[0].transform.position, 2 * Time.deltaTime);
-        eloaGO.transform.position = Vector2.MoveTowards(eloaGO.transform.position, posicoesNpcsLista[1].transform.position, 2.5f * Time.deltaTime);
-        ladraoGO.transform.position = Vector2.MoveTowards(ladraoGO.transform.position, posicoesNpcsLista[2].transform.position, 2 * Time.deltaTime);
-        pedrinhoGO.transform.position = Vector2.MoveTowards(pedrinhoGO.transform.position, posicoesNpcsLista[3].transform.position, 2.5f * Time.deltaTime);
-        seuJoaoGO.transform.position = Vector2.MoveTowards(seuJoaoGO.transform.position, posicoesNpcsLista[4].transform.position, 1.5f * Time.deltaTime);
-        seuPedroGO.transform.position = Vector2.MoveTowards(seuPedroGO.transform.position, posicoesNpcsLista[5].transform.position, 2 * Time.deltaTime);
-        velhoDoidoGO.transform.position = Vector2.MoveTowards(velhoDoidoGO.transform.position, posicoesNpcsLista[6].transform.position, 1f * Time.deltaTime);
-        velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posicoesNpcsLista[7].transform.position, .5f * Time.deltaTime);
+        //donaMartaGO.transform.position = Vector2.MoveTowards(donaMartaGO.transform.position, posicoesNpcsLista[0].transform.position, 2 * Time.deltaTime);
+        //eloaGO.transform.position = Vector2.MoveTowards(eloaGO.transform.position, posicoesNpcsLista[1].transform.position, 2.5f * Time.deltaTime);
+        //ladraoGO.transform.position = Vector2.MoveTowards(ladraoGO.transform.position, posicoesNpcsLista[2].transform.position, 2 * Time.deltaTime);
+        //pedrinhoGO.transform.position = Vector2.MoveTowards(pedrinhoGO.transform.position, posicoesNpcsLista[3].transform.position, 2.5f * Time.deltaTime);
+        //seuJoaoGO.transform.position = Vector2.MoveTowards(seuJoaoGO.transform.position, posicoesNpcsLista[4].transform.position, 1.5f * Time.deltaTime);
+        //seuPedroGO.transform.position = Vector2.MoveTowards(seuPedroGO.transform.position, posicoesNpcsLista[5].transform.position, 2 * Time.deltaTime);
+        //velhoDoidoGO.transform.position = Vector2.MoveTowards(velhoDoidoGO.transform.position, posicoesNpcsLista[6].transform.position, 1f * Time.deltaTime);
+        //velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posicoesNpcsLista[7].transform.position, .5f * Time.deltaTime);
         meninoGO.transform.position = Vector2.MoveTowards(meninoGO.transform.position, posicoesNpcsLista[8].transform.position, 3f * Time.deltaTime);
     }
 
@@ -290,7 +301,7 @@ public class Prologo : MonoBehaviour
 
         #region Povo se movendo na direção de sua pos da cena
         pessoasAndando = true;
-        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posicoesNpcsLista[7].transform.position) < 0.1f);
+        yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posicoesNpcsLista[9].transform.position) < 0.1f);
         pessoasAndando = false;
         yield return new WaitForSeconds(2);
         #endregion
