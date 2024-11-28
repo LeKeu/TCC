@@ -10,6 +10,7 @@ public class Prologo : MonoBehaviour
 {
     [Header("Gerais")]
     [SerializeField] OQueFazer oQueFazer_script;
+    [SerializeField] DialogosGerais dialogosGerais;
     CinemachineVirtualCamera virtualCamera;
     TremerCamera tremerCamera;
     AjusteTamanhoCamera ajusteTamanhoCamera;
@@ -25,6 +26,7 @@ public class Prologo : MonoBehaviour
 
     #region bool de checagem de etapas ocorridas
     public static bool aconteceuBriga;
+    public static bool procurandoBola;
     bool mudouTextAux;
     #endregion
 
@@ -147,8 +149,7 @@ public class Prologo : MonoBehaviour
     {
         if(qntdNpcsConversados >= totalNpcsConversaveis  && !mudouTextAux)
         {
-            oQueFazer_script.GerenciarQuadroQuest_celebr_seq(1);
-            mudouTextAux = true;
+            StartCoroutine(IniciarProcurarBola());
         }
 
         #region Briga
@@ -187,6 +188,21 @@ public class Prologo : MonoBehaviour
         }
         #endregion
 
+    }
+
+    IEnumerator IniciarProcurarBola()
+    { // quando tiver ok para começar a celebração, faz isso
+        mudouTextAux = true;
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        procurandoBola = true;
+
+        yield return new WaitForSeconds(5);
+
+        Interagir_Celebracao(dialogosGerais.GetComponent<DialogosGerais>(), 0);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+
+        oQueFazer_script.GerenciarQuadroQuest_celebr_seq(1);
+        procurandoBola = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -16,9 +16,6 @@ public abstract class NPCsCelebracao : MonoBehaviour, IInteractble
             Interagir();
         }
 
-        //if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BrigaCelebracao)
-        //    Interagir_CelebracaoCutscene();
-
         if (_interagirSprite.gameObject.activeSelf && !DaParaInteragir())
             _interagirSprite.gameObject.SetActive(false);
         else if (!_interagirSprite.gameObject.activeSelf && DaParaInteragir())

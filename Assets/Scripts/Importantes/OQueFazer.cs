@@ -8,13 +8,13 @@ public class OQueFazer : MonoBehaviour
 {
     [SerializeField] GameObject QuadroDeQuests;
 
-    public List<string> tutorial = new List<string>() 
+    List<string> tutorial = new List<string>() 
     { "Fale com a velha nâmia", "Vá com a Tia Marta", "Talk com o seu Pedro", "Ajude o Pedrinho", "Fale com o homem Peixe" };
 
-    public List<string> celebr_seq = new List<string>()
-    { "Fale com o povo ao redor antes de começar a celebração", "Participe da celebração", "Procure seu irmão", "Saia da floresta escura" };
+    List<string> celebr_seq = new List<string>()
+    { "Fale com o povo ao redor antes de começar a celebração", "Procure pela bola de futebol perto das casas", "Procure seu irmão", "Saia da floresta escura" };
 
-    public List<string> saci_cenas = new List<string>()
+    List<string> saci_cenas = new List<string>()
     { "saci 1", "saci 2", "saci 3", "saci 4" };
 
     private void Start()
