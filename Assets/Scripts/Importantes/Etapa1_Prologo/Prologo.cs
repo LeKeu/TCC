@@ -177,7 +177,7 @@ public class Prologo : MonoBehaviour
 
             if (meninaCorrendo)
             {
-                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position, 8 * Time.deltaTime);
+                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position, 6 * Time.deltaTime);
                 if (Vector3.Distance(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position) <= 1f)
                     podeIrProxPos = true;
             }
@@ -191,9 +191,9 @@ public class Prologo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" /*&& qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga*/)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
             StartCoroutine(Brigar());
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" && aconteceuBriga)
             StartCoroutine(CucaSequestraMenino());
     } 
 
@@ -276,9 +276,12 @@ public class Prologo : MonoBehaviour
         pessoasAndando = true;
         yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posicoesNpcsLista[7].transform.position) < 0.1f);
         pessoasAndando = false;
+        yield return new WaitForSeconds(2);
         #endregion
 
+        ajusteTamanhoCamera.AjustarTamanhoCamera(3, 30);
         virtualCamera.Follow = posCamera.transform;
+        yield return new WaitForSeconds(2);
         MudarEstadoJogador(false);
 
         #region Dialogos Celebraçao
@@ -398,10 +401,8 @@ public class Prologo : MonoBehaviour
         //yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         //#endregion
 
-        #region Barulhos vidros, tremer cam, pedido socorro
         audioSourceSequestro.loop = false;
         audioSourceSequestro.Stop();
-        #endregion
 
         #region barulho coisa caindo, dialogo menina
         sfx_script.CoisasCaindo();
@@ -414,6 +415,7 @@ public class Prologo : MonoBehaviour
         #region barulho de vidro, dialogo
         yield return new WaitForSeconds(.5f);
         sfx_script.VidroEstora();
+        sfx_script.PararMusicaCuca();
         tremerCamera.TremerCameraFuncDinamica(2f, 1f);
         yield return new WaitForSeconds(1);
 
@@ -421,6 +423,7 @@ public class Prologo : MonoBehaviour
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
         sfx_script.PassosVidro();
+
         #endregion
 
         #region Vulto movendo, moitas sumindo
