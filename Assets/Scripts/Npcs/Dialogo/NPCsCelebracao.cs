@@ -10,17 +10,19 @@ public abstract class NPCsCelebracao : MonoBehaviour, IInteractble
 
     void Update()
     {
-        if (Mouse.current.middleButton.wasPressedThisFrame && DaParaInteragir() && !Etapas.BrigaCelebracao)
-        {//Keyboard.current.eKey.wasPressedThisFrame
-            //Debug.Log("aquiqiqi");
-            Interagir();
+        if (JogadorController.Instance.podeFalar)
+        {
+            if (Mouse.current.middleButton.wasPressedThisFrame && DaParaInteragir() && !Etapas.BrigaCelebracao)
+            {//Keyboard.current.eKey.wasPressedThisFrame
+             //Debug.Log("aquiqiqi");
+                Interagir();
+            }
+
+            if (_interagirSprite.gameObject.activeSelf && !DaParaInteragir())
+                _interagirSprite.gameObject.SetActive(false);
+            else if (!_interagirSprite.gameObject.activeSelf && DaParaInteragir())
+                _interagirSprite.gameObject.SetActive(true);
         }
-
-        if (_interagirSprite.gameObject.activeSelf && !DaParaInteragir())
-            _interagirSprite.gameObject.SetActive(false);
-        else if (!_interagirSprite.gameObject.activeSelf && DaParaInteragir())
-            _interagirSprite.gameObject.SetActive(true);
-
     }
     public abstract void Interagir();
 

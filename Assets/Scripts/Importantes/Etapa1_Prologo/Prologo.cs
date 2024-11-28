@@ -196,6 +196,8 @@ public class Prologo : MonoBehaviour
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         procurandoBola = true;
 
+        JogadorController.Instance.podeFalar = false;
+
         yield return new WaitForSeconds(5);
 
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
@@ -203,6 +205,7 @@ public class Prologo : MonoBehaviour
         Interagir_Celebracao(dialogosGerais.GetComponent<DialogosGerais>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
+        JogadorController.Instance.podeFalar = true;
         oQueFazer_script.GerenciarQuadroQuest_celebr_seq(1);
         procurandoBola = false;
     }

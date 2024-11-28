@@ -35,6 +35,7 @@ public class JogadorController : Singleton<JogadorController>
     public bool estaAndando;
 
     public bool podeMover;
+    public bool podeFalar;
     public bool podeAtacar;
     public bool podeFlipX;
 
@@ -46,6 +47,7 @@ public class JogadorController : Singleton<JogadorController>
         base.Awake();
 
         podeMover = true;
+        podeFalar = true;
         jogadorControls = new JogadorControls();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
