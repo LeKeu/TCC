@@ -116,6 +116,11 @@ public class JogadorController : Singleton<JogadorController>
             animator.SetFloat("moveX", movimento.x);
             animator.SetFloat("moveY", movimento.y);
         }
+        else
+        {
+            animator.SetFloat("moveX", 0);
+            animator.SetFloat("moveY", 0);
+        }
     }
 
     private void Movimentar()
