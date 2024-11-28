@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paragrafos:
   - Seu Pedro_...
-  - "Seu Pedro_N\xE3o \xE9 bom is atr\xE1s dele?"
+  - "Seu Pedro_N\xE3o \xE9 bom ir atr\xE1s dele?"
   - _deixa esse moleque, ele tem que aprender
   - Seu Pedro_...
   perfilNPC: {fileID: 21300000, guid: 6a14875cda77b4644a0eb83513aebe8f, type: 3}

@@ -42,7 +42,7 @@ public class DialogoController : MonoBehaviour
         if (!estaDigitando)
         {
             p = paragrafos.Dequeue();
-            //Debug.Log("dequeue");
+            Debug.Log("dequeue="+p);
             digitandoDialogoCoroutine = StartCoroutine(DigitarDialogoTexto(p));
         }
         else
