@@ -61,15 +61,19 @@ public class DialogoController : MonoBehaviour
 
     private IEnumerator DigitarDialogoTexto(string p)
     {
+        Debug.Log("aqui");
         var aux = p.Split('_'); //essa parte quebra o paragrafo, separando no nome e texto
         string nomeFalando = aux[0];
         p = aux[1];
 
+        Debug.Log("aqui2");
         if (nomeFalando.Length <= 1) nomeFalando = "Menina"; // se antes do "_" for vazio, substituir com "Menina"
         NPCNomeTexto.text = nomeFalando;
 
+        Debug.Log("aqui3");
         if(nomeFalando != "Menina") // colocando o perfil dp npc da vez
             NPCPerfil.sprite = AUX_NPCS_RESOURCES.perfilsNPCs[EncontrarIndexSprite(nomeFalando)];
+        Debug.Log("aqui4");
 
         if (aux[0].Trim() == nomeFalando) // mudança de sprite dependendo de qual personagem estiver falando
         {
@@ -105,10 +109,10 @@ public class DialogoController : MonoBehaviour
 
     int EncontrarIndexSprite(string nomeNPC)
     {
-        //Debug.Log("NOME NPC" + nomeNPC);
+        Debug.Log("NOME NPC" + nomeNPC);
         for (int i = 0; i < AUX_NPCS_RESOURCES.perfilsNPCs.Length; i++)
         {
-            //Debug.Log("AUX_NPCS_RESOURCES.perfilsNPCs[i].name=" + AUX_NPCS_RESOURCES.perfilsNPCs[i].name);
+            Debug.Log("AUX_NPCS_RESOURCES.perfilsNPCs[i].name=" + AUX_NPCS_RESOURCES.perfilsNPCs[i].name);
             if (AUX_NPCS_RESOURCES.perfilsNPCs[i].name == nomeNPC)
                 return i;
         }

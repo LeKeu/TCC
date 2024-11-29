@@ -217,7 +217,7 @@ public class Prologo : MonoBehaviour
     {
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
             StartCoroutine(Brigar());
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" && aconteceuBriga)
             StartCoroutine(CucaSequestraMenino());
     } 
 
@@ -267,13 +267,13 @@ public class Prologo : MonoBehaviour
 
         #region menino chega, dialogo
         meninoScript.podeMover = true;
-
         yield return new WaitUntil(() => !meninoScript.estaLonge); // esperar até o menino chegar perto
 
         musicaSource.Stop();
         yield return new WaitForSeconds(2);
 
         Debug.Log("para msuica LET");
+        Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo); // esperar dialogo com menino acabar
         #endregion
 
@@ -509,7 +509,7 @@ public class Prologo : MonoBehaviour
         oQueFazer_script.GerenciarQuadroQuest_celebr_seq(3);
 
         sfx_script.FlorestaNoite();
-        JogadorController.Instance.ModificarVelocidade(1f);
+        //JogadorController.Instance.ModificarVelocidade(1f);
 
         #region fade from black
         MudarEstadoJogador(false);
@@ -521,14 +521,12 @@ public class Prologo : MonoBehaviour
 
         #region dialogos menina
         JogadorController.Instance.falandoSozinha = true;
-        JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
-        yield return new WaitForSeconds(5);
-        JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
-        yield return new WaitForSeconds(5);
-        JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
-        yield return new WaitForSeconds(5);
-        JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
-        yield return new WaitForSeconds(5);
+        
+        for(int i = 0; i < 11; i++)
+        {
+            JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
+            yield return new WaitForSeconds(5);
+        }
         DialogoBox.SetActive(false);
         #endregion
 

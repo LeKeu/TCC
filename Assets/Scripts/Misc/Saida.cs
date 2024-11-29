@@ -8,14 +8,27 @@ public class Saida : MonoBehaviour
     [SerializeField] private string proxCena;
     [SerializeField] private string cenaTransicaoNome;
 
+    LuzesCiclo luzesCiclo;
+
+    private void Start()
+    {
+        luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<JogadorController>())
         {
             SceneManagement.Instance.SetTransicaoNome(cenaTransicaoNome);
-            if(proxCena != "")
-                SceneManager.LoadScene(proxCena);
+            if (proxCena != "")
+                StartCoroutine(MudarCena());
         }
+    }
+
+    IEnumerator MudarCena()
+    {
+        luzesCiclo.MudarCorAmbiente(Color.black, 10f);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(proxCena);
     }
 }
