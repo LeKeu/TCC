@@ -144,21 +144,26 @@ public class Prologo : MonoBehaviour
             oQueFazer_script.GerenciarQuadroQuest_celebr_seq(0);
             sfx_script.ComunidadeFloresta();
 
-            StartCoroutine(ClarearTela());
+            StartCoroutine(ClarearTela(new Color(1, .41f, .41f)));
         }
 
         if (SceneManager.GetActiveScene().name == "T03_comunidade" && this.gameObject.name == "FlorestaSozinha")
             StartCoroutine(Iniciar_FlorestaEscura());
     }
 
-    IEnumerator ClarearTela()
+    IEnumerator ClarearTela(Color cor)
     {
         #region fade de preto p branco
         MudarEstadoJogador(false);
+        oQueFazer_script.AtivarPainelQuests(false);
+
         luzesCiclo.MudarCorAmbiente(Color.black);
         yield return new WaitForSeconds(2.5f);
-        luzesCiclo.MudarCorAmbiente(Color.white, .2f);
-        yield return new WaitForSeconds(15); // música tocando por x segundos
+        luzesCiclo.MudarCorAmbiente(cor, .3f);
+        yield return new WaitForSeconds(5); // música tocando por x segundos
+
+        oQueFazer_script.AtivarPainelQuests(true);
+        MudarEstadoJogador(true);
         #endregion
     }
 
