@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: LadraoTutorial
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Ladr\xE3o_auauauau\nauauau\nau... auauaua?"
-  - "Ladr\xE3o_AUAUA?!"
+  - "Ladr\xE3o_Au Au!"
+  - "_Eu amo voc\xEA, Ladr\xE3o, amooooo!"
+  - "Bernardo_T\xE3o lindinhooo!"
+  - "Ladr\xE3o_Au!"
   perfilNPC: {fileID: 21300000, guid: 7ec394bbb9e492848b670ffca2604310, type: 3}

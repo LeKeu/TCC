@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: SeuJoaoTutorial
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Seu Jo\xE3o_o pedrinho rouboub minha bola"
-  - "Seu Jo\xE3o_socorro"
+  - "Seu Jo\xE3o_Essa porcaria de bola..."
+  - "Seu Jo\xE3o_T\xE1 olhando o que, ein?"
+  - "Seu Jo\xE3o_T\xE1 olhando o que, ein?!"
+  - _To olhando um cara muito mal educado!
+  - "Seu Jo\xE3o_Rasga daqui menina!"
   perfilNPC: {fileID: 21300000, guid: a22f1ac1a7b020f4687724b688addcaa, type: 3}

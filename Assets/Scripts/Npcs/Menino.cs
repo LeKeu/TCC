@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Menino : MonoBehaviour
 {
-    [SerializeField] float movVel = 2f;
+    [SerializeField] public float movVel = 2f;
     [SerializeField] float distMaxJogador = 1f;
 
     #region Parametros de Dialogo

@@ -9,7 +9,7 @@ public class OQueFazer : MonoBehaviour
     [SerializeField] GameObject QuadroDeQuests;
 
     List<string> tutorial = new List<string>() 
-    { "Fale com a velha nâmia", "Vá com a Tia Marta", "Talk com o seu Pedro", "Ajude o Pedrinho", "Fale com o homem Peixe" };
+    { "Fale com a velha nâmia", "Vá com a Tia Marta", "Talk com o seu Pedro", "Ajude o Pedrinho", "Vá almoçar." };
 
     List<string> celebr_seq = new List<string>()
     { "Fale com o povo ao redor antes de começar a celebração", "Procure pela bola de futebol perto das casas", "Procure seu irmão", "Siga os passos do vulto." };

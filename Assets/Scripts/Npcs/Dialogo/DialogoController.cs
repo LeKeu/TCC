@@ -109,10 +109,10 @@ public class DialogoController : MonoBehaviour
 
     int EncontrarIndexSprite(string nomeNPC)
     {
-        Debug.Log("NOME NPC" + nomeNPC);
+        //Debug.Log("NOME NPC" + nomeNPC);
         for (int i = 0; i < AUX_NPCS_RESOURCES.perfilsNPCs.Length; i++)
         {
-            Debug.Log("AUX_NPCS_RESOURCES.perfilsNPCs[i].name=" + AUX_NPCS_RESOURCES.perfilsNPCs[i].name);
+            //Debug.Log("AUX_NPCS_RESOURCES.perfilsNPCs[i].name=" + AUX_NPCS_RESOURCES.perfilsNPCs[i].name);
             if (AUX_NPCS_RESOURCES.perfilsNPCs[i].name == nomeNPC)
                 return i;
         }

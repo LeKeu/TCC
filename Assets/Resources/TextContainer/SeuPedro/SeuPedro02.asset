@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SeuPedro02
   m_EditorClassIdentifier: 
   paragrafos:
-  - Seu Pedro_mt nice
+  - "Seu Pedro_Acho que meus m\xFAsculos cresceram..."
   perfilNPC: {fileID: 21300000, guid: 6a14875cda77b4644a0eb83513aebe8f, type: 3}

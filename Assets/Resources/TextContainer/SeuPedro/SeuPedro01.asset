@@ -13,6 +13,16 @@ MonoBehaviour:
   m_Name: SeuPedro01
   m_EditorClassIdentifier: 
   paragrafos:
-  - Seu Pedro_Valeu pelo remedio glr
-  - Seu Pedro_mt nice
+  - Seu Pedro_Ah... agora vou conseguir continuar meu treino!
+  - Seu Pedro_Muito orbigada, Aila, Bernardo!
+  - "Bernardo_Seu Pedro, podes me treinar tamb\xE9m?? Quero ser grande assim!"
+  - _Isso eu pago pra ver.
+  - "Seu Pedro_Calma, tampinha! A tua irm\xE3 j\xE1 tem idade pra treinar pesado
+    comigo, mas tu n\xE3o!"
+  - Bernardo_Mas-
+  - "Se Pedro_Quando teu queixo n\xE3o tiver mais pelado como um bumbum de beb\xEA,
+    a gente conversa melhor, beleza?"
+  - _HAHAHAH!
+  - _Aiai! Mas sim, vamo logo, maninho, daqui uns anos a gente volta!
+  - Bernardo_Axiiii!
   perfilNPC: {fileID: 21300000, guid: 6a14875cda77b4644a0eb83513aebe8f, type: 3}

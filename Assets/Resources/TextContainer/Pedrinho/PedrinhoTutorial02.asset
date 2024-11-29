@@ -13,6 +13,20 @@ MonoBehaviour:
   m_Name: PedrinhoTutorial02
   m_EditorClassIdentifier: 
   paragrafos:
-  - Pedrinho_Minha Bola! Valeu gente
-  - _De boas, cara. Bora Bernardo.
+  - "Pedrinho_Minha bola! Voc\xEAs conseguiram!"
+  - "_Mas \xE9 claro!"
+  - "Bernardo_\xC9gua, mana! Tu pareceste muito legal se arrastando pelas moitas!"
+  - "_H\xE1 h\xE1, mas \xE9 claro que eu pareci legal... Eu sou legal!"
+  - "Pedrinho_\xC9 impress\xE3o minha ou tu tropecaste nas moitas?"
+  - "_Olha, Pedrinho, me respeita ou na pr\xF3xima vez eu que vou pegar essa bola
+    e n\xE3o devolver!"
+  - Pedrinho_Ahhhh, foi mal!
+  - "_Mas ent\xE3o, maninho, acho que a gente j\xE1 acabou o que tinha pra fazer
+    essa manh\xE3, n\xE9?"
+  - "Bernardo_Acho que sim, Aila. A gente j\xE1 pode brincar??"
+  - "_Mas credo, rapaz. A gente tem que almo\xE7ar agora, depois a gente brinca,
+    beleza?"
+  - "Bernardo_Axiiii... t\xE1 bom, t\xE1 bom."
+  - "Bernardo_Bora logo. Tchau, Pedrinho! A gente brinca mais tarde, t\xE1?"
+  - Pedrinho_Falou!
   perfilNPC: {fileID: 21300000, guid: f6b548ba58895614aaabe7f05f0f7005, type: 3}

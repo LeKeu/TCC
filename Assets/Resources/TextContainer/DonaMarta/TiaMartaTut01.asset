@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: TiaMartaTut01
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Dona Marta_vc pode pegar as plantas l\xE1 c a Velha n\xE2mia pfvr?"
+  - Dona Marta_Oi, queridos!
+  - Bernardo_Oi Tia Marta!
+  - "_Oi, Dona Marta! A Velha N\xE2mia tava chamando a gente. Pelo que ela falou
+    ontem, ia preparar alguma coisa pra ti."
+  - Dona Marta_Sim, sim. To precisando das minhas ervinhas!
+  - Dona Marta_Quando conseguirem passem aqui, tudo bem?
+  - _Pode deixar, Tia!
   perfilNPC: {fileID: 21300000, guid: 9de83558a21ca094db90bc36215f023e, type: 3}

@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: SeuPedroTut01
   m_EditorClassIdentifier: 
   paragrafos:
-  - Seu Pedro_ow vcs podem pegar meu remedio pfvr?
-  - Seu Pedro_pfvrrrr
+  - Seu Pedro_Ai aiii!
+  - "Bernardo_Eita, Seu Pedro! T\xE1 com dor de novo??"
+  - "Bernardo_Eita, Seu Pedro! T\xE1 com dor de novo??"
+  - "Seu Pedro_To sim, tampinha, n\xE3o tem como ter esses m\xFAsculos sem uma dorzinha
+    ou outra!"
+  - "_Ow, Seu Pedro, acho que tua idade t\xE1 batendo j\xE1, ein."
+  - Seu Pedro_Ah- Que isso!
   perfilNPC: {fileID: 21300000, guid: 6a14875cda77b4644a0eb83513aebe8f, type: 3}

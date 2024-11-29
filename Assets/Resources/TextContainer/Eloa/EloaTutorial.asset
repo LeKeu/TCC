@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: EloaTutorial
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Eloa_oi meu nome \xE9 eloa e eu sou muito boniuta"
-  - Eloa_ita ita ita eu sou muito bonita
-  - Eloa_machina theme muito bom mano
+  - Eloa_Aila! Bernardo!
+  - "_Oi, Eloa! T\xE1 tudo bem?"
+  - "Eloa_Ahhhh, Aila... t\xE1 n\xE3o."
+  - _Uai, o que aconteceu?
+  - Eloa_O meu pai pegou a bola do pedrinho de novo!
+  - "Bernardo_\xC9gua! Que chato isso!"
+  - "Eloa_A gente tava brincando, esperando voc\xEAs, e o pedrinho sem querer chutou
+    pra perto da nossa casa..."
+  - "Eloa_A\xED o papai pegou e n\xE3o quer devolver!"
+  - "_Eloa, deixa comigo! Vou l\xE1 e ele vai levar o farelo!"
+  - Eloa_EBA!
+  - Eloa_Mas fala com o Pedrinho primeiro, ele tava tentando pegar sozinho...
   perfilNPC: {fileID: 21300000, guid: 96e03157987f2d240ac3d01e5b63feb4, type: 3}

@@ -13,7 +13,22 @@ MonoBehaviour:
   m_Name: Menino
   m_EditorClassIdentifier: 
   paragrafos:
-  - Bernardo_Oi Lasanha
-  - "_Tudo Bem cara, vamo l\xE1"
-  - Bernardo_yassss
+  - Bernardo_Aila, tava te procurando!
+  - "_Oi, maninho. Tava passando o tempo, s\xF3."
+  - "Bernardo_A m\xFAsica t\xE1 pronta j\xE1? Toca pra mim?"
+  - _Ah... To finalizando ela, mano. Quando tiver melhor eu toco, juro.
+  - "Bernardo_A n\xE3ooo, eu sou ansioso. Deixa eu ouviiiiir!"
+  - "_Aiiii, t\xE1 bom, t\xE1 bom, mas depois da celebra\xE7\xE3o de mais tarde,
+    t\xE1?"
+  - "Bernardo_T\xE1!"
+  - "_Eeeeee s\xF3 se tu se comportares, t\xE1??"
+  - "Bernardo_Eu vou ser t\xE3o comportado que vou limpar at\xE9 as solas do teu
+    sapato!"
+  - "_H\xE1! Fechado ent\xE3o, maninho."
+  - "_Mas me fala, a Velha N\xE2mia j\xE1 precisa da nossa ajuda?"
+  - "Bernardo_J\xE1 sim, a Tia Marta me mandou aqui. Temos que pegar umas folhas
+    pra ela."
+  - "_Beleza ent\xE3o maninho. Quanto mais cedo a gente acabar, mais r\xE1pido eu
+    te levo pra brincar com a Eloa e o Pedrinho, falou?"
+  - Bernardo_Falou!
   perfilNPC: {fileID: 21300000, guid: 16fffbc6d8ec69c41a28b89945e28d79, type: 3}

@@ -13,5 +13,17 @@ MonoBehaviour:
   m_Name: VelhaNamia01
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_valeu migannn"
+  - "Velha N\xE2mia_Muito obrigada, queridos! Voc\xEAs n\xE3o se machucaram, n\xE9?"
+  - "_De boa, V\xF3 N\xE2mia, n\xE3o teve problema nenhum."
+  - "Bernardo_Foi muito dif\xEDcil! A gente lutou contra bichos vermelhos pontudos! "
+  - "Velha N\xE2mia_Ah! Foi mesmo? Voc\xEAs devem estar muito consados ent\xE3o,
+    n\xE9?"
+  - "Bernardo_H\xE1, sim, claro. Mesmo pessoas fortes como eu n\xE3o conseguem fazer
+    tudo sem descansar! "
+  - _Ai ai ai...
+  - "Velha N\xE2mia_Oh! \xC9 mesmo? Ent\xE3o esperem a\xED que eu vou preparar o
+    meu ch\xE1 de alho com lim\xE3o pra te ajudar, meu filho!"
+  - "Bernardo_N\xE3o! Ch\xE1 de alho com lim\xE3o n\xE3o!"
+  - Bernardo_Aila borimbora agora!
+  - "Velha N\xE2mia_N\xE3o se esquecam de dar as ervas pra Dona Marta!"
   perfilNPC: {fileID: 0}

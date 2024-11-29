@@ -143,10 +143,23 @@ public class Prologo : MonoBehaviour
         {
             oQueFazer_script.GerenciarQuadroQuest_celebr_seq(0);
             sfx_script.ComunidadeFloresta();
+
+            StartCoroutine(ClarearTela());
         }
 
         if (SceneManager.GetActiveScene().name == "T03_comunidade" && this.gameObject.name == "FlorestaSozinha")
             StartCoroutine(Iniciar_FlorestaEscura());
+    }
+
+    IEnumerator ClarearTela()
+    {
+        #region fade de preto p branco
+        MudarEstadoJogador(false);
+        luzesCiclo.MudarCorAmbiente(Color.black);
+        yield return new WaitForSeconds(2.5f);
+        luzesCiclo.MudarCorAmbiente(Color.white, .2f);
+        yield return new WaitForSeconds(15); // música tocando por x segundos
+        #endregion
     }
 
     private void FixedUpdate()
@@ -255,16 +268,22 @@ public class Prologo : MonoBehaviour
 
     IEnumerator IniciarJogo_MeninaTocando()
     {
-        Etapas.MeninaTocandoUkulele = true;
-        oQueFazer_script.AtivarPainelQuests(false);
-
-        MudarEstadoJogador(false);
-
         #region Tocar ukulele
         musicaSource.PlayOneShot(musicaMenina);
-
-        yield return new WaitForSeconds(3); // música tocando por x segundos
+        oQueFazer_script.AtivarPainelQuests(false);
         #endregion
+
+        #region fade de preto p branco
+        MudarEstadoJogador(false);
+        luzesCiclo.MudarCorAmbiente(Color.black);
+        yield return new WaitForSeconds(2.5f);
+        luzesCiclo.MudarCorAmbiente(Color.white, .2f);
+        yield return new WaitForSeconds(15); // música tocando por x segundos
+        #endregion
+
+        Etapas.MeninaTocandoUkulele = true;
+
+        MudarEstadoJogador(false);
 
         #region menino chega, dialogo
         meninoScript.podeMover = true;
@@ -273,7 +292,6 @@ public class Prologo : MonoBehaviour
         musicaSource.Stop();
         yield return new WaitForSeconds(2);
 
-        Debug.Log("para msuica LET");
         Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo); // esperar dialogo com menino acabar
         #endregion
