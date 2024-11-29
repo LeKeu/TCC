@@ -29,12 +29,12 @@ public class FinalizarQuests : NPCs, ITalkable
 
     public override void Interagir()
     {
-        if (velhaNamia.tutCompleto && tiaMarta.tutCompleto && seuPedro.tutCompleto && pedrinho.tutCompleto)
-        {
-            CompletarTutorial();
-        }
+        //if (velhaNamia.tutCompleto && tiaMarta.tutCompleto && seuPedro.tutCompleto && pedrinho.tutCompleto)
+        //{
+        //    CompletarTutorial();
+        //}
 
-        //CompletarTutorial(); // DESCOMENTAR A PARTE DE CIMA E TIRAR ESSE IF!!
+        CompletarTutorial(); // DESCOMENTAR A PARTE DE CIMA E TIRAR ESSE IF!!
 
         if (SceneManager.GetActiveScene().name == "01_comunidade" && !todosTutCompleto)
         {

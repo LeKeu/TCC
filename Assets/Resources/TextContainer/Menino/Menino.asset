@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Menino
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Bernardo_Ow irm\xE3, vamo logo"
+  - Bernardo_Oi Lasanha
   - "_Tudo Bem cara, vamo l\xE1"
   - Bernardo_yassss
-  perfilNPC: {fileID: 0}
+  perfilNPC: {fileID: 21300000, guid: 16fffbc6d8ec69c41a28b89945e28d79, type: 3}

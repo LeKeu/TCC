@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static Unity.VisualScripting.Metadata;
 
 public class Prologo : MonoBehaviour
 {
@@ -132,6 +131,8 @@ public class Prologo : MonoBehaviour
 
     private void Start()
     {
+        qntdNpcsConversados = 0;
+
         if (SceneManager.GetActiveScene().name == "01_comunidade")
         {
             StartCoroutine(IniciarJogo_MeninaTocando());
