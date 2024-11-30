@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class JogadorVida : Singleton<JogadorVida>
 {
-    [SerializeField] TremerCamera tremerCamera;
+    //[SerializeField] TremerCamera tremerCamera;
     [SerializeField] int vidaMax = 3;
     [SerializeField] float empurraoValor = 10f;
     [SerializeField] float tempoRecoveryDano = .5f;
@@ -83,7 +83,7 @@ public class JogadorVida : Singleton<JogadorVida>
     {
         if (!podeLevarDano) { return; }
 
-        tremerCamera.TremerCameraFunc();
+        //tremerCamera.TremerCameraFunc();
         FindObjectOfType<HitStop>()?.hitStop(tempoHitstop);
 
         podeLevarDano = false;
@@ -108,22 +108,12 @@ public class JogadorVida : Singleton<JogadorVida>
         if(vidaAtual <= 0)
         {
             vidaAtual = 0;
-            StartCoroutine(Morrer());
+            Morrer();
             //Debug.Log("morreueuue");
         }
     }
 
-    IEnumerator Morrer()
-    {
-        estaViva = false;
-        respawnar.EsconderUI();
-
-        JogadorController.Instance.podeMover = false;
-        luzesCiclo.MudarCorAmbiente(Color.black, 5f);
-
-        yield return new WaitForSeconds(5);
-        respawnar.RespawnarJogador();
-    }
+    void Morrer() => estaViva = false;
 
     private IEnumerator RecoveryDanoRoutine()
     {

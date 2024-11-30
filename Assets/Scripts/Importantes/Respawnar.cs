@@ -1,10 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Respawnar : MonoBehaviour
 {
+    LuzesCiclo luzesCiclo;
+    bool chamouMorrer;
+
+    private void Start()
+    {
+        luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
+    }
+
+    private void Update()
+    {
+        if (!JogadorVida.estaViva && !chamouMorrer)
+            Morrer();
+    }
+
+    void Morrer()
+    {
+        chamouMorrer = true;
+        EsconderUI();
+
+        JogadorController.Instance.podeMover = false;
+        luzesCiclo.MudarCorAmbiente(Color.black, 5f);
+        RespawnarJogador();
+    }
+
     public void RespawnarJogador()
     {
         JogadorController.Instance.transform.position = gameObject.transform.position;

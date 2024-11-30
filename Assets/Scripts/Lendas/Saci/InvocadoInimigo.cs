@@ -5,9 +5,12 @@ using UnityEngine.InputSystem;
 
 public class InvocadoInimigo : BasicAndar
 {
+    TremerCamera tremerCamera;
+
     [SerializeField] public float movVel = 2f;
     [SerializeField] public float pegarDist = 2f;
     [SerializeField] public int Vida = 4;
+    [SerializeField] public int Dano = 2;
     float velInicial;
 
     //Rigidbody2D rb;
@@ -37,6 +40,7 @@ public class InvocadoInimigo : BasicAndar
         empurrao = GetComponent<Empurrao>();
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
+        tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
     }
 
     private void Update()
@@ -74,7 +78,9 @@ public class InvocadoInimigo : BasicAndar
     {
         if (collision.gameObject.GetComponent<JogadorVida>())
         {
-            collision.gameObject.GetComponent<JogadorVida>().LevarDano(1);
+            Debug.Log("colisao = "+collision.gameObject.name);
+            JogadorVida.Instance.LevarDano(Dano);
+            tremerCamera.TremerCameraFunc();
         }
     }
 
@@ -88,8 +94,6 @@ public class InvocadoInimigo : BasicAndar
     {
         if (collision.transform.tag == "Player")
             estaNaRange = true;
-        //Debug.Log("esta na range = "+estaNaRange);
-        //Debug.Log("esta atorodado = "+estaAtordoado);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -103,7 +107,10 @@ public class InvocadoInimigo : BasicAndar
         if (Vida <= 0)
             StartCoroutine(TentarPurificarRoutine());
         else
+        {
             Vida -= dano;
+            tremerCamera.TremerCameraFunc();
+        }
         //Destroy(gameObject);
     }
 

@@ -16,6 +16,7 @@ public class Etapa2 : MonoBehaviour
     [SerializeField] OQueFazer oQueFazer_script;
     [SerializeField] InventarioAtivo inventarioAtivo;
     [SerializeField] LuzesCiclo luzesCiclo;
+    [SerializeField] GameObject VidaUI;
     #endregion
 
     #region Primeiro Encontro Saci
@@ -54,6 +55,8 @@ public class Etapa2 : MonoBehaviour
             JogadorController.Instance.velocidade = 1f;
             JogadorController.Instance.velInicial = 1f;
             Saci.SetActive(false);
+
+            VidaUI.SetActive(false);
         }
     }
 
@@ -163,6 +166,7 @@ public class Etapa2 : MonoBehaviour
         #endregion
 
         #region ativar arma, tutorial purificacao, inicio batalha saci
+        VidaUI.SetActive(true);
         oQueFazer_script.AtivarPainelQuests(true);
         oQueFazer_script.GerenciarQuadroQuest_saci_cenas(1);
 
