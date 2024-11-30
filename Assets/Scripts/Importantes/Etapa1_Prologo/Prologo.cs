@@ -27,6 +27,7 @@ public class Prologo : MonoBehaviour
     public static bool aconteceuBriga;
     public static bool procurandoBola;
     bool mudouTextAux;
+    bool finalizouQuests;
     #endregion
 
     #region NPCS GO
@@ -89,6 +90,7 @@ public class Prologo : MonoBehaviour
 
     private void Awake()
     {
+        FinalizarQuests.todosTutCompleto = false; // iniciar aqui ou fica num loop repetindo a cena
         musicaSource = GetComponent<AudioSource>();
         luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
 
@@ -96,11 +98,8 @@ public class Prologo : MonoBehaviour
         {
             meninoScript = GameObject.Find("Bernardo").GetComponent<Menino>(); // NÃO É NECESSÁRIO
 
-            //if(this.gameObject.name == "TriggerBriga")
-            //{ // só pega os npcs nas cenas com comunidade
             foreach (Transform child in Npcs.transform) // pegando GO de cada NPC
                 NpcsLista.Add(child.gameObject);
-            //}
 
             if (this.gameObject.name == "TriggerBriga")
             {
@@ -118,7 +117,6 @@ public class Prologo : MonoBehaviour
             velhaNamiaCelebracaoGO = NpcsLista[7];
             meninoGO = NpcsLista[8];
             #endregion
-            //}
         }
 
         virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
@@ -167,8 +165,23 @@ public class Prologo : MonoBehaviour
         #endregion
     }
 
+    IEnumerator EscurecerTela()
+    {
+        #region fade de preto p branco
+        MudarEstadoJogador(false);
+        oQueFazer_script.AtivarPainelQuests(false);
+
+        luzesCiclo.MudarCorAmbiente(Color.black, .8f);
+        yield return new WaitForSeconds(6);
+        #endregion
+        SceneManager.LoadScene("02_comunidade");
+    }
+
     private void FixedUpdate()
     {
+        if (FinalizarQuests.todosTutCompleto && !finalizouQuests)
+            CompletarQuests();
+
         if(qntdNpcsConversados >= totalNpcsConversaveis  && !mudouTextAux)
         {
             StartCoroutine(IniciarProcurarBola());
@@ -308,6 +321,14 @@ public class Prologo : MonoBehaviour
         Etapas.MeninaTocandoUkulele = false;
         oQueFazer_script.AtivarPainelQuests(true);
         sfx_script.TocarAudioSource03();
+    }
+
+    void CompletarQuests()
+    {
+        finalizouQuests = true;
+        Debug.Log("escurecendooo");
+        StartCoroutine(EscurecerTela());
+        
     }
 
     IEnumerator Brigar()

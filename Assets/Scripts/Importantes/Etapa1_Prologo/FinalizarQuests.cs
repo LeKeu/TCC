@@ -14,26 +14,8 @@ public class FinalizarQuests : NPCs, ITalkable
     [SerializeField] private Sprite perfil;
     public static bool todosTutCompleto;
 
-    VelhaNamia velhaNamia;
-    TiaMarta tiaMarta;
-    SeuPedro seuPedro;
-    Pedrinho pedrinho;
-
-    private void Start()
-    {
-        velhaNamia = GameObject.Find("VelhaNamia").GetComponent<VelhaNamia>();
-        tiaMarta = GameObject.Find("DonaMarta").GetComponent<TiaMarta>();
-        seuPedro = GameObject.Find("SeuPedro").GetComponent<SeuPedro>();
-        pedrinho = GameObject.Find("Pedrinho").GetComponent<Pedrinho>();
-    }
-
     public override void Interagir()
     {
-        //if (velhaNamia.tutCompleto && tiaMarta.tutCompleto && seuPedro.tutCompleto && pedrinho.tutCompleto)
-        //{
-        //    CompletarTutorial();
-        //}
-
         CompletarTutorial(); // DESCOMENTAR A PARTE DE CIMA E TIRAR ESSE IF!!
 
         if (SceneManager.GetActiveScene().name == "01_comunidade" && !todosTutCompleto)
@@ -61,9 +43,7 @@ public class FinalizarQuests : NPCs, ITalkable
 
     void CompletarTutorial()
     {
-        
         todosTutCompleto = true;  
-        SceneManager.LoadScene("02_comunidade"); 
-        
+        //SceneManager.LoadScene("02_comunidade"); 
     }
 }
