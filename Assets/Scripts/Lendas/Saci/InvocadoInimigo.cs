@@ -17,6 +17,8 @@ public class InvocadoInimigo : BasicAndar
     CircleCollider2D circleCollider;
 
     public static bool podeAndar;
+    public static bool podePurificar;
+
     bool estaPurificado;
     bool estaAtordoado;
     bool estaNaRange;
@@ -24,6 +26,8 @@ public class InvocadoInimigo : BasicAndar
     private void Awake()
     {
         velInicial = movVel;
+        podePurificar = false;
+        podeAndar = true;
 
         estado = Estado.Parado;
         estaPurificado = false;
@@ -106,6 +110,7 @@ public class InvocadoInimigo : BasicAndar
     IEnumerator TentarPurificarRoutine()
     {
         estaAtordoado = true;
+        podePurificar = true;
         Freezar();
 
         yield return new WaitForSeconds(10);

@@ -28,6 +28,8 @@ public class SFX : MonoBehaviour
 
     #region Saci
     [SerializeField] AudioClip saciAssobio;
+    [SerializeField] AudioClip saciVentonia;
+    [SerializeField] AudioClip saciVentoForte;
     #endregion
 
     #region seq cuca
@@ -46,7 +48,6 @@ public class SFX : MonoBehaviour
 
     public void FlorestaNoite()
     {
-        Debug.Log("floresta");
         audioSource[0].PlayOneShot(florestaNoite);
         audioSource[0].loop = true;
     }
@@ -76,13 +77,10 @@ public class SFX : MonoBehaviour
     #endregion
 
     #region saci
-    public void AssobioSaci()
-    {
-        Debug.Log("assobio");
-        audioSource[1].PlayOneShot(saciAssobio);
-    }
-
+    public void AssobioSaci() => audioSource[1].PlayOneShot(saciAssobio);
     public void PararAssobioSaci() => audioSource[1].Stop();
+    public void VentoniaSaci() => audioSource[1].PlayOneShot(saciVentonia);
+    public void VentoForteSaci() => audioSource[1].PlayOneShot(saciVentoForte);
     #endregion
 
     #region Jogador

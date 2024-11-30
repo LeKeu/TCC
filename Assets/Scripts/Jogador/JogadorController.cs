@@ -22,7 +22,7 @@ public class JogadorController : Singleton<JogadorController>
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Empurrao empurrao;
-    private float velInicial;
+    public float velInicial;
 
     private bool olhandoEsq = false;
     private bool estaDashing = false;

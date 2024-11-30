@@ -42,7 +42,7 @@ public class DialogoController : MonoBehaviour
         if (!estaDigitando)
         {
             p = paragrafos.Dequeue();
-            Debug.Log("dequeue="+p);
+            //Debug.Log("dequeue="+p);
             digitandoDialogoCoroutine = StartCoroutine(DigitarDialogoTexto(p));
         }
         else
@@ -61,19 +61,15 @@ public class DialogoController : MonoBehaviour
 
     private IEnumerator DigitarDialogoTexto(string p)
     {
-        Debug.Log("aqui");
         var aux = p.Split('_'); //essa parte quebra o paragrafo, separando no nome e texto
         string nomeFalando = aux[0];
         p = aux[1];
 
-        Debug.Log("aqui2");
-        if (nomeFalando.Length <= 1) nomeFalando = "Menina"; // se antes do "_" for vazio, substituir com "Menina"
+        if (nomeFalando.Length <= 1) nomeFalando = "Aila"; // se antes do "_" for vazio, substituir com "Menina"
         NPCNomeTexto.text = nomeFalando;
 
-        Debug.Log("aqui3");
-        if(nomeFalando != "Menina") // colocando o perfil dp npc da vez
+        if(nomeFalando != "Aila") // colocando o perfil dp npc da vez
             NPCPerfil.sprite = AUX_NPCS_RESOURCES.perfilsNPCs[EncontrarIndexSprite(nomeFalando)];
-        Debug.Log("aqui4");
 
         if (aux[0].Trim() == nomeFalando) // mudança de sprite dependendo de qual personagem estiver falando
         {

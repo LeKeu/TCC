@@ -15,7 +15,7 @@ public class OQueFazer : MonoBehaviour
     { "Fale com o povo ao redor antes de começar a celebração", "Procure pela bola de futebol perto das casas", "Procure seu irmão", "Siga os passos do vulto." };
 
     List<string> saci_cenas = new List<string>()
-    { "saci 1", "saci 2", "saci 3", "saci 4" };
+    { "Siga os passos e encontre seu irmão.", "Sobreviva ao encontro!", "Explore a floresta e tente encontrar seu irmão.", "saci 4" };
 
     private void Start()
     {

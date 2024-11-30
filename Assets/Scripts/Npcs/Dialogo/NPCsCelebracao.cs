@@ -17,6 +17,12 @@ public abstract class NPCsCelebracao : MonoBehaviour, IInteractble
              //Debug.Log("aquiqiqi");
                 Interagir();
             }
+            if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.PrimeiroEncontroSaci && !JogadorController.Instance.acabouDialogo)
+            {//Keyboard.current.eKey.wasPressedThisFrame
+             //Debug.Log("aquiqiqi");
+                Interagir();
+            }
+
 
             if (_interagirSprite.gameObject.activeSelf && !DaParaInteragir())
                 _interagirSprite.gameObject.SetActive(false);

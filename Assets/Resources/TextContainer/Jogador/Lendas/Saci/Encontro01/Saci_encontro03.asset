@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: Saci_encontro03
   m_EditorClassIdentifier: 
   paragrafos:
-  - Saci_mdsss, como vc fez isso??
-  - _amg nem eu sei!
-  - Saci_omigodi
-  - Saci_flw
+  - Saci_CHAMEI MEUS AMGS!
   perfilNPC: {fileID: 21300000, guid: c33428fddcf554b41b82eb8310b9bafe, type: 3}

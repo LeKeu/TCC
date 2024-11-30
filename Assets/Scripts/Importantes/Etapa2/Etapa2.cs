@@ -8,13 +8,14 @@ public class Etapa2 : MonoBehaviour
 {
     [SerializeField] GameObject Saci;
 
+    #region geral
     [Header("Geral")]
     [SerializeField] SFX sfx_script;
     [SerializeField] Tutorial tutorial_script;
     [SerializeField] ArmaAtiva armaAtiva;
     [SerializeField] OQueFazer oQueFazer_script;
     [SerializeField] InventarioAtivo inventarioAtivo;
-
+    #endregion
 
     #region Primeiro Encontro Saci
     [Header("Primeiro Encontro Saci")]
@@ -22,6 +23,8 @@ public class Etapa2 : MonoBehaviour
     [SerializeField] Transform posMenina_ConversaSaci;
     [SerializeField] Transform posMenina_AcabouLuta;
     [SerializeField] GameObject barreiraMoitasVermelhas;
+    [SerializeField] GameObject particulasChuva;
+    [SerializeField] GameObject dialogosGerais;
 
     bool aconteceuEncontro;
     bool meninaAndando_EncontroSaci;
@@ -49,8 +52,26 @@ public class Etapa2 : MonoBehaviour
         {
             JogadorController.Instance.ModificarVelocidade(1f);
             sfx_script.FlorestaNoite();
+            StartCoroutine(ClarearTela(new Color(.06f, .1f, .3f)));
+            JogadorController.Instance.velocidade = 3f;
+            JogadorController.Instance.velInicial = 3f;
             Saci.SetActive(false);
         }
+    }
+    IEnumerator ClarearTela(Color cor)
+    {
+        #region fade de preto p branco
+        MudarEstadoJogador(false);
+        oQueFazer_script.AtivarPainelQuests(false);
+
+        luzesCiclo.MudarCorAmbiente(Color.black);
+        yield return new WaitForSeconds(2.5f);
+        luzesCiclo.MudarCorAmbiente(cor, .3f);
+        yield return new WaitForSeconds(5); // música tocando por x segundos
+
+        oQueFazer_script.AtivarPainelQuests(true);
+        MudarEstadoJogador(true);
+        #endregion
     }
 
     void FixedUpdate()
@@ -61,7 +82,6 @@ public class Etapa2 : MonoBehaviour
                 MovimentarGameObject(JogadorController.Instance.gameObject, posMenina_ConversaSaci, 1);
             if (meninaAndando_AcabouLuta)
                 MovimentarGameObject(JogadorController.Instance.gameObject, posMenina_AcabouLuta, 1);
-
         }
 
         if (Etapas.BossSaci && this.gameObject.name == "BossSaci")
@@ -98,37 +118,69 @@ public class Etapa2 : MonoBehaviour
 
         sfx_script.AssobioSaci();
         yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posMenina_ConversaSaci.transform.position) < 1);
-        //yield return new WaitForSeconds(10);
         meninaAndando_EncontroSaci = false;
         MudarEstadoJogador(false);
         #endregion
 
-        #region encontrando o saci
+        #region dialogo com ela mesma
+        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 0, "Interagir_CelebracaoCutscene");
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        yield return new WaitForSeconds(2);
+        #endregion
+
+        #region saci aparecendo
         sfx_script.PararAssobioSaci();
+        sfx_script.VentoniaSaci();
+        yield return new WaitForSeconds(.5f);
         Saci.SetActive(true);
         yield return new WaitForSeconds(3);
 
         Interagir_Geral(Saci.GetComponent<SaciDialog>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        #endregion
 
+        #region parar chuva, dialogo
+        sfx_script.VentoForteSaci();
+
+        particulasChuva.GetComponent<ParticleSystem>().emissionRate = 150;
+        yield return new WaitForSeconds(2);
+        particulasChuva.GetComponent<ParticleSystem>().emissionRate = 75;
+        yield return new WaitForSeconds(2);
+        particulasChuva.GetComponent<ParticleSystem>().emissionRate = 30;
+        yield return new WaitForSeconds(2);
+        particulasChuva.GetComponent<ParticleSystem>().emissionRate = 0;
+
+        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 1);
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        yield return new WaitForSeconds(1.5f);
+        #endregion
+
+        #region aparecer invocados
         Saci.GetComponent<Saci>().IniciarBatalha_primeiroEncontroSaci();
         InvocadoInimigo.podeAndar = false;
-        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 1);
+        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 2);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         InvocadoInimigo.podeAndar = true;
         #endregion
 
         #region ativar arma, tutorial purificacao, inicio batalha saci
+        oQueFazer_script.AtivarPainelQuests(true);
+        oQueFazer_script.GerenciarQuadroQuest_saci_cenas(1);
+
         armaAtiva.AtivarArma1(true);
         inventarioAtivo.AtivarArma1(true);
-
-        tutorial_script.IniciarTutorial_PararTempo("Aperte 'Q' para purificar o inimigo.", KeyCode.Q);
-        yield return new WaitUntil(() => !tutorial_script.duranteTutorial);
+        JogadorController.Instance.velocidade = 3f;
+        JogadorController.Instance.velInicial = 3f;
 
         MudarEstadoJogador(true);
+        yield return new WaitUntil(() => InvocadoInimigo.podePurificar);
+        tutorial_script.IniciarTutorial_PararTempo("Quando um inimigo estiver atordoado, chegue perto dele e aperte 'Q' para purificá-lo! ", KeyCode.Q);
+        yield return new WaitUntil(() => !tutorial_script.duranteTutorial);
+
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("InvocadoInimigo").Length == 0);
         #endregion
 
+        oQueFazer_script.AtivarPainelQuests(false);
         MudarEstadoJogador(false); // checar aqui!! o player ta andando estranho ás vezes
 
         #region acabou luta, dialogo saci
@@ -139,17 +191,26 @@ public class Etapa2 : MonoBehaviour
         
         yield return new WaitForSeconds(3);
 
-        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 2);
+        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 3);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
+        sfx_script.VentoniaSaci();
+        yield return new WaitForSeconds(.5f);
         Saci.SetActive(false);
+
         barreiraMoitasVermelhas.SetActive(false);
-        #endregion 
+        #endregion
+
+        #region falando sozinha após o saci
+        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 1, "Interagir_CelebracaoCutscene");
+        yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
+        yield return new WaitForSeconds(2);
+        #endregion
 
         MudarEstadoJogador(true);
 
         oQueFazer_script.AtivarPainelQuests(true);
-        oQueFazer_script.GerenciarQuadroQuest_saci_cenas(1);
+        oQueFazer_script.GerenciarQuadroQuest_saci_cenas(2);
 
         Etapas.PrimeiroEncontroSaci = false;
         JogadorController.Instance.ModificarVelocidade(4f);

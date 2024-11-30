@@ -72,10 +72,6 @@ public class Menino : MonoBehaviour
 
     public void Interagir_CelebracaoCutscene(int index=0)
     {
-        // 0 - primeiro momento da briga
-        // 1 - 
-        //Debug.Log($"dt count {dt.Count}");
-        //Debug.Log($"index {index}");
         Falar(dt[index]);
     }
 
@@ -106,8 +102,4 @@ public class Menino : MonoBehaviour
 
     void FreezarMov() { rb.constraints = RigidbodyConstraints2D.FreezeAll; estaFreezado = true; }
     void DesfreezarMov() { rb.constraints = RigidbodyConstraints2D.None; rb.constraints = RigidbodyConstraints2D.FreezeRotation; estaFreezado = false; }
-
-    public void PararDeSeguir() => podeMover = false;
-    public void VoltarASeguir() => podeMover = true;
-
 }

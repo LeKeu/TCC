@@ -18,6 +18,7 @@ public class Tutorial : MonoBehaviour
 
     public void IniciarTutorial_PararTempo(string texto, KeyCode tecla)
     {
+        Debug.Log("tutorial");
         gameObject.SetActive(true);
         duranteTutorial = true;
         teclaTutorial = tecla;

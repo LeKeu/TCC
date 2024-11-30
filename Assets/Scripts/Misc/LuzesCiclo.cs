@@ -29,7 +29,6 @@ public class LuzesCiclo : MonoBehaviour
 
     public void MudarCorAmbiente(Color corNova, float vel=0)
     {
-        Debug.Log("mudar cor");
         if(vel == 0)
             luz2d.color = corNova;
         else
