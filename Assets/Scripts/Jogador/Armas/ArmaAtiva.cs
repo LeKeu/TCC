@@ -17,14 +17,15 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
         "01_comunidade",
         "02_comunidade",
         "T03_comunidade", 
-        "01_saci"
+        "socorro"
     };
 
     protected override void Awake()
     {
         base.Awake();
-
+        gameObject.SetActive(true);
         jogadorControls = new JogadorControls();
+        DesativarArma();
     }
 
     private void OnEnable()
@@ -32,16 +33,11 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
         jogadorControls.Enable();
     }
 
-    private void Start()
-    {
-        DesativarArma();
-
-    }
-
     void DesativarArma()
     {
         if (!cenasComArmaDesativada.Contains(SceneManager.GetActiveScene().name))
         {
+            Debug.Log("desativar");
             jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
             jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();
 
@@ -53,7 +49,7 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
     public void AtivarArma1(bool acao)
     {
         //Debug.Log("arma ativa 1"+acao);
-        gameObject.SetActive(acao);
+        Debug.Log("ativarar ma1");
 
         if (acao)
         {
@@ -62,6 +58,7 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
             AtaqueCoolDown();
         }
+        gameObject.SetActive(acao);
     }
 
     private void Update()
@@ -90,6 +87,7 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     void AtaqueCoolDown()
     {
+        Debug.Log("atq cooldown");
         estaAtacando = true;
         StopAllCoroutines();
         StartCoroutine(TempoEntreAtaquesRoutine());
@@ -97,6 +95,7 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     IEnumerator TempoEntreAtaquesRoutine()
     {
+        Debug.Log("tempodentreataques");
         yield return new WaitForSeconds(tempoEntreAtaques);
         estaAtacando = false;
     }

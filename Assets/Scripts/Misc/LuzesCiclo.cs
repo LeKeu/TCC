@@ -12,9 +12,9 @@ public class LuzesCiclo : MonoBehaviour
     Color cor;
     float velocidadeMudanca;
 
-    private void Start()
+    private void Awake()
     {
-        luz2d = GetComponent<Light2D>();
+        luz2d = gameObject.GetComponent<Light2D>();
     }
 
     private void FixedUpdate()

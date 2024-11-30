@@ -17,15 +17,14 @@ public class InventarioAtivo : MonoBehaviour
         "01_comunidade",
         "02_comunidade",
         "T03_comunidade",
-        "01_saci"
+        "socorro"
     };
 
     private void Awake()
     {
         jogadorControls = new JogadorControls();
-    }
-    private void Start()
-    {
+
+
         if (cenasComArmaDesativada.Contains(SceneManager.GetActiveScene().name))
         {
             DesativarArma();
@@ -102,7 +101,11 @@ public class InventarioAtivo : MonoBehaviour
 
         ArmaAtiva.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
         novaArma.transform.parent = ArmaAtiva.Instance.transform;
+
         if (armasAtivas)
+        {
+            Debug.Log("armaativahhh");
             ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
+        }
     }
 }

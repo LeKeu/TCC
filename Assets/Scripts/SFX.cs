@@ -74,7 +74,7 @@ public class SFX : MonoBehaviour
     #region seq cuca 
     public void MusicaCuca() => audioSource[1].PlayOneShot(musicaCuca);
     public void PararMusicaCuca() => audioSource[1].Stop();
-    public void VidroEstora() => audioSource[1].PlayOneShot(vidroEstoura);
+    public void VidroEstora() => audioSource[3].PlayOneShot(vidroEstoura);
     public void PassosVidro() => audioSource[1].PlayOneShot(passosVidro);
     public void GarraCuca() => audioSource[1].PlayOneShot(garraCuca);
     public void MeninaCaindo() => audioSource[1].PlayOneShot(meninaCorpoCaindo);

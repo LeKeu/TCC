@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class JogadorVida : Singleton<JogadorVida>
 {
+    [SerializeField] TremerCamera tremerCamera;
     [SerializeField] int vidaMax = 3;
     [SerializeField] float empurraoValor = 10f;
     [SerializeField] float tempoRecoveryDano = .5f;
@@ -18,7 +19,6 @@ public class JogadorVida : Singleton<JogadorVida>
 
     Empurrao empurrao;
     Flash flash;
-    TremerCamera tremerCamera;
     LuzesCiclo luzesCiclo;
     Respawnar respawnar;
 
@@ -29,7 +29,6 @@ public class JogadorVida : Singleton<JogadorVida>
 
         flash = GetComponent<Flash>();
         empurrao = GetComponent<Empurrao>();
-        tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
     }
 
     void Start()

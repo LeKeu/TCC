@@ -69,6 +69,11 @@ public class JogadorController : Singleton<JogadorController>
         }
         else acabouDialogo = true;
 
+        if(SceneManager.GetActiveScene().name == "socorro")
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+
         jogadorControls.Combat.Dash.performed += _ => Dash();
 
         velInicial = velocidade;

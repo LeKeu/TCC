@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class Agua : MonoBehaviour
 {
-    [SerializeField] ParticleSystem partRippleAgua;
+    //[SerializeField] ParticleSystem partRippleAgua;
 
     //private void Update()
     //{
@@ -30,11 +30,11 @@ public class Agua : MonoBehaviour
 
     }
 
-    IEnumerator AguaRippleParticula()
-    {
-        ParticleSystem particula =  Instantiate(partRippleAgua, JogadorController.Instance.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(particula.duration);
-        Destroy(particula.gameObject);
-    }
+    //IEnumerator AguaRippleParticula()
+    //{
+    //    ParticleSystem particula =  Instantiate(partRippleAgua, JogadorController.Instance.transform.position, Quaternion.identity);
+    //    yield return new WaitForSeconds(particula.duration);
+    //    Destroy(particula.gameObject);
+    //}
 
 }

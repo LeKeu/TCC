@@ -249,7 +249,7 @@ public class Prologo : MonoBehaviour
     {
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
             StartCoroutine(Brigar());
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" && aconteceuBriga)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
             StartCoroutine(CucaSequestraMenino());
     } 
 
@@ -287,7 +287,7 @@ public class Prologo : MonoBehaviour
     IEnumerator IniciarJogo_MeninaTocando()
     {
         #region Tocar ukulele
-        sfx_script.PararAudioSource03();
+        //sfx_script.PararAudioSource03();
         musicaSource.PlayOneShot(musicaMenina);
         oQueFazer_script.AtivarPainelQuests(false);
         #endregion
@@ -326,9 +326,7 @@ public class Prologo : MonoBehaviour
     void CompletarQuests()
     {
         finalizouQuests = true;
-        Debug.Log("escurecendooo");
         StartCoroutine(EscurecerTela());
-        
     }
 
     IEnumerator Brigar()
@@ -429,6 +427,7 @@ public class Prologo : MonoBehaviour
 
     IEnumerator CucaSequestraMenino()
     {
+        sfx_script.PararAudioSource03();
         chuvaParticulas.SetActive(true);
 
         Etapas.CucaSequestro = true;
@@ -440,7 +439,6 @@ public class Prologo : MonoBehaviour
         MudarEstadoJogador(false);
         Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
-
         #endregion
 
         #region velha namia conversando com menina e indo embora
@@ -552,17 +550,13 @@ public class Prologo : MonoBehaviour
     IEnumerator Iniciar_FlorestaEscura()
     {
         JogadorController.Instance.transform.position = posInicialMenina.position;
-        //oQueFazer_script.AtivarPainelQuests(false);
         oQueFazer_script.GerenciarQuadroQuest_celebr_seq(3);
-
-        sfx_script.FlorestaNoite();
-        //JogadorController.Instance.ModificarVelocidade(1f);
 
         #region fade from black
         MudarEstadoJogador(false);
         luzesCiclo.MudarCorAmbiente(Color.black);
         luzesCiclo.MudarCorAmbiente(new Color(0.05f, .07f, .21f), 4f);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         MudarEstadoJogador(true);
         #endregion
 
@@ -572,7 +566,7 @@ public class Prologo : MonoBehaviour
         for(int i = 0; i < 11; i++)
         {
             JogadorDialogo.Instance.Interagir_CelebracaoCutscene();
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
         }
         DialogoBox.SetActive(false);
         #endregion

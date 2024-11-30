@@ -12,14 +12,16 @@ public class Etapa2 : MonoBehaviour
     [Header("Geral")]
     [SerializeField] SFX sfx_script;
     [SerializeField] Tutorial tutorial_script;
-    [SerializeField] ArmaAtiva armaAtiva;
+    //[SerializeField] ArmaAtiva armaAtiva;
     [SerializeField] OQueFazer oQueFazer_script;
     [SerializeField] InventarioAtivo inventarioAtivo;
+    [SerializeField] LuzesCiclo luzesCiclo;
     #endregion
 
     #region Primeiro Encontro Saci
     [Header("Primeiro Encontro Saci")]
     [SerializeField] AudioClip SaciAssobio;
+    [SerializeField] Transform posMenina_INICIO;
     [SerializeField] Transform posMenina_ConversaSaci;
     [SerializeField] Transform posMenina_AcabouLuta;
     [SerializeField] GameObject barreiraMoitasVermelhas;
@@ -42,22 +44,19 @@ public class Etapa2 : MonoBehaviour
     bool meninaAndando_depoisBossSaci;
     #endregion
 
-    LuzesCiclo luzesCiclo;
-
     void Start()
     {
-        luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
-
-        if (SceneManager.GetActiveScene().name == "01_saci")
+        if (SceneManager.GetActiveScene().name == "socorro")
         {
-            JogadorController.Instance.ModificarVelocidade(1f);
-            sfx_script.FlorestaNoite();
+            JogadorController.Instance.transform.position = posMenina_INICIO.position;
+            //sfx_script.FlorestaNoite();
             StartCoroutine(ClarearTela(new Color(.06f, .1f, .3f)));
-            JogadorController.Instance.velocidade = 3f;
-            JogadorController.Instance.velInicial = 3f;
+            JogadorController.Instance.velocidade = 1f;
+            JogadorController.Instance.velInicial = 1f;
             Saci.SetActive(false);
         }
     }
+
     IEnumerator ClarearTela(Color cor)
     {
         #region fade de preto p branco
@@ -167,8 +166,9 @@ public class Etapa2 : MonoBehaviour
         oQueFazer_script.AtivarPainelQuests(true);
         oQueFazer_script.GerenciarQuadroQuest_saci_cenas(1);
 
-        armaAtiva.AtivarArma1(true);
+        ArmaAtiva.Instance.AtivarArma1(true);
         inventarioAtivo.AtivarArma1(true);
+
         JogadorController.Instance.velocidade = 3f;
         JogadorController.Instance.velInicial = 3f;
 
