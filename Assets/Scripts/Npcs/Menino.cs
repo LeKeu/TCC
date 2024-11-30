@@ -43,13 +43,13 @@ public class Menino : MonoBehaviour
 
     private void Update()
     {
-        if (!acabouFalar && Mouse.current.middleButton.wasPressedThisFrame && Etapas.MeninaTocandoUkulele)
+        if (!acabouFalar && Keyboard.current.eKey.wasPressedThisFrame && Etapas.MeninaTocandoUkulele)
             Interagir();
 
-        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.BrigaCelebracao && !JogadorController.Instance.acabouDialogo)
+        if (Keyboard.current.eKey.wasPressedThisFrame && Etapas.BrigaCelebracao && !JogadorController.Instance.acabouDialogo)
             Interagir_CelebracaoCutscene();
 
-        if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.CucaSequestro && !JogadorController.Instance.acabouDialogo) // organizar isso depois
+        if (Keyboard.current.eKey.wasPressedThisFrame && Etapas.CucaSequestro && !JogadorController.Instance.acabouDialogo) // organizar isso depois
             Interagir_CelebracaoCutscene();
 
     }

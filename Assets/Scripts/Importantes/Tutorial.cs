@@ -12,12 +12,20 @@ public class Tutorial : MonoBehaviour
 
     private void Update()
     {
-        if(duranteTutorial && Input.GetKeyDown(teclaTutorial))
+        if (duranteTutorial && Input.GetKeyDown(teclaTutorial))
             PararTutorial();
+        //if (duranteTutorial)
+        //{
+        //    if (Input.GetKeyDown(teclaTutorial))
+        //        PararTutorial();
+        //    else
+        //        return;
+        //}
     }
 
     public void IniciarTutorial_PararTempo(string texto, KeyCode tecla)
     {
+        JogadorController.Instance.podeFalar = false;
         Debug.Log("tutorial");
         gameObject.SetActive(true);
         duranteTutorial = true;
@@ -29,6 +37,7 @@ public class Tutorial : MonoBehaviour
 
     void PararTutorial()
     {
+        JogadorController.Instance.podeFalar = true;
         gameObject.SetActive(false);
         duranteTutorial = false;
         Time.timeScale = 1;

@@ -46,6 +46,11 @@ public class SFX : MonoBehaviour
         audioSource = GetComponents<AudioSource>();
     }
 
+    #region geral
+    public void PararAudioSource03() => audioSource[2].Stop();
+    public void TocarAudioSource03() => audioSource[2].Play();
+    #endregion
+
     public void FlorestaNoite()
     {
         audioSource[0].PlayOneShot(florestaNoite);

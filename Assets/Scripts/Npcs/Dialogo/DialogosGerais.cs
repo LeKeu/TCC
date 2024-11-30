@@ -15,7 +15,7 @@ public class DialogosGerais : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.middleButton.wasPressedThisFrame && Prologo.procurandoBola && !JogadorController.Instance.acabouDialogo)
+        if (Keyboard.current.eKey.wasPressedThisFrame && Prologo.procurandoBola && !JogadorController.Instance.acabouDialogo)
             Interagir_CelebracaoCutscene();
 
     }

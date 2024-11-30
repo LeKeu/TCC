@@ -291,8 +291,8 @@ public class Etapa2 : MonoBehaviour
     {
         JogadorController.Instance.podeAtacar = acao;
         JogadorController.Instance.podeMover = acao;
+        //JogadorController.Instance.podeFlipX = acao;
         JogadorController.Instance.estaDuranteCutscene = !acao;
-        //JogadorController.Instance.podeFlipX = !acao;
     }
 
     void MovimentarGameObject(GameObject posInicial, Transform posNova, float velocidade)

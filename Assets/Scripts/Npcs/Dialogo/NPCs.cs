@@ -10,19 +10,18 @@ public abstract class NPCs : MonoBehaviour, IInteractble
 
     void Update()
     {
-        if (Mouse.current.middleButton.wasPressedThisFrame && DaParaInteragir())
-        {//Keyboard.current.eKey.wasPressedThisFrame
-            Interagir();
+        if (JogadorController.Instance.podeFalar)
+        {
+            if (Keyboard.current.eKey.wasPressedThisFrame && DaParaInteragir())
+            {//Keyboard.current.eKey.wasPressedThisFrame
+                Interagir();
+            }
+
+            if (_interagirSprite.gameObject.activeSelf && !DaParaInteragir())
+                _interagirSprite.gameObject.SetActive(false);
+            else if (!_interagirSprite.gameObject.activeSelf && DaParaInteragir())
+                _interagirSprite.gameObject.SetActive(true);
         }
-
-        //if (Mouse.current.middleButton.wasPressedThisFrame && Etapas.MeninaTocandoUkulele)
-        //    Interagir();
-
-        if (_interagirSprite.gameObject.activeSelf && !DaParaInteragir())
-            _interagirSprite.gameObject.SetActive(false);
-        else if (!_interagirSprite.gameObject.activeSelf && DaParaInteragir())
-            _interagirSprite.gameObject.SetActive(true);
-
     }
     public abstract void Interagir();
 

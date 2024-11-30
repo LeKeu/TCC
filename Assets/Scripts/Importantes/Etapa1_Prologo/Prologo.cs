@@ -136,13 +136,13 @@ public class Prologo : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "01_comunidade")
         {
             StartCoroutine(IniciarJogo_MeninaTocando());
-            sfx_script.ComunidadeFloresta();
+            //sfx_script.ComunidadeFloresta();
         }
 
         if (SceneManager.GetActiveScene().name == "02_comunidade")
         {
             oQueFazer_script.GerenciarQuadroQuest_celebr_seq(0);
-            sfx_script.ComunidadeFloresta();
+            //sfx_script.ComunidadeFloresta();
 
             StartCoroutine(ClarearTela(new Color(1, .41f, .41f)));
         }
@@ -274,6 +274,7 @@ public class Prologo : MonoBehaviour
     IEnumerator IniciarJogo_MeninaTocando()
     {
         #region Tocar ukulele
+        sfx_script.PararAudioSource03();
         musicaSource.PlayOneShot(musicaMenina);
         oQueFazer_script.AtivarPainelQuests(false);
         #endregion
@@ -306,6 +307,7 @@ public class Prologo : MonoBehaviour
 
         Etapas.MeninaTocandoUkulele = false;
         oQueFazer_script.AtivarPainelQuests(true);
+        sfx_script.TocarAudioSource03();
     }
 
     IEnumerator Brigar()
@@ -564,7 +566,7 @@ public class Prologo : MonoBehaviour
     {
         JogadorController.Instance.podeAtacar = acao;
         JogadorController.Instance.podeMover = acao;
+        //JogadorController.Instance.podeFlipX = acao;
         JogadorController.Instance.estaDuranteCutscene = !acao;
-        //JogadorController.Instance.podeFlipX = !acao;
     }
 }
