@@ -288,16 +288,17 @@ public class Prologo : MonoBehaviour
     {
         #region Tocar ukulele
         //sfx_script.PararAudioSource03();
-        musicaSource.PlayOneShot(musicaMenina);
         oQueFazer_script.AtivarPainelQuests(false);
         #endregion
 
         #region fade de preto p branco
         MudarEstadoJogador(false);
         luzesCiclo.MudarCorAmbiente(Color.black);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3);
+        musicaSource.PlayOneShot(musicaMenina);
+        yield return new WaitForSeconds(5f);
         luzesCiclo.MudarCorAmbiente(Color.white, .2f);
-        yield return new WaitForSeconds(15); // música tocando por x segundos
+        yield return new WaitForSeconds(10); // música tocando por x segundos
         #endregion
 
         Etapas.MeninaTocandoUkulele = true;

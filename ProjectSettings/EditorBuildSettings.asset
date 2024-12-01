@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Geral/FinalDemo.unity
     guid: 9027c76a85315024ca434dca269ba4bc
+  - enabled: 1
+    path: Assets/Scenes/Geral/Template.unity
+    guid: 87fe75f070145824290a12e931c32cc4
   m_configObjects: {}
