@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class JogadorVida : Singleton<JogadorVida>
 {
     //[SerializeField] TremerCamera tremerCamera;
-    [SerializeField] int vidaMax = 3;
+    int vidaMax = 30;
     [SerializeField] float empurraoValor = 10f;
     [SerializeField] float tempoRecoveryDano = .5f;
     [SerializeField] float tempoHitstop = 0.1f;
@@ -19,8 +19,6 @@ public class JogadorVida : Singleton<JogadorVida>
 
     Empurrao empurrao;
     Flash flash;
-    LuzesCiclo luzesCiclo;
-    Respawnar respawnar;
 
     protected override void Awake()
     {
@@ -33,8 +31,6 @@ public class JogadorVida : Singleton<JogadorVida>
 
     void Start()
     {
-        luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
-        respawnar = GameObject.Find("RespawnPoint_Script").GetComponent<Respawnar>();
         vidaAtual = vidaMax;
         AtualizarVidaSlider();
     }

@@ -47,7 +47,7 @@ public class Etapa2 : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().name == "socorro")
+        if (SceneManager.GetActiveScene().name == "01_saci")
         {
             JogadorController.Instance.transform.position = posMenina_INICIO.position;
             //sfx_script.FlorestaNoite();

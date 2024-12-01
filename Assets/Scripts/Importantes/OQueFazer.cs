@@ -25,7 +25,7 @@ public class OQueFazer : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "02_comunidade")
             QuadroDeQuests.GetComponentInChildren<TextMeshProUGUI>().text = celebr_seq[0];
 
-        if (SceneManager.GetActiveScene().name == "socorro")
+        if (SceneManager.GetActiveScene().name == "01_saci")
             QuadroDeQuests.GetComponentInChildren<TextMeshProUGUI>().text = saci_cenas[0];
     }
 

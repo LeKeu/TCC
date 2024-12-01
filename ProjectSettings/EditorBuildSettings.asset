@@ -21,14 +21,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Cuca/01_cuca.unity
     guid: 1186ad770cbbe344fb7283cddae41412
   - enabled: 1
-    path: Assets/Scenes/Saci/01_saci.unity
-    guid: d1c0966fad423364b9c7db41a1bc5035
-  - enabled: 1
     path: Assets/Scenes/Iara/01_iara.unity
     guid: 1f6d4a24765a51e48a20ea371f17308e
   - enabled: 1
-    path: Assets/Scenes/Saci/socorro.unity
+    path: Assets/Scenes/Saci/01_saci.unity
     guid: 842e71587797bd343ba4f8fdcdef4c3c
+  - enabled: 1
+    path: Assets/Scenes/Saci/03_saci.unity
+    guid: 98473c1616626e147817c80380c45f8d
   - enabled: 1
     path: Assets/Scenes/Geral/FinalDemo.unity
     guid: 9027c76a85315024ca434dca269ba4bc

@@ -35,9 +35,9 @@ public class Respawnar : MonoBehaviour
 
     IEnumerator RespawnarJogador()
     {
-        JogadorController.Instance.transform.position = gameObject.transform.position;
         ZerarEtapas();
         yield return new WaitForSeconds(5);
+        JogadorController.Instance.transform.position = gameObject.transform.position;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -55,8 +55,6 @@ public class Respawnar : MonoBehaviour
 
     public void EsconderUI()
     {
-        Debug.Log("escondendo ui");
         canvas.SetActive(false);
-        Debug.Log("escondido");
     }
 }

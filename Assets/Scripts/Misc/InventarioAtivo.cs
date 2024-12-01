@@ -17,7 +17,7 @@ public class InventarioAtivo : MonoBehaviour
         "01_comunidade",
         "02_comunidade",
         "T03_comunidade",
-        "socorro"
+        "01_saci"
     };
 
     private void Awake()
@@ -104,7 +104,6 @@ public class InventarioAtivo : MonoBehaviour
 
         if (armasAtivas)
         {
-            Debug.Log("armaativahhh");
             ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
         }
     }

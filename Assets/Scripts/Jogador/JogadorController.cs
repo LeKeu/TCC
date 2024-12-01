@@ -69,7 +69,7 @@ public class JogadorController : Singleton<JogadorController>
         }
         else acabouDialogo = true;
 
-        if(SceneManager.GetActiveScene().name == "socorro")
+        if(SceneManager.GetActiveScene().name == "01_saci")
         {
             transform.GetChild(0).gameObject.SetActive(true);
         }
