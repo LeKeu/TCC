@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
+  m_Name: SaciBoss01
+  m_EditorClassIdentifier: 
+  paragrafos:
+  - "Saci_Ah n\xE3o! Tu de novo?!"
+  - "_A gente n\xE3o acabou aquela conversa!"
+  - "_Cad\xEA meu irm\xE3o?!"
+  - "Saci_Acredito que eu j\xE1 tenha te falado, sua trouxa, que n\xE3o era pra voc\xEA
+    estar aqui!"
+  - "_E eu com isso?! S\xF3 saio daqui com o meu irm\xE3o!"
+  - "_Quem \xE9 essa bruxa? Cad\xEA ela?"
+  - "Saci_\"Sou cheia de mist\xE9rio, corpo de velha, cabe\xE7a de bicho, olhos de
+    engano. Quem sou eu?\"."
+  - _Do que voc-
+  - "Saci_Ah, t\xE1 f\xE1cil! Tu achas que eu vou s\xF3 te dizer quem \xE9?! N\xE3o,
+    n\xE3o."
+  - "Saci_Me diz, tampinha... Teu irm\xE3o se comportou naquela noite?"
+  - "_Do que voc\xEA ta falando?"
+  - "Saci_N\xE3o sou muito bom em charadas, ent\xE3o presta aten\xE7\xE3o!"
+  - Saci_To arriscando levar uma porrada dela mais forte que esse teu porrete de
+    chucalho.
+  - "Saci_Mas me fala, quem \xE9?"
+  - Saci_"Quem sou eu, que na calada do breu, Levo os malcriados, sem dizer adeus?".
+  - "Saci_\"Quem sou eu, perigosa, e no sono da crian\xE7a perversa, impiedosa?\"."
+  - _Para c-
+  - "Saci_Nana nen\xE9m... voc\xEA j\xE1 j\xE1 vai descobrir!"
+  perfilNPC: {fileID: 21300000, guid: c33428fddcf554b41b82eb8310b9bafe, type: 3}

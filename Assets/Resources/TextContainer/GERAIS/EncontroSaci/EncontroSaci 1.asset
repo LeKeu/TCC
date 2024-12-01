@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paragrafos:
   - _Droga!
-  - "_\xE9guan"
+  - _Ele foi embora mesmo!
+  - "_... O Saci-Perer\xEA... O Bernardo vai surtar!"
+  - _Bermardo...
+  - "_Uma bruxa levou ele. Se o Saci existe mesmo, ent\xE3o essa bruxa... aquele
+    assobio..."
+  - "_N\xE3o! N\xE3o... n\xE3o vou pensar nisso. Preciso encontrar o meu irm\xE3o..."
+  - "_E descobrir o que t\xE1 acontecendo."
+  - "_A floresta, o Saci, essa corrup\xE7\xE3o, meu irm\xE3o... n\xE3o \xE9 coincid\xEAncia!"
+  - _To chegando, maninho!
   perfilNPC: {fileID: 21300000, guid: d6b881526e0969446856aed13b8d8da4, type: 3}

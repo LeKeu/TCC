@@ -18,7 +18,7 @@ MonoBehaviour:
   - "Saci_Isso n\xE3o \xE9 bom, nada bom."
   - "_O que t\xE1 acontecendo? O que eu fiz agora?"
   - _Por que eles estavam daquele jeito?
-  - "Saci_\xD3timas perguntas, cujo as quais eu n\xE3o fa\xE7o ideia da resposta."
+  - "Saci_\xD3timas perguntas, cujo as quais eu n\xE3o tenho vontade de te responder."
   - "_Escuta aqui, moleque. Eu t\xF4 perdendo minha paci\xEAncia contigo!"
   - "_Ent\xE3o melhor me contar o que voc\xEA sabe antes que eu desconte essa raiva
     em ti!"
@@ -34,6 +34,7 @@ MonoBehaviour:
   - "Saci_Porque voc\xEA acha que eu to assim?"
   - "Saci_Acha que eu quero ser pau mandado dela? N\xE3o... Eu sou um brincalh\xE3o."
   - "Saci_Eu era um brincalh\xE3o..."
+  - Saci_...
   - Saci_Boa sorte, garota. Vai precisar. Mas se continuar seguindo esse caminho,
     vai acabar encontrando mais do que procura...
   - Saci_...Pro bem ou pro mal...

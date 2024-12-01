@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
+  m_Name: SaciBoss02
+  m_EditorClassIdentifier: 
+  paragrafos:
+  - "Saci_Heh, t\xE1 bom, t\xE1 bom... Eu admito, voc\xEA me pegou de jeito. Acho
+    que subestimei voc\xEA, mentira."
+  - _Mentira?
+  - Saci_Tem perna curta... hahahaha.
+  - "_Cala a boca e me fala logo onde ele t\xE1!"
+  - "Saci_Eu n\xE3o sou seu inimigo, sabia?"
+  - "Saci_S\xF3 fiz o que fiz porqu\xEA a manda-chuva do peda\xE7o d\xE1 um apavoro
+    que voc\xEA n\xE3o faz ideia. "
+  - "Saci_Eu n\xE3o acreditei. Deveria ter acreditado. Agora eu to assim."
+  - "Saci_Ela tinha amea\xE7ado de me transformar em um dos bichinhos dela, assim
+    como fez com os outros."
+  - Saci_Eu desafiei ela. Quando eu vi... virei um fantoche.
+  - _Outros? Fantoche?
+  - "Saci_S\xF3 saiba que se quiser chegar no seu irm\xE3o vai ter que passar por
+    outros muito piores do que eu."
+  - "Saci_Eu t\xF4 s\xE3o suficiente pra n\xE3o ir longe demais, j\xE1 os outros..."
+  - "Saci_For\xE7a bruta n\xE3o vai ser o suficiente."
+  - "Saci_Mas olha, quer saber, vou te dar uma m\xE3ozinha. S\xF3 v\xEA se n\xE3o
+    se acostuma, hein."
+  - "_Por qu\xEA? Por que me ajudar agora?"
+  - "Saci_Apesar das trapa\xE7as e brincadeiras, eu adoro uma boa luta justa."
+  - "Saci_E voc\xEA me mostrou que, mesmo que baixa, tem uma chance de salvar seu
+    irm\xE3o..."
+  - Saci_hehe, piadinha intencional.
+  - _Ei!
+  - "Saci_E... n\xE3o sei o que voc\xEA fez agora, mas minha cabe\xE7a t\xE1 mais
+    leve."
+  - "Saci_A voz da bruxa... quase n\xE3o escuto mais."
+  - "Saci_Se voc\xEA consegue fazer isso por mim, talvez os outros n\xE3o estejam
+    perdidos como achei!"
+  - "Saci_Vou te ajudar a encontrar teu irm\xE3o!"
+  - "Saci_Agora, vamo ver at\xE9 onde voc\xEA chega com essa coragem toda."
+  perfilNPC: {fileID: 21300000, guid: c33428fddcf554b41b82eb8310b9bafe, type: 3}

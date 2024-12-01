@@ -17,6 +17,7 @@ public class Etapa2 : MonoBehaviour
     [SerializeField] InventarioAtivo inventarioAtivo;
     [SerializeField] LuzesCiclo luzesCiclo;
     [SerializeField] GameObject VidaUI;
+    [SerializeField] GameObject dialogosGerais;
     #endregion
 
     #region Primeiro Encontro Saci
@@ -27,7 +28,6 @@ public class Etapa2 : MonoBehaviour
     [SerializeField] Transform posMenina_AcabouLuta;
     [SerializeField] GameObject barreiraMoitasVermelhas;
     [SerializeField] GameObject particulasChuva;
-    [SerializeField] GameObject dialogosGerais;
 
     bool aconteceuEncontro;
     bool meninaAndando_EncontroSaci;
@@ -242,7 +242,7 @@ public class Etapa2 : MonoBehaviour
         MudarEstadoJogador(false);
         yield return new WaitForSeconds(2); // middle button n ta passando dialogo p esse saciii
 
-        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 0);
+        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 0, "Interagir_CelebracaoCutscene");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
@@ -267,7 +267,7 @@ public class Etapa2 : MonoBehaviour
         Saci.transform.position = posSaci_DepoisBossSaci.position;
         yield return new WaitForSeconds(2);
 
-        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 1);
+        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 1, "Interagir_CelebracaoCutscene");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
         yield return new WaitForSeconds(2);
