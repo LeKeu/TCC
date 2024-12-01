@@ -36,6 +36,7 @@ public class Etapa2 : MonoBehaviour
 
     #region Boss Saci
     [Header("Boss Saci")]
+    [SerializeField] Transform posMeninaINICIO;
     [SerializeField] Transform posMenina_BossSaci;
     [SerializeField] Transform posMenina_DepoisBossSaci;
     [SerializeField] Transform posSaci_DepoisBossSaci;
@@ -57,6 +58,11 @@ public class Etapa2 : MonoBehaviour
             Saci.SetActive(false);
 
             VidaUI.SetActive(false);
+        }
+
+        if(SceneManager.GetActiveScene().name == "03_saci") // MUDAR PARA CENA DO BOSS
+        {
+            JogadorController.Instance.transform.position = posMeninaINICIO.position;
         }
     }
 
@@ -206,7 +212,9 @@ public class Etapa2 : MonoBehaviour
         #endregion
 
         #region falando sozinha após o saci
+        Debug.Log("falando sozinha");
         Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 1, "Interagir_CelebracaoCutscene");
+        Debug.Log("acabou falando sozinha");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         yield return new WaitForSeconds(2);
         #endregion

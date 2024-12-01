@@ -78,7 +78,6 @@ public class InvocadoInimigo : BasicAndar
     {
         if (collision.gameObject.GetComponent<JogadorVida>())
         {
-            Debug.Log("colisao = "+collision.gameObject.name);
             JogadorVida.Instance.LevarDano(Dano);
             tremerCamera.TremerCameraFunc();
         }
