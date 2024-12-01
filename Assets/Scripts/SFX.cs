@@ -42,6 +42,11 @@ public class SFX : MonoBehaviour
     [SerializeField] AudioClip meninaCorpoCaindo;
     #endregion
 
+    #region combate
+    [Header("Combate")]
+    [SerializeField] AudioClip musicaCombate;
+    #endregion
+
     private void Start()
     {
         audioSource = GetComponents<AudioSource>();
@@ -49,11 +54,12 @@ public class SFX : MonoBehaviour
 
     private void Update()
     {
-        if (JogadorController.Instance.estaAndando)
-            JogadorPassosGrama();
+        //PASSOS GRAMA
+        //if (JogadorController.Instance.estaAndando)
+        //    JogadorPassosGrama();
 
-        if (!JogadorController.Instance.estaAndando && !chamouPararPassos)
-            PararJogadorPassosGrama();
+        //if (!JogadorController.Instance.estaAndando && !chamouPararPassos)
+        //    PararJogadorPassosGrama();
     }
 
     #region geral
@@ -75,6 +81,17 @@ public class SFX : MonoBehaviour
             audioSource[0].loop = true;
         }
     }
+
+    public void MusicaCombate()
+    {
+        if (audioSource[1].isPlaying)
+        {
+            audioSource[1].PlayOneShot(musicaCombate);
+            audioSource[1].loop = true;
+        }
+    }
+
+    public void PararMusicaCombate() => audioSource[1].Stop();
 
     public void ComunidadeSino()
     {

@@ -50,14 +50,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ventosAssustadores: []
   florestaNoite: {fileID: 8300000, guid: ea97114ef2619e246bbd1c34dd51d282, type: 3}
-  comunidadeFloresta: {fileID: 8300000, guid: 912e9ed502d7e014489686da174d798a, type: 3}
+  comunidadeFloresta: {fileID: 8300000, guid: f6353a41a41a5b54daf6d6a1c53d0896, type: 3}
   comunidadeSino: {fileID: 8300000, guid: 9d43ae229d707b64ea272c0932320ddd, type: 3}
   jogadorPassosGrama: {fileID: 8300000, guid: 2bf0685de75a39045ace2b1564639319, type: 3}
   jogadorPassosMadeira: {fileID: 8300000, guid: 7106de74fe452704fa910c70998f2fcd, type: 3}
   jogadorEspadaAtaques:
-  - {fileID: 8300000, guid: 51b12719a8f3afb4396e554a582335a3, type: 3}
-  - {fileID: 8300000, guid: 554f8e8bac42f3f4fab1a02b7386161c, type: 3}
-  - {fileID: 8300000, guid: 303ab14b83d71f149877c79f11a35013, type: 3}
+  - {fileID: 8300000, guid: 816ca69b777c4594298930686b0d5ad0, type: 3}
+  - {fileID: 8300000, guid: 41a73b9fa13b2a947b8c45b4011049a2, type: 3}
   saciAssobio: {fileID: 8300000, guid: b8e71b5a57c8d0d4c94228be2e43867d, type: 3}
   saciVentonia: {fileID: 0}
   saciVentoForte: {fileID: 0}
@@ -67,6 +66,7 @@ MonoBehaviour:
   passosVidro: {fileID: 0}
   garraCuca: {fileID: 0}
   meninaCorpoCaindo: {fileID: 0}
+  musicaCombate: {fileID: 8300000, guid: 751a1bb377536494093445ef89d63794, type: 3}
 --- !u!82 &2629074401485225935
 AudioSource:
   m_ObjectHideFlags: 0

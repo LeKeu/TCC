@@ -522,6 +522,7 @@ public class Prologo : MonoBehaviour
         #endregion
 
         #region Menina Correndo
+        sfx_script.MusicaCombate();
         meninaCorrendo = true;
         foreach (GameObject pos in listaPosMeninaCorrendo)
         {
@@ -534,6 +535,7 @@ public class Prologo : MonoBehaviour
 
         //efeitos sonoros tensos, tela escurece rápido, efeito sonoro de garra, volta sprite menina caído, bem mais de noite, menina segue caminho
         #region Tela escurecer, barulho garra, muda sprite, volta bem escuro, 
+        sfx_script.PararMusicaCombate();
         luzesCiclo.MudarCorAmbiente(Color.black);
         yield return new WaitForSeconds(.5f);
         sfx_script.GarraCuca();

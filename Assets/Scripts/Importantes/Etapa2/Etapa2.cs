@@ -151,6 +151,7 @@ public class Etapa2 : MonoBehaviour
         #region parar chuva, dialogo
         sfx_script.VentoForteSaci();
 
+        #region chuva part
         particulasChuva.GetComponent<ParticleSystem>().emissionRate = 150;
         yield return new WaitForSeconds(2);
         particulasChuva.GetComponent<ParticleSystem>().emissionRate = 75;
@@ -158,6 +159,7 @@ public class Etapa2 : MonoBehaviour
         particulasChuva.GetComponent<ParticleSystem>().emissionRate = 30;
         yield return new WaitForSeconds(2);
         particulasChuva.GetComponent<ParticleSystem>().emissionRate = 0;
+        #endregion
 
         Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 2, "Interagir_CelebracaoCutscene");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
@@ -167,12 +169,15 @@ public class Etapa2 : MonoBehaviour
         #region aparecer invocados
         Saci.GetComponent<Saci>().IniciarBatalha_primeiroEncontroSaci();
         InvocadoInimigo.podeAndar = false;
+        yield return new WaitForSeconds(2);
+
         Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 3, "Interagir_CelebracaoCutscene");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         InvocadoInimigo.podeAndar = true;
         #endregion
 
-        #region ativar arma, tutorial purificacao, inicio batalha saci
+        #region ativar arma, tutorial dash e purificacao, inicio batalha saci
+        sfx_script.MusicaCombate();
         VidaUI.SetActive(true);
         oQueFazer_script.AtivarPainelQuests(true);
         oQueFazer_script.GerenciarQuadroQuest_saci_cenas(1);
@@ -183,6 +188,7 @@ public class Etapa2 : MonoBehaviour
         JogadorController.Instance.velocidade = 3f;
         JogadorController.Instance.velInicial = 3f;
 
+        tutorial_script.IniciarTutorial_PararTempo("Para dar um dash, aperte 'Barra de espaço'.", KeyCode.Space);
         MudarEstadoJogador(true);
         yield return new WaitUntil(() => InvocadoInimigo.podePurificar);
         tutorial_script.IniciarTutorial_PararTempo("Quando um inimigo estiver atordoado, chegue perto dele e aperte 'Q' para purificá-lo! ", KeyCode.Q);
@@ -195,6 +201,7 @@ public class Etapa2 : MonoBehaviour
         MudarEstadoJogador(false); // checar aqui!! o player ta andando estranho ás vezes
 
         #region acabou luta, dialogo saci
+        sfx_script.PararMusicaCombate();
         yield return new WaitForSeconds(3);
 
         meninaAndando_AcabouLuta = true;
@@ -249,7 +256,8 @@ public class Etapa2 : MonoBehaviour
         #endregion
 
         #region começar boss, esperar derrota saci
-        yield return new WaitForSeconds(3);
+        sfx_script.MusicaCombate();
+        yield return new WaitForSeconds(1.5f);
 
         MudarEstadoJogador(true);
         Saci.GetComponent<Saci>().BatalhaBoss1();
@@ -260,6 +268,7 @@ public class Etapa2 : MonoBehaviour
         #endregion
 
         #region saci derrotado, andar em direção, dialogo
+        sfx_script.PararMusicaCombate();
         yield return new WaitForSeconds(2);
 
         meninaAndando_depoisBossSaci = true;
