@@ -17,7 +17,6 @@ public class VelhaNamia : NPCs, ITalkable
     [SerializeField] ArmaAtiva armaAtiva;
     [SerializeField] InventarioAtivo inventarioAtivo;
     [SerializeField] OQueFazer oQueFazer_script;
-    [SerializeField] Tutorial tutorial_script;
 
     public override void Interagir()
     {

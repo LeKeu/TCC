@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660c9d7e848ae0d4d9116ec0bf688991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moedaPrefab: {fileID: 1508147830853160379, guid: 2faeacf34168d7c4a926c6f78e69c972, type: 3}
+  moedaPrefab: {fileID: 1508147830853160379, guid: e5d39d8a1b3641141b5da553922d7192, type: 3}
 --- !u!1 &4750386148059228066
 GameObject:
   m_ObjectHideFlags: 0
