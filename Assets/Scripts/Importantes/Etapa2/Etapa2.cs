@@ -52,7 +52,7 @@ public class Etapa2 : MonoBehaviour
         {
             JogadorController.Instance.transform.position = posMenina_INICIO.position;
             //sfx_script.FlorestaNoite();
-            StartCoroutine(ClarearTela(new Color(.06f, .1f, .3f)));
+            StartCoroutine(ClarearTela(new Color(.12f, .16f, .5f)));
             JogadorController.Instance.velocidade = 1f;
             JogadorController.Instance.velInicial = 1f;
             Saci.SetActive(false);
@@ -143,7 +143,7 @@ public class Etapa2 : MonoBehaviour
         Saci.SetActive(true);
         yield return new WaitForSeconds(3);
 
-        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 0);
+        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 1, "Interagir_CelebracaoCutscene");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
@@ -158,7 +158,7 @@ public class Etapa2 : MonoBehaviour
         yield return new WaitForSeconds(2);
         particulasChuva.GetComponent<ParticleSystem>().emissionRate = 0;
 
-        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 1);
+        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 2, "Interagir_CelebracaoCutscene");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         yield return new WaitForSeconds(1.5f);
         #endregion
@@ -166,7 +166,7 @@ public class Etapa2 : MonoBehaviour
         #region aparecer invocados
         Saci.GetComponent<Saci>().IniciarBatalha_primeiroEncontroSaci();
         InvocadoInimigo.podeAndar = false;
-        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 2);
+        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 3, "Interagir_CelebracaoCutscene");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         InvocadoInimigo.podeAndar = true;
         #endregion
@@ -201,7 +201,7 @@ public class Etapa2 : MonoBehaviour
         
         yield return new WaitForSeconds(3);
 
-        Interagir_Geral(Saci.GetComponent<SaciDialog>(), 3);
+        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 4, "Interagir_CelebracaoCutscene");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
         sfx_script.VentoniaSaci();
@@ -213,7 +213,7 @@ public class Etapa2 : MonoBehaviour
 
         #region falando sozinha após o saci
         Debug.Log("falando sozinha");
-        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 1, "Interagir_CelebracaoCutscene");
+        Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 5, "Interagir_CelebracaoCutscene");
         Debug.Log("acabou falando sozinha");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         yield return new WaitForSeconds(2);

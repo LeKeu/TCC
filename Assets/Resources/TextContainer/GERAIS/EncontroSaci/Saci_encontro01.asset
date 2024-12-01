@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
+  m_Name: Saci_encontro01
+  m_EditorClassIdentifier: 
+  paragrafos:
+  - _!
+  - "Saci_Ora, ora, ora, o que temos aqui? Uma mocinha perdida na floresta. Por acaso
+    t\xE1 procurando o caminho de volta pro quintal de casa \xE9?"
+  - "_Quem \xE9 voc\xEA? O que t\xE1 fazendo aqui?"
+  - "Saci_Jura que n\xE3o me reconhece?"
+  - "_Gorro vermelho, uma perna s\xF3..."
+  - "Saci_G\xEAnio, bonit\xE3o, carism\xE1tico, a alegria da floresta."
+  - _...Saci?
+  - "Saci_SIM! Eu... sou o Saci Perer\xEA!!! O tornado brincalh\xE3o da floresta!"
+  - _Tsk... Hahahahahahaha!! Aham, sei.
+  - "Saci_T\xE1 rindo do que, garota?! Tu \xE9 lesa, \xE9? \xC9 claro que sou eu!"
+  - "_N\xE3o!"
+  - "Saci_'N\xE3o'? Como assim, N\xC3O?"
+  - "_N\xE3o! Eu conhe\xE7o as hist\xF3rias do Saci-Perer\xEA! Ele n\xE3o sai por
+    a\xED sequestrando crian\xE7as!"
+  - "Saci_Seque- Do que voc\xEA ta falando, pitchula?"
+  - "_'Eu sou o Saci-Perer\xEA!'. Ai... Essa foi boa!"
+  - "_Mas agora \xE9 s\xE9rio! Quem \xE9 voc\xEA e cad\xEA meu irm\xE3o?!"
+  - "Saci_Aiaiai... ok, acho que acabou a brincadeira! Foi bom enquanto durou, mas
+    voc\xEA n\xE3o vem na MINHA floresta-"
+  - Saci_Ri da MINHA cara-
+  - "Saci_E sai ME acusando de coisa que eu N\xC3O fiz!"
+  perfilNPC: {fileID: 21300000, guid: d6b881526e0969446856aed13b8d8da4, type: 3}

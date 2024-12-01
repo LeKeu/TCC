@@ -165,14 +165,14 @@ public class Prologo : MonoBehaviour
         #endregion
     }
 
-    IEnumerator EscurecerTela()
+    IEnumerator EscurecerTela(float segundos = 5)
     {
         #region fade de preto p branco
         MudarEstadoJogador(false);
         oQueFazer_script.AtivarPainelQuests(false);
 
         luzesCiclo.MudarCorAmbiente(Color.black, .8f);
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(segundos);
         #endregion
         SceneManager.LoadScene("02_comunidade");
     }
@@ -553,9 +553,11 @@ public class Prologo : MonoBehaviour
         oQueFazer_script.GerenciarQuadroQuest_celebr_seq(3);
 
         #region fade from black
+        //EscurecerTela(0);
+        //ClarearTela(new Color(.12f, .16f, .5f));
         MudarEstadoJogador(false);
         luzesCiclo.MudarCorAmbiente(Color.black);
-        luzesCiclo.MudarCorAmbiente(new Color(0.05f, .07f, .21f), 4f);
+        luzesCiclo.MudarCorAmbiente(new Color(.12f, .16f, .5f), .5f);
         yield return new WaitForSeconds(3);
         MudarEstadoJogador(true);
         #endregion

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f1e7ef07188024383dc31b82ac6f22, type: 3}
+  m_Name: Saci_encontro02
+  m_EditorClassIdentifier: 
+  paragrafos:
+  - "_O que?! Como voc\xEA fez isso?! O que aconteceu?!"
+  - "Saci_Eu te falei, tampinha, EU SOU O SACI-PERER\xCA!"
+  - "Saci_Essa floresta \xE9 MINHA floresta!"
+  - "Saci_Esse vento \xE9 MEU vento!"
+  - "Saci_E voc\xEA... \xE9 uma ponta solta."
+  - _...como assim?
+  - "Saci_N\xE3o era pra ningu\xE9m ter visto ela pegar aquele mulque malcriado."
+  - "_Voc\xEA... CAD\xCA MEU IRM\xC3O?"
+  - "Saci_J\xC1 CHEGA!"
+  perfilNPC: {fileID: 21300000, guid: d6b881526e0969446856aed13b8d8da4, type: 3}
