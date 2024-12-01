@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class JogadorController : Singleton<JogadorController>
 {
-    [SerializeField] SFX sfx_script;
     [SerializeField] public Sprite perfil;
     public bool OlhandoEsq { get { return olhandoEsq; } }
 
@@ -133,7 +132,7 @@ public class JogadorController : Singleton<JogadorController>
     private void Movimentar()
     {
         if (empurrao.serEmpurrado) 
-        { /*sfx_script.PararJogadorPassosGrama();*/ return; }
+        { return; }
 
         if ((estaEscondido || estaNaAgua) && !estaNaPonte) DiminuirVelocidade();// se tiver stealth, diminui a velocidade
         else if(!estaDashing) VoltarVelocidadeNormal();
@@ -142,7 +141,6 @@ public class JogadorController : Singleton<JogadorController>
         else estaAndando = true;
 
         rb.MovePosition(rb.position + movimento * (velocidade * Time.fixedDeltaTime));
-        //sfx_script.JogadorPassosGrama();
     }
 
     public void DiminuirVelocidade() => velocidade = velInicial / 2;

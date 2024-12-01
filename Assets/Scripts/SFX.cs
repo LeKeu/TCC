@@ -24,6 +24,7 @@ public class SFX : MonoBehaviour
     [SerializeField] AudioClip jogadorPassosGrama;
     [SerializeField] AudioClip jogadorPassosMadeira;
     [SerializeField] List<AudioClip> jogadorEspadaAtaques;
+    bool chamouPararPassos;
     #endregion
 
     #region Saci
@@ -44,6 +45,15 @@ public class SFX : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponents<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (JogadorController.Instance.estaAndando)
+            JogadorPassosGrama();
+
+        if (!JogadorController.Instance.estaAndando && !chamouPararPassos)
+            PararJogadorPassosGrama();
     }
 
     #region geral
@@ -97,9 +107,14 @@ public class SFX : MonoBehaviour
         {
             audioSource[1].PlayOneShot(jogadorPassosGrama);
             audioSource[1].loop = true;
+            chamouPararPassos = false;
         }
     }
-    public void PararJogadorPassosGrama() => audioSource[1].Stop();
+    public void PararJogadorPassosGrama()
+    {
+        chamouPararPassos = true;
+        audioSource[1].Stop();
+    }
     #endregion
 
     #region Passos Madeira

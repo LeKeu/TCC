@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsCanvas : MonoBehaviour
 {
-    public void IniciarJogo() => SceneManager.LoadScene("T03_comunidade");
+    public void IniciarJogo() => SceneManager.LoadScene("01_comunidade");
     public void MenuInicial() => SceneManager.LoadScene("Inicio");
     public void TelaDemo() => SceneManager.LoadScene("FinalDemo");
 }
