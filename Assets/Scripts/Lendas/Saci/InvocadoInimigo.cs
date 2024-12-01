@@ -16,6 +16,7 @@ public class InvocadoInimigo : BasicAndar
     //Rigidbody2D rb;
     Vector2 movDir;
     private Empurrao empurrao;
+    float empurraoForca = 10;
     SpriteRenderer spriteRenderer;
     CircleCollider2D circleCollider;
 
@@ -78,7 +79,7 @@ public class InvocadoInimigo : BasicAndar
     {
         if (collision.gameObject.GetComponent<JogadorVida>())
         {
-            JogadorVida.Instance.LevarDano(Dano);
+            JogadorVida.Instance.LevarDano(Dano, gameObject.transform);
             tremerCamera.TremerCameraFunc();
         }
     }
@@ -104,7 +105,10 @@ public class InvocadoInimigo : BasicAndar
     public void ReceberDano(int dano)
     {
         if (Vida <= 0)
+        {
+            empurrao.SerEmpurrado(JogadorController.Instance.transform, empurraoForca);
             StartCoroutine(TentarPurificarRoutine());
+        }
         else
         {
             Vida -= dano;

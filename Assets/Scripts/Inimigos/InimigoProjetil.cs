@@ -10,6 +10,7 @@ public class InimigoProjetil : MonoBehaviour
     [SerializeField] float tempoVivo = 4f;
 
     float auxTempo = 0f;
+    public int Dano = 1;
 
     public bool seguirJogador;
     // Start is called before the first frame update

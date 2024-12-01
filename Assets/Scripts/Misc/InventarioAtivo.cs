@@ -104,6 +104,7 @@ public class InventarioAtivo : MonoBehaviour
 
         if (armasAtivas)
         {
+            ArmaAtiva.Instance.gameObject.SetActive(true);
             ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
         }
     }

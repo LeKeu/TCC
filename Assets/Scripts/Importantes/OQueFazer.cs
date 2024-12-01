@@ -27,6 +27,9 @@ public class OQueFazer : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "01_saci")
             QuadroDeQuests.GetComponentInChildren<TextMeshProUGUI>().text = saci_cenas[0];
+
+        if (SceneManager.GetActiveScene().name == "03_saci") // BOSS SACI
+            QuadroDeQuests.GetComponentInChildren<TextMeshProUGUI>().text = saci_cenas[0];
     }
 
     public void GerenciarQuadroQuest_tutorial(int index) 

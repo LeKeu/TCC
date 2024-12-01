@@ -47,7 +47,6 @@ public class AtaqueArea : MonoBehaviour
         atqAreaPrefab.SetActive(false);
         yield return new WaitForSeconds(AtqAreaCoolDown);
         estaAtacando = false;
-        Debug.Log("agr pode atq area dnv pbg");
 
     }
 

@@ -213,7 +213,7 @@ public class Prologo : MonoBehaviour
 
             if (meninaCorrendo)
             {
-                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position, 6 * Time.deltaTime);
+                JogadorController.Instance.transform.position = Vector2.MoveTowards(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position, 4.5f * Time.deltaTime);
                 if (Vector3.Distance(JogadorController.Instance.transform.position, proxPosMeninaAux.transform.position) <= 1f)
                     podeIrProxPos = true;
             }
@@ -539,7 +539,7 @@ public class Prologo : MonoBehaviour
         sfx_script.GarraCuca();
         yield return new WaitForSeconds(1);
         sfx_script.MeninaCaindo();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(8);
         //luzesCiclo.MudarCorAmbiente(new Color(0.05f, .07f, .21f), 4f);
         #endregion
 
@@ -551,6 +551,9 @@ public class Prologo : MonoBehaviour
     {
         JogadorController.Instance.transform.position = posInicialMenina.position;
         oQueFazer_script.GerenciarQuadroQuest_celebr_seq(3);
+
+        JogadorController.Instance.velInicial = 1f;
+        JogadorController.Instance.velocidade = 1f;
 
         #region fade from black
         //EscurecerTela(0);

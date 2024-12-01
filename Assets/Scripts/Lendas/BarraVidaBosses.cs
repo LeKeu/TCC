@@ -32,7 +32,6 @@ public class BarraVidaBosses : MonoBehaviour
         }
         else {
             vidaAtual = 0;
-            Debug.Log("arrasta p cima");
         }
     }
 

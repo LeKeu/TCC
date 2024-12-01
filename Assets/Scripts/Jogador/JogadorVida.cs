@@ -12,7 +12,7 @@ public class JogadorVida : Singleton<JogadorVida>
     [SerializeField] float tempoHitstop = 0.1f;
 
     Slider vidaSlider;
-    int vidaAtual;
+    public static int vidaAtual;
 
     public bool podeLevarDano = true;
     public static bool estaViva = true;
@@ -42,8 +42,8 @@ public class JogadorVida : Singleton<JogadorVida>
 
         if (inimigo && podeLevarDano && !inimigoVida.estaAtordoado)
         {
-            LevarDano(1);
-            EmpurrarPlayer(collision.gameObject.transform);
+            LevarDano(1, collision.gameObject.transform);
+            //EmpurrarPlayer(collision.gameObject.transform);
             //StartCoroutine(flash.FlashRoutine());
         }
     }
@@ -52,11 +52,11 @@ public class JogadorVida : Singleton<JogadorVida>
     {
         InimigoProjetil inimigoProjetil = collision.gameObject.GetComponent<InimigoProjetil>();
 
-        if(inimigoProjetil && podeLevarDano)
+        if (inimigoProjetil && podeLevarDano)
         {
-            Destroy(collision.gameObject);
-            LevarDano(1);
-            EmpurrarPlayer(collision.gameObject.transform);
+            LevarDano(inimigoProjetil.Dano, collision.gameObject.transform);
+            if(inimigoProjetil) Destroy(collision.gameObject);
+            //EmpurrarPlayer(collision.gameObject.transform);
         }
     }
 
@@ -75,9 +75,11 @@ public class JogadorVida : Singleton<JogadorVida>
         }
     }
 
-    public void LevarDano(int dano)
-    {
+    public void LevarDano(int dano, Transform collision = null)
+    { // passar a colocar o trasnforms dos inimigos qnd dar dano no player!
         if (!podeLevarDano) { return; }
+
+        if(collision != null) EmpurrarPlayer(collision.gameObject.transform);
 
         //tremerCamera.TremerCameraFunc();
         FindObjectOfType<HitStop>()?.hitStop(tempoHitstop);

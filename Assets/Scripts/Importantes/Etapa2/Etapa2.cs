@@ -62,6 +62,7 @@ public class Etapa2 : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "03_saci") // MUDAR PARA CENA DO BOSS
         {
+            StartCoroutine(ClarearTela(new Color(.12f, .16f, .5f)));
             JogadorController.Instance.transform.position = posMeninaINICIO.position;
         }
     }
@@ -213,6 +214,7 @@ public class Etapa2 : MonoBehaviour
 
         #region falando sozinha após o saci
         Debug.Log("falando sozinha");
+        yield return new WaitForSeconds(1);
         Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 5, "Interagir_CelebracaoCutscene");
         Debug.Log("acabou falando sozinha");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
@@ -289,7 +291,6 @@ public class Etapa2 : MonoBehaviour
     void Interagir_Geral(MonoBehaviour script, int index, string metodoNome = "Interagir")
     {
         object[] parametros = { index };
-
         var metodo = script.GetType().GetMethod($"{metodoNome}");
         metodo.Invoke(script, parametros);
     }

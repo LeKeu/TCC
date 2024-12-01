@@ -148,7 +148,6 @@ public class Iara : MonoBehaviour
                 transform.position = PosLagoCentro.transform.position;
             estaNoCentro = true;
 
-            Debug.Log(tipoAtaqueCentro.ToString());
             switch (tipoAtaqueCentro)
             {
                 case TipoAtaqueCentro.Perseguidor:

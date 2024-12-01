@@ -26,7 +26,6 @@ public class Escudo : MonoBehaviour
 
     IEnumerator EscudoRoutine()
     {
-        Debug.Log("escudo");
         escudoAtivo = true;
         GameObject escudoOjbInst = Instantiate(EscudoObj, gameObject.transform);
         escudoOjbInst.transform.parent = gameObject.transform;
@@ -40,6 +39,5 @@ public class Escudo : MonoBehaviour
         yield return new WaitForSeconds(escudoCoolDown);
 
         escudoAtivo = false;
-        Debug.Log("Escudo Liberado");
     }
 }

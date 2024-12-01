@@ -9,11 +9,13 @@ public class Respawnar : MonoBehaviour
     LuzesCiclo luzesCiclo;
     GameObject canvas;
     bool chamouMorrer;
+    int vidaTemp;
 
     private void Start()
     {
         luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
         canvas = GameObject.Find("Canvas");
+        vidaTemp = JogadorVida.vidaAtual;
     }
 
     private void Update()
@@ -38,6 +40,7 @@ public class Respawnar : MonoBehaviour
         ZerarEtapas();
         yield return new WaitForSeconds(5);
         JogadorController.Instance.transform.position = gameObject.transform.position;
+        JogadorVida.vidaAtual = vidaTemp;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

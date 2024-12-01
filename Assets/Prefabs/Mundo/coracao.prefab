@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipo: 1
   pegarDist: 2
-  rateAcelerecao: 0.1
+  rateAcelerecao: 0.2
   movVel: 1
   animCurve:
     serializedVersion: 2
