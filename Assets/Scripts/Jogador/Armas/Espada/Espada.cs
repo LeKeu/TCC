@@ -54,13 +54,20 @@ public class Espada : MonoBehaviour, IArma
 
     public void Atacar()
     {
-        sfx_script.JogadorEspadaAtaques();
+        StartCoroutine(IniciarAudioAtaque());
         animator.SetTrigger("Ataque");
         armaCollider.gameObject.SetActive(true);
 
         slahsAnim = Instantiate(slashAnimPrefab, slashAnimPontoSpawn.position, Quaternion.identity);
         slahsAnim.transform.parent = this.transform.parent;
         //StartCoroutine(AtacarCDRoutina());
+    }
+
+    IEnumerator IniciarAudioAtaque()
+    {
+        sfx_script.JogadorAtacando();
+        yield return new WaitForSeconds(.1f);
+        sfx_script.JogadorEspadaAtaques();
     }
 
     //IEnumerator AtacarCDRoutina()

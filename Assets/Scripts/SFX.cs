@@ -24,7 +24,11 @@ public class SFX : MonoBehaviour
     [SerializeField] AudioClip jogadorPassosGrama;
     [SerializeField] AudioClip jogadorPassosMadeira;
     [SerializeField] List<AudioClip> jogadorEspadaAtaques;
+
+    [SerializeField] List<AudioClip> jogadoraMachucada;
+    [SerializeField] List<AudioClip> jogadoraAtacando;
     bool chamouPararPassos;
+    bool chamouMachucada;
     #endregion
 
     #region Saci
@@ -54,6 +58,10 @@ public class SFX : MonoBehaviour
 
     private void Update()
     {
+        if (JogadorVida.levouDano && !chamouMachucada)
+            JogadorMachucada();
+        if(!JogadorVida.levouDano)
+            chamouMachucada = false;
         //PASSOS GRAMA
         //if (JogadorController.Instance.estaAndando)
         //    JogadorPassosGrama();
@@ -147,6 +155,17 @@ public class SFX : MonoBehaviour
     public void JogadorEspadaAtaques()
     {
         audioSource[2].PlayOneShot(jogadorEspadaAtaques[Random.Range(0, jogadorEspadaAtaques.Count)]);
+    }
+
+    public void JogadorMachucada()
+    {
+        chamouMachucada = true;
+        audioSource[3].PlayOneShot(jogadoraMachucada[Random.Range(0, jogadoraMachucada.Count)]);
+    }
+
+    public void JogadorAtacando()
+    {
+        audioSource[4].PlayOneShot(jogadoraAtacando[Random.Range(0, jogadoraAtacando.Count)]);
     }
     #endregion
 

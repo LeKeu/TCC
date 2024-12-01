@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class JogadorVida : Singleton<JogadorVida>
 
     public bool podeLevarDano = true;
     public static bool estaViva = true;
+    public static bool levouDano;
 
     Empurrao empurrao;
     Flash flash;
@@ -78,7 +80,7 @@ public class JogadorVida : Singleton<JogadorVida>
     public void LevarDano(int dano, Transform collision = null)
     { // passar a colocar o trasnforms dos inimigos qnd dar dano no player!
         if (!podeLevarDano) { return; }
-
+        levouDano = true;
         if(collision != null) EmpurrarPlayer(collision.gameObject.transform);
 
         //tremerCamera.TremerCameraFunc();
@@ -117,5 +119,6 @@ public class JogadorVida : Singleton<JogadorVida>
     {
         yield return new WaitForSeconds(tempoRecoveryDano);
         podeLevarDano = true;
+        levouDano = false;
     }
 }
