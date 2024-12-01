@@ -236,7 +236,7 @@ public class Prologo : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
-        Debug.Log("ahshshah");
+
         Interagir_Celebracao(dialogosGerais.GetComponent<DialogosGerais>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 

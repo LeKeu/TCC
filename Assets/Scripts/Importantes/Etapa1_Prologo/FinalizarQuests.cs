@@ -29,7 +29,6 @@ public class FinalizarQuests : NPCs, ITalkable
                 if (indexAtual == dt.Count && !todosTutCompleto) { indexAtual = 0; }
                 if (indexAtual == dt.Count && todosTutCompleto) { indexAtual = 1; }; // index 0 sempre será o txt do tut, ent qnd ele estiver completo, não volta mais
             }
-            Debug.Log(indexAtual);
             Falar(dt[indexAtual]);
         }
         

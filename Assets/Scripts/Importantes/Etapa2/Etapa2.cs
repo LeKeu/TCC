@@ -222,22 +222,18 @@ public class Etapa2 : MonoBehaviour
 
     IEnumerator BossSaci()
     {
-        Debug.Log("teste1");
         aconteceuBossSaci = true;
         Etapas.BossSaci = true;
         oQueFazer_script.AtivarPainelQuests(false);
 
-        Debug.Log("teste2");
         #region ir em direção do saci, dialogo começa
         meninaAndando_inicioBossSaci = true;
         yield return new WaitUntil(() => Vector2.Distance(JogadorController.Instance.transform.position, posMenina_BossSaci.transform.position) < 1);
         meninaAndando_inicioBossSaci = false;
 
-        Debug.Log("teste3");
         MudarEstadoJogador(false);
         yield return new WaitForSeconds(2); // middle button n ta passando dialogo p esse saciii
 
-        Debug.Log("teste4");
         Interagir_Geral(Saci.GetComponent<SaciDialog>(), 0);
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
@@ -251,7 +247,6 @@ public class Etapa2 : MonoBehaviour
 
         MudarEstadoJogador(false);
         yield return new WaitForSeconds(2);
-        Debug.Log("derrotou saci");
         #endregion
 
         #region saci derrotado, andar em direção, dialogo
@@ -286,7 +281,7 @@ public class Etapa2 : MonoBehaviour
     void Interagir_Geral(MonoBehaviour script, int index, string metodoNome = "Interagir")
     {
         object[] parametros = { index };
-        //Debug.Log(script.name);
+
         var metodo = script.GetType().GetMethod($"{metodoNome}");
         metodo.Invoke(script, parametros);
     }

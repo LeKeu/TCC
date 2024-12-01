@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class Respawnar : MonoBehaviour
 {
     LuzesCiclo luzesCiclo;
+    GameObject canvas;
     bool chamouMorrer;
 
     private void Start()
     {
         luzesCiclo = GameObject.Find("Global Light 2D").GetComponent<LuzesCiclo>();
+        canvas = GameObject.Find("Canvas");
     }
 
     private void Update()
@@ -24,16 +26,18 @@ public class Respawnar : MonoBehaviour
     {
         chamouMorrer = true;
         EsconderUI();
+        ArmaAtiva.Instance.AtivarArma1(false);
 
         JogadorController.Instance.podeMover = false;
         luzesCiclo.MudarCorAmbiente(Color.black, 5f);
-        RespawnarJogador();
+        StartCoroutine(RespawnarJogador());
     }
 
-    public void RespawnarJogador()
+    IEnumerator RespawnarJogador()
     {
         JogadorController.Instance.transform.position = gameObject.transform.position;
         ZerarEtapas();
+        yield return new WaitForSeconds(5);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -51,6 +55,8 @@ public class Respawnar : MonoBehaviour
 
     public void EsconderUI()
     {
-        GameObject.Find("Canvas").SetActive(false);
+        Debug.Log("escondendo ui");
+        canvas.SetActive(false);
+        Debug.Log("escondido");
     }
 }
