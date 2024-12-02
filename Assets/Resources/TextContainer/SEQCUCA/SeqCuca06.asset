@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paragrafos:
   - "Bernardo_IRM\xC3!"
-  perfilNPC: {fileID: 21300000, guid: d6b881526e0969446856aed13b8d8da4, type: 3}
+  perfilNPC: {fileID: 21300000, guid: ca9af214dc94e7a4cac615823ca6cd0b, type: 3}

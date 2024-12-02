@@ -51,7 +51,7 @@ public class Etapa2 : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "01_saci")
         {
-            sfx_script.Chuva();
+            //sfx_script.Chuva();
             JogadorController.Instance.transform.position = posMenina_INICIO.position;
             //sfx_script.FlorestaNoite();
             StartCoroutine(ClarearTela(new Color(.12f, .16f, .5f)));
@@ -162,7 +162,7 @@ public class Etapa2 : MonoBehaviour
         yield return new WaitForSeconds(2);
         particulasChuva.GetComponent<ParticleSystem>().emissionRate = 0;
         #endregion
-        sfx_script.PararChuva();
+        //sfx_script.PararChuva();
 
         Interagir_Geral(dialogosGerais.GetComponent<SeqCucaCelebracaoDialogos>(), 2, "Interagir_CelebracaoCutscene");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);

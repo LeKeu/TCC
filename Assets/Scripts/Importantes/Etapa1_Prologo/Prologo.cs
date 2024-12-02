@@ -67,7 +67,7 @@ public class Prologo : MonoBehaviour
     [SerializeField] GameObject vulto;
     [SerializeField] GameObject chuvaParticulas;
 
-    [SerializeField] List<GameObject> posVelhaNamiaSeqCuca;
+    [SerializeField] GameObject posVelhaNamiaSeqCuca;
     [SerializeField] List<GameObject> moitasVermelhas;
     [SerializeField] List<GameObject> listaPosMeninaCorrendo;
 
@@ -79,6 +79,7 @@ public class Prologo : MonoBehaviour
     bool meninaCorrendo;
     bool podeIrProxPos;
     bool velhaNamiaAuxBool;
+    bool velhaNamiaAuxBoo2;
     int velhaNamiaAuxInt;
     #endregion
 
@@ -222,7 +223,10 @@ public class Prologo : MonoBehaviour
             }
 
             if(velhaNamiaAuxBool)
-                velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca[velhaNamiaAuxInt].transform.position, 1f * Time.deltaTime);
+                velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, JogadorController.Instance.transform.position, 1f * Time.deltaTime);
+
+            if (velhaNamiaAuxBoo2)
+                velhaNamiaCelebracaoGO.transform.position = Vector2.MoveTowards(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca.transform.position, 1f * Time.deltaTime);
         }
         #endregion
 
@@ -432,22 +436,22 @@ public class Prologo : MonoBehaviour
         virtualCamera.Follow = JogadorController.Instance.transform;
         Etapas.BrigaCelebracao = false;
         aconteceuBriga = true;
+
+        //TEMP
+        //ajusteTamanhoCamera.AjustarTamanhoCamera(tempo: 30, tamanho:10);
     }
 
     IEnumerator CucaSequestraMenino()
     {
-        Debug.Log("oi");
-        sfx_script.Chuva();
+        //sfx_script.Chuva();
         sfx_script.PararAudioSource03();
         chuvaParticulas.SetActive(true);
 
-        Debug.Log("oi1");
         Etapas.CucaSequestro = true;
         oQueFazer_script.AtivarPainelQuests(false);
 
-        Debug.Log("oi2");
         #region Velha namia falando de longe
-        velhaNamiaCelebracaoGO.transform.position = posVelhaNamiaSeqCuca[0].transform.position;
+        velhaNamiaCelebracaoGO.transform.position = posVelhaNamiaSeqCuca.transform.position;
         Debug.Log("oi3");
 
         MudarEstadoJogador(false);
@@ -457,20 +461,24 @@ public class Prologo : MonoBehaviour
         #endregion
 
         #region velha namia conversando com menina e indo embora
+        Debug.Log("oi5");
         velhaNamiaAuxInt = 1;
         velhaNamiaAuxBool = true;
-        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca[1].transform.position) < 0.1f);
+        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, JogadorController.Instance.transform.position) < 1.5f);
+        Debug.Log("oi6");
         velhaNamiaAuxBool = false;
 
         Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 1);
+        Debug.Log("oi7");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
 
         yield return new WaitForSeconds(2);
 
         velhaNamiaAuxInt = 0;
-        velhaNamiaAuxBool = true;
-        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca[0].transform.position) < 0.1f);
-        velhaNamiaAuxBool = false;
+        velhaNamiaAuxBoo2 = true;
+        yield return new WaitUntil(() => Vector2.Distance(velhaNamiaCelebracaoGO.transform.position, posVelhaNamiaSeqCuca.transform.position) < 0.1f);
+        Debug.Log("oi8");
+        velhaNamiaAuxBoo2 = false;
         #endregion
 
         #region menina falando sozinha

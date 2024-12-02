@@ -118,7 +118,14 @@ public class SFX : MonoBehaviour
         }
     }
 
-    public void PararMusicaCombate() => audioSource[1].Stop();
+    public void PararMusicaCombate()
+    {
+        audioSource[4].Stop();      
+        //audioSource[4].mute = true;
+        //audioSource[4].clip = null;  
+        //audioSource[4].loop = false;
+        //audioSource[4].enabled = false; 
+    }
 
     public void ComunidadeSino()
     {
