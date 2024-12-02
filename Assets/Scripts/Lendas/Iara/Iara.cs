@@ -37,6 +37,7 @@ public class Iara : MonoBehaviour
     [SerializeField] GameObject AreaJatoDireto;
 
     bool Boss1;
+    bool estaBoss;
     bool estaNoCentro;
     bool chamandoDistante;
     bool chamandoCentro;
@@ -45,6 +46,7 @@ public class Iara : MonoBehaviour
     bool estaAtqPerseguidor;
     bool estaAtqDireto;
     bool estaAtqNenhum;
+    bool estaDerrotada;
 
     int posAnterior = 0;
     int vidaAtual;
@@ -52,7 +54,8 @@ public class Iara : MonoBehaviour
     int indexAtq = 0;
 
     public Vector2 movDirecao;
-    
+
+    public static bool IARA_BR_FINALIZADO;
 
     private void Start()
     {
@@ -67,12 +70,23 @@ public class Iara : MonoBehaviour
         vidaAtual = Vida;
         auxVida = Vida / 4;
         
-        Boss1 = true;
+        //Boss1 = true;
     }
+
+    #region TEMPORÁRIO PARA BOSSRUSH
+    public IEnumerator IARA_BOSSRUSH()
+    {
+        Boss1 = true;
+
+        yield return new WaitUntil(() => estaDerrotada);
+        yield return new WaitForSeconds(2);
+        IARA_BR_FINALIZADO = true;
+    }
+    #endregion
 
     private void Update()
     {
-        if(Boss1)
+        if(Boss1 && !estaBoss)
             EstadosBoss1();
         if(Boss1 && estado == Estado.Centro) 
         { rb.MovePosition(rb.position + movDirecao * (velocidade * Time.fixedDeltaTime)); }
@@ -81,6 +95,8 @@ public class Iara : MonoBehaviour
 
     void EstadosBoss1()
     {
+        estaBoss = true;
+        Debug.Log("aqui");
         TamanhoCamera(7);
         ChecarFaseBoss1();
 
@@ -132,6 +148,7 @@ public class Iara : MonoBehaviour
 
         balaSpawner.PararTiros();
         chamandoDistante = false;
+        estaBoss = false;
     }
     #endregion
 
@@ -170,6 +187,7 @@ public class Iara : MonoBehaviour
             }
             yield return new WaitUntil(() => !estaAtacandoCentro);
             chamandoCentro = false;
+            estaBoss = false;
         }
     }
 
@@ -245,7 +263,11 @@ public class Iara : MonoBehaviour
             vidaAtual -= dano;
             barraVidaBosses.ReceberDano(dano);
         }
-        else Boss1 = false;
+        else
+        {
+            estaDerrotada = true;
+            Boss1 = false;
+        }
     }
 
     void TamanhoCamera(float tam)

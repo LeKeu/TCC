@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ee0c2c746551d49b103a7d0574f628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chuva: {fileID: 8300000, guid: 84407a2732b64e7418c3e11e9451e2c9, type: 3}
   ventosAssustadores: []
   florestaNoite: {fileID: 8300000, guid: ea97114ef2619e246bbd1c34dd51d282, type: 3}
   comunidadeFloresta: {fileID: 8300000, guid: f6353a41a41a5b54daf6d6a1c53d0896, type: 3}

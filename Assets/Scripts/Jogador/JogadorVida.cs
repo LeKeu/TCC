@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class JogadorVida : Singleton<JogadorVida>
 {
     //[SerializeField] TremerCamera tremerCamera;
-    int vidaMax = 30;
+    public int vidaMax = 30;
     [SerializeField] float empurraoValor = 10f;
     [SerializeField] float tempoRecoveryDano = .5f;
     [SerializeField] float tempoHitstop = 0.1f;
@@ -34,6 +34,7 @@ public class JogadorVida : Singleton<JogadorVida>
     void Start()
     {
         vidaAtual = vidaMax;
+        podeLevarDano = true;
         AtualizarVidaSlider();
     }
 
@@ -88,6 +89,8 @@ public class JogadorVida : Singleton<JogadorVida>
 
         podeLevarDano = false;
         vidaAtual -= dano;
+        Debug.Log("dano="+dano);
+        Debug.Log("vidaatual="+vidaAtual);
         StartCoroutine(RecoveryDanoRoutine());
         AtualizarVidaSlider();
         ChecarSePlayerMorreu();

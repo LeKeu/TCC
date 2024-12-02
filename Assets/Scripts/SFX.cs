@@ -7,6 +7,8 @@ public class SFX : MonoBehaviour
 {
     AudioSource[] audioSource;
 
+    [SerializeField] AudioClip chuva;
+
     #region Floresta Noite
     [Header("Floresta Noite")]
     [SerializeField] List<AudioClip> ventosAssustadores;
@@ -76,6 +78,18 @@ public class SFX : MonoBehaviour
     public void TocarAudioSource03() => audioSource[2].Play();
 
     public void Purificar() => audioSource[3].PlayOneShot(purificar);
+
+    public void Chuva()
+    {
+        if (!audioSource[1].isPlaying)
+        {
+            audioSource[1].clip = chuva; 
+            audioSource[1].loop = true; 
+            audioSource[1].Play();
+        }
+    }
+
+    public void PararChuva() => audioSource[1].Stop();
     #endregion
 
     public void FlorestaNoite()
@@ -95,10 +109,12 @@ public class SFX : MonoBehaviour
 
     public void MusicaCombate()
     {
-        if (audioSource[1].isPlaying)
+        Debug.Log("m combate");
+        if (!audioSource[4].isPlaying)
         {
-            audioSource[1].PlayOneShot(musicaCombate);
-            audioSource[1].loop = true;
+            audioSource[4].clip = musicaCombate;
+            audioSource[4].loop = true;
+            audioSource[4].Play();
         }
     }
 

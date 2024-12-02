@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: VelhaNamiaCelebracao1
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Velha N\xE2mia_ vamos continuar a celebra\xE7\xE3o yasss"
+  - "Velha N\xE2mia_ Ent\xE3o, queridos, vamos continuar."
   perfilNPC: {fileID: 21300000, guid: 6ce5a428ef0236c4cb52029b641c196b, type: 3}

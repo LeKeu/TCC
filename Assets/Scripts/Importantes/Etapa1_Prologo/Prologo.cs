@@ -436,17 +436,23 @@ public class Prologo : MonoBehaviour
 
     IEnumerator CucaSequestraMenino()
     {
+        Debug.Log("oi");
+        sfx_script.Chuva();
         sfx_script.PararAudioSource03();
         chuvaParticulas.SetActive(true);
 
+        Debug.Log("oi1");
         Etapas.CucaSequestro = true;
         oQueFazer_script.AtivarPainelQuests(false);
 
+        Debug.Log("oi2");
         #region Velha namia falando de longe
         velhaNamiaCelebracaoGO.transform.position = posVelhaNamiaSeqCuca[0].transform.position;
+        Debug.Log("oi3");
 
         MudarEstadoJogador(false);
         Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 0);
+        Debug.Log("oi4");
         yield return new WaitUntil(() => JogadorController.Instance.acabouDialogo);
         #endregion
 
@@ -560,6 +566,7 @@ public class Prologo : MonoBehaviour
 
     IEnumerator Iniciar_FlorestaEscura()
     {
+        //sfx_script.Chuva();
         JogadorController.Instance.transform.position = posInicialMenina.position;
         oQueFazer_script.GerenciarQuadroQuest_celebr_seq(3);
 

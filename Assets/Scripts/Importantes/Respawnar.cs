@@ -41,6 +41,15 @@ public class Respawnar : MonoBehaviour
         yield return new WaitForSeconds(5);
         JogadorController.Instance.transform.position = gameObject.transform.position;
         JogadorVida.vidaAtual = vidaTemp;
+        if (SceneManager.GetActiveScene().name == "BOSSRUSH")
+        {
+            Saci.SACI_BR_FINALIZADO = false;
+            Iara.IARA_BR_FINALIZADO = false;
+            Cuca.CUCA_BR_FINALIZADO = false;
+            SceneManager.LoadScene("Inicio");
+            JogadorVida.vidaAtual = 50;
+            yield break;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

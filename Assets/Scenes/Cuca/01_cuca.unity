@@ -875,6 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009ad14f6d2dc6141b3d3c37645a5b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armasAtivas: 0
 --- !u!1 &194523479
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,6 +974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qntdTransparencia: 0.8
   sumirTempo: 0.4
+  tutorial_script: {fileID: 0}
 --- !u!1 &204398540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   qntdTransparencia: 0.8
   sumirTempo: 0.4
+  tutorial_script: {fileID: 0}
 --- !u!4 &235559923
 Transform:
   m_ObjectHideFlags: 0
@@ -2866,38 +2869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7c288bdc6004f4f9fa443caa0027e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.2
-  gradient:
-    serializedVersion: 2
-    key0: {r: 0, g: 0.072480515, b: 0.5660378, a: 1}
-    key1: {r: 0.22058824, g: 0.28470686, b: 0.7205882, a: 1}
-    key2: {r: 0.9056604, g: 0.65330625, b: 0.13243146, a: 0}
-    key3: {r: 0.990566, g: 0.96866375, b: 0.9204788, a: 0}
-    key4: {r: 0.90588236, g: 0.654902, b: 0.13333334, a: 0}
-    key5: {r: 0.8113208, g: 0.27515262, b: 0.06505875, a: 0}
-    key6: {r: 0, g: 0.07058824, b: 0.5647059, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 12414
-    ctime2: 20944
-    ctime3: 33612
-    ctime4: 43915
-    ctime5: 51769
-    ctime6: 65535
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 7
-    m_NumAlphaKeys: 2
-  _cycleValue: 0
 --- !u!1 &629752555
 GameObject:
   m_ObjectHideFlags: 0
@@ -3278,12 +3249,19 @@ MonoBehaviour:
   velDash: 3
   trailRenderer: {fileID: 1671461586}
   armaCollider: {fileID: 517390139}
+  velInicial: 0
+  acabouDialogo: 0
   estaEscondido: 0
   estaNaAgua: 0
   estaNaPonte: 0
   estaSendoPerseguido: 0
   estaAndando: 0
   podeMover: 0
+  podeFalar: 0
+  podeAtacar: 0
+  podeFlipX: 0
+  estaDuranteCutscene: 0
+  falandoSozinha: 0
 --- !u!50 &695872229
 Rigidbody2D:
   serializedVersion: 4
@@ -3456,7 +3434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d591c80406fd0d49899242da603f15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMax: 3
   empurraoValor: 10
   tempoRecoveryDano: 0.5
   tempoHitstop: 0.1
@@ -4359,7 +4336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c5a1953f29b9543a4c66013ed16a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partRippleAgua: {fileID: 0}
 --- !u!19719996 &913725090
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -5039,7 +5015,7 @@ Tilemap:
       - {fileID: 475806399, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: -581906228, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
       - {fileID: 1337139000, guid: fb5a82b1f233b44ab934cb17882550c8, type: 3}
-      m_AnimationSpeed: 2.5
+      m_AnimationSpeed: 2.5000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -1, y: -8, z: 0}
@@ -19216,6 +19192,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f25ebc50f0465ae4d91209f0b1e01d80, type: 3}
+--- !u!4 &1152916439 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+  m_PrefabInstance: {fileID: 2003501120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1191527044
 GameObject:
   m_ObjectHideFlags: 0
@@ -28710,7 +28691,6 @@ MonoBehaviour:
   NPCDialogoTexto: {fileID: 409694339}
   NPCPerfil: {fileID: 2099292157}
   JOGADORPerfil: {fileID: 393716685}
-  digitarVel: 10
 --- !u!1 &1348391685
 GameObject:
   m_ObjectHideFlags: 0
@@ -29979,7 +29959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c5a1953f29b9543a4c66013ed16a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partRippleAgua: {fileID: 0}
 --- !u!1 &1505222525
 GameObject:
   m_ObjectHideFlags: 0
@@ -30195,6 +30174,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 738489065}
+  - {fileID: 1152916439}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1619727825
@@ -36773,6 +36753,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &2003501120
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1619727824}
+    m_Modifications:
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.8694513
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5986174
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.086364344
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646103819905003394, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643353175963343172, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
+      propertyPath: m_Name
+      value: AudioSource
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b811b35249950d4a8f3a2c5b5a61bf3, type: 3}
 --- !u!1 &2005091486
 GameObject:
   m_ObjectHideFlags: 0
@@ -44756,6 +44793,7 @@ MonoBehaviour:
   tamanhoAreaAtaque: 3
   tempoEsperaImp: 1.5
   distMaxJogador: 1
+  danoGarra: 3
   projetil: {fileID: 2230437733496348883, guid: e448584cadf7c5c4f85e7e56fe82e14b, type: 3}
   qndtProjetil: 2
   tempoEntreBalas: 0.5

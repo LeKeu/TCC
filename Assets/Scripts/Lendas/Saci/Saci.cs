@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Saci : MonoBehaviour
 {
@@ -24,13 +25,28 @@ public class Saci : MonoBehaviour
     int posAnterior = 0;
 
     string nome = "Saci";
+    public static bool SACI_BR_FINALIZADO;
+
+    private void Awake()
+    {
+        barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
+        
+    }
 
     void Start()
     {
-        barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
         //BatalhaBoss1();
     }
 
+    #region TEMPORÁRIO PARA BOSSRUSH
+    public IEnumerator SACI_BOSSRUSH()
+    {
+        BatalhaBoss1();
+        yield return new WaitUntil(() => estaDerrotado);
+        yield return new WaitForSeconds(2);
+        SACI_BR_FINALIZADO = true;
+    }
+    #endregion
 
     public void IniciarBatalha_primeiroEncontroSaci()
     {

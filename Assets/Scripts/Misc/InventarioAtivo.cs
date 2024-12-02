@@ -23,8 +23,9 @@ public class InventarioAtivo : MonoBehaviour
     private void Awake()
     {
         jogadorControls = new JogadorControls();
-
-
+    }
+    private void Start()
+    {
         if (cenasComArmaDesativada.Contains(SceneManager.GetActiveScene().name))
         {
             DesativarArma();
@@ -32,8 +33,7 @@ public class InventarioAtivo : MonoBehaviour
         else
         {
             armasAtivas = true;
-            //DESATIVAR MUDANÇA DE ARMA P ARCO, SOMENTE DURANTE DEMO
-            //jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
+            jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
 
             AtivarEspacoHighlight(0);
         }
@@ -49,8 +49,7 @@ public class InventarioAtivo : MonoBehaviour
     {
         armasAtivas = acao;
         gameObject.SetActive(acao);
-        //DESATIVAR MUDANÇA DE ARMA P ARCO, SOMENTE DURANTE DEMO
-        //jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
+        jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
 
         AtivarEspacoHighlight(0);
     }
@@ -63,12 +62,14 @@ public class InventarioAtivo : MonoBehaviour
 
     private void AtivarEspaco(int numValue) // ativar espaço ativo
     {
-        if(armasAtivas)
+        if (armasAtivas)
             AtivarEspacoHighlight(numValue - 1);
     }
 
     private void AtivarEspacoHighlight(int indexNum)
     {
+        if (indexNum > 1) return;
+
         indexSlotAtivo = indexNum;
 
         foreach (Transform inventorySlot in this.transform)
@@ -101,7 +102,6 @@ public class InventarioAtivo : MonoBehaviour
 
         ArmaAtiva.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
         novaArma.transform.parent = ArmaAtiva.Instance.transform;
-
         if (armasAtivas)
         {
             ArmaAtiva.Instance.gameObject.SetActive(true);

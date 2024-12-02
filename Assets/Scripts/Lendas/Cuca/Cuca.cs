@@ -19,7 +19,7 @@ public class Cuca : MonoBehaviour
 
     int vidaAtual;
     string nome = "Cuca";
-    bool derrotada;
+    bool estaDerrotada;
 
     #region Movimentacao
     [SerializeField] float distMaxJogadorNormal = 5f;
@@ -100,6 +100,8 @@ public class Cuca : MonoBehaviour
     bool estaAtirandoProjetil;
     #endregion
 
+    public static bool CUCA_BR_FINALIZADO;
+
     private void Start()
     {
         barraVidaBosses = GameObject.Find("Geral").GetComponent<BarraVidaBosses>();
@@ -114,12 +116,22 @@ public class Cuca : MonoBehaviour
         ataque = Ataques.Distante;
     }
 
+    #region TEMPORÁRIO PARA BOSSRUSH
+    public IEnumerator CUCA_BOSSRUSH()
+    {
+        
+        yield return new WaitUntil(() => estaDerrotada);
+        yield return new WaitForSeconds(2);
+        CUCA_BR_FINALIZADO = true;
+    }
+    #endregion
+
     private void Update()
     {
         if (podeMover)
             Movimentar();
 
-        ControleFases();
+        IniciarLuta_ControleFases();
     }
 
     #region Movimentação
@@ -168,12 +180,12 @@ public class Cuca : MonoBehaviour
         velAux = velocidade;
     }
 
-    void ControleFases()
+    void IniciarLuta_ControleFases()
     {
         if (!barraVidaBosses.ContainerEstaAtivo()) 
             barraVidaBosses.CriarContainer(VidaMaxFase1, nome);
 
-        if (!derrotada)
+        if (!estaDerrotada)
         {
             if (fase == Fases.Fase1 && !chamandoFases)
                 StartCoroutine(FasesFunc(0));
@@ -383,7 +395,7 @@ public class Cuca : MonoBehaviour
 
     void Derrotar()
     {
-        derrotada = true;
+        estaDerrotada = true;
         GameObject[] copias = GameObject.FindGameObjectsWithTag("CucaCopia");
         if(copias.Length != 0)
         {

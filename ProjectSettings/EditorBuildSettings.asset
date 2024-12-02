@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Geral/Template.unity
     guid: 87fe75f070145824290a12e931c32cc4
+  - enabled: 1
+    path: Assets/Scenes/Geral/BOSSRUSH.unity
+    guid: 9f0cf9b1b911abb46867079d9c47e682
   m_configObjects: {}

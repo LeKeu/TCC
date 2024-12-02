@@ -12,7 +12,7 @@ public class OQueFazer : MonoBehaviour
     { "Fale com a Velha Nâmia.", "Vá com a Tia Marta.", "Fale com o Seu Pedro.", "Ajude o Pedrinho.", "Pegue seu almoço com a Wanda." };
 
     List<string> celebr_seq = new List<string>()
-    { "Fale com o povo ao redor antes de começar a celebração", "Procure pela bola de futebol perto das casas", "Procure seu irmão", "Siga os rastros do vulto." };
+    { "Fale com o povo ao redor antes de começar a celebração", "Procure pela bola de futebol perto das casas", "Vá para sua casa, a telha dela é azul", "Siga os rastros do vulto." };
 
     List<string> saci_cenas = new List<string>()
     { "Siga os rastros e encontre seu irmão.", "Sobreviva ao encontro!", "Explore a floresta e tente encontrar seu irmão.", "saci 4" };
