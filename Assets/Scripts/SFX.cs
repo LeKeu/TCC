@@ -49,6 +49,7 @@ public class SFX : MonoBehaviour
     #region combate
     [Header("Combate")]
     [SerializeField] AudioClip musicaCombate;
+    [SerializeField] AudioClip purificar;
     #endregion
 
     private void Start()
@@ -73,6 +74,8 @@ public class SFX : MonoBehaviour
     #region geral
     public void PararAudioSource03() => audioSource[2].Stop();
     public void TocarAudioSource03() => audioSource[2].Play();
+
+    public void Purificar() => audioSource[3].PlayOneShot(purificar);
     #endregion
 
     public void FlorestaNoite()

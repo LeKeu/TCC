@@ -7,7 +7,7 @@ public abstract class NPCs : MonoBehaviour, IInteractble
 {
     [SerializeField] private SpriteRenderer _interagirSprite;
     [SerializeField] public Tutorial tutorial_script;
-    private const float DISTANCIA = 1f;
+    private const float DISTANCIA = .7f;
     public static int primeiraConversa = 0;
 
     void Update()

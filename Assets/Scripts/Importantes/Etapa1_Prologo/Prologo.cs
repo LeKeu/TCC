@@ -173,16 +173,19 @@ public class Prologo : MonoBehaviour
 
         luzesCiclo.MudarCorAmbiente(Color.black, .8f);
         yield return new WaitForSeconds(segundos);
-        #endregion
+
+        //remover os dois abaixo
         SceneManager.LoadScene("02_comunidade");
+        JogadorController.Instance.acabouDialogo = true;
+        #endregion
     }
 
     private void FixedUpdate()
     {
         if (FinalizarQuests.todosTutCompleto && !finalizouQuests)
-            CompletarQuests();
+            StartCoroutine(CompletarQuests());
 
-        if(qntdNpcsConversados >= totalNpcsConversaveis  && !mudouTextAux)
+        if(qntdNpcsConversados >= totalNpcsConversaveis  && !mudouTextAux && SceneManager.GetActiveScene().name == "02_comunidade")
         {
             StartCoroutine(IniciarProcurarBola());
         }
@@ -249,7 +252,7 @@ public class Prologo : MonoBehaviour
     {
         if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerBriga" && qntdNpcsConversados >= totalNpcsConversaveis && !aconteceuBriga)
             StartCoroutine(Brigar());
-        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" /*&& aconteceuBriga*/)
+        if (collision.GetComponent<JogadorController>() && gameObject.name == "TriggerCucaSeq" && aconteceuBriga)
             StartCoroutine(CucaSequestraMenino());
     } 
 
@@ -324,10 +327,15 @@ public class Prologo : MonoBehaviour
         sfx_script.TocarAudioSource03();
     }
 
-    void CompletarQuests()
+    IEnumerator CompletarQuests()
     {
         finalizouQuests = true;
+
+        Interagir_Celebracao(dialogosGeraisSeq.GetComponent<SeqCucaCelebracaoDialogos>(), 1);
+        yield return new WaitForSeconds(3);
+
         StartCoroutine(EscurecerTela());
+        //SceneManager.LoadScene("02_comunidade");
     }
 
     IEnumerator Brigar()

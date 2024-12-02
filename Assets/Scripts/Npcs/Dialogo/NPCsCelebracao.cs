@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public abstract class NPCsCelebracao : MonoBehaviour, IInteractble
 {
     [SerializeField] SpriteRenderer _interagirSprite;
-    private const float DISTANCIA = 1f;
+    private const float DISTANCIA = .7f;
 
     void Update()
     {

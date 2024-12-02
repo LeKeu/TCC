@@ -27,6 +27,17 @@ public class InvocadoInimigo : BasicAndar
     bool estaAtordoado;
     bool estaNaRange;
 
+    Animator animator;
+    Sprite loboDormindo;
+    SFX sfx_script;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        loboDormindo = GameObject.Find("LoboDormindo").GetComponent<SpriteRenderer>().sprite;
+        sfx_script = GameObject.Find("AudioSource").GetComponent<SFX>();
+    }
+
     private void Awake()
     {
         velInicial = movVel;
@@ -47,7 +58,7 @@ public class InvocadoInimigo : BasicAndar
     private void Update()
     {
         if (estaAtordoado && Input.GetKeyDown(KeyCode.Q) && estaNaRange)
-            Purificar();
+            StartCoroutine(Purificar());
     }
 
     private void FixedUpdate()
@@ -134,19 +145,26 @@ public class InvocadoInimigo : BasicAndar
         Vida++;
     }
 
-    void Purificar()
+    IEnumerator Purificar()
     {
         estaPurificado = true;
         estaAtordoado = false;
         circleCollider.enabled = false;
         gameObject.transform.tag = "Untagged";
 
-        gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+        //gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
 
-        Desfrizar();
+        //Gambiarra
+        sfx_script.Purificar();
+        yield return new WaitForSeconds(1);
+        animator.enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().sprite = loboDormindo;
+        //
+
+        //Desfrizar();
         estado = Estado.Andando;
         SetVelocidade(2);
-        StartCoroutine(Andando(2));
+        //StartCoroutine(Andando(2));
     }
 
     void Freezar() => rb.constraints = RigidbodyConstraints2D.FreezeAll;

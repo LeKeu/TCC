@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FinalizarQuestsTut01
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Finalizar_A comida ainda n\xE3o t\xE1 pronta."
-  - "Finalizar_V\xE3o falar com o povo por a\xED, v\xE3o."
+  - "Wanda_A comida ainda n\xE3o t\xE1 pronta."
+  - "Wanda_V\xE3o falar com o povo por a\xED, v\xE3o."
   perfilNPC: {fileID: 0}

@@ -76,6 +76,7 @@ MonoBehaviour:
   garraCuca: {fileID: 0}
   meninaCorpoCaindo: {fileID: 0}
   musicaCombate: {fileID: 8300000, guid: 751a1bb377536494093445ef89d63794, type: 3}
+  purificar: {fileID: 8300000, guid: a149f23889673be449823beb8ea2c152, type: 3}
 --- !u!82 &2629074401485225935
 AudioSource:
   m_ObjectHideFlags: 0

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FinalizarQuests01
   m_EditorClassIdentifier: 
   paragrafos:
-  - "Finalizar_Finalmente voc\xEAs chegaram, ein. Bora, t\xE1 na hora de almo\xE7ar."
-  perfilNPC: {fileID: 0}
+  - "Wanda_Finalmente voc\xEAs chegaram, ein. Bora, t\xE1 na hora de almo\xE7ar."
+  perfilNPC: {fileID: 21300000, guid: d6b881526e0969446856aed13b8d8da4, type: 3}

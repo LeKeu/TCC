@@ -23,6 +23,12 @@ public class DialogoController : MonoBehaviour
     const string HTML_ALPHA = "<color=#00000000>";
     const float MAX_DIGITAR_TEMPO = 0.1f;
 
+    private void Start()
+    {
+        NPCPerfil.color = new Color(NPCPerfil.color.r, NPCPerfil.color.g, NPCPerfil.color.b, 0f);
+        JOGADORPerfil.color = new Color(JOGADORPerfil.color.r, JOGADORPerfil.color.g, JOGADORPerfil.color.b, 0f);
+    }
+
     public void DisplayProximoParagrafo(DialogoTexto dialogoTexto)
     {
         if(paragrafos.Count == 0)
@@ -69,17 +75,27 @@ public class DialogoController : MonoBehaviour
         NPCNomeTexto.text = nomeFalando;
 
         if(nomeFalando != "Aila") // colocando o perfil dp npc da vez
+        {
             NPCPerfil.sprite = AUX_NPCS_RESOURCES.perfilsNPCs[EncontrarIndexSprite(nomeFalando)];
+            //image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+            NPCPerfil.color = new Color(NPCPerfil.color.r, NPCPerfil.color.g, NPCPerfil.color.b, 0f);
+        }
 
         if (aux[0].Trim() == nomeFalando) // mudança de sprite dependendo de qual personagem estiver falando
         {
             JOGADORPerfil.GetComponent<Image>().color = Color.grey;
             NPCPerfil.GetComponent<Image>().color = Color.white;
+
+            NPCPerfil.color = new Color(NPCPerfil.color.r, NPCPerfil.color.g, NPCPerfil.color.b, 0f);
+            JOGADORPerfil.color = new Color(JOGADORPerfil.color.r, JOGADORPerfil.color.g, JOGADORPerfil.color.b, 0f);
         }
         else
         {
             JOGADORPerfil.GetComponent<Image>().color = Color.white;
             NPCPerfil.GetComponent<Image>().color = Color.grey;
+
+            NPCPerfil.color = new Color(NPCPerfil.color.r, NPCPerfil.color.g, NPCPerfil.color.b, 0f);
+            JOGADORPerfil.color = new Color(JOGADORPerfil.color.r, JOGADORPerfil.color.g, JOGADORPerfil.color.b, 0f);
         }
 
         estaDigitando = true;
@@ -135,7 +151,10 @@ public class DialogoController : MonoBehaviour
         NPCPerfil.sprite = dialogoTexto.perfilNPC;
         JOGADORPerfil.sprite = JogadorController.Instance.perfil;
 
-        for(int i = 0; i < dialogoTexto.paragrafos.Length; i++)
+        NPCPerfil.color = new Color(NPCPerfil.color.r, NPCPerfil.color.g, NPCPerfil.color.b, 0f);
+        JOGADORPerfil.color = new Color(JOGADORPerfil.color.r, JOGADORPerfil.color.g, JOGADORPerfil.color.b, 0f);
+
+        for (int i = 0; i < dialogoTexto.paragrafos.Length; i++)
         {
             //Debug.Log(dialogoTexto.paragrafos[i]);
             paragrafos.Enqueue(dialogoTexto.paragrafos[i]);
