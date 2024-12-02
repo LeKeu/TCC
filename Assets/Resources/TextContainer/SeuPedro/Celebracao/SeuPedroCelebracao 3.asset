@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SeuPedroCelebracao 3
   m_EditorClassIdentifier: 
   paragrafos:
-  - Seu Pedro_dps briga 22222
+  - "Seu Pedro_Olha, garota. Vai falar com o teu irm\xE3o."
   perfilNPC: {fileID: 0}

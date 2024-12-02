@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SeuPedroCelebracao 2
   m_EditorClassIdentifier: 
   paragrafos:
-  - Seu Pedro_dps briga 1
+  - "Seu Pedro_J\xE1 falaste com o teu irm\xE3o?"
   perfilNPC: {fileID: 0}

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Menino : MonoBehaviour
 {
-    [SerializeField] public float movVel = 2f;
+    public float movVel = 1.5f;
     [SerializeField] float distMaxJogador = 1f;
 
     #region Parametros de Dialogo
@@ -63,6 +63,9 @@ public class Menino : MonoBehaviour
                 if (estaLonge)
                     rb.MovePosition(rb.position + movDir * (movVel * Time.deltaTime));
         }
+
+        //if (JogadorController.Instance.gameObject.GetComponent<Rigidbody2D>().velocity == Vector2.zero && SceneManager.GetActiveScene().name == "01_comunidade" && !Etapas.MeninaTocandoUkulele)
+        //    FreezarMov();
     }
 
     public void Interagir()

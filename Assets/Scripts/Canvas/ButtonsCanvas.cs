@@ -9,4 +9,5 @@ public class ButtonsCanvas : MonoBehaviour
     public void MenuInicial() => SceneManager.LoadScene("Inicio");
     public void TelaDemo() => SceneManager.LoadScene("FinalDemo");
     public void Template() => SceneManager.LoadScene("Template");
+    public void Sair() => Application.Quit();
 }

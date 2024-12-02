@@ -5,7 +5,7 @@ public class AtqDiretoJato : MonoBehaviour
     float timerTamanho = 0f;
     bool podeRotacionar;
 
-    int qntdRot = 0;
+    //int qntdRot = 0;
 
     private void Update()
     {

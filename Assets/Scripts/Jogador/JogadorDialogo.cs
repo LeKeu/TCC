@@ -7,7 +7,7 @@ public class JogadorDialogo : Singleton<JogadorDialogo>
     [SerializeField] private List<DialogoTexto> dt;
     [SerializeField] private DialogoController dialogoController;
 
-    int indexAtual = 0;
+    //int indexAtual = 0;
 
     [SerializeField] private Sprite perfil;
 

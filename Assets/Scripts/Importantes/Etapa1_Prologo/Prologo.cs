@@ -291,6 +291,7 @@ public class Prologo : MonoBehaviour
     {
         #region Tocar ukulele
         //sfx_script.PararAudioSource03();
+        Etapas.MeninaTocandoUkulele = true;
         oQueFazer_script.AtivarPainelQuests(false);
         #endregion
 
@@ -304,7 +305,6 @@ public class Prologo : MonoBehaviour
         yield return new WaitForSeconds(10); // música tocando por x segundos
         #endregion
 
-        Etapas.MeninaTocandoUkulele = true;
 
         MudarEstadoJogador(false);
 

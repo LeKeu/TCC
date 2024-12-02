@@ -40,6 +40,7 @@ public class Etapa2 : MonoBehaviour
     [SerializeField] Transform posMenina_BossSaci;
     [SerializeField] Transform posMenina_DepoisBossSaci;
     [SerializeField] Transform posSaci_DepoisBossSaci;
+    //[SerializeField] GameObject barreiraEntrada;
 
     bool aconteceuBossSaci;
     bool meninaAndando_inicioBossSaci;
@@ -239,6 +240,8 @@ public class Etapa2 : MonoBehaviour
 
     IEnumerator BossSaci()
     {
+        //barreiraEntrada.GetComponent<BoxCollider2D>().enabled = true;
+
         aconteceuBossSaci = true;
         Etapas.BossSaci = true;
         oQueFazer_script.AtivarPainelQuests(false);

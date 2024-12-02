@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Transparencia : MonoBehaviour
 {
@@ -11,9 +12,24 @@ public class Transparencia : MonoBehaviour
 
     private SpriteRenderer[] spriteRenderer;
 
+    static bool comecarTut;
+    bool jogadorNaMoita;
+
+    [SerializeField] Tutorial tutorial_script;
+
     private void Awake()
     {
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
+        
+    }
+
+    private void Update()
+    {
+        if (!comecarTut && jogadorNaMoita && SceneManager.GetActiveScene().name == "01_comunidade")
+        {
+            comecarTut = true;
+            tutorial_script.IniciarTutorial_PararTempo("É possível se esconder em moitas agrupadas. Aperte 'Botão esquerdo' para continuar.", KeyCode.Mouse0);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,6 +38,7 @@ public class Transparencia : MonoBehaviour
         {
             //if (spriteRenderer)
             //{
+            jogadorNaMoita = true;
                 StartCoroutine(SumirSprite(spriteRenderer, sumirTempo, spriteRenderer[0].color.a, qntdTransparencia));
                 if (!JogadorController.Instance.estaSendoPerseguido) JogadorController.Instance.estaEscondido = true;
             //}

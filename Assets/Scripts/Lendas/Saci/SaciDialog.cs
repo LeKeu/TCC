@@ -10,7 +10,7 @@ public class SaciDialog : MonoBehaviour
     [SerializeField] Sprite perfil;
     [SerializeField] private DialogoController dialogoController;
     [SerializeField] private List<DialogoTexto> dt;
-    int indexAtual = 0;
+    //int indexAtual = 0;
     #endregion
 
     private void Update()
