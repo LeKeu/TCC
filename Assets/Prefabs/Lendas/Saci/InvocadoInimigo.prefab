@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1524198174559855229}
   - component: {fileID: 5080200626853080553}
   - component: {fileID: 6210500461251987438}
+  - component: {fileID: -195879968585180374}
   m_Layer: 0
   m_Name: InvocadoInimigo
   m_TagString: InvocadoInimigo
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a685047a5e57a7a4994795c62525bdf8, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -182,6 +183,7 @@ MonoBehaviour:
   movVel: 2
   pegarDist: 2
   Vida: 4
+  Dano: 2
 --- !u!61 &6210500461251987438
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -227,3 +229,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0.2
+--- !u!95 &-195879968585180374
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162080089506050093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e349a8a7f2bcd684fbc98dfbb5e8b1aa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
