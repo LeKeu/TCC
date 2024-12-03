@@ -20,6 +20,7 @@ public class InimigoVida : MonoBehaviour
     float tempoAtual = 0f;
 
     Rigidbody2D rb;
+    Animator animator;
 
     public bool estaCorrompido;
     bool dropouObj; // dropar apenas uma vez o obj qnd for purificado
@@ -29,6 +30,7 @@ public class InimigoVida : MonoBehaviour
         estaCorrompido = true;
 
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         flash = GetComponent<Flash>();
         empurrao = GetComponent<Empurrao>();
         inimigoIA = GetComponent<InimigoIA>();
@@ -42,7 +44,9 @@ public class InimigoVida : MonoBehaviour
     private void Update()
     {
         if (estaAtordoado) 
-        { 
+        {
+            animator.SetBool("atordoado", true);
+
             SerPurificado();
             tempoAtual += Time.deltaTime;
         }
@@ -74,6 +78,7 @@ public class InimigoVida : MonoBehaviour
         }else if (tempoAtual > TempoAtordoamento)
         {
             EstaNaRange = false; estaAtordoado = false;
+            animator.SetBool("atordoado", false);
             rb.constraints = RigidbodyConstraints2D.None; rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             vidaAtual = vidaInicial;
             tempoAtual = 0f;

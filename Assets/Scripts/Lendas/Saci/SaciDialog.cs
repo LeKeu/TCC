@@ -15,11 +15,11 @@ public class SaciDialog : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame && Etapas.PrimeiroEncontroSaci && !JogadorController.Instance.acabouDialogo)
-            Interagir();
+        //if (Keyboard.current.eKey.wasPressedThisFrame && Etapas.PrimeiroEncontroSaci && !JogadorController.Instance.acabouDialogo)
+        //    Interagir();
 
-        if (Keyboard.current.eKey.wasPressedThisFrame && Etapas.BossSaci && !JogadorController.Instance.acabouDialogo)
-            Interagir();
+        //if (Keyboard.current.eKey.wasPressedThisFrame && Etapas.BossSaci && !JogadorController.Instance.acabouDialogo)
+        //    Interagir();
     }
 
     //public void Interagir()

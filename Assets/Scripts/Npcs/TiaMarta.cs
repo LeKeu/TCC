@@ -55,7 +55,7 @@ public class TiaMarta : NPCs, ITalkable
     void CompletarTutorial()
     {
         tutCompleto = true;
-        oQueFazer_script.GerenciarQuadroQuest_tutorial(2);
+        oQueFazer_script.GerenciarQuadroQuest_tutorial(4);
         //Debug.Log("entregando ervas");
     }
 }

@@ -56,7 +56,7 @@ public class SeuPedro : NPCs, ITalkable
     void CompletarTutorial()
     {
         tutCompleto = true;
-        oQueFazer_script.GerenciarQuadroQuest_tutorial(3);
+        oQueFazer_script.GerenciarQuadroQuest_tutorial(5);
         //Debug.Log("seu pedro OK");
     }
 }

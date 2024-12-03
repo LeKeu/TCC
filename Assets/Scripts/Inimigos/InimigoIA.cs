@@ -106,7 +106,8 @@ public class InimigoIA : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         inimigoVida.estaCorrompido = false;
-        inimigoPathFinding.movVel = .2f;
+        inimigoPathFinding.movVel = 0f;
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        gameObject.GetComponent<Animator>().SetBool("purificado", true);
     }
 }

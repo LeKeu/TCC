@@ -28,13 +28,13 @@ public class InvocadoInimigo : BasicAndar
     bool estaNaRange;
 
     Animator animator;
-    Sprite loboDormindo;
+    //Sprite loboDormindo;
     SFX sfx_script;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        loboDormindo = GameObject.Find("LoboDormindo").GetComponent<SpriteRenderer>().sprite;
+        //loboDormindo = GameObject.Find("LoboDormindo").GetComponent<SpriteRenderer>().sprite;
         sfx_script = GameObject.Find("AudioSource").GetComponent<SFX>();
     }
 
@@ -133,6 +133,7 @@ public class InvocadoInimigo : BasicAndar
         estaAtordoado = true;
         podePurificar = true;
         Freezar();
+        animator.SetBool("atordoado", true);
 
         yield return new WaitForSeconds(10);
         //yield return new WaitUntil(() => estaPurificado);
@@ -141,6 +142,7 @@ public class InvocadoInimigo : BasicAndar
             yield break;
 
         Desfrizar();
+        animator.SetBool("atordoado", false);
         estaAtordoado = false;
         Vida++;
     }
@@ -157,8 +159,7 @@ public class InvocadoInimigo : BasicAndar
         //Gambiarra
         sfx_script.Purificar();
         yield return new WaitForSeconds(1);
-        animator.enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().sprite = loboDormindo;
+        animator.SetBool("purificado", true);
         //
 
         //Desfrizar();

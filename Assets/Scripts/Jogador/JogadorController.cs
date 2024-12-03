@@ -23,6 +23,7 @@ public class JogadorController : Singleton<JogadorController>
     private Empurrao empurrao;
     public float velInicial;
 
+    #region checagens
     private bool olhandoEsq = false;
     private bool estaDashing = false;
     public bool acabouDialogo;
@@ -40,6 +41,7 @@ public class JogadorController : Singleton<JogadorController>
 
     public bool estaDuranteCutscene;
     public bool falandoSozinha;
+    #endregion
 
     protected override void Awake()
     {

@@ -27,7 +27,7 @@ public class Pedrinho : NPCs, ITalkable
                 indexAtual++;
 
             if (indexAtual == dt.Count & !tutCompleto) { indexAtual = 0; }
-            if (indexAtual == dt.Count & tutCompleto)  { indexAtual = 1; }
+            if (indexAtual == dt.Count & tutCompleto) { indexAtual = 1; }
         }
 
         if (!JogadorController.Instance.estaAndando)
@@ -43,6 +43,6 @@ public class Pedrinho : NPCs, ITalkable
     public void CompletarTutorial()
     {
         tutCompleto = true;
-        oQueFazer_script.GerenciarQuadroQuest_tutorial(4);
+        oQueFazer_script.GerenciarQuadroQuest_tutorial(7);
     }
 }

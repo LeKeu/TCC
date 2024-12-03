@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interagirSprite: {fileID: 5234424695186952930}
+  tutorial_script: {fileID: 0}
   dt:
   - {fileID: 11400000, guid: 14bcc02b467355f48a01e98c1615245b, type: 2}
   dialogoController: {fileID: 0}
@@ -319,6 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8903723430791416683}
   - component: {fileID: 8724489401356585452}
+  - component: {fileID: 6505861162241112994}
   m_Layer: 0
   m_Name: corpo
   m_TagString: Untagged
@@ -393,6 +395,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6505861162241112994
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069059936923784071}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 27406d13ea3df214bb7184d58686cddf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8710407680046394935
 GameObject:
   m_ObjectHideFlags: 0

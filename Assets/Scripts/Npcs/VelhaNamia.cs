@@ -39,6 +39,7 @@ public class VelhaNamia : NPCs, ITalkable
             armaAtiva.AtivarArma1(true);
             inventarioAtivo.AtivarArma1(true);
             tutorial_script.IniciarTutorial_PararTempo("Aperte o botão esquerdo do mouse para atacar.", KeyCode.Mouse0);
+            oQueFazer_script.GerenciarQuadroQuest_tutorial(1);
         }
     }
     public void Falar(DialogoTexto dialogoTexto)
@@ -53,7 +54,7 @@ public class VelhaNamia : NPCs, ITalkable
         if(ErvasVerdes.transform.childCount == 0)
         {
             tutCompleto = true;
-            oQueFazer_script.GerenciarQuadroQuest_tutorial(1);
+            oQueFazer_script.GerenciarQuadroQuest_tutorial(3);
             armaAtiva.AtivarArma1(false);       //
             inventarioAtivo.AtivarArma1(false); //
         }

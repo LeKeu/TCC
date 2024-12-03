@@ -9,13 +9,29 @@ public class OQueFazer : MonoBehaviour
     [SerializeField] GameObject QuadroDeQuests;
 
     List<string> tutorial = new List<string>() 
-    { "Fale com a Velha Nâmia, perto da casa rosa.", "Vá com a Tia Marta, perto da árvore grande.", "Fale com o Seu Pedro, na frente da casa de telhado roxo.", "Ajude o Pedrinho, perto dos barcos.", "Pegue seu almoço com a Wanda, perto da casa alta." };
+    { "Fale com a Velha Nâmia, perto da casa rosa.", "Destrua as moitas verdes.", "Volte com a Velha Nâmia", 
+        "Vá com a Tia Marta, perto da árvore grande.", 
+        "Fale com o Seu Pedro, na frente da casa de telhado roxo.", 
+        "Ajude o Pedrinho, perto dos barcos.", "Pegue a bola de futebol sem que o Seu João veja.",
+        "Pegue seu almoço com a Wanda, perto da casa alta." };
 
     List<string> celebr_seq = new List<string>()
     { "Fale com o povo ao redor antes de começar a celebração.", "Procure pela bola de futebol perto das casas.", "Vá para sua casa, a telha dela é azul.", "Siga os rastros do vulto." };
 
     List<string> saci_cenas = new List<string>()
     { "Siga os rastros e encontre seu irmão.", "Sobreviva ao encontro!", "Explore a floresta e tente encontrar seu irmão.", "saci 4" };
+
+
+    bool tutVelhaNamia;
+    private void Update()
+    {
+        //APENAS PARA TUT
+        if(GameObject.FindGameObjectsWithTag("MoitaTut").Length <= 0 && !tutVelhaNamia && SceneManager.GetActiveScene().name == "01_comunidade")
+        {
+            tutVelhaNamia = true;
+            GerenciarQuadroQuest_tutorial(2);
+        }    
+    }
 
     private void Start()
     {
