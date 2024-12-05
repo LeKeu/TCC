@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,21 +12,23 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
     float tempoEntreAtaques;
 
     bool atacarButBaixo, estaAtacando = false;
+    public bool podeAtacar;
+
+    public bool desativarAux;
 
     HashSet<string> cenasComArmaDesativada = new HashSet<string>
     {
         "01_comunidade",
         "02_comunidade",
-        "T03_comunidade", 
+        "T03_comunidade",
         "01_saci"
     };
 
     protected override void Awake()
     {
         base.Awake();
-        gameObject.SetActive(true);
+
         jogadorControls = new JogadorControls();
-        DesativarArma();
     }
 
     private void OnEnable()
@@ -33,41 +36,49 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
         jogadorControls.Enable();
     }
 
-    void DesativarArma()
+    private void Start()
     {
-        if (!cenasComArmaDesativada.Contains(SceneManager.GetActiveScene().name))
-        {
-            jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
-            jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();
+        
+        if(SceneManager.GetActiveScene().name == "01_comunidade" || SceneManager.GetActiveScene().name == "02_comunidade")
+            podeAtacar = false;
+        else podeAtacar = true;
 
-            AtaqueCoolDown();
-        }
-        else gameObject.SetActive(false);// se for nas cenas de comunidade, não tem como mudar nem utilizar a arma
-    }
+        jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
+        jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();
 
-    public void AtivarArma1(bool acao)
-    {
-        //Debug.Log("arma ativa 1"+acao);
-        Debug.Log("ativarar ma1");
-
-        if (acao)
-        {
-            jogadorControls.Combat.Attack.started += _ => ComecarAtaque();
-            jogadorControls.Combat.Attack.canceled += _ => AcabarAtaque();
-
-            AtaqueCoolDown();
-        }
-        gameObject.SetActive(acao);
+        AtaqueCoolDown();
     }
 
     private void Update()
     {
-        if(JogadorController.Instance.podeAtacar)
+        if (JogadorController.Instance.podeAtacar)
             Atacar();
+
+        if(!desativarAux && !podeAtacar)
+        {
+            desativarAux = true;
+            DesativarArma();
+        }
+    }
+
+    public void DesativarArma()
+    {
+        Debug.Log("dsativandooo");
+        transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void AtivarArma()
+    {
+        transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void NovaArma(MonoBehaviour novaArma)
     {
+        if (cenasComArmaDesativada.Contains(SceneManager.GetActiveScene().name))
+        {
+            DesativarArma();
+        }
+
         ArmaAtivaAtual = novaArma;
 
         AtaqueCoolDown();
@@ -108,7 +119,7 @@ public class ArmaAtiva : Singleton<ArmaAtiva>
 
     void Atacar()
     {
-        if(atacarButBaixo && !estaAtacando)
+        if (atacarButBaixo && !estaAtacando && podeAtacar)
         {
             //estaAtacando = true;
             AtaqueCoolDown();

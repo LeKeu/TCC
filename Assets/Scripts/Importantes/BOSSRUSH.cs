@@ -19,20 +19,21 @@ public class BOSSRUSH : MonoBehaviour
         SaciGO.SetActive(false);
         IaraGO.SetActive(false);
         CucaGO.SetActive(false);
-        vidaAux = JogadorVida.Instance.vidaMax;
+        //vidaAux = JogadorVida.Instance.vidaMax;
+        JogadorVida.vidaAtual = JogadorVida.VIDA_MAXIMA;
 
         StartCoroutine(BossRush());
     }
 
     private void Update()
     {
-        if (!JogadorVida.estaViva)
-        {
-            JogadorVida.Instance.vidaMax = vidaAux;
-            JogadorVida.vidaAtual = vidaAux;
-            JogadorController.Instance.velocidade = velAux;
-            JogadorController.Instance.velInicial = velAux;
-        }
+        //if (!JogadorVida.estaViva)
+        //{
+        //    JogadorVida.Instance.vidaMax = vidaAux;
+        //    JogadorVida.vidaAtual = vidaAux;
+        //    JogadorController.Instance.velocidade = velAux;
+        //    JogadorController.Instance.velInicial = velAux;
+        //}
     }
 
     IEnumerator BossRush()

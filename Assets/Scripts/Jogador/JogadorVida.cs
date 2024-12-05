@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class JogadorVida : Singleton<JogadorVida>
 {
     //[SerializeField] TremerCamera tremerCamera;
+    public const int VIDA_MAXIMA = 30;
+
     public int vidaMax = 30;
     [SerializeField] float empurraoValor = 10f;
     [SerializeField] float tempoRecoveryDano = .5f;
@@ -100,10 +102,16 @@ public class JogadorVida : Singleton<JogadorVida>
     void AtualizarVidaSlider()
     {
         if(vidaSlider == null)
+        {
+            Debug.Log("vidaslider era null");
             vidaSlider = GameObject.Find("VidaSlider").GetComponent<Slider>();
+        }
 
         vidaSlider.maxValue = vidaMax;
         vidaSlider.value = vidaAtual;
+
+        Debug.Log("vidaSlider.maxValue="+ vidaSlider.maxValue);
+        Debug.Log("vidaSlider.value=" + vidaSlider.value);
     }
 
     void ChecarSePlayerMorreu()

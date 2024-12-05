@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5080200626853080553}
   - component: {fileID: 6210500461251987438}
   - component: {fileID: -195879968585180374}
+  - component: {fileID: 7774820485437083212}
   m_Layer: 0
   m_Name: InvocadoInimigo
   m_TagString: InvocadoInimigo
@@ -250,3 +251,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7774820485437083212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162080089506050093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d99f2ce890653004fb9c719c5895f62c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashBrancoMaterial: {fileID: 2100000, guid: 0b24fa01b14efa74ab1c74916e0328d8, type: 2}
+  tempoDeRestorar: 0.2

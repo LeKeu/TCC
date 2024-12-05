@@ -14,12 +14,15 @@ public abstract class NPCsCelebracao : MonoBehaviour, IInteractble
         {
             if (Keyboard.current.eKey.wasPressedThisFrame && DaParaInteragir() && !Etapas.BrigaCelebracao)
             {//Keyboard.current.eKey.wasPressedThisFrame
-             //Debug.Log("aquiqiqi");
                 Interagir();
             }
             if (Keyboard.current.eKey.wasPressedThisFrame && Etapas.PrimeiroEncontroSaci && !JogadorController.Instance.acabouDialogo)
             {//Keyboard.current.eKey.wasPressedThisFrame
-             //Debug.Log("aquiqiqi");
+                Interagir();
+            }
+
+            if (Keyboard.current.eKey.wasPressedThisFrame && Etapas.BossSaci && !JogadorController.Instance.acabouDialogo)
+            {//Keyboard.current.eKey.wasPressedThisFrame
                 Interagir();
             }
 

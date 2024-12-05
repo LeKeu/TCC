@@ -18,6 +18,11 @@ public class VelhaNamia : NPCs, ITalkable
     [SerializeField] InventarioAtivo inventarioAtivo;
     [SerializeField] OQueFazer oQueFazer_script;
 
+    private void Start()
+    {
+        inventarioAtivo.DesativarArma();
+    }
+
     public override void Interagir()
     {
         if (JogadorController.Instance.podeMover) // se o jogador pode se mover, no caso só ocorre quando a conversa acabou
@@ -36,8 +41,9 @@ public class VelhaNamia : NPCs, ITalkable
 
         if (JogadorController.Instance.acabouDialogo && indexAtual == 0 && !tutCompleto)
         { // ativar arma só qnd o dialogo acabar na quest de destruir moitas
-            armaAtiva.AtivarArma1(true);
-            inventarioAtivo.AtivarArma1(true);
+            //armaAtiva.AtivarArma1(true);
+            //inventarioAtivo.AtivarArma1(true);
+            inventarioAtivo.AtivarArma();
             tutorial_script.IniciarTutorial_PararTempo("Aperte o botão esquerdo do mouse para atacar.", KeyCode.Mouse0);
             oQueFazer_script.GerenciarQuadroQuest_tutorial(1);
         }
@@ -55,8 +61,9 @@ public class VelhaNamia : NPCs, ITalkable
         {
             tutCompleto = true;
             oQueFazer_script.GerenciarQuadroQuest_tutorial(3);
-            armaAtiva.AtivarArma1(false);       //
-            inventarioAtivo.AtivarArma1(false); //
+            //armaAtiva.AtivarArma1(false);       //
+            //inventarioAtivo.AtivarArma1(false); //
+            inventarioAtivo.DesativarArma();
         }
     }
 }

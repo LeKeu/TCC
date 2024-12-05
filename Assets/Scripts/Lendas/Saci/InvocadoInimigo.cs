@@ -15,8 +15,9 @@ public class InvocadoInimigo : BasicAndar
 
     //Rigidbody2D rb;
     Vector2 movDir;
+    private Flash flash;
     private Empurrao empurrao;
-    float empurraoForca = 10;
+    float empurraoForca = 3;
     SpriteRenderer spriteRenderer;
     CircleCollider2D circleCollider;
 
@@ -50,6 +51,7 @@ public class InvocadoInimigo : BasicAndar
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         empurrao = GetComponent<Empurrao>();
+        flash = GetComponent<Flash>();
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         tremerCamera = GameObject.Find("Virtual Camera").GetComponent<TremerCamera>();
@@ -117,12 +119,13 @@ public class InvocadoInimigo : BasicAndar
     {
         if (Vida <= 0)
         {
-            empurrao.SerEmpurrado(JogadorController.Instance.transform, empurraoForca);
             StartCoroutine(TentarPurificarRoutine());
         }
         else
         {
             Vida -= dano;
+            empurrao.SerEmpurrado(JogadorController.Instance.transform, empurraoForca);
+            StartCoroutine(flash.FlashRoutine());
             tremerCamera.TremerCameraFunc();
         }
         //Destroy(gameObject);
@@ -132,6 +135,7 @@ public class InvocadoInimigo : BasicAndar
     {
         estaAtordoado = true;
         podePurificar = true;
+        circleCollider.enabled = false;
         Freezar();
         animator.SetBool("atordoado", true);
 
@@ -143,6 +147,7 @@ public class InvocadoInimigo : BasicAndar
 
         Desfrizar();
         animator.SetBool("atordoado", false);
+        circleCollider.enabled = true;
         estaAtordoado = false;
         Vida++;
     }
@@ -166,6 +171,8 @@ public class InvocadoInimigo : BasicAndar
         estado = Estado.Andando;
         SetVelocidade(2);
         //StartCoroutine(Andando(2));
+
+        StartCoroutine(SumirSprite());
     }
 
     void Freezar() => rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -174,6 +181,12 @@ public class InvocadoInimigo : BasicAndar
     {
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    IEnumerator SumirSprite()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
     }
 
     public void DiminuirVelocidade() => movVel = velInicial / 2;

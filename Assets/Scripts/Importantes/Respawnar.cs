@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Respawnar : MonoBehaviour
 {
+    [SerializeField] InventarioAtivo inventarioAtivo;
+
     LuzesCiclo luzesCiclo;
     GameObject canvas;
     bool chamouMorrer;
@@ -28,7 +30,7 @@ public class Respawnar : MonoBehaviour
     {
         chamouMorrer = true;
         EsconderUI();
-        ArmaAtiva.Instance.AtivarArma1(false);
+        //ArmaAtiva.Instance.AtivarArma1(false);
 
         JogadorController.Instance.podeMover = false;
         luzesCiclo.MudarCorAmbiente(Color.black, 5f);
@@ -43,11 +45,13 @@ public class Respawnar : MonoBehaviour
         JogadorVida.vidaAtual = vidaTemp;
         if (SceneManager.GetActiveScene().name == "BOSSRUSH")
         {
+            //inventarioAtivo.DesativarArma();
+
             Saci.SACI_BR_FINALIZADO = false;
             Iara.IARA_BR_FINALIZADO = false;
             Cuca.CUCA_BR_FINALIZADO = false;
+
             SceneManager.LoadScene("Inicio");
-            JogadorVida.vidaAtual = 50;
             yield break;
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

@@ -60,6 +60,7 @@ public class Etapa2 : MonoBehaviour
             Saci.SetActive(false);
 
             VidaUI.SetActive(false);
+            JogadorVida.vidaAtual = JogadorVida.VIDA_MAXIMA;
         }
 
         if(SceneManager.GetActiveScene().name == "03_saci") // MUDAR PARA CENA DO BOSS
@@ -185,8 +186,9 @@ public class Etapa2 : MonoBehaviour
         oQueFazer_script.AtivarPainelQuests(true);
         oQueFazer_script.GerenciarQuadroQuest_saci_cenas(1);
 
-        ArmaAtiva.Instance.AtivarArma1(true);
-        inventarioAtivo.AtivarArma1(true);
+        //ArmaAtiva.Instance.AtivarArma1(true);
+        //inventarioAtivo.AtivarArma1(true);
+        inventarioAtivo.AtivarArma();
 
         JogadorController.Instance.velocidade = 3f;
         JogadorController.Instance.velInicial = 3f;
@@ -295,6 +297,8 @@ public class Etapa2 : MonoBehaviour
         yield return new WaitForSeconds(10);
         JogadorController.Instance.IrTelaDemo();
         //TEMPORÁRIO PARA DEMO
+
+        Etapas.BossSaci = false;
 
         oQueFazer_script.AtivarPainelQuests(true);
         oQueFazer_script.GerenciarQuadroQuest_saci_cenas(2);

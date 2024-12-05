@@ -1,16 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InventarioAtivo : MonoBehaviour
 {
     private int indexSlotAtivo = 0;
 
     private JogadorControls jogadorControls;
-    public bool armasAtivas;
 
     HashSet<string> cenasComArmaDesativada = new HashSet<string>
     {
@@ -24,36 +22,13 @@ public class InventarioAtivo : MonoBehaviour
     {
         jogadorControls = new JogadorControls();
     }
+
     private void Start()
     {
-        if (cenasComArmaDesativada.Contains(SceneManager.GetActiveScene().name))
-        {
-            DesativarArma();
-        }
-        else
-        {
-            armasAtivas = true;
-            jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
-
-            AtivarEspacoHighlight(0);
-        }
-    }
-
-    void DesativarArma()
-    {
-        armasAtivas = false;
-        gameObject.SetActive(false);
-    }
-
-    public void AtivarArma1(bool acao)
-    {
-        armasAtivas = acao;
-        gameObject.SetActive(acao);
         jogadorControls.Inventory.Keyboard.performed += ctx => AtivarEspaco((int)ctx.ReadValue<float>());
 
         AtivarEspacoHighlight(0);
     }
-
 
     private void OnEnable()
     {
@@ -62,14 +37,11 @@ public class InventarioAtivo : MonoBehaviour
 
     private void AtivarEspaco(int numValue) // ativar espaço ativo
     {
-        if (armasAtivas)
-            AtivarEspacoHighlight(numValue - 1);
+        AtivarEspacoHighlight(numValue - 1);
     }
 
     private void AtivarEspacoHighlight(int indexNum)
     {
-        if (indexNum > 1) return;
-
         indexSlotAtivo = indexNum;
 
         foreach (Transform inventorySlot in this.transform)
@@ -100,12 +72,38 @@ public class InventarioAtivo : MonoBehaviour
         GameObject armaParaInstanciar = transform.GetChild(indexSlotAtivo).GetComponentInChildren<EspacoInventario>().PegarArmaInfo().armaPrefab;
         GameObject novaArma = Instantiate(armaParaInstanciar, ArmaAtiva.Instance.transform.position, Quaternion.identity);
 
+        if (cenasComArmaDesativada.Contains(SceneManager.GetActiveScene().name))
+        {
+            DesativarArma();
+        }
+
         ArmaAtiva.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
         novaArma.transform.parent = ArmaAtiva.Instance.transform;
-        if (armasAtivas)
+
+        ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
+    }
+
+    public void DesativarArma()
+    {
+        //ArmaAtiva.Instance.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
+        ArmaAtiva.Instance.podeAtacar = false;
+        //ArmaAtiva.Instance.DesativarArma();
+        foreach (Transform child in transform)
         {
-            if(!ArmaAtiva.Instance.gameObject.activeSelf) ArmaAtiva.Instance.gameObject.SetActive(true);
-            ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
+            child.gameObject.SetActive(false);
         }
+        //gameObject.transform.GetChild(0).GetComponent<Image>().enabled = false;
+    }
+
+    public void AtivarArma()
+    {
+        ArmaAtiva.Instance.podeAtacar = true;
+        ArmaAtiva.Instance.AtivarArma();
+        ArmaAtiva.Instance.desativarAux = false;
+        transform.GetChild(0).gameObject.SetActive(true);
+        //foreach (Transform child in transform)
+        //{
+        //    child.gameObject.SetActive(true);
+        //}
     }
 }
