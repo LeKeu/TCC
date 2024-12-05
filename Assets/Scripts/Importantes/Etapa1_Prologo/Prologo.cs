@@ -48,6 +48,7 @@ public class Prologo : MonoBehaviour
 
     #region UKULELE
     [SerializeField] AudioClip musicaMenina;
+    [SerializeField] Transform posInicial;
     #endregion
 
     #region BRIGA
@@ -293,7 +294,8 @@ public class Prologo : MonoBehaviour
 
     IEnumerator IniciarJogo_MeninaTocando()
     {
-        #region Tocar ukulele
+        #region Pos, Tocar ukulele
+        JogadorController.Instance.transform.position = posInicial.position;
         //sfx_script.PararAudioSource03();
         Etapas.MeninaTocandoUkulele = true;
         oQueFazer_script.AtivarPainelQuests(false);

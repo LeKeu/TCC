@@ -9,10 +9,10 @@ public class OQueFazer : MonoBehaviour
     [SerializeField] GameObject QuadroDeQuests;
 
     List<string> tutorial = new List<string>() 
-    { "Fale com a Velha Nâmia, perto da casa rosa.", "Destrua as moitas verdes.", "Volte com a Velha Nâmia", 
+    { "Fale com a Velha Nâmia, perto da casa com telha rosa.", "Destrua as moitas verdes.", "Volte com a Velha Nâmia", 
         "Vá com a Tia Marta, perto da árvore grande.", 
-        "Fale com o Seu Pedro, na frente da casa de telhado roxo.", 
-        "Ajude o Pedrinho, perto dos barcos.", "Pegue a bola de futebol sem que o Seu João veja.",
+        "Fale com o Seu Pedro, na frente da casa de telha roxo.", 
+        "Ajude o Pedrinho, ele está perto dos barcos.", "Pegue a bola de futebol sem que o Seu João veja.",
         "Pegue seu almoço com a Wanda, perto da casa alta." };
 
     List<string> celebr_seq = new List<string>()

@@ -14,21 +14,30 @@ public class Pedrinho : NPCs, ITalkable
     [SerializeField] private Sprite perfil;
 
     [SerializeField] OQueFazer oQueFazer_script;
+    SeuPedro seuPedroScript;
+
+    private void Start()
+    {
+        seuPedroScript = GameObject.Find("SeuPedro").GetComponent<SeuPedro>();
+    }
 
     public override void Interagir()
     {
 
-        if(indexAtual == 0) podePegarBola = true;
-        if(indexAtual == 1) podePegarBola = false;
 
         if (JogadorController.Instance.podeMover) // se o jogador pode se mover, no caso só ocorre quando a conversa acabou
         {
             if (tutCompleto)
                 indexAtual++;
 
+            if (!seuPedroScript.tutCompleto) indexAtual = 2;
+
             if (indexAtual == dt.Count & !tutCompleto) { indexAtual = 0; }
             if (indexAtual == dt.Count & tutCompleto) { indexAtual = 1; }
         }
+
+        if(indexAtual == 0) podePegarBola = true;
+        if(indexAtual == 1 || indexAtual == 2) podePegarBola = false;
 
         if (!JogadorController.Instance.estaAndando)
             Falar(dt[indexAtual]);

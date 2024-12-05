@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BOSSRUSH : MonoBehaviour
@@ -10,17 +11,34 @@ public class BOSSRUSH : MonoBehaviour
 
     [SerializeField] GameObject RespawnPoint;
 
+    int vidaAux;
+    float velAux=2.5f;
+
     private void Start()
     {
         SaciGO.SetActive(false);
         IaraGO.SetActive(false);
         CucaGO.SetActive(false);
+        vidaAux = JogadorVida.Instance.vidaMax;
 
         StartCoroutine(BossRush());
     }
 
+    private void Update()
+    {
+        if (!JogadorVida.estaViva)
+        {
+            JogadorVida.Instance.vidaMax = vidaAux;
+            JogadorVida.vidaAtual = vidaAux;
+            JogadorController.Instance.velocidade = velAux;
+            JogadorController.Instance.velInicial = velAux;
+        }
+    }
+
     IEnumerator BossRush()
     {
+        yield return new WaitForSeconds(2);
+
         SaciGO.SetActive(true);
         StartCoroutine(SaciGO.GetComponent<Saci>().SACI_BOSSRUSH());
         yield return new WaitUntil(() => Saci.SACI_BR_FINALIZADO);

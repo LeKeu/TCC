@@ -104,7 +104,7 @@ public class InventarioAtivo : MonoBehaviour
         novaArma.transform.parent = ArmaAtiva.Instance.transform;
         if (armasAtivas)
         {
-            ArmaAtiva.Instance.gameObject.SetActive(true);
+            if(!ArmaAtiva.Instance.gameObject.activeSelf) ArmaAtiva.Instance.gameObject.SetActive(true);
             ArmaAtiva.Instance.NovaArma(novaArma.GetComponent<MonoBehaviour>());
         }
     }
